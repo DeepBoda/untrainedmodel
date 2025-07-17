@@ -35,7 +35,7 @@ const Header = () => {
           <Link to="/" className="flex items-center space-x-3 group">
             <div className="w-10 h-10 bg-gradient-to-r from-pink-500 to-cyan-500 flex items-center justify-center glitch">
               <img 
-                src="/public/untrainedmodel Black.png" 
+                src="/public/black_logo.png" 
                 alt="Untrained Model" 
                 className="w-8 h-8 object-contain invert"
                 onError={(e) => {
