@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://untrainedmodel.xyz',
+    url: 'https://www.untrainedmodel.xyz',
     siteName: 'UntrainedModel.xyz',
     title: 'UntrainedModel.xyz - Where Dumb AI Meets Brilliant Chaos',
     description: 'The AI that forgot to train. Interactive playground for chaotic creativity, tech satire, and experimental prompts.',
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     google: 'your-google-verification-code',
   },
   alternates: {
-    canonical: 'https://untrainedmodel.xyz',
+    canonical: 'https://www.untrainedmodel.xyz',
   },
 };
 
@@ -73,10 +73,10 @@ export default function RootLayout({
               '@type': 'WebSite',
               name: 'UntrainedModel.xyz',
               description: 'The AI that forgot to train. Interactive playground for chaotic creativity, tech satire, and experimental prompts.',
-              url: 'https://untrainedmodel.xyz',
+              url: 'https://www.untrainedmodel.xyz',
               potentialAction: {
                 '@type': 'SearchAction',
-                target: 'https://untrainedmodel.xyz/search?q={search_term_string}',
+                target: 'https://www.untrainedmodel.xyz/search?q={search_term_string}',
                 'query-input': 'required name=search_term_string',
               },
             }),
