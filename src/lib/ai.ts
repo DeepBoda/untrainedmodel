@@ -23,7 +23,7 @@ export interface AIResponse {
 class OpenAIProvider implements AIProvider {
   name = 'OpenAI';
   models = ['gpt-4', 'gpt-3.5-turbo', 'gpt-4-turbo'];
-  private apiKey =  process.env.OPENAI_API_KEY;
+  private apiKey = import.meta.env.VITE_OPENAI_API_KEY;
 
   async generateText(prompt: string, model: string): Promise<string> {
     return this.requestOpenAI(prompt, model, 2000, 0.7);
@@ -69,7 +69,7 @@ class OpenAIProvider implements AIProvider {
 class GeminiProvider implements AIProvider {
   name = 'Google';
   models = ['gemini-2.5-pro', 'gemini-2.5-flash'];
-  private apiKey = process.env.GEMINI_API_KEY;
+   private apiKey = import.meta.env.VITE_GEMINI_API_KEY;
 
   async generateText(prompt: string, model: string): Promise<string> {
     return this.requestGemini(prompt, model);
