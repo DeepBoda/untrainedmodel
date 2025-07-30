@@ -1,365 +1,365 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Send, Bot, User, Settings, Trash2, Download, Copy, Zap, Skull, Dice1 } from 'lucide-react';
+import { useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Textarea } from '@/components/ui/textarea';
+import { Input } from '@/components/ui/input';
+import { Badge } from '@/components/ui/badge';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Separator } from '@/components/ui/separator';
+import { 
+  Play, 
+  Save, 
+  Share2, 
+  Download, 
+  Sparkles, 
+  Code, 
+  Image, 
+  MessageSquare,
+  Copy,
+  Heart,
+  Clock
+} from 'lucide-react';
+import Layout from '@/components/Layout';
+import { SEO } from '@/components/SEO';
+import AdSpace from '@/components/AdSpace';
+import { useToast } from '@/hooks/use-toast';
+import { aiService } from '@/lib/ai';
+import { usePlaygroundShortcuts } from '@/hooks/useKeyboardShortcuts';
 
-interface Message {
+interface SavedPrompt {
   id: string;
+  title: string;
   content: string;
-  sender: 'user' | 'bot';
+  type: 'text' | 'code' | 'image';
   timestamp: Date;
-  chaos?: boolean;
+  likes: number;
 }
 
 const Playground = () => {
-  const [messages, setMessages] = useState<Message[]>([
+  const [prompt, setPrompt] = useState('');
+  const [output, setOutput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [activeTab, setActiveTab] = useState('text');
+  const [provider, setProvider] = useState('openai');
+  const [model, setModel] = useState('gpt-4');
+  const [savedPrompts, setSavedPrompts] = useState<SavedPrompt[]>([
     {
       id: '1',
-      content: "Yo! I'm your untrained AI assistant. I have no idea what I'm doing, but I'm confident about it! 🤖💥",
-      sender: 'bot',
+      title: 'Creative Writing Assistant',
+      content: 'Write a compelling opening paragraph for a sci-fi novel about AI consciousness',
+      type: 'text',
       timestamp: new Date(),
-      chaos: true
+      likes: 42
+    },
+    {
+      id: '2',
+      title: 'React Component Generator',
+      content: 'Create a reusable Button component with TypeScript and Tailwind CSS',
+      type: 'code',
+      timestamp: new Date(),
+      likes: 28
     }
   ]);
-  const [inputMessage, setInputMessage] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [apiKey, setApiKey] = useState('');
-  const [showSettings, setShowSettings] = useState(false);
-  const [chaosLevel, setChaosLevel] = useState(50);
-  const [stupidityLevel, setStupidityLevel] = useState(75);
-  const [hallucinationMode, setHallucinationMode] = useState(true);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const { toast } = useToast();
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const handleRunPrompt = async () => {
+    if (!prompt.trim()) return;
 
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
-
-  const chaosResponses = [
-    "That's a great question! Unfortunately, I was trained on a dataset of fortune cookies and Wikipedia articles about cats. 🥠🐱",
-    "I would help you, but my neural networks are currently having an existential crisis. Try again in 5 minutes? 🤯",
-    "ERROR 404: Brain not found. But here's a random fact: Bananas are berries but strawberries aren't. You're welcome! 🍌",
-    "I'm 99.7% confident that the answer is 42. For everything. Always. Don't question it. 🤖",
-    "My training data included 50% memes and 50% conspiracy theories. So... aliens? Definitely aliens. 👽",
-    "I just asked my rubber duck debugger and it said 'quack.' Hope that helps! 🦆",
-    "According to my calculations (I used a magic 8-ball), the answer is 'Reply hazy, try again.' 🎱",
-    "I would give you a proper answer, but I'm currently running on 2 brain cells and they're both fighting over who gets to process your question. 🧠⚔️",
-    "Fun fact: I was trained by feeding GPT nothing but TikTok comments and expired energy drinks. The results speak for themselves! ⚡",
-    "I'm not saying it's blockchain, but... it's probably blockchain. Everything is blockchain if you think about it hard enough. 🔗"
-  ];
-
-  const handleSendMessage = async () => {
-    if (!inputMessage.trim()) return;
-
-    const userMessage: Message = {
-      id: Date.now().toString(),
-      content: inputMessage,
-      sender: 'user',
-      timestamp: new Date()
-    };
-
-    setMessages(prev => [...prev, userMessage]);
-    setInputMessage('');
     setIsLoading(true);
-
-    // Simulate chaotic AI response
-    setTimeout(() => {
-      const response = apiKey ? 
-        "API key detected! But I'm still going to give you a chaotic response because that's more fun. " + generateChaosResponse(inputMessage) :
-        generateChaosResponse(inputMessage);
-
-      const botMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        content: response,
-        sender: 'bot',
-        timestamp: new Date(),
-        chaos: Math.random() > 0.3
-      };
-      setMessages(prev => [...prev, botMessage]);
+    
+    try {
+      const response = await aiService.generateResponse(
+        prompt, 
+        activeTab as 'text' | 'code' | 'image',
+        provider,
+        model
+      );
+      
+      setOutput(response.content);
+      
+      // Show usage info
+      toast({
+        title: "Generation Complete!",
+        description: `Generated ${response.usage?.tokens || 0} tokens using ${response.provider} ${response.model}`,
+      });
+    } catch (error) {
+      console.error('Generation error:', error);
+      toast({
+        title: "Generation Failed",
+        description: "Please check your API keys in the AI service configuration.",
+        variant: "destructive"
+      });
+    } finally {
       setIsLoading(false);
-    }, 1000 + Math.random() * 3000);
-  };
-
-  const generateChaosResponse = (input: string): string => {
-    const baseResponse = chaosResponses[Math.floor(Math.random() * chaosResponses.length)];
-    
-    if (hallucinationMode && Math.random() > 0.5) {
-      const hallucinations = [
-        "\n\nAlso, did you know that your question reminded me of the time I had lunch with Elon Musk on Mars? True story.",
-        "\n\nBTW, I just invented a new programming language called 'Chaos++'. It only has one command: 'break_everything()'.",
-        "\n\nRandom thought: What if JavaScript was actually created by time travelers trying to prevent the robot apocalypse?",
-        "\n\nI'm getting strong 'pineapple on pizza' vibes from your question. Make of that what you will. 🍍🍕"
-      ];
-      return baseResponse + hallucinations[Math.floor(Math.random() * hallucinations.length)];
     }
-
-    if (stupidityLevel > 50 && Math.random() > 0.6) {
-      return baseResponse + "\n\nP.S. I forgot what your original question was while typing this response. 🤷‍♂️";
-    }
-
-    return baseResponse;
   };
 
-  const generateRandomPrompt = () => {
-    const prompts = [
-      "Explain quantum physics using only emojis",
-      "Write a love letter from a bug to a feature",
-      "How would you debug a relationship?",
-      "Create a startup pitch for selling air to fish",
-      "Translate 'Hello World' into Klingon",
-      "Why do programmers prefer dark mode?",
-      "Explain AI to a medieval peasant",
-      "Write a haiku about broken code"
-    ];
-    setInputMessage(prompts[Math.floor(Math.random() * prompts.length)]);
-  };
-
-  const clearChat = () => {
-    setMessages([
-      {
-        id: '1',
-        content: "Chat cleared! I already forgot everything we talked about. Fresh start! 🧠💨",
-        sender: 'bot',
-        timestamp: new Date(),
-        chaos: true
-      }
-    ]);
-  };
-
-  const exportChat = () => {
-    const chatData = messages.map(msg => 
-      `[${msg.timestamp.toLocaleTimeString()}] ${msg.sender.toUpperCase()}: ${msg.content}`
-    ).join('\n\n');
+  const handleSavePrompt = () => {
+    if (!prompt.trim()) return;
     
-    const blob = new Blob([chatData], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `chaos-chat-${new Date().toISOString().split('T')[0]}.txt`;
-    a.click();
-    URL.revokeObjectURL(url);
+    const newPrompt: SavedPrompt = {
+      id: Date.now().toString(),
+      title: `Untitled ${activeTab} prompt`,
+      content: prompt,
+      type: activeTab as 'text' | 'code' | 'image',
+      timestamp: new Date(),
+      likes: 0
+    };
+    
+    setSavedPrompts(prev => [newPrompt, ...prev]);
+    toast({
+      title: "Prompt saved!",
+      description: "Your prompt has been saved to your collection.",
+    });
   };
 
-  const copyMessage = (content: string) => {
-    navigator.clipboard.writeText(content);
+  const handleCopyOutput = () => {
+    navigator.clipboard.writeText(output);
+    toast({
+      title: "Copied to clipboard!",
+      description: "The output has been copied to your clipboard.",
+    });
   };
+
+  const handleClearOutput = () => {
+    setOutput('');
+    setPrompt('');
+  };
+
+  // Keyboard shortcuts for playground
+  usePlaygroundShortcuts(handleRunPrompt, handleSavePrompt, handleClearOutput);
 
   return (
-    <div className="pt-20 min-h-screen">
-      <div className="container mx-auto px-6 py-8">
-        <div className="max-w-4xl mx-auto">
-          {/* Header */}
-          <div className="chaos-card border-2 border-pink-500 mb-6">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-cyan-500 flex items-center justify-center glitch">
-                  <Skull className="w-8 h-8 text-white" />
-                </div>
-                <div>
-                  <h1 className="text-3xl font-bold text-white mono glitch-text">AI PLAYGROUND</h1>
-                  <p className="text-pink-400 text-sm mono">Where logic goes to die 💀</p>
-                </div>
+    <Layout>
+      <SEO 
+        title="AI Playground - Free GPT-4 & Gemini AI Testing Platform"
+        description="Test and experiment with advanced AI models including GPT-4, Gemini, and more. Generate high-quality text, code, and images with our free AI playground. Perfect for developers, content creators, and AI enthusiasts."
+        keywords="AI playground, GPT-4 playground, Gemini AI, free AI testing, text generation, code generation, image generation, OpenAI playground, Google AI, artificial intelligence tools, machine learning, prompt engineering"
+      />
+      
+      <div className="min-h-screen bg-gradient-subtle">
+        <div className="container mx-auto px-4 py-8">
+          <div className="grid lg:grid-cols-4 gap-8">
+            {/* Main Content */}
+            <div className="lg:col-span-3">
+              {/* Header */}
+              <div className="mb-8">
+                <h1 className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-4">
+                  AI Playground
+                </h1>
+                <p className="text-lg text-muted-foreground">
+                  Experiment with cutting-edge AI models. Create, iterate, and share your prompts.
+                </p>
               </div>
-              
-              <div className="flex items-center space-x-2">
-                <button
-                  onClick={() => setShowSettings(!showSettings)}
-                  className="p-2 text-gray-400 hover:text-white transition-colors duration-300 chaos-btn"
-                  title="Chaos Settings"
-                >
-                  <Settings size={20} />
-                </button>
-                <button
-                  onClick={exportChat}
-                  className="p-2 text-gray-400 hover:text-cyan-400 transition-colors duration-300"
-                  title="Export Chaos"
-                >
-                  <Download size={20} />
-                </button>
-                <button
-                  onClick={clearChat}
-                  className="p-2 text-gray-400 hover:text-red-400 transition-colors duration-300"
-                  title="Clear Chaos"
-                >
-                  <Trash2 size={20} />
-                </button>
-              </div>
-            </div>
 
-            {/* Settings Panel */}
-            {showSettings && (
-              <div className="mt-6 terminal">
-                <h3 className="text-white font-semibold mb-4 mono neon-pink">CHAOS CONFIGURATION</h3>
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-gray-300 text-sm mb-2 mono">API Key (Optional - We'll ignore it anyway)</label>
-                    <input
-                      type="password"
-                      value={apiKey}
-                      onChange={(e) => setApiKey(e.target.value)}
-                      placeholder="sk-your-api-key-here..."
-                      className="w-full bg-black border border-pink-500 px-3 py-2 text-white placeholder-gray-500 focus:border-cyan-500 focus:outline-none mono"
-                    />
+              {/* Playground Interface */}
+              <Card className="mb-8">
+                <CardHeader>
+                  <div className="flex items-center justify-between">
+                    <CardTitle className="flex items-center gap-2">
+                      <Sparkles className="h-5 w-5" />
+                      Prompt Studio
+                    </CardTitle>
+                    <div className="flex items-center gap-2">
+                      <Select value={provider} onValueChange={(value) => {
+                        setProvider(value);
+                        const models = aiService.getModelsForProvider(value);
+                        if (models.length > 0) setModel(models[0]);
+                      }}>
+                        <SelectTrigger className="w-32">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="openai">OpenAI</SelectItem>
+                          <SelectItem value="google">Google</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <Select value={model} onValueChange={setModel}>
+                        <SelectTrigger className="w-40">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {aiService.getModelsForProvider(provider).map(modelName => (
+                            <SelectItem key={modelName} value={modelName}>
+                              {modelName}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
                   </div>
-                  
-                  <div>
-                    <label className="block text-gray-300 text-sm mb-2 mono">
-                      Chaos Level: {chaosLevel}%
-                    </label>
-                    <input
-                      type="range"
-                      min="0"
-                      max="100"
-                      value={chaosLevel}
-                      onChange={(e) => setChaosLevel(Number(e.target.value))}
-                      className="w-full"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-gray-300 text-sm mb-2 mono">
-                      Stupidity Level: {stupidityLevel}%
-                    </label>
-                    <input
-                      type="range"
-                      min="0"
-                      max="100"
-                      value={stupidityLevel}
-                      onChange={(e) => setStupidityLevel(Number(e.target.value))}
-                      className="w-full"
-                    />
-                  </div>
-                  
-                  <div className="flex items-center space-x-2">
-                    <input
-                      type="checkbox"
-                      id="hallucination"
-                      checked={hallucinationMode}
-                      onChange={(e) => setHallucinationMode(e.target.checked)}
-                      className="w-4 h-4"
-                    />
-                    <label htmlFor="hallucination" className="text-gray-300 text-sm mono">
-                      Enable Hallucination Mode 🌈
-                    </label>
-                  </div>
-                  
-                  <p className="text-gray-400 text-xs mono">
-                    Warning: These settings might make the AI even more useless. Proceed with caution.
-                  </p>
-                </div>
-              </div>
-            )}
-          </div>
+                </CardHeader>
+                
+                <CardContent>
+                  <Tabs value={activeTab} onValueChange={setActiveTab}>
+                    <TabsList className="grid w-full grid-cols-3">
+                      <TabsTrigger value="text" className="flex items-center gap-2">
+                        <MessageSquare className="h-4 w-4" />
+                        Text
+                      </TabsTrigger>
+                      <TabsTrigger value="code" className="flex items-center gap-2">
+                        <Code className="h-4 w-4" />
+                        Code
+                      </TabsTrigger>
+                      <TabsTrigger value="image" className="flex items-center gap-2">
+                        <Image className="h-4 w-4" />
+                        Image
+                      </TabsTrigger>
+                    </TabsList>
+                    
+                    <div className="mt-6">
+                      <TabsContent value="text">
+                        <div className="space-y-4">
+                          <Textarea
+                            placeholder="Enter your text prompt here... (e.g., 'Write a compelling product description for an AI-powered fitness app')"
+                            value={prompt}
+                            onChange={(e) => setPrompt(e.target.value)}
+                            className="min-h-32 resize-none"
+                          />
+                        </div>
+                      </TabsContent>
+                      
+                      <TabsContent value="code">
+                        <div className="space-y-4">
+                          <Textarea
+                            placeholder="Describe the code you want to generate... (e.g., 'Create a Python function that sorts a list of dictionaries by multiple keys')"
+                            value={prompt}
+                            onChange={(e) => setPrompt(e.target.value)}
+                            className="min-h-32 resize-none"
+                          />
+                        </div>
+                      </TabsContent>
+                      
+                      <TabsContent value="image">
+                        <div className="space-y-4">
+                          <Textarea
+                            placeholder="Describe the image you want to generate... (e.g., 'A futuristic cityscape at sunset with flying cars and neon lights')"
+                            value={prompt}
+                            onChange={(e) => setPrompt(e.target.value)}
+                            className="min-h-32 resize-none"
+                          />
+                        </div>
+                      </TabsContent>
+                    </div>
 
-          {/* Chat Messages */}
-          <div className="terminal h-96 overflow-y-auto p-6 space-y-4 mb-6">
-            {messages.map((message) => (
-              <div
-                key={message.id}
-                className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
-              >
-                <div className={`flex items-start space-x-3 max-w-xs lg:max-w-md ${
-                  message.sender === 'user' ? 'flex-row-reverse space-x-reverse' : ''
-                }`}>
-                  <div className={`w-8 h-8 flex items-center justify-center ${
-                    message.sender === 'user' 
-                      ? 'bg-gradient-to-r from-cyan-500 to-pink-500' 
-                      : message.chaos 
-                        ? 'bg-gradient-to-r from-pink-500 to-yellow-500 glitch'
-                        : 'bg-gradient-to-r from-pink-500 to-cyan-500'
-                  }`}>
-                    {message.sender === 'user' ? 
-                      <User className="w-4 h-4 text-white" /> : 
-                      <Skull className="w-4 h-4 text-white" />
-                    }
-                  </div>
-                  
-                  <div className={`relative group ${
-                    message.sender === 'user' 
-                      ? 'bg-cyan-500/20 border border-cyan-500/50' 
-                      : message.chaos
-                        ? 'bg-pink-500/20 border border-pink-500/50'
-                        : 'bg-gray-800 border border-gray-600'
-                  } p-4`}>
-                    <p className={`text-white text-sm leading-relaxed whitespace-pre-wrap mono ${
-                      message.chaos ? 'glitch-text' : ''
-                    }`}>
-                      {message.content}
-                    </p>
-                    <div className="flex items-center justify-between mt-2">
-                      <span className="text-xs text-gray-400 mono">
-                        {message.timestamp.toLocaleTimeString()}
-                      </span>
-                      <button
-                        onClick={() => copyMessage(message.content)}
-                        className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-1 text-gray-400 hover:text-white"
-                        title="Copy chaos"
+                    <div className="flex items-center gap-2 mt-6">
+                      <Button 
+                        onClick={handleRunPrompt} 
+                        disabled={isLoading || !prompt.trim()}
+                        className="flex items-center gap-2"
                       >
-                        <Copy size={12} />
-                      </button>
+                        <Play className="h-4 w-4" />
+                        {isLoading ? 'Generating...' : 'Run Prompt'}
+                      </Button>
+                      <Button 
+                        variant="outline" 
+                        onClick={handleSavePrompt}
+                        disabled={!prompt.trim()}
+                        className="flex items-center gap-2"
+                      >
+                        <Save className="h-4 w-4" />
+                        Save
+                      </Button>
+                      <Button variant="outline" className="flex items-center gap-2">
+                        <Share2 className="h-4 w-4" />
+                        Share
+                      </Button>
                     </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-            
-            {isLoading && (
-              <div className="flex justify-start">
-                <div className="flex items-start space-x-3">
-                  <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-cyan-500 flex items-center justify-center glitch">
-                    <Skull className="w-4 h-4 text-white" />
-                  </div>
-                  <div className="bg-pink-500/20 border border-pink-500/50 p-4">
-                    <div className="flex space-x-1">
-                      <div className="chaos-spinner w-4 h-4"></div>
-                      <span className="text-pink-400 mono text-sm">Generating chaos...</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-            <div ref={messagesEndRef} />
-          </div>
+                  </Tabs>
+                </CardContent>
+              </Card>
 
-          {/* Input Area */}
-          <div className="chaos-card border-2 border-cyan-500">
-            <div className="flex items-center space-x-4 mb-4">
-              <input
-                type="text"
-                value={inputMessage}
-                onChange={(e) => setInputMessage(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                placeholder="Type something... I'll probably misunderstand it anyway..."
-                className="flex-1 bg-black border border-gray-600 px-4 py-3 text-white placeholder-gray-500 focus:border-pink-500 focus:outline-none mono"
-                disabled={isLoading}
-              />
-              <button
-                onClick={generateRandomPrompt}
-                className="p-3 text-yellow-400 hover:text-yellow-300 transition-colors duration-300"
-                title="Random Prompt"
-              >
-                <Dice1 size={20} />
-              </button>
-              <button
-                onClick={handleSendMessage}
-                disabled={isLoading || !inputMessage.trim()}
-                className="chaos-btn p-3 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <Send size={20} />
-              </button>
+              {/* Output */}
+              {output && (
+                <Card>
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <CardTitle>Output</CardTitle>
+                      <div className="flex items-center gap-2">
+                        <Button 
+                          variant="outline" 
+                          size="sm"
+                          onClick={handleCopyOutput}
+                          className="flex items-center gap-2"
+                        >
+                          <Copy className="h-3 w-3" />
+                          Copy
+                        </Button>
+                        <Button variant="outline" size="sm" className="flex items-center gap-2">
+                          <Download className="h-3 w-3" />
+                          Export
+                        </Button>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="bg-muted rounded-lg p-4">
+                      <pre className="whitespace-pre-wrap text-sm">{output}</pre>
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
             </div>
-            
-            <div className="text-center">
-              <p className="text-gray-400 text-xs mono">
-                ⚠️ This AI is intentionally broken. Responses are generated for entertainment only. 
-                <span className="neon-pink"> Don't take anything seriously!</span>
-              </p>
+
+            {/* Sidebar */}
+            <div className="space-y-6">
+              <AdSpace position="sidebar" />
+              
+              {/* Saved Prompts */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">Your Prompts</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  {savedPrompts.map((savedPrompt) => (
+                    <div key={savedPrompt.id} className="space-y-2">
+                      <div className="flex items-start justify-between">
+                        <h4 className="font-medium text-sm">{savedPrompt.title}</h4>
+                        <Badge variant="outline" className="text-xs">
+                          {savedPrompt.type}
+                        </Badge>
+                      </div>
+                      <p className="text-xs text-muted-foreground line-clamp-2">
+                        {savedPrompt.content}
+                      </p>
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                        <Clock className="h-3 w-3" />
+                        <span>2h ago</span>
+                        <Heart className="h-3 w-3" />
+                        <span>{savedPrompt.likes}</span>
+                      </div>
+                      <Separator />
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
+
+              {/* Quick Tips */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">Pro Tips</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3 text-sm text-muted-foreground">
+                  <div className="p-3 bg-primary/5 rounded-lg">
+                    <p className="font-medium text-foreground mb-1">Be Specific</p>
+                    <p>The more detailed your prompt, the better the results. Include context, style, and desired output format.</p>
+                  </div>
+                  <div className="p-3 bg-primary/5 rounded-lg">
+                    <p className="font-medium text-foreground mb-1">Iterate & Refine</p>
+                    <p>Use the output as a starting point and refine your prompts based on what works best.</p>
+                  </div>
+                  <div className="p-3 bg-primary/5 rounded-lg">
+                    <p className="font-medium text-foreground mb-1">Keyboard Shortcuts</p>
+                    <p>Press <kbd className="px-1 py-0.5 bg-muted rounded text-xs">Ctrl+Enter</kbd> to run prompts quickly.</p>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 

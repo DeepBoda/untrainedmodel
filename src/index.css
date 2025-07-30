@@ -1,3 +1,222 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 78% 60%;
+    --primary-foreground: 0 0% 98%;
+    --primary-hover: 240 78% 55%;
+    --primary-glow: 240 78% 75%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 270 72% 68%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 72.22% 50.59%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 78% 60%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 78% 60%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 240 5.9% 90%;
+    --sidebar-ring: 240 78% 60%;
+    --radius: 0.5rem;
+    
+    /* Enhanced Design Tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(240 78% 60%), hsl(270 72% 68%));
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%), hsl(240 20% 99%));
+    --gradient-hero: linear-gradient(135deg, hsl(240 78% 60% / 0.1), hsl(270 72% 68% / 0.1));
+    --gradient-mesh: conic-gradient(from 0deg at 50% 50%, hsl(240 78% 60% / 0.1), hsl(270 72% 68% / 0.1), hsl(300 65% 65% / 0.1), hsl(240 78% 60% / 0.1));
+    --gradient-glow: radial-gradient(circle at 50% 50%, hsl(240 78% 60% / 0.4), transparent 70%);
+    
+    /* Advanced Shadows */
+    --shadow-elegant: 0 10px 40px -10px hsl(240 78% 60% / 0.2);
+    --shadow-glow: 0 0 40px hsl(240 78% 60% / 0.3);
+    --shadow-card: 0 4px 20px -4px hsl(240 40% 60% / 0.1);
+    --shadow-float: 0 20px 60px -10px hsl(240 78% 60% / 0.25);
+    --shadow-inner: inset 0 2px 4px 0 hsl(240 78% 60% / 0.06);
+    
+  /* Enhanced Transitions */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-elastic: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  
+  /* 3D Transform Effects */
+  --transform-float: translateY(-10px) scale(1.02);
+  --transform-press: translateY(2px) scale(0.98);
+  
+  /* Animation Keyframes */
+  --animation-float: float 6s ease-in-out infinite;
+  --animation-pulse-slow: pulse-slow 4s ease-in-out infinite;
+  --animation-glow: glow 2s ease-in-out infinite alternate;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 240 78% 60%;
+    --primary-foreground: 0 0% 98%;
+    --primary-hover: 240 78% 55%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 270 72% 68%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 72.22% 50.59%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 78% 60%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 240 78% 60%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 240 78% 60%;
+    
+    /* Dark Mode Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(240 78% 60%), hsl(270 72% 68%));
+    --gradient-subtle: linear-gradient(180deg, hsl(240 10% 3.9%), hsl(240 12% 5%));
+    --gradient-hero: linear-gradient(135deg, hsl(240 78% 60% / 0.05), hsl(270 72% 68% / 0.05));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    scroll-behavior: smooth;
+  }
+  
+  /* Enhanced scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.3);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.5);
+  }
+}
+
+@layer components {
+  /* Enhanced button variants */
+  .btn-glow {
+    @apply relative overflow-hidden;
+  }
+  .btn-glow::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-primary opacity-0 transition-opacity duration-300;
+  }
+  .btn-glow:hover::before {
+    @apply opacity-20;
+  }
+  
+  /* Floating elements */
+  .float-element {
+    @apply animate-float;
+  }
+  
+  /* Mesh background */
+  .mesh-bg {
+    background: var(--gradient-mesh);
+  }
+  
+  /* Text animations */
+  .text-shimmer {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--foreground)),
+      hsl(var(--primary)),
+      hsl(var(--foreground))
+    );
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s linear infinite;
+  }
+  
+  /* Card hover effects */
+  .card-interactive {
+    @apply transition-all duration-300 hover:shadow-float hover:-translate-y-2;
+  }
+  
+  /* Parallax container */
+  .parallax-container {
+    @apply relative overflow-hidden;
+  }
+  
+  /* 3D perspective */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  /* Enhanced Animations */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+  }
+  
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+  
+  @keyframes glow {
+    0% { box-shadow: 0 0 20px hsl(var(--primary) / 0.5); }
+    100% { box-shadow: 0 0 40px hsl(var(--primary) / 0.8); }
+  }
+  
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+}
+
+@layer utilities {
+  /* Animation utilities */
+  .animate-in {
+    @apply animate-fade-in;
+  }
+  
+  .stagger-1 {
+    animation-delay: 0.1s;
+  }
+  .stagger-2 {
+    animation-delay: 0.2s;
+  }
+  .stagger-3 {
+    animation-delay: 0.3s;
+  }
+  .stagger-4 {
+    animation-delay: 0.4s;
+  }
+}

@@ -1,104 +1,112 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Github, Twitter, Linkedin, Mail, Heart, Skull, Zap } from 'lucide-react';
+import { Link } from "react-router-dom";
+import { Mail, Twitter, Linkedin, Github } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-black border-t border-gray-800">
-      <div className="container mx-auto px-6 py-12">
+    <footer className="bg-muted/50 border-t border-border">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-cyan-500 flex items-center justify-center">
-                <Skull className="text-white w-5 h-5" />
-              </div>
-              <span className="text-white font-bold text-lg mono">UntrainedModel</span>
+            <div className="flex items-center space-x-2">
+              <img 
+                src="/uploads/bccee730-0f1a-4541-8c9f-4760c42f0c75.png" 
+                alt="UntrainedModel Logo" 
+                className="w-8 h-8 rounded-lg"
+              />
+              <span className="font-bold text-lg">UntrainedModel</span>
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed mono">
-              Where dumb AI meets brilliant chaos. The AI that forgot to train. Just vibes. No accuracy.
+            <p className="text-muted-foreground text-sm max-w-xs">
+              Empowering everyone with accessible AI tools for productivity, creativity, and innovation.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-pink-400 transition-colors duration-300">
-                <Github size={20} />
+              <a href="mailto:contact@untrainedmodel.xyz" className="text-muted-foreground hover:text-primary transition-colors">
+                <Mail className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors duration-300">
-                <Twitter size={20} />
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <Twitter className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors duration-300">
-                <Linkedin size={20} />
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <Linkedin className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-green-400 transition-colors duration-300">
-                <Mail size={20} />
-              </a>
-            </div>
-          </div>
-
-          {/* Chaos Links */}
-          <div className="space-y-4">
-            <h3 className="text-white font-semibold text-lg mono neon-pink">Chaos Menu</h3>
-            <div className="space-y-2">
-              <Link to="/" className="block text-gray-400 hover:text-pink-400 transition-colors duration-300 mono">
-                🏠 Home (Broken)
-              </Link>
-              <Link to="/playground" className="block text-gray-400 hover:text-cyan-400 transition-colors duration-300 mono">
-                🎮 AI Playground
-              </Link>
-              <Link to="/hallucinations" className="block text-gray-400 hover:text-yellow-400 transition-colors duration-300 mono">
-                🤯 Best Fails
-              </Link>
-              <Link to="/blog" className="block text-gray-400 hover:text-green-400 transition-colors duration-300 mono">
-                📝 Rants & Chaos
-              </Link>
-            </div>
-          </div>
-
-          {/* Features */}
-          <div className="space-y-4">
-            <h3 className="text-white font-semibold text-lg mono neon-cyan">Features</h3>
-            <div className="space-y-2">
-              <a href="#" className="block text-gray-400 hover:text-pink-400 transition-colors duration-300 mono">
-                🧠 Dumb AI Models
-              </a>
-              <a href="#" className="block text-gray-400 hover:text-cyan-400 transition-colors duration-300 mono">
-                🎲 Random Prompts
-              </a>
-              <a href="#" className="block text-gray-400 hover:text-yellow-400 transition-colors duration-300 mono">
-                💥 Glitch Generator
-              </a>
-              <a href="#" className="block text-gray-400 hover:text-green-400 transition-colors duration-300 mono">
-                🔥 Chaos Mode
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <Github className="h-5 w-5" />
               </a>
             </div>
           </div>
 
-          {/* Status */}
+          {/* Product */}
           <div className="space-y-4">
-            <h3 className="text-white font-semibold text-lg mono neon-yellow">System Status</h3>
-            <div className="space-y-2 text-gray-400 text-sm mono">
-              <p className="success-text">AI: Barely Working</p>
-              <p className="error-text">Logic: Completely Broken</p>
-              <p className="success-text">Chaos: 100% Operational</p>
-              <p className="neon-green">Vibes: Immaculate</p>
-            </div>
-            <button className="chaos-btn text-sm">
-              <Zap size={14} className="inline mr-2" />
-              BREAK MORE STUFF
-            </button>
+            <h3 className="font-semibold text-foreground">Product</h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link to="/playground" className="text-muted-foreground hover:text-primary transition-colors">
+                  AI Playground
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog" className="text-muted-foreground hover:text-primary transition-colors">
+                  Blog & Resources
+                </Link>
+              </li>
+              <li>
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  API Documentation
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div className="space-y-4">
+            <h3 className="font-semibold text-foreground">Company</h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-muted-foreground hover:text-primary transition-colors">
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog" className="text-muted-foreground hover:text-primary transition-colors">
+                  Blog
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Legal */}
+          <div className="space-y-4">
+            <h3 className="font-semibold text-foreground">Legal</h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link to="/privacy" className="text-muted-foreground hover:text-primary transition-colors">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link to="/terms" className="text-muted-foreground hover:text-primary transition-colors">
+                  Terms of Service
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm mono">
-            © 2025 UntrainedModel.xyz. All rights reserved (probably).
-          </p>
-          <p className="text-gray-400 text-sm flex items-center space-x-1 mt-4 md:mt-0 mono">
-            <span>Made with</span>
-            <Heart size={16} className="text-red-500 flicker" />
-            <span>and</span>
-            <Skull size={16} className="text-pink-500" />
-            <span>by chaotic humans</span>
-          </p>
+        <div className="mt-8 pt-8 border-t border-border">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <p className="text-muted-foreground text-sm">
+              untrainedmodel
+              {/* © 2025 UntrainedModel. All rights reserved. */}
+            </p>
+            <p className="text-muted-foreground text-sm">
+              Built with ❤️ for the AI community
+            </p>
+          </div>
         </div>
       </div>
     </footer>

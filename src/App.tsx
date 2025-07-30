@@ -1,49 +1,64 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import Playground from './pages/Playground';
-import Hallucinations from './pages/Hallucinations';
-import Blog from './pages/Blog';
-import BlogPost from './pages/BlogPost';
-import Train from './pages/Train';
-import Chaos404 from './pages/Chaos404';
-import './App.css';
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { useEffect } from "react";
+import Index from "./pages/Index";
+import Playground from "./pages/Playground";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
+import NotFound from "./pages/NotFound";
+import { ChatWidget } from "./components/ChatWidget";
 
-function App() {
-  return (
-    <Router>
-      <div className="min-h-screen bg-black text-white overflow-x-hidden">
-        <Helmet>
-          <title>UntrainedModel.xyz - Where Dumb AI Meets Brilliant Chaos</title>
-          <meta name="description" content="The AI that forgot to train. Just vibes. No accuracy. LLM? More like LOLM." />
-          <meta name="keywords" content="AI playground, untrained AI, AI chaos, prompt generator, AI satire, experimental AI" />
-          <meta property="og:title" content="UntrainedModel.xyz - Chaotic AI Playground" />
-          <meta property="og:description" content="Where dumb AI meets brilliant chaos. The AI that forgot to train." />
-          <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://www.untrainedmodel.xyz/" />
-        </Helmet>
-        
-        <Header />
-        
-        <main className="relative">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/playground" element={<Playground />} />
-            <Route path="/hallucinations" element={<Hallucinations />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="/train" element={<Train />} />
-            <Route path="*" element={<Chaos404 />} />
-          </Routes>
-        </main>
-        
-        <Footer />
-      </div>
-    </Router>
-  );
-}
+const queryClient = new QueryClient();
+
+// Component to handle scroll to top on route change
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  
+  return null;
+};
+
+const App = () => (
+  <ErrorBoundary>
+    <QueryClientProvider client={queryClient}>
+      <HelmetProvider>
+        <ThemeProvider defaultTheme="light" storageKey="gkf-ui-theme">
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <ScrollToTop />
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/playground" element={<Playground />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:slug" element={<BlogPost />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/privacy" element={<Privacy />} />
+                <Route path="/terms" element={<Terms />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+              <ChatWidget />
+            </BrowserRouter>
+          </TooltipProvider>
+        </ThemeProvider>
+      </HelmetProvider>
+    </QueryClientProvider>
+  </ErrorBoundary>
+);
 
 export default App;
