@@ -87,13 +87,13 @@ const TestimonialSection = () => {
             Success Stories
           </Badge>
           
-          <h2 className="text-5xl lg:text-6xl font-bold mb-8">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold mb-8">
             <span className="text-shimmer">Loved by Creators</span>
             <br />
-            <span className="text-muted-foreground text-3xl lg:text-4xl">Worldwide</span>
+            <span className="text-muted-foreground text-xl sm:text-3xl lg:text-4xl">Worldwide</span>
           </h2>
           
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
             Join thousands of satisfied users who have transformed their workflows with our AI platform
           </p>
         </div>
@@ -173,7 +173,7 @@ const TestimonialSection = () => {
         </div>
 
         {/* Quick Stats */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 max-w-4xl mx-auto">
           {[
             { value: '4.9/5', label: 'Average Rating' },
             { value: '50K+', label: 'Happy Users' },

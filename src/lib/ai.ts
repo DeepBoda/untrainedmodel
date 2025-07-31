@@ -22,7 +22,7 @@ export interface AIResponse {
 
 class OpenAIProvider implements AIProvider {
   name = 'OpenAI';
-  models = ['gpt-4', 'gpt-3.5-turbo', 'gpt-4-turbo'];
+  models = ['gpt-4o-mini', 'gpt-4o', 'gpt-4-turbo'];
   private apiKey = import.meta.env.VITE_OPENAI_API_KEY;
 
   async generateText(prompt: string, model: string): Promise<string> {
@@ -68,8 +68,8 @@ class OpenAIProvider implements AIProvider {
 
 class GeminiProvider implements AIProvider {
   name = 'Google';
-  models = ['gemini-2.5-pro', 'gemini-2.5-flash'];
-   private apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+  models = ['gemini-2.0-flash-exp', 'gemini-1.5-flash', 'gemini-1.5-pro'];
+  private apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
 
   async generateText(prompt: string, model: string): Promise<string> {
     return this.requestGemini(prompt, model);
@@ -112,14 +112,62 @@ class GeminiProvider implements AIProvider {
   }
 }
 
+// ------------------------- Claude (Anthropic) -------------------------
+
+class ClaudeProvider implements AIProvider {
+  name = 'Anthropic';
+  models = ['claude-3-5-haiku-20241022', 'claude-sonnet-4-20250514', 'claude-opus-4-20250514'];
+  private apiKey = import.meta.env.VITE_ANTHROPIC_API_KEY;
+
+  async generateText(prompt: string, model: string): Promise<string> {
+    return this.requestClaude(prompt, model, 0.7);
+  }
+
+  async generateCode(prompt: string, model: string): Promise<string> {
+    const codePrompt = `You are a senior software engineer. Generate clean, production-ready TypeScript code:\n${prompt}`;
+    return this.requestClaude(codePrompt, model, 0.3);
+  }
+
+  private async requestClaude(prompt: string, model: string, temperature: number): Promise<string> {
+    try {
+      const response = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          "x-api-key": this.apiKey,
+          "anthropic-version": "2023-06-01",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model,
+          max_tokens: 2000,
+          temperature,
+          messages: [{ role: 'user', content: prompt }],
+        }),
+      });
+
+      if (!response.ok) throw new Error(`Claude API error: ${response.statusText}`);
+      const data = await response.json();
+      return data.content?.[0]?.text || 'No response generated';
+    } catch (err) {
+      console.error('Claude error:', err);
+      return this.getFallbackResponse(prompt);
+    }
+  }
+
+  private getFallbackResponse(prompt: string): string {
+    return `🌟 Uppss, Try again after sometime...`;
+  }
+}
+
 // ------------------------- Main AI Service -------------------------
 
 export class AIService {
   private providers = new Map<string, AIProvider>();
 
   constructor() {
-    this.providers.set('openai', new OpenAIProvider());
     this.providers.set('google', new GeminiProvider());
+    this.providers.set('openai', new OpenAIProvider());
+    this.providers.set('anthropic', new ClaudeProvider());
   }
 
   async generateResponse(

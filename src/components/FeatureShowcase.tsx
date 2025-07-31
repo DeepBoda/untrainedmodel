@@ -75,20 +75,20 @@ const FeatureShowcase = () => {
             Powerful Features
           </Badge>
           
-          <h2 className="text-5xl lg:text-6xl font-bold mb-8">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold mb-8">
             <span className="text-shimmer">Everything You Need</span>
             <br />
-            <span className="text-muted-foreground text-3xl lg:text-4xl">in One Platform</span>
+            <span className="text-muted-foreground text-xl sm:text-3xl lg:text-4xl">in One Platform</span>
           </h2>
           
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Discover the complete suite of AI tools designed to transform your workflow, 
             boost creativity, and accelerate your projects.
           </p>
         </div>
 
         {/* Feature Showcase */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-20">
           {/* Feature Cards */}
           <div className="space-y-6">
             {features.map((feature, index) => {
@@ -159,7 +159,7 @@ const FeatureShowcase = () => {
         </div>
 
         {/* Achievements */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-4xl mx-auto">
           {achievements.map((achievement, index) => {
             const Icon = achievement.icon;
             return (

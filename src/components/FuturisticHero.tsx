@@ -58,18 +58,18 @@ const FuturisticHero = () => {
         </Badge>
 
         {/* Main Heading */}
-        <h1 className="text-6xl lg:text-8xl font-bold mb-8 leading-tight">
+        <h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold mb-8 leading-tight">
           <span className="text-shimmer bg-gradient-primary bg-clip-text text-transparent">
             UntrainedModel
           </span>
           <br />
-          <span className="text-4xl lg:text-6xl text-muted-foreground">
+          <span className="text-2xl sm:text-4xl lg:text-6xl text-muted-foreground">
             AI for Everyone
           </span>
         </h1>
 
         {/* Description */}
-        <p className="text-xl lg:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
           Experience the future of artificial intelligence with our comprehensive platform. 
           Generate, create, and innovate with cutting-edge AI models at your fingertips.
         </p>
@@ -90,7 +90,7 @@ const FuturisticHero = () => {
         </div>
 
         {/* Animated Stats */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 max-w-4xl mx-auto">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
             const isActive = index === currentStat;

@@ -5,14 +5,14 @@ const Footer = () => {
   return (
     <footer className="bg-muted/50 border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <img 
                 src="/uploads/bccee730-0f1a-4541-8c9f-4760c42f0c75.png" 
                 alt="UntrainedModel Logo" 
-                className="w-8 h-8 rounded-lg"
+                className="w-8 h-8 rounded-lg dark:invert"
               />
               <span className="font-bold text-lg">UntrainedModel</span>
             </div>
@@ -98,7 +98,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-8 pt-8 border-t border-border">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <p className="text-muted-foreground text-sm">
               untrainedmodel
               {/* © 2025 UntrainedModel. All rights reserved. */}

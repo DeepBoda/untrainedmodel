@@ -26,6 +26,7 @@ import AdSpace from '@/components/AdSpace';
 import { useToast } from '@/hooks/use-toast';
 import { aiService } from '@/lib/ai';
 import { usePlaygroundShortcuts } from '@/hooks/useKeyboardShortcuts';
+import { PromptTemplates } from '@/components/PromptTemplates';
 
 interface SavedPrompt {
   id: string;
@@ -41,8 +42,8 @@ const Playground = () => {
   const [output, setOutput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [activeTab, setActiveTab] = useState('text');
-  const [provider, setProvider] = useState('openai');
-  const [model, setModel] = useState('gpt-4');
+  const [provider, setProvider] = useState('google');
+  const [model, setModel] = useState('gemini-2.0-flash-exp');
   const [savedPrompts, setSavedPrompts] = useState<SavedPrompt[]>([
     {
       id: '1',
@@ -140,15 +141,15 @@ const Playground = () => {
       
       <div className="min-h-screen bg-gradient-subtle">
         <div className="container mx-auto px-4 py-8">
-          <div className="grid lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
             {/* Main Content */}
-            <div className="lg:col-span-3">
+            <div className="lg:col-span-2 xl:col-span-3">
               {/* Header */}
               <div className="mb-8">
-                <h1 className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-4">
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-4">
                   AI Playground
                 </h1>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-base sm:text-lg text-muted-foreground">
                   Experiment with cutting-edge AI models. Create, iterate, and share your prompts.
                 </p>
               </div>
@@ -156,27 +157,28 @@ const Playground = () => {
               {/* Playground Interface */}
               <Card className="mb-8">
                 <CardHeader>
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                     <CardTitle className="flex items-center gap-2">
                       <Sparkles className="h-5 w-5" />
                       Prompt Studio
                     </CardTitle>
-                    <div className="flex items-center gap-2">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 w-full sm:w-auto">
                       <Select value={provider} onValueChange={(value) => {
                         setProvider(value);
                         const models = aiService.getModelsForProvider(value);
                         if (models.length > 0) setModel(models[0]);
                       }}>
-                        <SelectTrigger className="w-32">
+                        <SelectTrigger className="w-full sm:w-32">
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="openai">OpenAI</SelectItem>
                           <SelectItem value="google">Google</SelectItem>
+                          <SelectItem value="anthropic">Anthropic</SelectItem>
                         </SelectContent>
                       </Select>
                       <Select value={model} onValueChange={setModel}>
-                        <SelectTrigger className="w-40">
+                        <SelectTrigger className="w-full sm:w-40">
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
@@ -211,43 +213,43 @@ const Playground = () => {
                     <div className="mt-6">
                       <TabsContent value="text">
                         <div className="space-y-4">
-                          <Textarea
+                           <Textarea
                             placeholder="Enter your text prompt here... (e.g., 'Write a compelling product description for an AI-powered fitness app')"
                             value={prompt}
                             onChange={(e) => setPrompt(e.target.value)}
-                            className="min-h-32 resize-none"
+                            className="min-h-16 sm:min-h-20 lg:min-h-24 resize-none"
                           />
                         </div>
                       </TabsContent>
                       
                       <TabsContent value="code">
                         <div className="space-y-4">
-                          <Textarea
+                           <Textarea
                             placeholder="Describe the code you want to generate... (e.g., 'Create a Python function that sorts a list of dictionaries by multiple keys')"
                             value={prompt}
                             onChange={(e) => setPrompt(e.target.value)}
-                            className="min-h-32 resize-none"
+                            className="min-h-16 sm:min-h-20 lg:min-h-24 resize-none"
                           />
                         </div>
                       </TabsContent>
                       
                       <TabsContent value="image">
                         <div className="space-y-4">
-                          <Textarea
+                           <Textarea
                             placeholder="Describe the image you want to generate... (e.g., 'A futuristic cityscape at sunset with flying cars and neon lights')"
                             value={prompt}
                             onChange={(e) => setPrompt(e.target.value)}
-                            className="min-h-32 resize-none"
+                            className="min-h-16 sm:min-h-20 lg:min-h-24 resize-none"
                           />
                         </div>
                       </TabsContent>
                     </div>
 
-                    <div className="flex items-center gap-2 mt-6">
+                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 mt-6">
                       <Button 
                         onClick={handleRunPrompt} 
                         disabled={isLoading || !prompt.trim()}
-                        className="flex items-center gap-2"
+                        className="flex items-center justify-center gap-2"
                       >
                         <Play className="h-4 w-4" />
                         {isLoading ? 'Generating...' : 'Run Prompt'}
@@ -256,12 +258,12 @@ const Playground = () => {
                         variant="outline" 
                         onClick={handleSavePrompt}
                         disabled={!prompt.trim()}
-                        className="flex items-center gap-2"
+                        className="flex items-center justify-center gap-2"
                       >
                         <Save className="h-4 w-4" />
                         Save
                       </Button>
-                      <Button variant="outline" className="flex items-center gap-2">
+                      <Button variant="outline" className="flex items-center justify-center gap-2">
                         <Share2 className="h-4 w-4" />
                         Share
                       </Button>
@@ -303,7 +305,7 @@ const Playground = () => {
             </div>
 
             {/* Sidebar */}
-            <div className="space-y-6">
+            <div className="lg:col-span-1 space-y-6">
               <AdSpace position="sidebar" />
               
               {/* Saved Prompts */}
@@ -334,6 +336,12 @@ const Playground = () => {
                   ))}
                 </CardContent>
               </Card>
+
+              {/* Prompt Templates */}
+              <PromptTemplates onSelectTemplate={(template) => {
+                setPrompt(template.prompt);
+                setActiveTab(template.type);
+              }} />
 
               {/* Quick Tips */}
               <Card>

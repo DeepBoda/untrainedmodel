@@ -52,14 +52,14 @@ const Navigation = () => {
               <img 
                 src="/uploads/bccee730-0f1a-4541-8c9f-4760c42f0c75.png" 
                 alt="UntrainedModel Logo" 
-                className="w-8 h-8"
+                className="w-8 h-8 dark:invert transition-all"
               />
               <span className="text-lg font-semibold bg-gradient-primary bg-clip-text text-transparent">
                 UntrainedModel
               </span>
             </Link>
 
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden lg:flex items-center space-x-8">
               {navigationItems.map((item) => (
                 <Link key={item.name} to={item.href} className={cn(
                   "text-sm font-medium transition-colors hover:text-primary",
@@ -70,11 +70,11 @@ const Navigation = () => {
               ))}
             </div>
 
-            <div className="hidden md:flex items-center space-x-4">
+            <div className="hidden lg:flex items-center space-x-4">
               <Button 
                 variant="outline" 
                 onClick={() => setIsSearchOpen(true)}
-                className="relative w-64 justify-start text-muted-foreground"
+                className="relative w-48 xl:w-64 justify-start text-muted-foreground"
               >
                 <Search className="h-4 w-4 mr-2" />
                 <span>Search...</span>
@@ -86,7 +86,7 @@ const Navigation = () => {
               <Button asChild><Link to="/playground">Try AI Playground</Link></Button>
             </div>
 
-            <div className="md:hidden flex items-center space-x-2">
+            <div className="lg:hidden flex items-center space-x-2">
               <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(true)}>
                 <Search className="h-5 w-5" />
               </Button>
@@ -98,7 +98,7 @@ const Navigation = () => {
           </nav>
 
           {isOpen && (
-            <div className="md:hidden border-t bg-background/95 backdrop-blur-md">
+            <div className="lg:hidden border-t bg-background/95 backdrop-blur-md">
               <div className="px-2 pt-2 pb-3 space-y-1">
                 {navigationItems.map((item) => (
                   <Link key={item.name} to={item.href} className={cn(
