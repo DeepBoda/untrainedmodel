@@ -23,7 +23,7 @@ export interface AIResponse {
 class OpenAIProvider implements AIProvider {
   name = 'OpenAI';
   models = ['gpt-4o-mini', 'gpt-4o', 'gpt-4-turbo'];
-  private apiKey = import.meta.env.VITE_OPENAI_API_KEY;
+  private apiKey = process.env.VITE_OPENAI_API_KEY!;
 
   async generateText(prompt: string, model: string): Promise<string> {
     return this.requestOpenAI(prompt, model, 2000, 0.7);
@@ -36,10 +36,10 @@ class OpenAIProvider implements AIProvider {
 
   private async requestOpenAI(prompt: string, model: string, max_tokens: number, temperature: number): Promise<string> {
     try {
-      const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      const res = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${this.apiKey}`,
+          Authorization: `Bearer ${this.apiKey}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -50,17 +50,13 @@ class OpenAIProvider implements AIProvider {
         }),
       });
 
-      if (!response.ok) throw new Error(`OpenAI API error: ${response.statusText}`);
-      const data = await response.json();
+      if (!res.ok) throw new Error(`OpenAI API error: ${res.statusText}`);
+      const data = await res.json();
       return data.choices?.[0]?.message?.content || 'No response generated';
     } catch (err) {
       console.error('OpenAI error:', err);
-      return this.getFallbackResponse(prompt, 'text');
+      return '🌟 Oops, try again later.';
     }
-  }
-
-  private getFallbackResponse(prompt: string, type: 'text' | 'code'): string {
-    return `🌟 Uppss, Try again after sometime...`;
   }
 }
 
@@ -69,7 +65,7 @@ class OpenAIProvider implements AIProvider {
 class GeminiProvider implements AIProvider {
   name = 'Google';
   models = ['gemini-2.0-flash-exp', 'gemini-1.5-flash', 'gemini-1.5-pro'];
-  private apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
+  private apiKey = process.env.VITE_GOOGLE_API_KEY!;
 
   async generateText(prompt: string, model: string): Promise<string> {
     return this.requestGemini(prompt, model);
@@ -82,7 +78,7 @@ class GeminiProvider implements AIProvider {
 
   private async requestGemini(prompt: string, model: string): Promise<string> {
     try {
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${this.apiKey}`, {
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${this.apiKey}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -98,17 +94,13 @@ class GeminiProvider implements AIProvider {
         }),
       });
 
-      if (!response.ok) throw new Error(`Gemini API error: ${response.statusText}`);
-      const data = await response.json();
+      if (!res.ok) throw new Error(`Gemini API error: ${res.statusText}`);
+      const data = await res.json();
       return data?.candidates?.[0]?.content?.parts?.[0]?.text || 'No response generated';
     } catch (err) {
       console.error('Gemini error:', err);
-      return this.getFallbackResponse(prompt);
+      return '🌟 Oops, try again later.';
     }
-  }
-
-  private getFallbackResponse(prompt: string): string {
-    return `🌟 Uppss, Try again after sometime...`;
   }
 }
 
@@ -117,7 +109,7 @@ class GeminiProvider implements AIProvider {
 class ClaudeProvider implements AIProvider {
   name = 'Anthropic';
   models = ['claude-3-5-haiku-20241022', 'claude-sonnet-4-20250514', 'claude-opus-4-20250514'];
-  private apiKey = import.meta.env.VITE_ANTHROPIC_API_KEY;
+  private apiKey = process.env.VITE_ANTHROPIC_API_KEY!;
 
   async generateText(prompt: string, model: string): Promise<string> {
     return this.requestClaude(prompt, model, 0.7);
@@ -130,12 +122,12 @@ class ClaudeProvider implements AIProvider {
 
   private async requestClaude(prompt: string, model: string, temperature: number): Promise<string> {
     try {
-      const response = await fetch('https://api.anthropic.com/v1/messages', {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
         headers: {
-          "x-api-key": this.apiKey,
-          "anthropic-version": "2023-06-01",
-          "Content-Type": "application/json",
+          'x-api-key': this.apiKey,
+          'anthropic-version': '2023-06-01',
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           model,
@@ -145,21 +137,17 @@ class ClaudeProvider implements AIProvider {
         }),
       });
 
-      if (!response.ok) throw new Error(`Claude API error: ${response.statusText}`);
-      const data = await response.json();
-      return data.content?.[0]?.text || 'No response generated';
+      if (!res.ok) throw new Error(`Claude API error: ${res.statusText}`);
+      const data = await res.json();
+      return data?.content?.[0]?.text || 'No response generated';
     } catch (err) {
       console.error('Claude error:', err);
-      return this.getFallbackResponse(prompt);
+      return '🌟 Oops, try again later.';
     }
-  }
-
-  private getFallbackResponse(prompt: string): string {
-    return `🌟 Uppss, Try again after sometime...`;
   }
 }
 
-// ------------------------- Main AI Service -------------------------
+// ------------------------- Unified AI Service -------------------------
 
 export class AIService {
   private providers = new Map<string, AIProvider>();
@@ -202,7 +190,7 @@ export class AIService {
       model,
       provider: aiProvider.name,
       usage: {
-        tokens: Math.round(content.length / 4), // rough token estimate
+        tokens: Math.round(content.length / 4),
       },
     };
   }
