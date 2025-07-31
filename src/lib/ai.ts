@@ -155,7 +155,7 @@ export class AIService {
   constructor() {
     this.providers.set('google', new GeminiProvider());
     this.providers.set('openai', new OpenAIProvider());
-    this.providers.set('anthropic', new ClaudeProvider());
+    // this.providers.set('anthropic', new ClaudeProvider());
   }
 
   async generateResponse(
