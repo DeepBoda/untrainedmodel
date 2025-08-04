@@ -9,11 +9,11 @@ export interface SEOProps {
 }
 
 export const SEO = ({
-  title = "UntrainedModel - Generative Knowledge Forge",
-  description = "Explore and build with AI models designed for open knowledge creation. Access powerful AI tools, tutorials, and resources for productivity and innovation.",
-  keywords = "AI tools, artificial intelligence, machine learning, GPT, Gemini, AI chat, productivity tools",
+  title = "UntrainedModel - Free AI Tools for Content & Code Generation",
+  description = "Access powerful AI tools for free. Generate high-quality content, code, and images using GPT-4, Gemini, and Claude. Free AI playground for developers, creators, and businesses.",
+  keywords = "free AI tools, GPT-4, Gemini AI, Claude AI, content generation, code generation, AI playground, artificial intelligence, machine learning, free AI chatbot",
   image = "/uploads/bccee730-0f1a-4541-8c9f-4760c42f0c75.png",
-  url = "https://untrainedmodel.xyz"
+  url = "https://www.untrainedmodel.xyz"
 }: SEOProps) => {
   const fullTitle = title.includes("UntrainedModel") ? title : `${title} | UntrainedModel`;
 
