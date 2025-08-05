@@ -16,7 +16,7 @@ const Layout = ({
   title = "UntrainedModel - Generative AI Platform",
   description = "Empowering everyone with accessible AI tools for productivity, creativity, and innovation. Connect with ChatGPT and Gemini APIs through our intuitive interface.",
   keywords = "AI, artificial intelligence, ChatGPT, Gemini, productivity, AI tools, machine learning, automation",
-  image = "https://www.untrainedmodel.xyz/og-image.jpg"
+  image = "https://untrainedmodel.xyz/og-image.jpg"
 }: LayoutProps) => {
   const fullTitle = title.includes("UntrainedModel") ? title : `${title} | UntrainedModel`;
 
@@ -32,7 +32,7 @@ const Layout = ({
         <meta property="og:title" content={fullTitle} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
-        <meta property="og:url" content="https://www.untrainedmodel.xyz" />
+        <meta property="og:url" content="https://untrainedmodel.xyz" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="UntrainedModel" />
         
@@ -52,7 +52,7 @@ const Layout = ({
         <meta name="application-name" content="UntrainedModel" />
         <meta name="msapplication-TileColor" content="#8B5CF6" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
-        <link rel="canonical" href="https://www.untrainedmodel.xyz" />
+        <link rel="canonical" href="https://untrainedmodel.xyz" />
         {/* <link rel="manifest" href="/manifest.json" /> */}
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -72,8 +72,8 @@ const Layout = ({
             "@context": "https://schema.org",
             "@type": "Organization",
             "name": "UntrainedModel",
-            "url": "https://www.untrainedmodel.xyz",
-            "logo": "https://www.untrainedmodel.xyz/uploads/bccee730-0f1a-4541-8c9f-4760c42f0c75.png",
+            "url": "https://untrainedmodel.xyz",
+            "logo": "https://untrainedmodel.xyz/uploads/bccee730-0f1a-4541-8c9f-4760c42f0c75.png",
             "description": description,
             "foundingDate": "2025",
             "address": {
@@ -92,7 +92,7 @@ const Layout = ({
             ],
             "potentialAction": {
               "@type": "SearchAction",
-              "target": "https://www.untrainedmodel.xyz/search?q={search_term_string}",
+              "target": "https://untrainedmodel.xyz/search?q={search_term_string}",
               "query-input": "required name=search_term_string"
             }
           })}
@@ -104,13 +104,13 @@ const Layout = ({
             "@context": "https://schema.org",
             "@type": "WebSite",
             "name": "UntrainedModel",
-            "url": "https://www.untrainedmodel.xyz",
+            "url": "https://untrainedmodel.xyz",
             "description": description,
             "inLanguage": "en-US",
             "isAccessibleForFree": true,
             "potentialAction": {
               "@type": "SearchAction",
-              "target": "https://www.untrainedmodel.xyz/search?q={search_term_string}",
+              "target": "https://untrainedmodel.xyz/search?q={search_term_string}",
               "query-input": "required name=search_term_string"
             }
           })}
@@ -123,7 +123,7 @@ const Layout = ({
             "@type": "SoftwareApplication",
             "name": "UntrainedModel AI Playground",
             "description": "Advanced AI playground for text, code, and image generation using cutting-edge AI models",
-            "url": "https://www.untrainedmodel.xyz/playground",
+            "url": "https://untrainedmodel.xyz/playground",
             "applicationCategory": "DeveloperApplication",
             "operatingSystem": "Web Browser",
             "offers": {

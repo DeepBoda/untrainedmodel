@@ -13,7 +13,7 @@ export const SEO = ({
   description = "Access powerful AI tools for free. Generate high-quality content, code, and images using GPT-4, Gemini, and Claude. Free AI playground for developers, creators, and businesses.",
   keywords = "free AI tools, GPT-4, Gemini AI, Claude AI, content generation, code generation, AI playground, artificial intelligence, machine learning, free AI chatbot",
   image = "/uploads/bccee730-0f1a-4541-8c9f-4760c42f0c75.png",
-  url = "https://www.untrainedmodel.xyz"
+  url = "https://untrainedmodel.xyz"
 }: SEOProps) => {
   const fullTitle = title.includes("UntrainedModel") ? title : `${title} | UntrainedModel`;
 

@@ -6,7 +6,7 @@ Disallow: /api/
 Allow: /
 
 # Sitemap location
-Sitemap: https://www.untrainedmodel.xyz/sitemap.xml
+Sitemap: https://untrainedmodel.xyz/sitemap.xml
 
 # Crawl delay for all bots (optional, keep low)
 Crawl-delay: 1

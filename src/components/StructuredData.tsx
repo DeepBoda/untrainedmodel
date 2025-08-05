@@ -14,8 +14,8 @@ export const StructuredData = ({
   type = 'website',
   title = "UntrainedModel - Free AI Tools for Content & Code Generation",
   description = "Access powerful AI tools for free. Generate high-quality content, code, and images using GPT-4, Gemini, and Claude.",
-  url = "https://www.untrainedmodel.xyz",
-  image = "https://www.untrainedmodel.xyz/uploads/bccee730-0f1a-4541-8c9f-4760c42f0c75.png",
+  url = "https://untrainedmodel.xyz",
+  image = "https://untrainedmodel.xyz/uploads/bccee730-0f1a-4541-8c9f-4760c42f0c75.png",
   author,
   publishDate
 }: StructuredDataProps) => {
@@ -23,10 +23,10 @@ export const StructuredData = ({
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "UntrainedModel",
-    "url": "https://www.untrainedmodel.xyz",
+    "url": "https://untrainedmodel.xyz",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.untrainedmodel.xyz/uploads/bccee730-0f1a-4541-8c9f-4760c42f0c75.png"
+      "url": "https://untrainedmodel.xyz/uploads/bccee730-0f1a-4541-8c9f-4760c42f0c75.png"
     },
     "description": "Free AI tools for content and code generation",
     "sameAs": []
@@ -36,7 +36,7 @@ export const StructuredData = ({
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "UntrainedModel",
-    "url": "https://www.untrainedmodel.xyz",
+    "url": "https://untrainedmodel.xyz",
     "description": description,
     "publisher": organizationSchema
   };
