@@ -1,34 +1,36 @@
 import Layout from '@/components/Layout';
-import ParticleBackground from '@/components/ParticleBackground';
-import FuturisticHero from '@/components/FuturisticHero';
-import FeatureShowcase from '@/components/FeatureShowcase';
-import TestimonialSection from '@/components/TestimonialSection';
+import AdvancedHero from '@/components/AdvancedHero';
+import PremiumContent from '@/components/PremiumContent';
+import EnhancedFeatureShowcase from '@/components/EnhancedFeatureShowcase';
+import EnhancedTestimonialSection from '@/components/EnhancedTestimonialSection';
 import { HeaderAd, InContentAd } from '@/components/AdSpace';
 import { StructuredData } from '@/components/StructuredData';
 
 const Index = () => {
   return (
     <Layout
-      title="UntrainedModel - Free AI Tools for Content & Code Generation"
-      description="Access powerful AI tools for free. Generate high-quality content, code, and images using GPT-4, Gemini, and Claude. Free AI playground for developers, creators, and businesses."
-      keywords="free AI tools, GPT-4, Gemini AI, Claude AI, content generation, code generation, AI playground, artificial intelligence, machine learning, free AI chatbot"
+      title="UntrainedModel - Professional AI Platform for Content, Code & Design"
+      description="Transform your workflow with advanced AI technology. Generate professional content, production-ready code, and stunning visuals using GPT-4, Claude 3, and Gemini Pro. Trusted by 10,000+ creators worldwide."
+      keywords="advanced AI platform, professional AI tools, GPT-4, Claude 3, Gemini Pro, content creation, code generation, AI design tools, business AI solutions, enterprise AI platform"
     >
       <div className="relative">
         <StructuredData type="website" />
-        <ParticleBackground />
         
         <HeaderAd />
 
-        {/* Hero Section */}
-        <FuturisticHero />
+        {/* Advanced Hero Section */}
+        <AdvancedHero />
 
-        {/* Features Section */}
-        <FeatureShowcase />
+        {/* Premium Content Section */}
+        <PremiumContent />
 
         <InContentAd />
 
+        {/* Enhanced Features */}
+        <EnhancedFeatureShowcase />
+
         {/* Testimonials */}
-        <TestimonialSection />
+        <EnhancedTestimonialSection />
       </div>
     </Layout>
   );

@@ -1,32 +1,32 @@
 import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
-import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Separator } from '@/components/ui/separator';
 import { 
-  Play, 
-  Save, 
-  Share2, 
-  Download, 
   Sparkles, 
-  Code, 
-  Image, 
-  MessageSquare,
-  Copy,
   Heart,
-  Clock
+  Clock,
+  TrendingUp,
+  Users,
+  Zap,
+  Star,
+  Trophy,
+  Target,
+  Award,
+  Flame,
+  Lightbulb,
+  Globe,
+  MessageSquare
 } from 'lucide-react';
 import Layout from '@/components/Layout';
 import { SEO } from '@/components/SEO';
 import AdSpace from '@/components/AdSpace';
-import { useToast } from '@/hooks/use-toast';
-import { aiService } from '@/lib/ai';
-import { usePlaygroundShortcuts } from '@/hooks/useKeyboardShortcuts';
 import { PromptTemplates } from '@/components/PromptTemplates';
+import { EnhancedPlayground } from '@/components/EnhancedPlayground';
+import AchievementSystem from '@/components/gamification/AchievementSystem';
+import DailyChallenges from '@/components/gamification/DailyChallenges';
+import CommunityHub from '@/components/gamification/CommunityHub';
 
 interface SavedPrompt {
   id: string;
@@ -37,14 +37,16 @@ interface SavedPrompt {
   likes: number;
 }
 
+interface CommunityStats {
+  totalPrompts: number;
+  totalGenerations: number;
+  activeUsers: number;
+  avgRating: number;
+}
+
 const Playground = () => {
-  const [prompt, setPrompt] = useState('');
-  const [output, setOutput] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [activeTab, setActiveTab] = useState('text');
-  const [provider, setProvider] = useState('google');
-  const [model, setModel] = useState('gemini-2.0-flash-exp');
-  const [savedPrompts, setSavedPrompts] = useState<SavedPrompt[]>([
+  const [activeTab, setActiveTab] = useState('playground');
+  const [savedPrompts] = useState<SavedPrompt[]>([
     {
       id: '1',
       title: 'Creative Writing Assistant',
@@ -60,76 +62,23 @@ const Playground = () => {
       type: 'code',
       timestamp: new Date(),
       likes: 28
+    },
+    {
+      id: '3',
+      title: 'Marketing Copy Generator',
+      content: 'Create compelling product descriptions for e-commerce listings',
+      type: 'text',
+      timestamp: new Date(),
+      likes: 35
     }
   ]);
-  const { toast } = useToast();
 
-  const handleRunPrompt = async () => {
-    if (!prompt.trim()) return;
-
-    setIsLoading(true);
-    
-    try {
-      const response = await aiService.generateResponse(
-        prompt, 
-        activeTab as 'text' | 'code' | 'image',
-        provider,
-        model
-      );
-      
-      setOutput(response.content);
-      
-      // Show usage info
-      toast({
-        title: "Generation Complete!",
-        description: `Generated ${response.usage?.tokens || 0} tokens using ${response.provider} ${response.model}`,
-      });
-    } catch (error) {
-      console.error('Generation error:', error);
-      toast({
-        title: "Generation Failed",
-        description: "Please check your API keys in the AI service configuration.",
-        variant: "destructive"
-      });
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleSavePrompt = () => {
-    if (!prompt.trim()) return;
-    
-    const newPrompt: SavedPrompt = {
-      id: Date.now().toString(),
-      title: `Untitled ${activeTab} prompt`,
-      content: prompt,
-      type: activeTab as 'text' | 'code' | 'image',
-      timestamp: new Date(),
-      likes: 0
-    };
-    
-    setSavedPrompts(prev => [newPrompt, ...prev]);
-    toast({
-      title: "Prompt saved!",
-      description: "Your prompt has been saved to your collection.",
-    });
-  };
-
-  const handleCopyOutput = () => {
-    navigator.clipboard.writeText(output);
-    toast({
-      title: "Copied to clipboard!",
-      description: "The output has been copied to your clipboard.",
-    });
-  };
-
-  const handleClearOutput = () => {
-    setOutput('');
-    setPrompt('');
-  };
-
-  // Keyboard shortcuts for playground
-  usePlaygroundShortcuts(handleRunPrompt, handleSavePrompt, handleClearOutput);
+  const [communityStats] = useState<CommunityStats>({
+    totalPrompts: 12547,
+    totalGenerations: 89234,
+    activeUsers: 2847,
+    avgRating: 4.8
+  });
 
   return (
     <Layout>
@@ -140,231 +89,193 @@ const Playground = () => {
       />
       
       <div className="min-h-screen bg-gradient-subtle">
-        <div className="container mx-auto px-4 py-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
-            {/* Main Content */}
-            <div className="lg:col-span-2 xl:col-span-3">
-              {/* Header */}
-              <div className="mb-8">
-                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-4">
-                  AI Playground
+        {/* Header with Community Stats */}
+        <div className="bg-background/80 backdrop-blur-sm border-b">
+          <div className="container mx-auto px-4 py-6">
+            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+              <div>
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">
+                  AI Playground & Community
                 </h1>
-                <p className="text-base sm:text-lg text-muted-foreground">
-                  Experiment with cutting-edge AI models. Create, iterate, and share your prompts.
+                <p className="text-lg text-muted-foreground">
+                  Create with AI, earn achievements, and connect with a vibrant community
                 </p>
               </div>
-
-              {/* Playground Interface */}
-              <Card className="mb-8">
-                <CardHeader>
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                    <CardTitle className="flex items-center gap-2">
-                      <Sparkles className="h-5 w-5" />
-                      Prompt Studio
-                    </CardTitle>
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 w-full sm:w-auto">
-                      <Select value={provider} onValueChange={(value) => {
-                        setProvider(value);
-                        const models = aiService.getModelsForProvider(value);
-                        if (models.length > 0) setModel(models[0]);
-                      }}>
-                        <SelectTrigger className="w-full sm:w-32">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="openai">OpenAI</SelectItem>
-                          <SelectItem value="google">Google</SelectItem>
-                          <SelectItem value="anthropic">Anthropic</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <Select value={model} onValueChange={setModel}>
-                        <SelectTrigger className="w-full sm:w-40">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {aiService.getModelsForProvider(provider).map(modelName => (
-                            <SelectItem key={modelName} value={modelName}>
-                              {modelName}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-                </CardHeader>
-                
-                <CardContent>
-                  <Tabs value={activeTab} onValueChange={setActiveTab}>
-                    <TabsList className="grid w-full grid-cols-3">
-                      <TabsTrigger value="text" className="flex items-center gap-2">
-                        <MessageSquare className="h-4 w-4" />
-                        Text
-                      </TabsTrigger>
-                      <TabsTrigger value="code" className="flex items-center gap-2">
-                        <Code className="h-4 w-4" />
-                        Code
-                      </TabsTrigger>
-                      <TabsTrigger value="image" className="flex items-center gap-2">
-                        <Image className="h-4 w-4" />
-                        Image
-                      </TabsTrigger>
-                    </TabsList>
-                    
-                    <div className="mt-6">
-                      <TabsContent value="text">
-                        <div className="space-y-4">
-                           <Textarea
-                            placeholder="Enter your text prompt here... (e.g., 'Write a compelling product description for an AI-powered fitness app')"
-                            value={prompt}
-                            onChange={(e) => setPrompt(e.target.value)}
-                            className="min-h-16 sm:min-h-20 lg:min-h-24 resize-none"
-                          />
-                        </div>
-                      </TabsContent>
-                      
-                      <TabsContent value="code">
-                        <div className="space-y-4">
-                           <Textarea
-                            placeholder="Describe the code you want to generate... (e.g., 'Create a Python function that sorts a list of dictionaries by multiple keys')"
-                            value={prompt}
-                            onChange={(e) => setPrompt(e.target.value)}
-                            className="min-h-16 sm:min-h-20 lg:min-h-24 resize-none"
-                          />
-                        </div>
-                      </TabsContent>
-                      
-                      <TabsContent value="image">
-                        <div className="space-y-4">
-                           <Textarea
-                            placeholder="Describe the image you want to generate... (e.g., 'A futuristic cityscape at sunset with flying cars and neon lights')"
-                            value={prompt}
-                            onChange={(e) => setPrompt(e.target.value)}
-                            className="min-h-16 sm:min-h-20 lg:min-h-24 resize-none"
-                          />
-                        </div>
-                      </TabsContent>
-                    </div>
-
-                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 mt-6">
-                      <Button 
-                        onClick={handleRunPrompt} 
-                        disabled={isLoading || !prompt.trim()}
-                        className="flex items-center justify-center gap-2"
-                      >
-                        <Play className="h-4 w-4" />
-                        {isLoading ? 'Generating...' : 'Run Prompt'}
-                      </Button>
-                      <Button 
-                        variant="outline" 
-                        onClick={handleSavePrompt}
-                        disabled={!prompt.trim()}
-                        className="flex items-center justify-center gap-2"
-                      >
-                        <Save className="h-4 w-4" />
-                        Save
-                      </Button>
-                      <Button variant="outline" className="flex items-center justify-center gap-2">
-                        <Share2 className="h-4 w-4" />
-                        Share
-                      </Button>
-                    </div>
-                  </Tabs>
-                </CardContent>
-              </Card>
-
-              {/* Output */}
-              {output && (
-                <Card>
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle>Output</CardTitle>
-                      <div className="flex items-center gap-2">
-                        <Button 
-                          variant="outline" 
-                          size="sm"
-                          onClick={handleCopyOutput}
-                          className="flex items-center gap-2"
-                        >
-                          <Copy className="h-3 w-3" />
-                          Copy
-                        </Button>
-                        <Button variant="outline" size="sm" className="flex items-center gap-2">
-                          <Download className="h-3 w-3" />
-                          Export
-                        </Button>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="bg-muted rounded-lg p-4">
-                      <pre className="whitespace-pre-wrap text-sm">{output}</pre>
-                    </div>
-                  </CardContent>
-                </Card>
-              )}
-            </div>
-
-            {/* Sidebar */}
-            <div className="lg:col-span-1 space-y-6">
-              <AdSpace position="sidebar" />
               
-              {/* Saved Prompts */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">Your Prompts</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {savedPrompts.map((savedPrompt) => (
-                    <div key={savedPrompt.id} className="space-y-2">
-                      <div className="flex items-start justify-between">
-                        <h4 className="font-medium text-sm">{savedPrompt.title}</h4>
-                        <Badge variant="outline" className="text-xs">
-                          {savedPrompt.type}
-                        </Badge>
-                      </div>
-                      <p className="text-xs text-muted-foreground line-clamp-2">
-                        {savedPrompt.content}
-                      </p>
-                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                        <Clock className="h-3 w-3" />
-                        <span>2h ago</span>
-                        <Heart className="h-3 w-3" />
-                        <span>{savedPrompt.likes}</span>
-                      </div>
-                      <Separator />
-                    </div>
-                  ))}
-                </CardContent>
-              </Card>
-
-              {/* Prompt Templates */}
-              <PromptTemplates onSelectTemplate={(template) => {
-                setPrompt(template.prompt);
-                setActiveTab(template.type);
-              }} />
-
-              {/* Quick Tips */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">Pro Tips</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3 text-sm text-muted-foreground">
-                  <div className="p-3 bg-primary/5 rounded-lg">
-                    <p className="font-medium text-foreground mb-1">Be Specific</p>
-                    <p>The more detailed your prompt, the better the results. Include context, style, and desired output format.</p>
+              {/* Community Stats */}
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full lg:w-auto">
+                <div className="text-center p-3 bg-card/50 rounded-lg border">
+                  <div className="flex items-center justify-center gap-2 mb-1">
+                    <MessageSquare className="w-4 h-4 text-yellow-500" />
+                    <span className="text-sm font-medium">{communityStats.totalPrompts.toLocaleString()}</span>
                   </div>
-                  <div className="p-3 bg-primary/5 rounded-lg">
-                    <p className="font-medium text-foreground mb-1">Iterate & Refine</p>
-                    <p>Use the output as a starting point and refine your prompts based on what works best.</p>
+                  <p className="text-xs text-muted-foreground">Prompts</p>
+                </div>
+                
+                <div className="text-center p-3 bg-card/50 rounded-lg border">
+                  <div className="flex items-center justify-center gap-2 mb-1">
+                    <Zap className="w-4 h-4 text-blue-500" />
+                    <span className="text-sm font-medium">{communityStats.totalGenerations.toLocaleString()}</span>
                   </div>
-                  <div className="p-3 bg-primary/5 rounded-lg">
-                    <p className="font-medium text-foreground mb-1">Keyboard Shortcuts</p>
-                    <p>Press <kbd className="px-1 py-0.5 bg-muted rounded text-xs">Ctrl+Enter</kbd> to run prompts quickly.</p>
+                  <p className="text-xs text-muted-foreground">Generations</p>
+                </div>
+                
+                <div className="text-center p-3 bg-card/50 rounded-lg border">
+                  <div className="flex items-center justify-center gap-2 mb-1">
+                    <Users className="w-4 h-4 text-green-500" />
+                    <span className="text-sm font-medium">{communityStats.activeUsers.toLocaleString()}</span>
                   </div>
-                </CardContent>
-              </Card>
+                  <p className="text-xs text-muted-foreground">Active Users</p>
+                </div>
+                
+                <div className="text-center p-3 bg-card/50 rounded-lg border">
+                  <div className="flex items-center justify-center gap-2 mb-1">
+                    <Star className="w-4 h-4 text-purple-500" />
+                    <span className="text-sm font-medium">{communityStats.avgRating}</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">Avg Rating</p>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
+
+        <div className="container mx-auto px-4 py-8">
+          {/* Main Navigation Tabs */}
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
+            <TabsList className="grid w-full grid-cols-4">
+              <TabsTrigger value="playground" className="flex items-center gap-2">
+                <Zap className="h-4 w-4" />
+                Playground
+              </TabsTrigger>
+              <TabsTrigger value="achievements" className="flex items-center gap-2">
+                <Trophy className="h-4 w-4" />
+                Achievements
+              </TabsTrigger>
+              <TabsTrigger value="challenges" className="flex items-center gap-2">
+                <Target className="h-4 w-4" />
+                Challenges
+              </TabsTrigger>
+              <TabsTrigger value="community" className="flex items-center gap-2">
+                <Globe className="h-4 w-4" />
+                Community
+              </TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="playground" className="space-y-6">
+              <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8">
+                {/* Enhanced Playground - Main Content */}
+                <div className="lg:col-span-3">
+                  <EnhancedPlayground />
+                </div>
+
+                {/* Enhanced Sidebar */}
+                <div className="lg:col-span-1 space-y-6">
+                  <AdSpace position="sidebar" />
+                  
+                  {/* Featured Prompts */}
+                  <Card className="overflow-hidden">
+                    <CardHeader className="bg-gradient-primary text-primary-foreground">
+                      <CardTitle className="flex items-center gap-2 text-lg">
+                        <Trophy className="w-5 h-5" />
+                        Featured Prompts
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="p-0">
+                      {savedPrompts.slice(0, 3).map((savedPrompt, index) => (
+                        <div key={savedPrompt.id} className="border-b last:border-b-0 p-4 hover:bg-muted/50 transition-colors cursor-pointer group">
+                          <div className="flex items-start justify-between mb-2">
+                            <h4 className="font-medium text-sm group-hover:text-primary transition-colors">{savedPrompt.title}</h4>
+                            <div className="flex items-center gap-1">
+                              <Badge variant="outline" className="text-xs">
+                                {savedPrompt.type}
+                              </Badge>
+                              {index === 0 && <Flame className="w-3 h-3 text-orange-500" />}
+                              {index === 1 && <TrendingUp className="w-3 h-3 text-green-500" />}
+                              {index === 2 && <Award className="w-3 h-3 text-purple-500" />}
+                            </div>
+                          </div>
+                          <p className="text-xs text-muted-foreground line-clamp-2 mb-2">
+                            {savedPrompt.content}
+                          </p>
+                          <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                            <div className="flex items-center gap-1">
+                              <Heart className="h-3 w-3 fill-current text-red-500" />
+                              <span>{savedPrompt.likes}</span>
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <Clock className="h-3 w-3" />
+                              <span>2h ago</span>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </CardContent>
+                  </Card>
+
+                  {/* Prompt Templates */}
+                  <PromptTemplates onSelectTemplate={(template) => {
+                    // This will be handled by the EnhancedPlayground component
+                    console.log('Template selected:', template);
+                  }} />
+
+                  {/* Enhanced Pro Tips */}
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2 text-lg">
+                        <Lightbulb className="w-5 h-5" />
+                        Pro Tips
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div className="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 rounded-lg border border-blue-200 dark:border-blue-800">
+                        <div className="flex items-center gap-2 mb-2">
+                          <Target className="w-4 h-4 text-blue-600" />
+                          <p className="font-semibold text-blue-900 dark:text-blue-100">Be Specific & Detailed</p>
+                        </div>
+                        <p className="text-sm text-blue-700 dark:text-blue-200">
+                          Include context, desired tone, format, and examples for better results.
+                        </p>
+                      </div>
+                      
+                      <div className="p-4 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30 rounded-lg border border-green-200 dark:border-green-800">
+                        <div className="flex items-center gap-2 mb-2">
+                          <TrendingUp className="w-4 h-4 text-green-600" />
+                          <p className="font-semibold text-green-900 dark:text-green-100">Iterate & Improve</p>
+                        </div>
+                        <p className="text-sm text-green-700 dark:text-green-200">
+                          Use version history to track what works and refine your approach.
+                        </p>
+                      </div>
+                      
+                      <div className="p-4 bg-gradient-to-r from-purple-50 to-violet-50 dark:from-purple-950/30 dark:to-violet-950/30 rounded-lg border border-purple-200 dark:border-purple-800">
+                        <div className="flex items-center gap-2 mb-2">
+                          <Zap className="w-4 h-4 text-purple-600" />
+                          <p className="font-semibold text-purple-900 dark:text-purple-100">Keyboard Shortcuts</p>
+                        </div>
+                        <p className="text-sm text-purple-700 dark:text-purple-200">
+                          <kbd className="px-2 py-1 bg-background rounded text-xs border">Ctrl+Enter</kbd> to generate, 
+                          <kbd className="px-2 py-1 bg-background rounded text-xs border ml-1">Ctrl+S</kbd> to save
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+            </TabsContent>
+
+            <TabsContent value="achievements">
+              <AchievementSystem />
+            </TabsContent>
+
+            <TabsContent value="challenges">
+              <DailyChallenges />
+            </TabsContent>
+
+            <TabsContent value="community">
+              <CommunityHub />
+            </TabsContent>
+          </Tabs>
         </div>
       </div>
     </Layout>
