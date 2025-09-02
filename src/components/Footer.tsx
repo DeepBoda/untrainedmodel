@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Mail, Twitter, Linkedin, Github } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -12,27 +11,14 @@ const Footer = () => {
               <img 
                 src="/uploads/bccee730-0f1a-4541-8c9f-4760c42f0c75.png" 
                 alt="UntrainedModel Logo" 
-                className="w-8 h-8 rounded-lg dark:invert"
+                className="w-8 h-8 dark:invert"
               />
               <span className="font-bold text-lg">UntrainedModel</span>
             </div>
             <p className="text-muted-foreground text-sm max-w-xs">
               Empowering everyone with accessible AI tools for productivity, creativity, and innovation.
             </p>
-            <div className="flex space-x-4">
-              <a href="mailto:contact@untrainedmodel.xyz" className="text-muted-foreground hover:text-primary transition-colors">
-                <Mail className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Github className="h-5 w-5" />
-              </a>
-            </div>
+
           </div>
 
           {/* Product */}
@@ -49,11 +35,7 @@ const Footer = () => {
                   Blog & Resources
                 </Link>
               </li>
-              <li>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  API Documentation
-                </a>
-              </li>
+
             </ul>
           </div>
 
@@ -71,11 +53,7 @@ const Footer = () => {
                   Contact
                 </Link>
               </li>
-              <li>
-                <Link to="/blog" className="text-muted-foreground hover:text-primary transition-colors">
-                  Blog
-                </Link>
-              </li>
+
             </ul>
           </div>
 
@@ -101,7 +79,6 @@ const Footer = () => {
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <p className="text-muted-foreground text-sm">
               untrainedmodel
-              {/* © 2025 UntrainedModel. All rights reserved. */}
             </p>
             <p className="text-muted-foreground text-sm">
               Built with ❤️ for the AI community

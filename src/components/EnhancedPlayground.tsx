@@ -3,30 +3,19 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from '@/components/ui/resizable';
 import { 
   Play, 
-  Save, 
-  Share2, 
-  Download, 
   Sparkles, 
   Code, 
   Image, 
   MessageSquare,
-  Copy,
-  Heart,
-  Clock,
   Upload,
-  Zap,
   RotateCcw,
-  Settings,
   Maximize2,
   Minimize2,
-  Split,
-  Eye,
-  FileText,
   Wand2,
   TrendingUp,
   GitBranch
@@ -45,19 +34,34 @@ interface PromptVersion {
 }
 
 interface EnhancedPlaygroundProps {
-  onPromptSelect?: (prompt: string) => void;
+  initialPrompt?: string;
 }
 
-export const EnhancedPlayground = ({ onPromptSelect }: EnhancedPlaygroundProps) => {
+export const EnhancedPlayground = ({ initialPrompt }: EnhancedPlaygroundProps) => {
   const [prompt, setPrompt] = useState('');
+  
+  useEffect(() => {
+    if (initialPrompt) {
+      setPrompt(initialPrompt);
+    }
+  }, [initialPrompt]);
   const [output, setOutput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isStreaming, setIsStreaming] = useState(false);
   const [activeTab, setActiveTab] = useState('text');
   const [provider, setProvider] = useState('google');
   const [model, setModel] = useState('gemini-2.0-flash-exp');
+  
+  useEffect(() => {
+    const modelMap = {
+      google: 'gemini-2.0-flash-exp',
+      openai: 'gpt-4o-mini', 
+      anthropic: 'claude-3-5-haiku-20241022'
+    };
+    setModel(modelMap[provider as keyof typeof modelMap]);
+  }, [provider]);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [showPreview, setShowPreview] = useState(true);
+  const [showPreview, setShowPreview] = useState(false);
   const [dragActive, setDragActive] = useState(false);
   const [promptVersions, setPromptVersions] = useState<PromptVersion[]>([]);
   const [currentVersionIndex, setCurrentVersionIndex] = useState(-1);
@@ -98,6 +102,8 @@ export const EnhancedPlayground = ({ onPromptSelect }: EnhancedPlaygroundProps) 
     setOutput('');
     
     try {
+      if (!showPreview) setShowPreview(true);
+      
       const response = await aiService.generateResponse(
         prompt, 
         activeTab as 'text' | 'code' | 'image',
@@ -283,16 +289,7 @@ export const EnhancedPlayground = ({ onPromptSelect }: EnhancedPlaygroundProps) 
                 </SelectContent>
               </Select>
 
-              <Select value={model} onValueChange={setModel}>
-                <SelectTrigger className="w-48">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="gemini-2.0-flash-exp">Gemini 2.0 Flash</SelectItem>
-                  <SelectItem value="gpt-4">GPT-4</SelectItem>
-                  <SelectItem value="claude-3">Claude 3</SelectItem>
-                </SelectContent>
-              </Select>
+
             </div>
 
             {/* Enhanced Prompt Input */}

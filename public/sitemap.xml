@@ -2,61 +2,97 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://untrainedmodel.xyz/</loc>
-    <lastmod>2025-08-19</lastmod>
+    <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://untrainedmodel.xyz/playground</loc>
-    <lastmod>2025-08-19</lastmod>
+    <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://untrainedmodel.xyz/blog</loc>
-    <lastmod>2025-08-19</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2025-09-02</lastmod>
+    <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://untrainedmodel.xyz/blog/getting-started-with-ai-tools</loc>
-    <lastmod>2025-08-19</lastmod>
+    <loc>https://untrainedmodel.xyz/blog/how-ai-is-revolutionizing-daily-tasks</loc>
+    <lastmod>2025-08-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://untrainedmodel.xyz/blog/advanced-prompt-engineering</loc>
-    <lastmod>2025-08-19</lastmod>
+    <loc>https://untrainedmodel.xyz/blog/top-5-ways-to-use-chatgpt-as-a-developer</loc>
+    <lastmod>2025-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://untrainedmodel.xyz/blog/ai-coding-best-practices</loc>
-    <lastmod>2025-08-19</lastmod>
+    <loc>https://untrainedmodel.xyz/blog/the-future-of-ai-tools-in-creative-industries</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://untrainedmodel.xyz/blog/building-secure-ai-applications-best-practices-guide</loc>
+    <lastmod>2025-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://untrainedmodel.xyz/blog/mastering-prompt-engineering-advanced-techniques</loc>
+    <lastmod>2025-07-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://untrainedmodel.xyz/blog/ai-powered-code-review-transforming-development-workflows</loc>
+    <lastmod>2025-07-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://untrainedmodel.xyz/blog/ethical-ai-development-principles-and-practices</loc>
+    <lastmod>2025-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://untrainedmodel.xyz/blog/multi-modal-ai-beyond-text-generation</loc>
+    <lastmod>2025-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://untrainedmodel.xyz/blog/ai-in-data-science-automating-analysis-workflows</loc>
+    <lastmod>2025-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://untrainedmodel.xyz/about</loc>
-    <lastmod>2025-08-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://untrainedmodel.xyz/contact</loc>
-    <lastmod>2025-08-19</lastmod>
+    <lastmod>2025-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://untrainedmodel.xyz/contact</loc>
+    <lastmod>2025-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://untrainedmodel.xyz/privacy</loc>
-    <lastmod>2025-08-19</lastmod>
+    <lastmod>2025-09-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://untrainedmodel.xyz/terms</loc>
-    <lastmod>2025-08-19</lastmod>
+    <lastmod>2025-09-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

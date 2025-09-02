@@ -37,10 +37,10 @@ const Layout = ({
         <meta property="og:site_name" content="UntrainedModel" />
         
         {/* Twitter Card */}
-        {/* <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={fullTitle} />
         <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={image} /> */}
+        <meta name="twitter:image" content={image} />
         
         {/* Additional SEO */}
         <meta name="robots" content="index, follow" />
@@ -53,7 +53,7 @@ const Layout = ({
         <meta name="msapplication-TileColor" content="#8B5CF6" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
         <link rel="canonical" href="https://untrainedmodel.xyz" />
-        {/* <link rel="manifest" href="/manifest.json" /> */}
+        <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -84,12 +84,9 @@ const Layout = ({
               "@type": "ContactPoint",
               "telephone": "",
               "contactType": "customer service",
-              "email": "contact@untrainedmodel.xyz"
+              "email": "support@untrainedmodel.xyz"
             },
-            "sameAs": [
-              "https://twitter.com/untrainedmodel",
-              "https://linkedin.com/company/untrainedmodel"
-            ],
+            "sameAs": [],
             "potentialAction": {
               "@type": "SearchAction",
               "target": "https://untrainedmodel.xyz/search?q={search_term_string}",
@@ -143,7 +140,7 @@ const Layout = ({
       </Helmet>
       
       <Navigation />
-      <main className="flex-1 pt-16">
+      <main className="flex-1">
         {children}
       </main>
       <Footer />

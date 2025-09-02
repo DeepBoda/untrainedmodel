@@ -1,434 +1,134 @@
-import { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { ArrowRight, Sparkles, Cpu, Zap, Globe, Users, Code2, Brain, Rocket, Play } from 'lucide-react';
+import { ArrowRight, Sparkles, Cpu, Zap, Globe, Users, Code2, Play, Star, TrendingUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const AdvancedHero = () => {
   const [currentStat, setCurrentStat] = useState(0);
-  const [typewriterText, setTypewriterText] = useState('');
-  const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
-  const [isTyping, setIsTyping] = useState(true);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const heroRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  
-  const typewriterPhrases = [
-    'AI for Everyone',
-    'Create with Intelligence',
-    'Build the Future Today',
-    'Unleash Your Creativity',
-    'Generate Anything Instantly'
-  ];
   
   const stats = [
-    { label: 'AI Models Available', value: '50+', icon: Cpu, color: 'text-blue-400', description: 'Latest GPT-4, Claude 3, Gemini Pro' },
-    { label: 'Active Creators', value: '10K+', icon: Users, color: 'text-green-400', description: 'Growing community worldwide' },
-    { label: 'Content Generated', value: '1M+', icon: Code2, color: 'text-purple-400', description: 'Articles, code, images, and more' },
-    { label: 'Countries Served', value: '150+', icon: Globe, color: 'text-orange-400', description: 'Global AI accessibility' }
+    { label: 'AI Models', value: '15+', icon: Cpu, description: 'GPT-4, Claude 3, Gemini Pro' },
+    { label: 'Active Users', value: '5K+', icon: Users, description: 'Growing community worldwide' },
+    { label: 'Content Generated', value: '500K+', icon: Code2, description: 'Articles, code, and more' },
+    { label: 'Countries Served', value: '80+', icon: Globe, description: 'Global accessibility' }
   ];
 
-  // Enhanced stats rotation with smooth transitions
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentStat((prev) => (prev + 1) % stats.length);
-    }, 4000);
+    }, 3000);
     return () => clearInterval(interval);
-  }, []);
-
-  // Smooth typewriter effect
-  useEffect(() => {
-    const currentPhrase = typewriterPhrases[currentPhraseIndex];
-    let timeout: NodeJS.Timeout;
-
-    if (isTyping) {
-      if (typewriterText.length < currentPhrase.length) {
-        timeout = setTimeout(() => {
-          setTypewriterText(currentPhrase.slice(0, typewriterText.length + 1));
-        }, 120);
-      } else {
-        timeout = setTimeout(() => setIsTyping(false), 3000);
-      }
-    } else {
-      if (typewriterText.length > 0) {
-        timeout = setTimeout(() => {
-          setTypewriterText(typewriterText.slice(0, -1));
-        }, 80);
-      } else {
-        timeout = setTimeout(() => {
-          setCurrentPhraseIndex((prev) => (prev + 1) % typewriterPhrases.length);
-          setIsTyping(true);
-        }, 500);
-      }
-    }
-
-    return () => clearTimeout(timeout);
-  }, [typewriterText, isTyping, currentPhraseIndex, typewriterPhrases]);
-
-  // Mouse tracking for interactive effects
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (heroRef.current) {
-        const rect = heroRef.current.getBoundingClientRect();
-        setMousePosition({
-          x: (e.clientX - rect.left) / rect.width,
-          y: (e.clientY - rect.top) / rect.height,
-        });
-      }
-    };
-
-    const hero = heroRef.current;
-    if (hero) {
-      hero.addEventListener('mousemove', handleMouseMove);
-      return () => hero.removeEventListener('mousemove', handleMouseMove);
-    }
-  }, []);
+  }, [stats.length]);
 
   return (
-    <motion.section 
-      ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ 
-        y,
-        background: 'var(--gradient-hero)',
-        paddingTop: 'var(--space-xl)',
-        paddingBottom: 'var(--space-xl)'
-      }}
-    >
-      {/* Interactive Mesh Background */}
-      <motion.div 
-        className="absolute inset-0 opacity-[0.15]"
-        animate={{
-          background: [
-            'radial-gradient(circle at 20% 50%, hsl(var(--primary) / 0.1) 0%, transparent 50%)',
-            'radial-gradient(circle at 80% 50%, hsl(var(--accent) / 0.1) 0%, transparent 50%)',
-            'radial-gradient(circle at 40% 50%, hsl(var(--primary) / 0.1) 0%, transparent 50%)'
-          ]
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      {/* Dynamic Floating Orbs */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(8)].map((_, i) => (
-          <motion.div
-            key={`orb-${i}`}
-            className="absolute rounded-full"
-            initial={{ 
-              opacity: 0, 
-              scale: 0,
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight
-            }}
-            animate={{ 
-              opacity: [0.1, 0.3, 0.1],
-              scale: [1, 1.2, 1],
-              x: [null, Math.random() * window.innerWidth],
-              y: [null, Math.random() * window.innerHeight]
-            }}
-            transition={{
-              duration: 10 + i * 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: i * 0.5
-            }}
-            style={{
-              width: `${60 + i * 20}px`,
-              height: `${60 + i * 20}px`,
-              background: i % 2 === 0 
-                ? 'radial-gradient(circle, hsl(var(--primary) / 0.2) 0%, transparent 70%)'
-                : 'radial-gradient(circle, hsl(var(--accent) / 0.15) 0%, transparent 70%)',
-              filter: `blur(${10 + i * 3}px)`,
-            }}
-          />
-        ))}
+    <section className="relative min-h-screen flex items-center justify-center bg-background section-odd overflow-hidden">
+      {/* AI/Robot Glowing Effects */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
+        {/* AI Brain Glow */}
+        <div className="absolute top-20 left-20 w-64 h-64">
+          <div className="w-full h-full bg-gradient-to-r from-blue-400/30 to-purple-600/30 rounded-full blur-2xl animate-pulse" style={{ animationDuration: '4s' }} />
+          <div className="absolute inset-4 bg-gradient-to-r from-cyan-400/40 to-blue-500/40 rounded-full blur-xl animate-float" />
+        </div>
+        
+        {/* Robot Circuit Glow */}
+        <div className="absolute bottom-32 right-16 w-80 h-80">
+          <div className="w-full h-full bg-gradient-to-r from-green-400/20 to-emerald-600/20 rounded-full blur-3xl animate-float-slow" />
+          <div className="absolute inset-8 bg-gradient-to-r from-teal-400/30 to-green-500/30 rounded-full blur-xl animate-pulse" style={{ animationDuration: '3s' }} />
+        </div>
+        
+        {/* Neural Network Glow */}
+        <div className="absolute top-1/3 right-1/4 w-48 h-48">
+          <div className="w-full h-full bg-gradient-to-r from-pink-400/25 to-rose-600/25 rounded-full blur-2xl animate-bounce" style={{ animationDuration: '6s' }} />
+        </div>
+        
+        {/* Data Stream Glow */}
+        <div className="absolute bottom-1/4 left-1/3 w-56 h-56">
+          <div className="w-full h-full bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-full blur-2xl animate-float" style={{ animationDelay: '2s' }} />
+        </div>
+        
+        {/* Central AI Core */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px]">
+          <div className="w-full h-full bg-gradient-to-r from-primary/8 via-purple-500/8 to-pink-500/8 rounded-full blur-3xl animate-pulse-glow" />
+          <div className="absolute inset-16 bg-gradient-to-r from-blue-400/10 to-cyan-400/10 rounded-full blur-2xl animate-float-slow" />
+        </div>
       </div>
+      <div className="section-container text-center py-20 relative z-10">
+        {/* Section Flag */}
+        <div className="flex justify-center mb-8">
+          <div className="section-flag">
+            <Star className="w-4 h-4" />
+            Trusted by 5,000+ professionals worldwide
+          </div>
+        </div>
 
-      <div className="relative z-10 text-center container-full"
-           style={{ 
-             paddingTop: 'var(--space-2xl)', 
-             paddingBottom: 'var(--space-xl)' 
-           }}>
-        {/* Premium Badge */}
-        <motion.div 
-          className="flex justify-center"
-          style={{ marginBottom: 'var(--space-3xl)' }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <Badge 
-            variant="outline" 
-            className="glass-morphism border-primary/30 text-primary cursor-pointer group relative overflow-hidden transition-perfect-smooth hover:scale-105"
-            style={{ 
-              padding: 'var(--space-4) var(--space-8)',
-              fontSize: 'var(--font-size-base)',
-              borderRadius: 'var(--radius-3xl)'
-            }}
-          >
-            <motion.div 
-              className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-10" 
-              whileHover={{ opacity: 0.1 }}
-              transition={{ duration: 0.3 }}
-            />
-            <Brain className="w-5 h-5 group-hover:rotate-12 transition-perfect-smooth" 
-                   style={{ marginRight: 'var(--space-3)' }} />
-            <span className="font-medium">Revolutionary AI Platform • Trusted by 10,000+ Creators</span>
-            <Sparkles className="w-5 h-5 group-hover:scale-110 transition-perfect-smooth" 
-                      style={{ marginLeft: 'var(--space-3)' }} />
-          </Badge>
-        </motion.div>
+        {/* Main Heading */}
+        <h1 className="apple-title text-foreground mb-6">
+          Transform your workflow with
+          <span className="block bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+            UntrainedModel
+          </span>
+        </h1>
 
-        {/* Main Heading with Advanced Typography */}
-        <motion.div 
-          className="space-element"
-          style={{ 
-            marginBottom: 'var(--space-4xl)',
-            marginTop: 'var(--space-2xl)'
-          }}
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
-        >
-          <h1 className="font-bold text-balance"
-              style={{ 
-                fontSize: 'var(--font-size-6xl)',
-                lineHeight: 'var(--leading-tight)',
-                letterSpacing: '-0.025em',
-                marginBottom: 'var(--space-2xl)'
-              }}>
-            <motion.div 
-              className="relative inline-block"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-            >
-              <span className="text-shimmer block">
-                UntrainedModel
-              </span>
-              <motion.div 
-                className="absolute"
-                style={{ 
-                  top: 'calc(-1 * var(--space-4))',
-                  right: 'calc(-1 * var(--space-6))'
-                }}
-                animate={{ 
-                  y: [0, -10, 0],
-                  rotate: [0, 5, 0]
-                }}
-                transition={{ 
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
-                <Rocket className="text-primary opacity-80" 
-                        style={{ 
-                          width: 'var(--space-8)', 
-                          height: 'var(--space-8)' 
-                        }} />
-              </motion.div>
-            </motion.div>
-          </h1>
+        {/* Description */}
+        <p className="apple-section-subtitle text-foreground/70">
+          Generate professional content, production-ready code, and stunning visuals using 
+          GPT-4, Claude 3, and Gemini Pro. All in one unified platform.
+        </p>
+
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-20">
+          <Button asChild className="apple-button">
+            <Link to="/playground" className="flex items-center gap-2">
+              <Play className="h-5 w-5" />
+              Start Creating Free
+              <ArrowRight className="h-5 w-5" />
+            </Link>
+          </Button>
           
-          <motion.div 
-            className="text-muted-foreground font-medium min-h-[1.2em] flex items-center justify-center"
-            style={{ 
-              fontSize: 'var(--font-size-3xl)',
-              marginBottom: 'var(--space-xl)'
-            }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-          >
-            <span className="relative">
-              {typewriterText}
-              <motion.span 
-                className="inline-block w-1 h-[1em] bg-primary/70 ml-1"
-                animate={{ opacity: [0, 1, 0] }}
-                transition={{ duration: 1, repeat: Infinity }}
-              />
-            </span>
-          </motion.div>
-        </motion.div>
+          <Button asChild variant="outline" className="apple-button-secondary">
+            <Link to="/about" className="flex items-center gap-2">
+              <Sparkles className="h-5 w-5" />
+              Explore Features
+            </Link>
+          </Button>
+        </div>
 
-        {/* Enhanced Description */}
-        <motion.p 
-          className="text-muted-foreground container-tight text-balance hover:text-foreground transition-perfect-smooth"
-          style={{ 
-            fontSize: 'var(--font-size-xl)',
-            lineHeight: 'var(--leading-relaxed)',
-            marginBottom: 'var(--space-4xl)'
-          }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          Transform your creative workflow with cutting-edge AI technology. Generate premium content, 
-          write sophisticated code, and create stunning visuals using the world's most advanced AI models 
-          including GPT-4, Claude 3, and Gemini Pro - all in one powerful platform.
-        </motion.p>
-
-        {/* Premium CTA Buttons */}
-        <motion.div 
-          className="flex flex-col sm:flex-row justify-center"
-          style={{ 
-            gap: 'var(--space-6)',
-            marginBottom: 'var(--space-xl)'
-          }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-        >
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-            <Button 
-              asChild 
-              className="btn-hero group relative overflow-hidden"
-              style={{ 
-                background: 'var(--gradient-primary)',
-                fontSize: 'var(--font-size-lg)',
-                fontWeight: '600',
-                padding: 'var(--space-6) var(--space-12)',
-                borderRadius: 'var(--radius-xl)',
-                border: 'none'
-              }}
-            >
-              <Link to="/playground" className="flex items-center relative z-10"
-                    style={{ gap: 'var(--space-3)' }}>
-                <Play className="h-5 w-5 group-hover:scale-110 transition-perfect-smooth" />
-                Start Creating Free
-                <ArrowRight className="h-5 w-5 group-hover:translate-x-2 transition-perfect-smooth" />
-              </Link>
-            </Button>
-          </motion.div>
-          
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-            <Button 
-              variant="outline" 
-              className="glass-morphism border-primary/30 hover:bg-primary/5 hover:border-primary/50 group relative overflow-hidden transition-perfect-smooth"
-              style={{ 
-                fontSize: 'var(--font-size-lg)',
-                fontWeight: '600',
-                padding: 'var(--space-6) var(--space-12)',
-                borderRadius: 'var(--radius-xl)'
-              }}
-            >
-              <Link to="/about" className="flex items-center relative z-10"
-                    style={{ gap: 'var(--space-3)' }}>
-                <Sparkles className="h-5 w-5 group-hover:rotate-12 transition-perfect-smooth" />
-                Explore Features
-              </Link>
-            </Button>
-          </motion.div>
-        </motion.div>
-
-        {/* Revolutionary Stats Display */}
-        <motion.div 
-          className="grid-stats container-wide"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1 }}
-        >
+        {/* Perfect 4-Card Grid */}
+        <div className="apple-grid apple-grid-4 max-w-5xl mx-auto gap-6">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
             const isActive = index === currentStat;
             
             return (
-              <motion.div 
+              <div 
                 key={index}
-                className="group relative overflow-hidden cursor-pointer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.2 + index * 0.1 }}
+                className={`apple-card text-center transition-all duration-500 ${
+                  isActive ? 'ring-2 ring-primary/30 bg-primary/5 scale-105' : ''
+                }`}
               >
-                <motion.div 
-                  className={`relative glass-morphism border transition-perfect-smooth ${
-                    isActive 
-                      ? 'border-primary/50 shadow-perfect-glow' 
-                      : 'border-border/20 hover:border-primary/40'
-                  }`}
-                  style={{ 
-                    padding: 'var(--space-8)',
-                    borderRadius: 'var(--radius-3xl)'
-                  }}
-                  animate={isActive ? { 
-                    boxShadow: [
-                      'var(--shadow-elegant)',
-                      'var(--shadow-glow)',
-                      'var(--shadow-elegant)'
-                    ]
-                  } : {}}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  
-                  {/* Icon with Advanced Animation */}
-                  <motion.div 
-                    className="relative flex justify-center"
-                    style={{ marginBottom: 'var(--space-6)' }}
-                    animate={isActive ? { 
-                      scale: [1, 1.1, 1],
-                      rotate: [0, 5, 0]
-                    } : {}}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  >
-                    <Icon className={`transition-perfect-smooth ${
-                      isActive 
-                        ? 'text-primary drop-shadow-lg' 
-                        : 'text-muted-foreground group-hover:text-primary'
-                    }`} 
-                    style={{ 
-                      width: 'var(--space-12)', 
-                      height: 'var(--space-12)' 
-                    }} />
-                  </motion.div>
-                  
-                  {/* Stats Content */}
-                  <div className="text-center relative z-10">
-                    <motion.div 
-                      className={`font-bold transition-perfect-smooth ${
-                        isActive 
-                          ? 'text-primary scale-105' 
-                          : 'text-foreground group-hover:text-primary'
-                      }`}
-                      style={{ 
-                        fontSize: 'var(--font-size-3xl)',
-                        marginBottom: 'var(--space-3)'
-                      }}
-                    >
-                      {stat.value}
-                    </motion.div>
-                    
-                    <div 
-                      className={`font-semibold transition-perfect-smooth ${
-                        isActive 
-                          ? 'text-primary/90' 
-                          : 'text-muted-foreground group-hover:text-foreground'
-                      }`}
-                      style={{ 
-                        fontSize: 'var(--font-size-lg)',
-                        marginBottom: 'var(--space-2)'
-                      }}
-                    >
-                      {stat.label}
-                    </div>
-
-                    <div 
-                      className="text-muted-foreground/80"
-                      style={{ fontSize: 'var(--font-size-sm)' }}
-                    >
-                      {stat.description}
-                    </div>
+                <div className="apple-card-icon mx-auto">
+                  <Icon className="w-6 h-6" />
+                </div>
+                
+                <div className="apple-card-content">
+                  <div className="text-3xl font-bold text-foreground mb-2">
+                    {stat.value}
                   </div>
-                </motion.div>
-              </motion.div>
+                  
+                  <div className="font-semibold text-foreground/80 mb-2">
+                    {stat.label}
+                  </div>
+                  
+                  <div className="text-sm text-foreground/60">
+                    {stat.description}
+                  </div>
+                </div>
+              </div>
             );
           })}
-        </motion.div>
+        </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 

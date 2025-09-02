@@ -1,22 +1,55 @@
-# Allow all crawlers
+# UntrainedModel.xyz - AI Platform Robots.txt
+# Allow all legitimate crawlers
 User-agent: *
 Disallow: /admin/
 Disallow: /_next/
 Disallow: /api/
+Disallow: /.env
+Disallow: /config/
 Allow: /
+Allow: /playground
+Allow: /blog
+Allow: /about
+Allow: /contact
+Allow: /privacy
+Allow: /terms
 
 # Sitemap location
 Sitemap: https://untrainedmodel.xyz/sitemap.xml
 
-# Crawl delay for all bots (optional, keep low)
+# Crawl delay for all bots
 Crawl-delay: 1
 
-# Specific bot rules
+# Specific bot rules for better SEO
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 0.5
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
 
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+# Google AdSense crawler
 User-agent: Mediapartners-Google
 Allow: /
+
+# Block unwanted bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+# Host directive
+Host: https://untrainedmodel.xyz

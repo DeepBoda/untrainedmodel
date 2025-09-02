@@ -12,6 +12,7 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const location = useLocation();
@@ -25,10 +26,17 @@ const Navigation = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-      setShowScrollTop(window.scrollY > 500);
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      
+      setIsScrolled(scrollTop > 10);
+      setShowScrollTop(scrollTop > 300);
+      setScrollProgress(Math.max(0, Math.min(scrollPercent, 100)));
     };
-    window.addEventListener('scroll', handleScroll);
+    
+    handleScroll(); // Initial call
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -83,7 +91,7 @@ const Navigation = () => {
                 </kbd>
               </Button>
               <ThemeToggle />
-              <Button asChild><Link to="/playground">Try AI Playground</Link></Button>
+              <Button asChild className="bg-primary hover:bg-primary-hover text-primary-foreground"><Link to="/playground">Try AI Playground</Link></Button>
             </div>
 
             <div className="lg:hidden flex items-center space-x-2">
@@ -115,9 +123,44 @@ const Navigation = () => {
       </header>
 
       {showScrollTop && (
-        <Button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} size="icon" className="fixed bottom-6 right-6 z-50 rounded-full shadow-lg">
-          <ChevronUp className="h-4 w-4" />
-        </Button>
+        <div className="fixed bottom-6 right-6 z-40">
+          <div 
+            className="relative w-14 h-14 cursor-pointer group"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
+            {/* Progress Circle */}
+            <svg className="w-14 h-14 transform -rotate-90 absolute inset-0" viewBox="0 0 56 56">
+              {/* Background Circle */}
+              <circle
+                cx="28"
+                cy="28"
+                r="24"
+                fill="none"
+                stroke="#e5e7eb"
+                strokeWidth="2"
+                className="dark:stroke-gray-700"
+              />
+              {/* Progress Circle */}
+              <circle
+                cx="28"
+                cy="28"
+                r="24"
+                fill="none"
+                stroke="#3b82f6"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeDasharray={`${2 * Math.PI * 24}`}
+                strokeDashoffset={`${2 * Math.PI * 24 * (1 - scrollProgress / 100)}`}
+                className="transition-all duration-200 ease-out dark:stroke-blue-400"
+              />
+            </svg>
+            
+            {/* Button Circle */}
+            <div className="absolute inset-1 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105 flex items-center justify-center border border-gray-200 dark:border-gray-600">
+              <ChevronUp className="w-5 h-5 text-gray-600 dark:text-gray-300 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors duration-200" />
+            </div>
+          </div>
+        </div>
       )}
 
       <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />

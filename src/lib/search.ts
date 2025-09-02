@@ -20,61 +20,117 @@ export interface SearchIndex {
 // Create search index
 const searchIndex: SearchIndex = {
   'home': {
-    title: 'UntrainedModel - Generative Knowledge Forge',
-    content: 'Explore and build with AI models designed for open knowledge creation. Fast response, multi-modal AI, open source friendly.',
+    title: 'UntrainedModel - AI Playground & Content Generator',
+    content: 'Cutting-edge AI platform providing access to advanced AI models for text generation, code generation, and image creation. Multi-provider support with OpenAI, Google Gemini, and Anthropic Claude.',
     url: '/',
     type: 'page',
-    keywords: ['ai', 'knowledge', 'generation', 'models', 'home', 'main']
+    keywords: ['ai', 'playground', 'generator', 'openai', 'gemini', 'claude', 'home', 'main']
   },
   'playground': {
     title: 'AI Playground - Create, Experiment, and Share',
-    content: 'Interactive AI playground for text generation, code generation, and image creation. Experiment with GPT-4, Claude, and Gemini models.',
+    content: 'Interactive AI playground for text generation, code generation, and image creation. Experiment with GPT-4, Claude, and Gemini models with real-time results.',
     url: '/playground',
     type: 'page',
-    keywords: ['playground', 'ai', 'generate', 'text', 'code', 'image', 'gpt', 'claude', 'gemini']
+    keywords: ['playground', 'ai', 'generate', 'text', 'code', 'image', 'gpt', 'claude', 'gemini', 'experiment']
   },
   'blog': {
-    title: 'AI Blog - Latest in Artificial Intelligence',
-    content: 'Stay updated with the latest trends, tutorials, and insights in artificial intelligence and machine learning.',
+    title: 'AI Blog & Resources - Latest Insights',
+    content: 'Discover insights, tutorials, and best practices for AI development, productivity, and innovation. Expert guides and cutting-edge insights.',
     url: '/blog',
     type: 'page',
-    keywords: ['blog', 'articles', 'ai', 'machine learning', 'tutorials', 'insights']
-  },
-  'contact': {
-    title: 'Contact Us - Get Support and Help',
-    content: 'Contact UntrainedModel team for support, questions, feedback, and business inquiries. We are here to help.',
-    url: '/contact',
-    type: 'page',
-    keywords: ['contact', 'support', 'help', 'feedback', 'questions', 'business']
+    keywords: ['blog', 'articles', 'ai', 'tutorials', 'insights', 'resources', 'guides']
   },
   'about': {
     title: 'About UntrainedModel - Our Mission',
-    content: 'Learn about UntrainedModel, our mission to democratize AI tools and make them accessible to everyone.',
+    content: 'Learn about UntrainedModel, our mission to democratize AI tools and make them accessible to everyone. Built with love for the AI community.',
     url: '/about',
     type: 'page',
-    keywords: ['about', 'mission', 'team', 'company', 'democratize', 'ai tools']
+    keywords: ['about', 'mission', 'team', 'company', 'democratize', 'ai tools', 'community']
   },
-  // Blog posts
-  'blog-gpt4-guide': {
-    title: 'Complete Guide to GPT-4: Everything You Need to Know',
-    content: 'Comprehensive guide covering GPT-4 capabilities, use cases, best practices, and how to get started with OpenAI latest model.',
-    url: '/blog/complete-guide-gpt4',
-    type: 'blog',
-    keywords: ['gpt-4', 'openai', 'guide', 'tutorial', 'ai model', 'language model']
+  'contact': {
+    title: 'Contact Us - Get Support and Help',
+    content: 'Contact UntrainedModel team for support, questions, feedback, and business inquiries. Email support available.',
+    url: '/contact',
+    type: 'page',
+    keywords: ['contact', 'support', 'help', 'feedback', 'questions', 'business', 'email']
   },
-  'blog-ai-ethics': {
-    title: 'The Ethics of AI: Balancing Innovation and Responsibility',
-    content: 'Exploring the ethical considerations in AI development, bias mitigation, and responsible AI practices.',
-    url: '/blog/ai-ethics-responsibility',
-    type: 'blog',
-    keywords: ['ethics', 'ai ethics', 'bias', 'responsibility', 'innovation', 'fair ai']
+  'privacy': {
+    title: 'Privacy Policy - Your Data Protection',
+    content: 'Learn about our privacy practices, data protection, and commitment to user privacy. No data collection, privacy by design.',
+    url: '/privacy',
+    type: 'page',
+    keywords: ['privacy', 'policy', 'data protection', 'security', 'legal']
   },
-  'blog-prompt-engineering': {
-    title: 'Mastering Prompt Engineering: Tips and Techniques',
-    content: 'Learn advanced prompt engineering techniques to get better results from AI models like GPT-4, Claude, and Gemini.',
-    url: '/blog/prompt-engineering-mastery',
+  'terms': {
+    title: 'Terms of Service - Usage Guidelines',
+    content: 'Terms and conditions for using UntrainedModel platform, acceptable use policy, and service guidelines.',
+    url: '/terms',
+    type: 'page',
+    keywords: ['terms', 'service', 'conditions', 'usage', 'legal', 'guidelines']
+  },
+  // Blog posts - Current 9 posts
+  'blog-ai-daily-tasks': {
+    title: 'How AI Is Revolutionizing Daily Tasks',
+    content: 'Discover how artificial intelligence is transforming everyday activities, from personal productivity to creative endeavors, making our lives more efficient and enjoyable.',
+    url: '/blog/how-ai-is-revolutionizing-daily-tasks',
     type: 'blog',
-    keywords: ['prompt engineering', 'prompts', 'techniques', 'tips', 'ai optimization']
+    keywords: ['ai', 'daily tasks', 'productivity', 'efficiency', 'automation', 'lifestyle']
+  },
+  'blog-chatgpt-developer': {
+    title: 'Top 5 Ways to Use ChatGPT as a Developer',
+    content: 'Maximize your development productivity with ChatGPT. Learn practical strategies that can transform your coding workflow and accelerate your projects.',
+    url: '/blog/top-5-ways-to-use-chatgpt-as-a-developer',
+    type: 'blog',
+    keywords: ['chatgpt', 'developer', 'programming', 'coding', 'productivity', 'workflow']
+  },
+  'blog-ai-creative-industries': {
+    title: 'The Future of AI Tools in Creative Industries',
+    content: 'Explore how artificial intelligence is reshaping creative fields, from graphic design to music production, and what it means for creative professionals.',
+    url: '/blog/the-future-of-ai-tools-in-creative-industries',
+    type: 'blog',
+    keywords: ['ai', 'creative', 'design', 'music', 'art', 'future', 'industries']
+  },
+  'blog-secure-ai-applications': {
+    title: 'Building Secure AI Applications: Best Practices Guide',
+    content: 'Learn essential security considerations when developing AI-powered applications, from data protection to model security and ethical AI implementation.',
+    url: '/blog/building-secure-ai-applications-best-practices-guide',
+    type: 'blog',
+    keywords: ['ai security', 'cybersecurity', 'best practices', 'development', 'data protection']
+  },
+  'blog-prompt-engineering-advanced': {
+    title: 'Mastering Prompt Engineering: Advanced Techniques',
+    content: 'Deep dive into advanced prompt engineering strategies that will help you get better results from AI models. Learn from real-world examples and expert insights.',
+    url: '/blog/mastering-prompt-engineering-advanced-techniques',
+    type: 'blog',
+    keywords: ['prompt engineering', 'ai optimization', 'techniques', 'tutorial', 'advanced']
+  },
+  'blog-ai-code-review': {
+    title: 'AI-Powered Code Review: Transforming Development Workflows',
+    content: 'Learn how AI is revolutionizing code review processes, catching bugs early, and improving code quality across development teams.',
+    url: '/blog/ai-powered-code-review-transforming-development-workflows',
+    type: 'blog',
+    keywords: ['code review', 'ai development', 'software engineering', 'devops', 'quality']
+  },
+  'blog-ethical-ai-development': {
+    title: 'Ethical AI Development: Principles and Practices',
+    content: 'Explore the fundamental principles of ethical AI development and learn how to build responsible AI systems that benefit society.',
+    url: '/blog/ethical-ai-development-principles-and-practices',
+    type: 'blog',
+    keywords: ['ai ethics', 'responsible ai', 'principles', 'practices', 'society']
+  },
+  'blog-multi-modal-ai': {
+    title: 'Multi-Modal AI: Beyond Text Generation',
+    content: 'Discover the exciting world of multi-modal AI systems that can understand and generate text, images, audio, and video content simultaneously.',
+    url: '/blog/multi-modal-ai-beyond-text-generation',
+    type: 'blog',
+    keywords: ['multi-modal', 'ai', 'computer vision', 'nlp', 'innovation', 'multimedia']
+  },
+  'blog-ai-data-science': {
+    title: 'AI in Data Science: Automating Analysis Workflows',
+    content: 'Learn how AI is transforming data science by automating complex analysis workflows, from data cleaning to insight generation.',
+    url: '/blog/ai-in-data-science-automating-analysis-workflows',
+    type: 'blog',
+    keywords: ['data science', 'ai automation', 'analytics', 'machine learning', 'workflows']
   }
 };
 
@@ -152,11 +208,13 @@ export class SearchService {
   getPopularSearches(): string[] {
     return [
       'AI playground',
-      'GPT-4 guide',
       'prompt engineering',
+      'ChatGPT developer',
       'AI ethics',
       'code generation',
-      'text generation'
+      'creative AI',
+      'data science',
+      'multi-modal AI'
     ];
   }
 

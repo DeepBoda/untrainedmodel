@@ -4,263 +4,271 @@ const Privacy = () => {
   return (
     <Layout 
       title="Privacy Policy - UntrainedModel"
-      description="Learn how UntrainedModel collects, uses, and protects your personal information. Our comprehensive privacy policy ensures transparency and user data protection."
-      keywords="privacy policy, data protection, user privacy, GDPR compliance, data security, UntrainedModel privacy"
+      description="Learn how UntrainedModel protects your privacy. We don't collect personal data, store conversations, or track users. Your privacy is our priority."
+      keywords="privacy policy, data protection, user privacy, no tracking, secure AI platform"
     >
-      <div className="min-h-screen bg-background">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="prose prose-gray max-w-none">
-            <h1 className="text-4xl font-bold text-foreground mb-8">Privacy Policy</h1>
-            
-            <div className="bg-muted/20 p-6 rounded-lg mb-8">
-              <p className="text-muted-foreground mb-4">
-                <strong>Last Updated:</strong> July 10, 2025
-              </p>
-              <p className="text-muted-foreground">
-                This Privacy Policy describes how UntrainedModel ("we," "our," or "us") collects, uses, 
-                and protects your information when you use our AI chat platform and related services.
-              </p>
+      <div className="min-h-screen bg-white dark:bg-black">
+        {/* Hero Section */}
+        <section className="pt-32 pb-20">
+          <div className="section-container text-center">
+            <div className="section-flag mx-auto mb-8">
+              🔒 Privacy First
             </div>
-
-            <h2 className="text-2xl font-semibold text-foreground mt-8 mb-4">1. Information We Collect</h2>
             
-            <h3 className="text-xl font-medium text-foreground mt-6 mb-3">1.1 Information You Provide</h3>
-            <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-              <li><strong>Account Information:</strong> When you create an account, we may collect your email address, name, and other contact information.</li>
-              <li><strong>Communication Data:</strong> Messages you send through our contact forms, support requests, and feedback.</li>
-              <li><strong>API Keys:</strong> Your AI provider API keys are stored locally in your browser and are never transmitted to our servers.</li>
-            </ul>
-
-            <h3 className="text-xl font-medium text-foreground mt-6 mb-3">1.2 Automatically Collected Information</h3>
-            <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-              <li><strong>Usage Data:</strong> Information about how you interact with our platform, including features used and time spent.</li>
-              <li><strong>Device Information:</strong> Browser type, operating system, IP address, and device identifiers.</li>
-              <li><strong>Cookies and Tracking:</strong> We use cookies and similar technologies to improve user experience and analyze platform usage.</li>
-            </ul>
-
-            <h3 className="text-xl font-medium text-foreground mt-6 mb-3">1.3 Chat and Conversation Data</h3>
-            <div className="bg-primary/5 p-4 rounded-lg mb-4">
-              <p className="text-foreground font-medium mb-2">Important Privacy Notice:</p>
-              <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
-                <li>Your chat conversations are stored locally in your browser's storage</li>
-                <li>We do not have access to your chat history or messages</li>
-                <li>Conversations are not transmitted to our servers</li>
-                <li>You can delete your chat history at any time using our interface</li>
-              </ul>
-            </div>
-
-            <h2 className="text-2xl font-semibold text-foreground mt-8 mb-4">2. How We Use Your Information</h2>
+            <h1 className="apple-title text-gray-900 dark:text-white mb-6">
+              Privacy Policy
+            </h1>
             
-            <p className="text-muted-foreground mb-4">We use the information we collect for the following purposes:</p>
-            
-            <h3 className="text-xl font-medium text-foreground mt-6 mb-3">2.1 Service Provision</h3>
-            <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-              <li>Provide and maintain our AI chat platform</li>
-              <li>Enable communication with AI providers through your API keys</li>
-              <li>Personalize your user experience</li>
-              <li>Provide customer support and respond to your inquiries</li>
-            </ul>
-
-            <h3 className="text-xl font-medium text-foreground mt-6 mb-3">2.2 Platform Improvement</h3>
-            <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-              <li>Analyze usage patterns to improve our platform</li>
-              <li>Develop new features and functionality</li>
-              <li>Monitor and analyze platform performance</li>
-              <li>Conduct research and analytics</li>
-            </ul>
-
-            <h3 className="text-xl font-medium text-foreground mt-6 mb-3">2.3 Communication</h3>
-            <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-              <li>Send you important updates about our services</li>
-              <li>Respond to your questions and support requests</li>
-              <li>Send marketing communications (with your consent)</li>
-              <li>Notify you of changes to our policies</li>
-            </ul>
-
-            <h2 className="text-2xl font-semibold text-foreground mt-8 mb-4">3. Information Sharing and Disclosure</h2>
-            
-            <p className="text-muted-foreground mb-4">
-              We do not sell, trade, or otherwise transfer your personal information to third parties except in the following circumstances:
-            </p>
-
-            <h3 className="text-xl font-medium text-foreground mt-6 mb-3">3.1 With Your Consent</h3>
-            <p className="text-muted-foreground mb-4">
-              We may share your information when you explicitly consent to such sharing.
-            </p>
-
-            <h3 className="text-xl font-medium text-foreground mt-6 mb-3">3.2 Service Providers</h3>
-            <p className="text-muted-foreground mb-4">
-              We may share information with trusted third-party service providers who assist us in operating our platform, such as:
-            </p>
-            <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-              <li>Cloud hosting providers</li>
-              <li>Analytics services</li>
-              <li>Customer support tools</li>
-              <li>Email service providers</li>
-            </ul>
-
-            <h3 className="text-xl font-medium text-foreground mt-6 mb-3">3.3 Legal Requirements</h3>
-            <p className="text-muted-foreground mb-4">
-              We may disclose your information if required by law or in response to valid legal requests, such as:
-            </p>
-            <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-              <li>Court orders or subpoenas</li>
-              <li>Government agency requests</li>
-              <li>To protect our rights and safety</li>
-              <li>To prevent fraud or illegal activities</li>
-            </ul>
-
-            <h2 className="text-2xl font-semibold text-foreground mt-8 mb-4">4. Data Security</h2>
-            
-            <p className="text-muted-foreground mb-4">
-              We implement appropriate technical and organizational measures to protect your personal information:
-            </p>
-
-            <h3 className="text-xl font-medium text-foreground mt-6 mb-3">4.1 Technical Safeguards</h3>
-            <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-              <li>Encryption of data in transit and at rest</li>
-              <li>Secure server infrastructure</li>
-              <li>Regular security updates and patches</li>
-              <li>Access controls and authentication</li>
-            </ul>
-
-            <h3 className="text-xl font-medium text-foreground mt-6 mb-3">4.2 Organizational Measures</h3>
-            <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-              <li>Employee training on data protection</li>
-              <li>Limited access to personal information</li>
-              <li>Regular security audits and assessments</li>
-              <li>Incident response procedures</li>
-            </ul>
-
-            <h2 className="text-2xl font-semibold text-foreground mt-8 mb-4">5. Your Rights and Choices</h2>
-            
-            <p className="text-muted-foreground mb-4">
-              You have several rights regarding your personal information:
-            </p>
-
-            <h3 className="text-xl font-medium text-foreground mt-6 mb-3">5.1 Access and Portability</h3>
-            <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-              <li>Request access to your personal information</li>
-              <li>Receive a copy of your data in a portable format</li>
-              <li>Export your chat history from local storage</li>
-            </ul>
-
-            <h3 className="text-xl font-medium text-foreground mt-6 mb-3">5.2 Correction and Deletion</h3>
-            <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-              <li>Correct inaccurate personal information</li>
-              <li>Request deletion of your personal information</li>
-              <li>Clear your local chat history and API keys</li>
-            </ul>
-
-            <h3 className="text-xl font-medium text-foreground mt-6 mb-3">5.3 Marketing Communications</h3>
-            <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-              <li>Opt out of marketing emails</li>
-              <li>Adjust communication preferences</li>
-              <li>Unsubscribe from newsletters</li>
-            </ul>
-
-            <h2 className="text-2xl font-semibold text-foreground mt-8 mb-4">6. Cookies and Tracking Technologies</h2>
-            
-            <p className="text-muted-foreground mb-4">
-              We use cookies and similar technologies to enhance your experience:
-            </p>
-
-            <h3 className="text-xl font-medium text-foreground mt-6 mb-3">6.1 Types of Cookies</h3>
-            <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-              <li><strong>Essential Cookies:</strong> Required for basic platform functionality</li>
-              <li><strong>Performance Cookies:</strong> Help us analyze how our platform is used</li>
-              <li><strong>Functional Cookies:</strong> Remember your preferences and settings</li>
-              <li><strong>Marketing Cookies:</strong> Used for targeted advertising (with consent)</li>
-            </ul>
-
-            <h3 className="text-xl font-medium text-foreground mt-6 mb-3">6.2 Cookie Management</h3>
-            <p className="text-muted-foreground mb-4">
-              You can control cookies through your browser settings. Note that disabling certain cookies may affect platform functionality.
-            </p>
-
-            <h2 className="text-2xl font-semibold text-foreground mt-8 mb-4">7. Third-Party Services</h2>
-            
-            <p className="text-muted-foreground mb-4">
-              Our platform integrates with third-party AI services:
-            </p>
-
-            <h3 className="text-xl font-medium text-foreground mt-6 mb-3">7.1 AI Providers</h3>
-            <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-              <li><strong>OpenAI:</strong> When you use your OpenAI API key, your conversations are subject to OpenAI's privacy policy</li>
-              <li><strong>Google AI:</strong> When you use Google's AI services, Google's privacy policy applies</li>
-              <li>We recommend reviewing each provider's privacy policy</li>
-            </ul>
-
-            <h3 className="text-xl font-medium text-foreground mt-6 mb-3">7.2 Analytics Services</h3>
-            <p className="text-muted-foreground mb-4">
-              We may use third-party analytics services to understand platform usage. These services may collect information about your use of our platform.
-            </p>
-
-            <h2 className="text-2xl font-semibold text-foreground mt-8 mb-4">8. International Data Transfers</h2>
-            
-            <p className="text-muted-foreground mb-4">
-              Your information may be transferred to and processed in countries other than your own. We ensure adequate protection through:
-            </p>
-            <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-              <li>Standard contractual clauses</li>
-              <li>Adequacy decisions</li>
-              <li>Other appropriate safeguards</li>
-            </ul>
-
-            <h2 className="text-2xl font-semibold text-foreground mt-8 mb-4">9. Children's Privacy</h2>
-            
-            <p className="text-muted-foreground mb-4">
-              Our platform is not intended for children under 13. We do not knowingly collect personal information from children under 13. If you believe we have collected such information, please contact us immediately.
-            </p>
-
-            <h2 className="text-2xl font-semibold text-foreground mt-8 mb-4">10. Changes to This Privacy Policy</h2>
-            
-            <p className="text-muted-foreground mb-4">
-              We may update this Privacy Policy periodically. When we make material changes, we will:
-            </p>
-            <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-              <li>Post the updated policy on our website</li>
-              <li>Update the "Last Updated" date</li>
-              <li>Notify you via email or platform notification</li>
-              <li>Provide a reasonable notice period for significant changes</li>
-            </ul>
-
-            <h2 className="text-2xl font-semibold text-foreground mt-8 mb-4">11. Contact Information</h2>
-            
-            <p className="text-muted-foreground mb-4">
-              If you have questions about this Privacy Policy or our privacy practices, please contact us:
+            <p className="apple-section-subtitle text-gray-600 dark:text-gray-400 mb-8">
+              Your privacy matters. We've built UntrainedModel with privacy by design - 
+              no data collection, no tracking, no compromises.
             </p>
             
-            <div className="bg-muted/20 p-6 rounded-lg">
-              <p className="text-foreground font-medium mb-2">UntrainedModel Privacy Team</p>
-              <p className="text-muted-foreground">Email: privacy@untrainedmodel.xyz</p>
-              <p className="text-muted-foreground">Address: San Francisco, CA</p>
-              <p className="text-muted-foreground mt-4">
-                For general inquiries: contact@untrainedmodel.xyz
-              </p>
-            </div>
-
-            <h2 className="text-2xl font-semibold text-foreground mt-8 mb-4">12. Additional Rights for EU Residents</h2>
-            
-            <p className="text-muted-foreground mb-4">
-              If you are located in the European Union, you have additional rights under GDPR:
-            </p>
-            <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-              <li>Right to lodge a complaint with a supervisory authority</li>
-              <li>Right to object to processing based on legitimate interests</li>
-              <li>Right to restrict processing in certain circumstances</li>
-              <li>Right to data portability</li>
-            </ul>
-
-            <div className="bg-primary/5 p-6 rounded-lg mt-8">
-              <p className="text-foreground font-medium mb-2">Privacy Commitment</p>
-              <p className="text-muted-foreground">
-                We are committed to protecting your privacy and being transparent about our data practices. 
-                This policy reflects our commitment to privacy by design and your rights as a user of our platform.
+            <div className="max-w-md mx-auto p-4 bg-green-50 dark:bg-green-950/30 rounded-2xl border border-green-200 dark:border-green-800">
+              <p className="text-green-800 dark:text-green-200 font-medium">
+                ✅ No personal data collected<br/>
+                ✅ No conversation storage<br/>
+                ✅ No user tracking
               </p>
             </div>
           </div>
-        </div>
+        </section>
+
+        {/* Content */}
+        <section className="section-even py-20">
+          <div className="section-container">
+            <div className="max-w-4xl mx-auto prose prose-lg prose-gray dark:prose-invert">
+              
+              <div className="bg-white dark:bg-black rounded-2xl p-8 border border-gray-200 dark:border-gray-800 mb-12">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                  📅 Last Updated: September 1, 2025
+                </h2>
+                <p className="text-gray-600 dark:text-gray-400">
+                  This Privacy Policy explains how UntrainedModel ("we," "our," or "us") handles information 
+                  when you use our AI platform at untrainedmodel.xyz.
+                </p>
+              </div>
+
+              <div className="space-y-12">
+                <div className="bg-white dark:bg-black rounded-2xl p-8 border border-gray-200 dark:border-gray-800">
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+                    🎯 Our Privacy Philosophy
+                  </h2>
+                  <div className="space-y-4 text-gray-700 dark:text-gray-300">
+                    <p className="text-lg leading-relaxed">
+                      <strong>We believe privacy is a fundamental right.</strong> UntrainedModel is designed with 
+                      privacy-first principles, meaning we've built our platform to minimize data collection 
+                      and maximize your control over your information.
+                    </p>
+                    <p className="leading-relaxed">
+                      Unlike many platforms, we don't require accounts, don't store your conversations, 
+                      and don't track your behavior. Your interactions with AI models remain private and temporary.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-white dark:bg-black rounded-2xl p-8 border border-gray-200 dark:border-gray-800">
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+                    📊 Information We Don't Collect
+                  </h2>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-3">
+                      <h3 className="font-semibold text-gray-900 dark:text-white">❌ Personal Information</h3>
+                      <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                        <li>• No names or email addresses</li>
+                        <li>• No phone numbers or addresses</li>
+                        <li>• No demographic information</li>
+                        <li>• No account creation required</li>
+                      </ul>
+                    </div>
+                    <div className="space-y-3">
+                      <h3 className="font-semibold text-gray-900 dark:text-white">❌ Usage Data</h3>
+                      <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                        <li>• No conversation history</li>
+                        <li>• No behavioral tracking</li>
+                        <li>• No usage analytics</li>
+                        <li>• No preference profiling</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white dark:bg-black rounded-2xl p-8 border border-gray-200 dark:border-gray-800">
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+                    🔧 Technical Information We Process
+                  </h2>
+                  <div className="space-y-4 text-gray-700 dark:text-gray-300">
+                    <p className="leading-relaxed">
+                      To provide our service, we process minimal technical information that is automatically 
+                      deleted after each session:
+                    </p>
+                    <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-6">
+                      <h3 className="font-semibold text-gray-900 dark:text-white mb-3">Temporary Processing Only:</h3>
+                      <ul className="space-y-2">
+                        <li><strong>AI Prompts:</strong> Your messages to AI models (processed and immediately deleted)</li>
+                        <li><strong>IP Address:</strong> For rate limiting and security (not stored or logged)</li>
+                        <li><strong>Browser Type:</strong> For compatibility (not tracked across sessions)</li>
+                        <li><strong>Session Data:</strong> Temporary tokens for AI API calls (auto-expire)</li>
+                      </ul>
+                    </div>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 italic">
+                      All this information is processed in memory only and is never written to databases or log files.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-white dark:bg-black rounded-2xl p-8 border border-gray-200 dark:border-gray-800">
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+                    🤖 Third-Party AI Services
+                  </h2>
+                  <div className="space-y-4 text-gray-700 dark:text-gray-300">
+                    <p className="leading-relaxed">
+                      We use third-party AI providers (OpenAI, Anthropic, Google) to process your requests. 
+                      Here's how we protect your privacy:
+                    </p>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="bg-blue-50 dark:bg-blue-950/30 rounded-xl p-6">
+                        <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-3">✅ What We Do</h3>
+                        <ul className="space-y-2 text-blue-800 dark:text-blue-200">
+                          <li>• Send only your prompt text</li>
+                          <li>• Use anonymous API calls</li>
+                          <li>• Request immediate deletion</li>
+                          <li>• No user identification sent</li>
+                        </ul>
+                      </div>
+                      <div className="bg-red-50 dark:bg-red-950/30 rounded-xl p-6">
+                        <h3 className="font-semibold text-red-900 dark:text-red-100 mb-3">❌ What We Don't Do</h3>
+                        <ul className="space-y-2 text-red-800 dark:text-red-200">
+                          <li>• Share your identity</li>
+                          <li>• Allow conversation storage</li>
+                          <li>• Enable model training on your data</li>
+                          <li>• Create user profiles</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white dark:bg-black rounded-2xl p-8 border border-gray-200 dark:border-gray-800">
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+                    🍪 Cookies and Local Storage
+                  </h2>
+                  <div className="space-y-4 text-gray-700 dark:text-gray-300">
+                    <p className="leading-relaxed">
+                      We use minimal local storage for essential functionality only:
+                    </p>
+                    <div className="space-y-4">
+                      <div className="bg-green-50 dark:bg-green-950/30 rounded-xl p-6">
+                        <h3 className="font-semibold text-green-900 dark:text-green-100 mb-3">Essential Storage</h3>
+                        <ul className="space-y-2 text-green-800 dark:text-green-200">
+                          <li><strong>Theme Preference:</strong> Light/dark mode setting</li>
+                          <li><strong>Model Selection:</strong> Your preferred AI model</li>
+                          <li><strong>UI Settings:</strong> Interface preferences</li>
+                        </ul>
+                        <p className="text-sm mt-3 text-green-700 dark:text-green-300">
+                          This data stays on your device and is never transmitted to our servers.
+                        </p>
+                      </div>
+                      <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-6">
+                        <h3 className="font-semibold text-gray-900 dark:text-white mb-3">No Tracking Cookies</h3>
+                        <p className="text-gray-700 dark:text-gray-300">
+                          We don't use analytics cookies, advertising cookies, or any form of cross-site tracking. 
+                          No third-party cookies are set by our platform.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white dark:bg-black rounded-2xl p-8 border border-gray-200 dark:border-gray-800">
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+                    🔐 Data Security
+                  </h2>
+                  <div className="space-y-4 text-gray-700 dark:text-gray-300">
+                    <p className="leading-relaxed">
+                      Even though we don't store your data, we implement strong security measures for data in transit:
+                    </p>
+                    <div className="grid md:grid-cols-3 gap-4">
+                      <div className="bg-purple-50 dark:bg-purple-950/30 rounded-xl p-4 text-center">
+                        <div className="text-2xl mb-2">🔒</div>
+                        <h3 className="font-semibold text-purple-900 dark:text-purple-100">HTTPS Encryption</h3>
+                        <p className="text-sm text-purple-800 dark:text-purple-200">All data encrypted in transit</p>
+                      </div>
+                      <div className="bg-blue-50 dark:bg-blue-950/30 rounded-xl p-4 text-center">
+                        <div className="text-2xl mb-2">⚡</div>
+                        <h3 className="font-semibold text-blue-900 dark:text-blue-100">Memory Processing</h3>
+                        <p className="text-sm text-blue-800 dark:text-blue-200">No disk storage of user data</p>
+                      </div>
+                      <div className="bg-green-50 dark:bg-green-950/30 rounded-xl p-4 text-center">
+                        <div className="text-2xl mb-2">🛡️</div>
+                        <h3 className="font-semibold text-green-900 dark:text-green-100">API Security</h3>
+                        <p className="text-sm text-green-800 dark:text-green-200">Secure third-party connections</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white dark:bg-black rounded-2xl p-8 border border-gray-200 dark:border-gray-800">
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+                    🌍 International Users
+                  </h2>
+                  <div className="space-y-4 text-gray-700 dark:text-gray-300">
+                    <p className="leading-relaxed">
+                      UntrainedModel is accessible globally. Since we don't collect personal data, 
+                      most international privacy regulations don't apply to our service. However, we respect 
+                      all privacy rights:
+                    </p>
+                    <div className="bg-blue-50 dark:bg-blue-950/30 rounded-xl p-6">
+                      <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-3">Global Privacy Compliance</h3>
+                      <ul className="space-y-2 text-blue-800 dark:text-blue-200">
+                        <li><strong>GDPR (EU):</strong> No personal data processing = no GDPR obligations</li>
+                        <li><strong>CCPA (California):</strong> No personal information collection or sale</li>
+                        <li><strong>Other Jurisdictions:</strong> Privacy-first design meets global standards</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white dark:bg-black rounded-2xl p-8 border border-gray-200 dark:border-gray-800">
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+                    📧 Contact and Questions
+                  </h2>
+                  <div className="space-y-4 text-gray-700 dark:text-gray-300">
+                    <p className="leading-relaxed">
+                      Have questions about our privacy practices? We're happy to help clarify how we protect your privacy.
+                    </p>
+                    <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-6">
+                      <h3 className="font-semibold text-gray-900 dark:text-white mb-3">Get in Touch</h3>
+                      <p className="mb-3">
+                        <strong>Email:</strong> <a href="mailto:support@untrainedmodel.xyz" className="text-blue-600 dark:text-blue-400 hover:underline">support@untrainedmodel.xyz</a>
+                      </p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                        We typically respond to privacy inquiries within 24 hours.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 rounded-2xl p-8 border border-blue-200 dark:border-blue-800">
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
+                    🔄 Policy Updates
+                  </h2>
+                  <div className="space-y-4 text-gray-700 dark:text-gray-300">
+                    <p className="leading-relaxed">
+                      We may update this Privacy Policy occasionally to reflect changes in our practices or legal requirements. 
+                      Any changes will be posted on this page with an updated "Last Updated" date.
+                    </p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      Since we don't collect contact information, we can't notify users directly of changes. 
+                      We recommend checking this page periodically if you have concerns about privacy practices.
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </Layout>
   );

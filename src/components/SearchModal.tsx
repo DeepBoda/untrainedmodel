@@ -19,6 +19,7 @@ export const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -38,11 +39,13 @@ export const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
       setTimeout(() => {
         setResults(searchResults);
         setSuggestions(searchSuggestions);
+        setSelectedIndex(-1); // Reset selection
         setIsLoading(false);
       }, 150); // Debounce for better UX
     } else {
       setResults([]);
       setSuggestions(searchService.getPopularSearches());
+      setSelectedIndex(-1);
     }
   }, [query]);
 
@@ -63,19 +66,50 @@ export const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
   };
 
   const handleResultClick = (result: SearchResult) => {
-    handleSearch(query || result.title);
+    // Save search query if there is one
+    if (query.trim()) {
+      handleSearch(query);
+    }
+    // Navigate to the result
     navigate(result.url);
     onClose();
   };
 
   const handleSuggestionClick = (suggestion: string) => {
     setQuery(suggestion);
-    handleSearch(suggestion);
+    // Auto-search when clicking suggestion
+    const searchResults = searchService.search(suggestion, 1);
+    if (searchResults.length > 0) {
+      navigate(searchResults[0].url);
+      onClose();
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && results.length > 0) {
-      handleResultClick(results[0]);
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setSelectedIndex(prev => 
+        prev < results.length - 1 ? prev + 1 : prev
+      );
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setSelectedIndex(prev => prev > -1 ? prev - 1 : prev);
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      if (selectedIndex >= 0 && results[selectedIndex]) {
+        handleResultClick(results[selectedIndex]);
+      } else if (results.length > 0) {
+        handleResultClick(results[0]);
+      } else if (query.trim()) {
+        // If no results but there's a query, try to navigate to a relevant page
+        const allResults = searchService.search(query, 1);
+        if (allResults.length > 0) {
+          navigate(allResults[0].url);
+          onClose();
+        }
+      }
+    } else if (e.key === 'Escape') {
+      onClose();
     }
   };
 
@@ -97,6 +131,11 @@ export const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
               className="pl-10 text-lg border-0 focus-visible:ring-0 shadow-none"
               autoFocus
             />
+            {results.length > 0 && (
+              <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-xs text-muted-foreground">
+                ↑↓ Navigate • ↵ Select • Esc Close
+              </div>
+            )}
           </div>
         </DialogHeader>
 
@@ -109,11 +148,18 @@ export const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
                 {isLoading ? 'Searching...' : `${results.length} results found`}
               </div>
 
-              {results.map((result) => (
+              {results.map((result, index) => (
                 <button
                   key={result.id}
                   onClick={() => handleResultClick(result)}
-                  className="w-full text-left p-3 rounded-lg hover:bg-muted/50 transition-colors border border-transparent hover:border-border"
+                  onMouseEnter={() => setSelectedIndex(index)}
+                  className={`w-full text-left p-3 rounded-lg transition-all duration-200 border ${
+                    selectedIndex === index 
+                      ? 'bg-primary/10 border-primary/30 shadow-sm' 
+                      : index === 0 && selectedIndex === -1
+                      ? 'bg-primary/5 border-primary/20 hover:bg-primary/10' 
+                      : 'border-transparent hover:bg-muted/50 hover:border-border'
+                  }`}
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex-1 space-y-1">
@@ -121,18 +167,29 @@ export const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
                         <h3 className="font-medium text-sm text-foreground line-clamp-1">
                           {result.title}
                         </h3>
-                        <Badge variant="outline" className="text-xs">
-                          {result.type}
+                        <Badge 
+                          variant={result.type === 'blog' ? 'default' : 'outline'} 
+                          className="text-xs"
+                        >
+                          {result.type === 'blog' ? '📝 Blog' : result.type === 'page' ? '📄 Page' : '⚡ Feature'}
                         </Badge>
+                        {index === 0 && (
+                          <Badge variant="secondary" className="text-xs">
+                            ⭐ Top Result
+                          </Badge>
+                        )}
                       </div>
                       <p className="text-xs text-muted-foreground line-clamp-2">
                         {result.content}
                       </p>
                       <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                        <span>{result.url}</span>
+                        <span className="truncate">{result.url}</span>
+                        {result.relevance > 10 && (
+                          <span className="ml-auto text-primary font-medium">High Match</span>
+                        )}
                       </div>
                     </div>
-                    <ExternalLink className="h-4 w-4 text-muted-foreground" />
+                    <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
                   </div>
                 </button>
               ))}
@@ -140,8 +197,21 @@ export const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
               {results.length === 0 && !isLoading && (
                 <div className="text-center py-8 text-muted-foreground">
                   <Search className="h-8 w-8 mx-auto mb-2 opacity-50" />
-                  <p>No results found for "{query}"</p>
-                  <p className="text-sm">Try different keywords or browse our popular content below.</p>
+                  <p className="font-medium">No results found for "{query}"</p>
+                  <p className="text-sm mb-4">Try different keywords or browse our popular content below.</p>
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    {searchService.getPopularSearches().slice(0, 4).map((search) => (
+                      <Button
+                        key={search}
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handleSuggestionClick(search)}
+                        className="h-7 text-xs"
+                      >
+                        {search}
+                      </Button>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
