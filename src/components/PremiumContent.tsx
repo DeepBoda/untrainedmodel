@@ -87,8 +87,7 @@ const PremiumContent = () => {
         </h2>
         
         <p className="apple-section-subtitle text-foreground/70">
-          Experience next-generation AI that understands context, creates with precision, 
-          and delivers professional-grade results.
+          Our platform is engineered to provide a seamless and intuitive experience, allowing you to harness the power of advanced AI without the complexity. We bring together the best models for content creation, code generation, and data analysis in one unified interface, designed for both beginners and experts. Below, explore the features that make UntrainedModel the ideal choice for your creative and technical projects.
         </p>
 
         {/* Features Grid */}

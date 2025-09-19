@@ -95,8 +95,17 @@ const Playground = () => {
       description="Test and experiment with advanced AI models including GPT-4, Gemini, and more. Generate high-quality text, code, and images with our free AI playground. Perfect for developers, content creators, and AI enthusiasts."
       keywords="AI playground, GPT-4 playground, Gemini AI, free AI testing, text generation, code generation, image generation, OpenAI playground, Google AI, artificial intelligence tools, machine learning, prompt engineering"
     >
-      
       <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/5 pt-16 relative overflow-hidden">
+        {/* Welcome Section */}
+        <section className="py-12">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl font-bold mb-4">Welcome to the AI Playground!</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              This is your creative sandbox for exploring the power of artificial intelligence. Whether you're a writer, developer, marketer, or just curious, our playground lets you interact with leading AI models to generate text, write code, and much more. Think of it as your personal AI assistant, ready to help you with any task.
+            </p>
+          </div>
+        </section>
+        
         {/* Playful Background */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-10 left-10 w-32 h-32 bg-yellow-400/20 rounded-full blur-xl animate-bounce" style={{ animationDuration: '3s' }} />

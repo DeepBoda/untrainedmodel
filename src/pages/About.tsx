@@ -247,6 +247,20 @@ const About = () => {
           </div>
         </section>
 
+        {/* Community Section */}
+        <section className="py-20">
+          <div className="section-container">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
+                For the Community, by the Community
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed mb-12">
+                UntrainedModel is more than just a platform; it's a project built out of a passion for AI and a belief in its potential to empower people. We're an independent team of developers and designers who are committed to creating a space where anyone can explore and create with AI. Our goal is to foster a community of learners, builders, and innovators who are as excited about the future of artificial intelligence as we are.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="section-even py-20">
           <div className="section-container">

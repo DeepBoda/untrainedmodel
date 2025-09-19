@@ -4,6 +4,7 @@ import PremiumContent from '@/components/PremiumContent';
 import EnhancedFeatureShowcase from '@/components/EnhancedFeatureShowcase';
 import IndustryLeaders from '@/components/IndustryLeaders';
 import EnhancedTestimonialSection from '@/components/EnhancedTestimonialSection';
+import RecentBlogPosts from '@/components/RecentBlogPosts';
 import { StructuredData } from '@/components/StructuredData';
 
 const Index = () => {
@@ -30,6 +31,9 @@ const Index = () => {
 
         {/* Testimonials - Section 5 (Odd) */}
         <EnhancedTestimonialSection />
+
+        {/* Blog Posts - Section 6 (Even) */}
+        <RecentBlogPosts />
       </div>
     </Layout>
   );
