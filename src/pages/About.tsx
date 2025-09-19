@@ -97,22 +97,15 @@ const About = () => {
               
               <div className="prose prose-lg prose-gray dark:prose-invert max-w-none">
                 <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
-                  UntrainedModel was born from a simple frustration: why was it so hard to access and use the incredible AI tools 
-                  that were being developed? As developers and creators ourselves, we found ourselves constantly jumping between 
-                  different platforms, dealing with complex APIs, and struggling with inconsistent interfaces.
+                  UntrainedModel was founded in early 2023 by a group of software engineers and designers who were captivated by the potential of large language models but frustrated by their inaccessibility. As developers and creators ourselves, we found ourselves constantly jumping between different platforms, dealing with complex APIs, and struggling with inconsistent interfaces. We saw a clear need for a unified, user-friendly platform that would make the power of AI accessible to everyone.
                 </p>
                 
                 <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
-                  We realized that while AI technology was advancing at breakneck speed, the user experience was lagging behind. 
-                  Powerful models like GPT-4, Claude, and Gemini were available, but using them effectively required technical 
-                  knowledge that most people didn't have.
+                  We realized that while AI technology was advancing at breakneck speed, the user experience was lagging behind. Powerful models like GPT-4, Claude, and Gemini were available, but using them effectively required technical knowledge that most people didn't have. Our mission became to bridge this gap.
                 </p>
                 
                 <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
-                  So we decided to build the platform we wished existed: a unified interface that brings together the best AI models 
-                  from different providers, wrapped in an intuitive experience that anyone can use. Whether you're a writer looking 
-                  for creative inspiration, a developer debugging code, or a business owner analyzing data, UntrainedModel makes 
-                  AI accessible and useful.
+                  So we decided to build the platform we wished existed: a unified interface that brings together the best AI models from different providers, wrapped in an intuitive experience that anyone can use. Whether you're a writer looking for creative inspiration, a developer debugging code, or a business owner analyzing data, UntrainedModel makes AI accessible and useful. We are entirely self-funded and driven by our passion for this technology and our belief in its potential to empower people.
                 </p>
               </div>
             </div>

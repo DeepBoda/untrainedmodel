@@ -70,10 +70,22 @@ const AdvancedHero = () => {
         </h1>
 
         {/* Description */}
-        <p className="apple-section-subtitle text-foreground/70">
-          Generate professional content, production-ready code, and stunning visuals using 
-          GPT-4, Claude 3, and Gemini Pro. All in one unified platform.
+        <p className="apple-section-subtitle text-foreground/70 max-w-3xl mx-auto">
+          Welcome to a smarter way to create. UntrainedModel is your all-in-one AI toolkit, designed to streamline your workflow and amplify your creativity. Whether you're a developer, a writer, a marketer, or a student, our platform provides intuitive access to the world's most advanced AI models, including GPT-4, Claude 3, and Gemini Pro.
         </p>
+        <div className="prose prose-lg prose-gray dark:prose-invert max-w-3xl mx-auto text-left mt-8">
+          <p>
+            Our mission is to make powerful AI accessible to everyone. We believe that you shouldn't need to be a machine learning expert to benefit from the latest advancements in artificial intelligence. That's why we've built a platform that is both powerful and easy to use. Here's how UntrainedModel can transform your work:
+          </p>
+          <ul>
+            <li><strong>For Developers:</strong> Instantly generate boilerplate code, debug complex functions, and even write unit tests. Our AI understands a wide range of programming languages and frameworks, helping you build faster and more efficiently.</li>
+            <li><strong>For Content Creators:</strong> Overcome writer's block with creative suggestions, generate high-quality articles, and craft compelling marketing copy. Our AI can adapt to your unique voice and style, making it the perfect writing partner.</li>
+            <li><strong>For Students and Researchers:</strong> Summarize complex topics, analyze data, and get help with your research questions. UntrainedModel is a powerful tool for learning and discovery.</li>
+          </ul>
+          <p>
+            We are committed to providing a secure and private experience. We don't store your conversations or use your data for training. What you create with UntrainedModel is yours and yours alone. Start exploring today and see what you can create with the power of AI at your fingertips.
+          </p>
+        </div>
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-20">
