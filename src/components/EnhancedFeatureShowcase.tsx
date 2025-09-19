@@ -27,22 +27,22 @@ const EnhancedFeatureShowcase = () => {
     {
       icon: Brain,
       title: 'Text Generation',
-      description: 'Create professional content with advanced language models that understand context and maintain your unique voice.',
-      demo: 'Generate blog posts, emails, documentation, and creative content with AI that adapts to your writing style.',
+      description: 'Create professional content with advanced language models that understand context and maintain your unique voice. Ideal for marketers, writers, and students.',
+      demo: 'For example, you can generate a detailed blog post on "The Future of Renewable Energy" or create compelling marketing copy for a new product launch. Our AI adapts to your writing style, ensuring the content is uniquely yours.',
       color: 'from-blue-500 to-purple-600'
     },
     {
       icon: Code2,
       title: 'Code Generation',
-      description: 'Intelligent code completion and generation across multiple programming languages and frameworks.',
-      demo: 'From simple functions to complete applications - AI that understands your coding patterns.',
+      description: 'Accelerate your development process with intelligent code completion, debugging, and generation across multiple programming languages and frameworks.',
+      demo: 'Quickly generate a Python script for data analysis, create a React component for your web app, or get help debugging a complex SQL query. Our AI understands your coding patterns and provides production-ready code.',
       color: 'from-green-500 to-teal-600'
     },
     {
       icon: MessageSquare,
       title: 'AI Chat',
-      description: 'Natural conversations with advanced AI that remembers context and provides expert assistance.',
-      demo: 'Get help with complex problems, brainstorm ideas, and have meaningful conversations with AI.',
+      description: 'Engage in natural, context-aware conversations with an AI assistant that can help you brainstorm, solve problems, and learn new topics.',
+      demo: 'Ask complex questions like "Explain the theory of relativity in simple terms" or use it as a brainstorming partner to come up with ideas for your next project. Our AI remembers the context of your conversation for a seamless experience.',
       color: 'from-orange-500 to-yellow-600'
     }
   ];

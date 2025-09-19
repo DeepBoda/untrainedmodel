@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -121,9 +122,24 @@ const Playground = () => {
             <h1 className="text-4xl font-bold mb-2">
               🎮 <span className="bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent">AI Playground</span> ⚡
             </h1>
-            <p className="text-lg text-muted-foreground">
-              Let's create something amazing together!
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Welcome to your creative sandbox. The AI Playground is an interactive space where you can experiment with the world's most advanced AI models. Whether you're drafting a blog post, debugging a piece of code, or brainstorming ideas for a new project, our playground provides the tools you need to get the job done.
             </p>
+          </div>
+          <div className="prose prose-lg prose-gray dark:prose-invert max-w-3xl mx-auto text-left mt-8">
+              <h3>How to Use the Playground</h3>
+              <p>
+                Using the AI Playground is simple. Just type a prompt into the text area below and our AI will generate a response. You can be as specific or as general as you like. For example, you could ask the AI to:
+              </p>
+              <ul>
+                <li>"Write a Python script that scrapes data from a website."</li>
+                <li>"Create a marketing plan for a new coffee shop."</li>
+                <li>"Explain the concept of quantum computing in simple terms."</li>
+              </ul>
+              <h3>Privacy and Data</h3>
+              <p>
+                We take your privacy seriously. We do not store your conversations, and we do not use your data to train our models. All interactions with the AI are processed in real-time and are not saved. For more details, please see our <Link to="/privacy">Privacy Policy</Link>.
+              </p>
           </div>
           
           {/* Floating Stats - Scattered */}

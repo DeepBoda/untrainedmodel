@@ -18,7 +18,7 @@ const Navigation = () => {
   const location = useLocation();
 
   const navigationItems = [
-    { name: 'AI Playground', href: '/playground' },
+    { name: 'Free AI Demo', href: '/playground' },
     { name: 'Blog', href: '/blog' },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' }
@@ -91,7 +91,7 @@ const Navigation = () => {
                 </kbd>
               </Button>
               <ThemeToggle />
-              <Button asChild className="bg-primary hover:bg-primary-hover text-primary-foreground"><Link to="/playground">Try AI Playground</Link></Button>
+              <Button asChild className="bg-primary hover:bg-primary-hover text-primary-foreground"><Link to="/playground">Try Free AI Demo</Link></Button>
             </div>
 
             <div className="lg:hidden flex items-center space-x-2">
