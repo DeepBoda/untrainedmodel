@@ -20,7 +20,7 @@ const blogPostsData: Record<string, BlogPostData> = {
     title: "Gemini 2.0 vs ChatGPT-4: Which AI is Best for Indian Users in 2025?",
     excerpt: "Complete comparison of Google Gemini 2.0 and ChatGPT-4 for Indian students, professionals, and businesses. Includes pricing in rupees, Hindi support, and India-specific use cases.",
     author: "Rajesh Kumar",
-    publishDate: new Date("2025-01-15"),
+    publishDate: new Date("2025-10-10"),
     readTime: "12 min read",
     tags: ["AI Comparison", "Gemini", "ChatGPT", "India", "2025"],
     content: `# Gemini 2.0 vs ChatGPT-4: Which AI is Best for Indian Users in 2025?
@@ -197,7 +197,7 @@ Remember: The best AI is the one you'll actually use consistently. For most Indi
     title: "Best AI Tools for JEE, NEET & UPSC Preparation in 2025",
     excerpt: "Discover how Indian students are using ChatGPT, Gemini, and other AI tools to crack competitive exams. Includes free resources, study strategies, and real success stories.",
     author: "Priya Sharma",
-    publishDate: new Date("2025-01-12"),
+    publishDate: new Date("2025-10-08"),
     readTime: "15 min read",
     tags: ["Education", "JEE", "NEET", "UPSC", "AI Tools", "India"],
     content: `# Best AI Tools for JEE, NEET & UPSC Preparation in 2025
@@ -456,7 +456,7 @@ Thousands of Indian students are already using AI to crack competitive exams. Th
     title: "How AI Is Revolutionizing Daily Tasks",
     excerpt: "Discover how artificial intelligence is transforming everyday activities, from personal productivity to creative endeavors, making our lives more efficient and enjoyable.",
     author: "Alex Chen",
-    publishDate: new Date("2025-07-15"),
+    publishDate: new Date("2025-09-15"),
     readTime: "8 min read",
     tags: ["AI", "Productivity", "Technology", "Daily Life"],
     content: `# How AI Is Revolutionizing Daily Tasks (And Why Your Coffee Maker Is Probably Smarter Than You Think)
@@ -631,7 +631,7 @@ And yes, my coffee maker is still smarter than I am first thing in the morning. 
     title: "Prompt Engineering Masterclass 2025: Get 10X Better AI Results",
     excerpt: "Master the art of writing AI prompts that actually work. Learn advanced techniques used by professionals to get amazing results from ChatGPT, Gemini, and Claude.",
     author: "Amit Verma",
-    publishDate: new Date("2025-01-10"),
+    publishDate: new Date("2025-10-05"),
     readTime: "18 min read",
     tags: ["Prompt Engineering", "AI Tips", "Productivity", "Tutorial"],
     content: `# Prompt Engineering Masterclass 2025: Get 10X Better AI Results
@@ -848,7 +848,7 @@ Start practicing today. Your future self will thank you.`
     title: "Top 5 Ways to Use ChatGPT as a Developer",
     excerpt: "Maximize your development productivity with ChatGPT. Learn practical strategies that can transform your coding workflow and accelerate your projects.",
     author: "Sarah Johnson",
-    publishDate: new Date("2025-07-10"),
+    publishDate: new Date("2025-09-10"),
     readTime: "10 min read",
     tags: ["ChatGPT", "Development", "Productivity", "Programming"],
     content: `# Top 5 Ways to Use ChatGPT as a Developer (Without Becoming a Prompt Engineering Wizard)
@@ -1019,7 +1019,7 @@ And yes, ChatGPT helped me brainstorm the structure for this article. But the ex
     title: "The Future of AI Tools in Creative Industries",
     excerpt: "Explore how artificial intelligence is reshaping creative fields, from graphic design to music production, and what it means for creative professionals.",
     author: "Michael Rodriguez",
-    publishDate: new Date("2025-07-05"),
+    publishDate: new Date("2025-09-05"),
     readTime: "12 min read",
     tags: ["AI", "Creativity", "Design", "Future Tech"],
     content: `# The Future of AI Tools in Creative Industries (Or: How I Learned to Stop Worrying and Love My Robot Assistant)
@@ -1217,7 +1217,7 @@ The future of creativity isn't human vs. machine—it's human with machine, crea
     title: "Building Secure AI Applications: Best Practices Guide",
     excerpt: "Learn essential security considerations when developing AI-powered applications, from data protection to model security and ethical AI implementation.",
     author: "Dr. Emily Watson",
-    publishDate: new Date("2025-07-01"),
+    publishDate: new Date("2025-09-01"),
     readTime: "15 min read",
     tags: ["AI Security", "Cybersecurity", "Best Practices", "Development"],
     content: `# Building Secure AI Applications: Best Practices Guide (Or: How I Learned to Stop Worrying and Love Paranoid Programming)
@@ -1344,7 +1344,7 @@ The future belongs to AI systems that are not just intelligent, but intelligentl
     title: "Mastering Prompt Engineering: Advanced Techniques",
     excerpt: "Deep dive into advanced prompt engineering strategies that will help you get better results from AI models. Learn from real-world examples and expert insights.",
     author: "Dr. Rachel Kim",
-    publishDate: new Date("2025-07-12"),
+    publishDate: new Date("2025-09-12"),
     readTime: "14 min read",
     tags: ["Prompt Engineering", "AI Optimization", "Best Practices", "Tutorial"],
     content: `# Mastering Prompt Engineering: Advanced Techniques (The Art of Talking to Machines Like They're Very Smart Toddlers)
@@ -1482,7 +1482,7 @@ Remember: the goal isn't to become a prompt engineering wizard overnight. It's t
     title: "AI-Powered Code Review: Transforming Development Workflows",
     excerpt: "Learn how AI is revolutionizing code review processes, catching bugs early, and improving code quality across development teams.",
     author: "Marcus Thompson",
-    publishDate: new Date("2025-07-08"),
+    publishDate: new Date("2025-09-08"),
     readTime: "11 min read",
     tags: ["Code Review", "AI Development", "Software Engineering", "DevOps"],
     content: `# AI-Powered Code Review: Transforming Development Workflows (And Making Senior Developers Slightly Less Grumpy)
@@ -1653,7 +1653,7 @@ The future of software development is collaborative, and that collaboration incr
     title: "Ethical AI Development: Principles and Practices",
     excerpt: "Explore the fundamental principles of ethical AI development and learn how to build responsible AI systems that benefit society.",
     author: "Dr. Priya Sharma",
-    publishDate: new Date("2025-07-06"),
+    publishDate: new Date("2025-09-06"),
     readTime: "16 min read",
     tags: ["AI Ethics", "Responsible AI", "Machine Learning", "Technology Policy"],
     content: `# Ethical AI Development: Principles and Practices (Because "It's Not My Fault, The Algorithm Did It" Isn't a Valid Defense)
@@ -1852,7 +1852,7 @@ The future belongs to AI systems that are not just intelligent, but intelligentl
     title: "Multi-Modal AI: Beyond Text Generation",
     excerpt: "Discover the exciting world of multi-modal AI systems that can understand and generate text, images, audio, and video content simultaneously.",
     author: "James Liu",
-    publishDate: new Date("2025-07-04"),
+    publishDate: new Date("2025-09-04"),
     readTime: "13 min read",
     tags: ["Multi-Modal AI", "Computer Vision", "NLP", "Innovation"],
     content: `# Multi-Modal AI: Beyond Text Generation (When Machines Learn to See, Hear, and Speak Like Humans)
@@ -1999,7 +1999,7 @@ The age of single-modality AI is ending. The age of truly intelligent, multi-mod
     title: "AI in Data Science: Automating Analysis Workflows",
     excerpt: "Learn how AI is transforming data science by automating complex analysis workflows, from data cleaning to insight generation.",
     author: "Dr. Amanda Foster",
-    publishDate: new Date("2025-07-03"),
+    publishDate: new Date("2025-09-03"),
     readTime: "12 min read",
     tags: ["Data Science", "AI Automation", "Analytics", "Machine Learning"],
     content: `# AI in Data Science: Automating Analysis Workflows (And Finally Making Data Cleaning Less Soul-Crushing)
@@ -2214,7 +2214,7 @@ The future of data science is collaborative, efficient, and more impactful than 
     title: "Building Conversational AI: From Chatbots to Assistants",
     excerpt: "A comprehensive guide to building sophisticated conversational AI systems that can understand context and provide meaningful interactions.",
     author: "Carlos Rodriguez",
-    publishDate: new Date("2025-07-02"),
+    publishDate: new Date("2025-09-02"),
     readTime: "18 min read",
     tags: ["Conversational AI", "Chatbots", "NLP", "User Experience"],
     content: `# Building Conversational AI: From Chatbots to Intelligent Assistants
@@ -2370,7 +2370,7 @@ The journey from simple chatbots to intelligent assistants is far from over, but
     title: "AI Model Optimization: Performance and Efficiency",
     excerpt: "Master the art of optimizing AI models for better performance, reduced latency, and improved efficiency in production environments.",
     author: "Dr. Kevin Zhang",
-    publishDate: new Date("2023-12-30"),
+    publishDate: new Date("2025-08-30"),
     readTime: "15 min read",
     tags: ["Model Optimization", "Performance", "AI Infrastructure", "MLOps"],
     content: `# AI Model Optimization: Performance and Efficiency (Or, How to Make Your AI Faster, Cheaper, and Better)
@@ -2504,7 +2504,7 @@ The future of AI is not just about building bigger models—it's about building 
     title: "The Rise of Edge AI: Computing at the Source",
     excerpt: "Explore how edge AI is bringing intelligent processing closer to data sources, enabling real-time decisions and improved privacy.",
     author: "Lisa Park",
-    publishDate: new Date("2023-12-28"),
+    publishDate: new Date("2025-08-28"),
     readTime: "10 min read",
     tags: ["Edge AI", "IoT", "Real-time Processing", "Edge Computing"],
     content: `# The Rise of Edge AI: Computing at the Source

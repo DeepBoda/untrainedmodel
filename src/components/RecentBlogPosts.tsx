@@ -8,7 +8,7 @@ const blogPosts = [
     title: "Google Gemini 2.0 vs ChatGPT-4: Which AI is Better for Indian Users in 2025?",
     excerpt: "Complete comparison of Google Gemini 2.0 and ChatGPT-4 for Indian students, developers, and businesses. Real-world testing, pricing analysis, and honest recommendations.",
     author: "Rajesh Kumar",
-    publishDate: new Date("2025-01-15"),
+    publishDate: new Date("2025-10-10"),
     readTime: "12 min read",
     tags: ["AI Comparison", "Gemini 2.0", "ChatGPT-4", "India"],
     slug: "gemini-2-vs-chatgpt4-indian-users-2025"
@@ -18,7 +18,7 @@ const blogPosts = [
     title: "How Indian Students Are Using AI to Crack JEE, NEET & UPSC in 2025",
     excerpt: "Real success stories of Indian students using AI tools for competitive exam preparation. Learn proven strategies, best AI tools, and study techniques that are working right now.",
     author: "Priya Sharma",
-    publishDate: new Date("2025-01-12"),
+    publishDate: new Date("2025-10-08"),
     readTime: "15 min read",
     tags: ["AI for Students", "JEE", "NEET", "UPSC"],
     slug: "ai-tools-jee-neet-upsc-preparation-2025"
@@ -28,7 +28,7 @@ const blogPosts = [
     title: "AI Prompt Engineering Masterclass: Get 10x Better Results in 2025",
     excerpt: "Master the art of prompt engineering with latest techniques for ChatGPT, Gemini, and Claude. Includes 50+ proven prompts for coding, content writing, and business.",
     author: "Amit Patel",
-    publishDate: new Date("2025-01-10"),
+    publishDate: new Date("2025-10-05"),
     readTime: "18 min read",
     tags: ["Prompt Engineering", "AI Tips", "Tutorial"],
     slug: "prompt-engineering-masterclass-2025"

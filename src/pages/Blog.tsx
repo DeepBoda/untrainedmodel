@@ -18,7 +18,7 @@ const blogPosts: BlogPost[] = [
     title: "Google Gemini 2.0 vs ChatGPT-4: Which AI is Better for Indian Users in 2025?",
     excerpt: "Complete comparison of Google Gemini 2.0 and ChatGPT-4 for Indian students, developers, and businesses. Real-world testing, pricing analysis, and honest recommendations for the Indian market.",
     author: "Rajesh Kumar",
-    publishDate: new Date("2025-01-15"),
+    publishDate: new Date("2025-10-10"),
     readTime: "12 min read",
     tags: ["AI Comparison", "Gemini 2.0", "ChatGPT-4", "India", "2025 Trends"],
     slug: "gemini-2-vs-chatgpt4-indian-users-2025"
@@ -28,7 +28,7 @@ const blogPosts: BlogPost[] = [
     title: "How Indian Students Are Using AI to Crack JEE, NEET & UPSC in 2025",
     excerpt: "Real success stories of Indian students using AI tools for competitive exam preparation. Learn proven strategies, best AI tools, and study techniques that are working right now.",
     author: "Priya Sharma",
-    publishDate: new Date("2025-01-12"),
+    publishDate: new Date("2025-10-08"),
     readTime: "15 min read",
     tags: ["AI for Students", "JEE Preparation", "NEET", "UPSC", "Exam Tips", "India"],
     slug: "ai-tools-jee-neet-upsc-preparation-2025"
@@ -38,7 +38,7 @@ const blogPosts: BlogPost[] = [
     title: "AI Prompt Engineering Masterclass: Get 10x Better Results in 2025",
     excerpt: "Master the art of prompt engineering with latest techniques for ChatGPT, Gemini, and Claude. Includes 50+ proven prompts for coding, content writing, and business use cases.",
     author: "Amit Patel",
-    publishDate: new Date("2025-01-10"),
+    publishDate: new Date("2025-10-05"),
     readTime: "18 min read",
     tags: ["Prompt Engineering", "AI Tips", "ChatGPT", "Productivity", "Tutorial"],
     slug: "prompt-engineering-masterclass-2025"
@@ -48,7 +48,7 @@ const blogPosts: BlogPost[] = [
     title: "Make Money with AI in India: 12 Proven Ways to Earn ₹50,000+ Monthly",
     excerpt: "Discover legitimate ways Indian freelancers and entrepreneurs are earning ₹50,000 to ₹2 lakhs monthly using AI tools. Includes step-by-step guides, client acquisition strategies, and real income proof.",
     author: "Vikram Singh",
-    publishDate: new Date("2025-01-08"),
+    publishDate: new Date("2025-10-03"),
     readTime: "20 min read",
     tags: ["Make Money Online", "AI Business", "Freelancing India", "Side Hustle", "Income"],
     slug: "make-money-with-ai-india-2025"
@@ -58,7 +58,7 @@ const blogPosts: BlogPost[] = [
     title: "ChatGPT vs Claude vs Gemini: The Ultimate AI Showdown 2025",
     excerpt: "Tested all major AI models with 100+ real-world tasks. See which AI wins for coding, content writing, data analysis, and creative work. Includes speed tests and accuracy comparisons.",
     author: "Neha Gupta",
-    publishDate: new Date("2025-01-05"),
+    publishDate: new Date("2025-10-01"),
     readTime: "16 min read",
     tags: ["AI Comparison", "ChatGPT", "Claude", "Gemini", "Review", "2025"],
     slug: "chatgpt-vs-claude-vs-gemini-2025"
@@ -68,7 +68,7 @@ const blogPosts: BlogPost[] = [
     title: "AI Tools Every Indian Developer Must Use in 2025",
     excerpt: "Curated list of 25+ AI coding assistants, debugging tools, and productivity apps that Indian developers are using to 10x their output. Most are free or have generous free tiers.",
     author: "Arjun Reddy",
-    publishDate: new Date("2025-01-03"),
+    publishDate: new Date("2025-09-28"),
     readTime: "14 min read",
     tags: ["Developer Tools", "AI Coding", "Productivity", "India", "Free Tools"],
     slug: "ai-tools-indian-developers-2025"
@@ -78,7 +78,7 @@ const blogPosts: BlogPost[] = [
     title: "Free AI Tools for Content Creators in India: Complete Guide 2025",
     excerpt: "Everything Indian YouTubers, bloggers, and social media creators need to know about AI tools. Create viral content, thumbnails, scripts, and captions in minutes. All free or affordable options.",
     author: "Sneha Iyer",
-    publishDate: new Date("2025-01-01"),
+    publishDate: new Date("2025-09-25"),
     readTime: "17 min read",
     tags: ["Content Creation", "YouTube", "Social Media", "Free Tools", "India"],
     slug: "free-ai-tools-content-creators-india-2025"
@@ -88,7 +88,7 @@ const blogPosts: BlogPost[] = [
     title: "AI Resume Builder: Get Hired by Top Indian Companies in 2025",
     excerpt: "Learn how to use AI to create ATS-friendly resumes that get interviews at TCS, Infosys, Wipro, and startups. Includes templates, keywords, and real examples that worked.",
     author: "Karthik Menon",
-    publishDate: new Date("2024-12-28"),
+    publishDate: new Date("2025-09-22"),
     readTime: "13 min read",
     tags: ["Career", "Resume", "Job Search", "AI Tools", "India", "Placement"],
     slug: "ai-resume-builder-indian-companies-2025"
@@ -98,7 +98,7 @@ const blogPosts: BlogPost[] = [
     title: "ChatGPT Prompts for Indian Businesses: 100+ Ready-to-Use Templates",
     excerpt: "Copy-paste prompts for marketing, sales, customer service, and operations. Specifically designed for Indian SMEs, startups, and local businesses. Save 20+ hours weekly.",
     author: "Deepak Malhotra",
-    publishDate: new Date("2024-12-25"),
+    publishDate: new Date("2025-09-20"),
     readTime: "22 min read",
     tags: ["Business", "ChatGPT Prompts", "Marketing", "India", "SME", "Templates"],
     slug: "chatgpt-prompts-indian-businesses-2025"
