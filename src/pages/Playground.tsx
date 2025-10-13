@@ -92,9 +92,9 @@ const Playground = () => {
 
   return (
     <Layout
-      title="AI Playground - Free GPT-4 & Gemini AI Testing Platform"
-      description="Test and experiment with advanced AI models including GPT-4, Gemini, and more. Generate high-quality text, code, and images with our free AI playground. Perfect for developers, content creators, and AI enthusiasts."
-      keywords="AI playground, GPT-4 playground, Gemini AI, free AI testing, text generation, code generation, image generation, OpenAI playground, Google AI, artificial intelligence tools, machine learning, prompt engineering"
+      title="Free AI Playground India - Test ChatGPT-4, Gemini 2.0, Claude 3 | No Signup Required"
+      description="India's most popular free AI playground. Test ChatGPT-4, Google Gemini 2.0, Claude 3 instantly without signup. Generate code, write content, solve problems, learn programming. Perfect for Indian students, developers, content creators. Works on slow internet. Hindi support."
+      keywords="free AI playground India, ChatGPT playground free, Gemini AI playground, Claude AI free, AI testing platform India, free GPT-4 access India, AI code generator free, AI content writer free India, no signup AI tool, AI for students free India, prompt engineering playground, best free AI 2025 India, AI chatbot free India, OpenAI alternative India"
     >
       <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/5 pt-16 relative overflow-hidden">
         {/* Welcome Section */}

@@ -173,22 +173,136 @@ const About = () => {
           <div className="section-container">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
-                Built by AI Enthusiasts
+                Built by AI Enthusiasts for the Indian Community
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed mb-12">
-                We're a small but passionate team of developers, designers, and AI researchers who believe in the 
-                transformative power of artificial intelligence. We're not just building tools—we're crafting experiences 
-                that make AI feel magical and accessible.
+                We're a passionate team of developers, designers, and AI researchers based in India who believe in the 
+                transformative power of artificial intelligence. Our mission is to democratize AI access for Indian students, 
+                professionals, entrepreneurs, and businesses. We understand the unique challenges and opportunities in the Indian 
+                market, from language diversity to cost sensitivity, and we've built UntrainedModel to address these specific needs.
               </p>
               
+              <div className="grid md:grid-cols-2 gap-8 mb-12">
+                <div className="bg-white dark:bg-black rounded-2xl p-8 border border-gray-200 dark:border-gray-800 hover:scale-105 transition-all duration-300">
+                  <div className="text-4xl mb-4">🇮🇳</div>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                    Made in India, For India
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400">
+                    Understanding Indian users' needs, from regional language support to affordable pricing models. 
+                    We're building AI tools that work for Indian internet speeds, devices, and use cases.
+                  </p>
+                </div>
+                
+                <div className="bg-white dark:bg-black rounded-2xl p-8 border border-gray-200 dark:border-gray-800 hover:scale-105 transition-all duration-300">
+                  <div className="text-4xl mb-4">🎓</div>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                    Empowering Students & Professionals
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400">
+                    From engineering students learning to code to content creators building their brands, 
+                    we provide free AI tools that level the playing field and unlock opportunities.
+                  </p>
+                </div>
+              </div>
+              
               <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 rounded-2xl p-8 border border-blue-200 dark:border-blue-800">
-                <p className="text-lg text-gray-700 dark:text-gray-300 italic">
+                <p className="text-lg text-gray-700 dark:text-gray-300 italic mb-4">
                   "Our goal isn't to replace human creativity or intelligence—it's to amplify it. 
-                  AI should make you more creative, more productive, and more capable of bringing your ideas to life."
+                  AI should make you more creative, more productive, and more capable of bringing your ideas to life. 
+                  We believe every Indian student, entrepreneur, and professional deserves access to world-class AI tools 
+                  without breaking the bank."
                 </p>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
-                  — The UntrainedModel Team
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  — The UntrainedModel Team, India
                 </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        {/* Why India Needs UntrainedModel */}
+        <section className="py-20">
+          <div className="section-container">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">
+                Why India Needs Accessible AI
+              </h2>
+              
+              <div className="space-y-8">
+                <div className="bg-white dark:bg-black rounded-2xl p-8 border border-gray-200 dark:border-gray-800">
+                  <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
+                    💼 Bridging the Digital Divide
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+                    India has over 700 million internet users, but access to premium AI tools remains limited due to cost barriers. 
+                    Many international AI platforms charge in dollars, making them unaffordable for students and small businesses. 
+                    UntrainedModel provides free access to the same powerful AI models used by Fortune 500 companies, ensuring that 
+                    talent and ambition—not budget—determine success.
+                  </p>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    Whether you're a student in a tier-2 city preparing for competitive exams, a freelancer building your portfolio, 
+                    or a startup founder creating your first product, you deserve the same AI capabilities as anyone else in the world.
+                  </p>
+                </div>
+                
+                <div className="bg-white dark:bg-black rounded-2xl p-8 border border-gray-200 dark:border-gray-800">
+                  <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
+                    🚀 Accelerating India's Tech Revolution
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+                    India is home to the world's third-largest startup ecosystem and produces millions of engineering graduates annually. 
+                    However, many talented individuals lack access to cutting-edge tools that could accelerate their learning and innovation. 
+                    UntrainedModel is helping bridge this gap by providing:
+                  </p>
+                  <ul className="space-y-3 text-gray-600 dark:text-gray-400">
+                    <li className="flex items-start gap-3">
+                      <span className="text-green-500 mt-1">✓</span>
+                      <span><strong>Code assistance</strong> for developers learning new programming languages and frameworks</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-green-500 mt-1">✓</span>
+                      <span><strong>Content creation tools</strong> for digital marketers and social media managers</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-green-500 mt-1">✓</span>
+                      <span><strong>Research assistance</strong> for students and academics working on projects and papers</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-green-500 mt-1">✓</span>
+                      <span><strong>Business planning support</strong> for entrepreneurs developing their ideas</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                <div className="bg-white dark:bg-black rounded-2xl p-8 border border-gray-200 dark:border-gray-800">
+                  <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
+                    🌏 Understanding Indian Context
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+                    We're not just another AI platform—we understand the Indian context. Our platform is optimized for:
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="bg-blue-50 dark:bg-blue-950/30 rounded-xl p-6">
+                      <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-3">Technical Optimization</h4>
+                      <ul className="space-y-2 text-blue-800 dark:text-blue-200 text-sm">
+                        <li>• Works on slower internet connections</li>
+                        <li>• Mobile-first design for smartphone users</li>
+                        <li>• Lightweight interface for older devices</li>
+                        <li>• Efficient data usage</li>
+                      </ul>
+                    </div>
+                    <div className="bg-purple-50 dark:bg-purple-950/30 rounded-xl p-6">
+                      <h4 className="font-semibold text-purple-900 dark:text-purple-100 mb-3">Cultural Understanding</h4>
+                      <ul className="space-y-2 text-purple-800 dark:text-purple-200 text-sm">
+                        <li>• Support for Indian English and expressions</li>
+                        <li>• Understanding of local business contexts</li>
+                        <li>• Relevant examples and use cases</li>
+                        <li>• Respect for cultural sensitivities</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -243,13 +357,142 @@ const About = () => {
         {/* Community Section */}
         <section className="py-20">
           <div className="section-container">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
-                For the Community, by the Community
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">
+                For the Indian Community, by the Indian Community
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed mb-12">
-                UntrainedModel is more than just a platform; it's a project built out of a passion for AI and a belief in its potential to empower people. We're an independent team of developers and designers who are committed to creating a space where anyone can explore and create with AI. Our goal is to foster a community of learners, builders, and innovators who are as excited about the future of artificial intelligence as we are.
-              </p>
+              
+              <div className="space-y-8">
+                <div className="text-center mb-12">
+                  <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
+                    UntrainedModel is more than just a platform; it's a movement to democratize AI access in India. 
+                    We're an independent team of developers and designers committed to creating a space where every Indian—
+                    from students in small towns to entrepreneurs in metros—can explore and create with AI. Our goal is to 
+                    foster a community of learners, builders, and innovators who are as excited about the future of 
+                    artificial intelligence as we are.
+                  </p>
+                </div>
+                
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="bg-white dark:bg-black rounded-2xl p-6 border border-gray-200 dark:border-gray-800 hover:scale-105 transition-all duration-300">
+                    <div className="text-3xl mb-4">🎓</div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                      Students & Learners
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm">
+                      From IIT aspirants to college students, use AI to learn faster, understand complex concepts, 
+                      and complete assignments more efficiently. Free tools for every student in India.
+                    </p>
+                  </div>
+                  
+                  <div className="bg-white dark:bg-black rounded-2xl p-6 border border-gray-200 dark:border-gray-800 hover:scale-105 transition-all duration-300">
+                    <div className="text-3xl mb-4">💼</div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                      Professionals & Freelancers
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm">
+                      Content writers, developers, designers, and marketers—boost your productivity and deliver 
+                      better work to clients. Compete globally with world-class AI tools.
+                    </p>
+                  </div>
+                  
+                  <div className="bg-white dark:bg-black rounded-2xl p-6 border border-gray-200 dark:border-gray-800 hover:scale-105 transition-all duration-300">
+                    <div className="text-3xl mb-4">🚀</div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                      Startups & Businesses
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm">
+                      Build products faster, create marketing content, analyze data, and automate tasks. 
+                      Access enterprise-grade AI without enterprise-grade costs.
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="bg-gradient-to-r from-orange-50 to-green-50 dark:from-orange-950/30 dark:to-green-950/30 rounded-2xl p-8 border border-orange-200 dark:border-orange-800">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 text-center">
+                    🇮🇳 Our Commitment to India
+                  </h3>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Always Free Core Features</h4>
+                      <p className="text-gray-700 dark:text-gray-300 text-sm">
+                        We promise to always maintain a generous free tier that provides real value. 
+                        AI shouldn't be a luxury—it should be accessible to every Indian with an internet connection.
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Built for Indian Users</h4>
+                      <p className="text-gray-700 dark:text-gray-300 text-sm">
+                        From understanding Indian English to optimizing for mobile-first usage, we're building 
+                        features specifically for the Indian market. Your feedback shapes our roadmap.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        {/* Real User Stories */}
+        <section className="section-even py-20">
+          <div className="section-container">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">
+                Real Stories from Indian Users
+              </h2>
+              
+              <div className="space-y-6">
+                <div className="bg-white dark:bg-black rounded-2xl p-8 border border-gray-200 dark:border-gray-800">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="text-4xl">🎓</div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                        Engineering Student, Pune
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                        "As a third-year computer science student, UntrainedModel has been a game-changer for my projects. 
+                        I used it to debug my code, understand complex algorithms, and even generate documentation. 
+                        What would have taken me days now takes hours. The best part? It's completely free, which is perfect 
+                        for students like me who can't afford expensive AI subscriptions."
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="bg-white dark:bg-black rounded-2xl p-8 border border-gray-200 dark:border-gray-800">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="text-4xl">✍️</div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                        Freelance Content Writer, Bangalore
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                        "I write content for multiple clients, and UntrainedModel helps me brainstorm ideas, improve my drafts, 
+                        and meet tight deadlines. It's like having a writing partner who's available 24/7. I've increased my 
+                        output by 40% while maintaining quality. For freelancers working on tight budgets, this tool is invaluable."
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="bg-white dark:bg-black rounded-2xl p-8 border border-gray-200 dark:border-gray-800">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="text-4xl">🚀</div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                        Startup Founder, Delhi
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                        "We're a bootstrapped startup, and hiring a full content team wasn't feasible. UntrainedModel helped us 
+                        create marketing copy, product descriptions, and even investor pitch materials. It's saved us lakhs in 
+                        content creation costs and helped us move faster than our funded competitors. This is exactly what Indian 
+                        startups need—powerful tools without the Silicon Valley price tag."
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>

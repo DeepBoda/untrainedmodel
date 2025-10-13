@@ -27,22 +27,22 @@ const EnhancedFeatureShowcase = () => {
     {
       icon: Brain,
       title: 'Text Generation',
-      description: 'Create professional content with advanced language models that understand context and maintain your unique voice. Ideal for marketers, writers, and students.',
-      demo: 'For example, you can generate a detailed blog post on "The Future of Renewable Energy" or create compelling marketing copy for a new product launch. Our AI adapts to your writing style, ensuring the content is uniquely yours.',
+      description: 'Generate viral blog posts, SEO-optimized articles, social media content, and marketing copy in seconds. Perfect for Indian content creators, bloggers, and digital marketers who need high-quality content fast.',
+      demo: 'Create a 2000-word blog post on "Best AI Tools for Indian Students 2025" with proper headings, keywords, and engaging hooks. Generate Instagram captions in Hinglish, write product descriptions for e-commerce, or create email campaigns that convert. Works in English, Hindi, and Hinglish.',
       color: 'from-blue-500 to-purple-600'
     },
     {
       icon: Code2,
       title: 'Code Generation',
-      description: 'Accelerate your development process with intelligent code completion, debugging, and generation across multiple programming languages and frameworks.',
-      demo: 'Quickly generate a Python script for data analysis, create a React component for your web app, or get help debugging a complex SQL query. Our AI understands your coding patterns and provides production-ready code.',
+      description: 'Write production-ready code 10x faster with AI that understands Indian developer needs. Debug errors instantly, learn new frameworks, and build projects faster. Supports Python, JavaScript, Java, C++, React, Node.js, and more.',
+      demo: 'Build a complete MERN stack authentication system in minutes. Debug complex React hooks errors. Generate REST APIs with MongoDB integration. Create responsive UI components with Tailwind CSS. Perfect for college projects, freelance work, and interview preparation at TCS, Infosys, Wipro.',
       color: 'from-green-500 to-teal-600'
     },
     {
       icon: MessageSquare,
       title: 'AI Chat',
-      description: 'Engage in natural, context-aware conversations with an AI assistant that can help you brainstorm, solve problems, and learn new topics.',
-      demo: 'Ask complex questions like "Explain the theory of relativity in simple terms" or use it as a brainstorming partner to come up with ideas for your next project. Our AI remembers the context of your conversation for a seamless experience.',
+      description: '24/7 AI tutor and problem solver that understands Indian context. Get homework help, exam preparation support, business advice, and career guidance. Explains concepts in simple Hindi-English mix.',
+      demo: 'Prepare for JEE/NEET/UPSC with personalized study plans. Get step-by-step solutions for physics, chemistry, math problems. Learn DSA for coding interviews. Get business ideas for Indian market. Understand GST, startup funding, digital marketing. Ask in English, Hindi, or Hinglish - AI understands all.',
       color: 'from-orange-500 to-yellow-600'
     }
   ];

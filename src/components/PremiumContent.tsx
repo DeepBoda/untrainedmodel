@@ -20,45 +20,45 @@ const PremiumContent = () => {
   const features = [
     {
       icon: Code2,
-      title: "Code Generation",
-      description: "Generate production-ready code in 15+ programming languages with intelligent documentation.",
-      capabilities: ["React components", "API endpoints", "Database queries", "Unit tests"]
+      title: "AI Code Assistant for Indian Developers",
+      description: "Write code 10x faster in Python, Java, JavaScript, C++, React, Node.js. Perfect for college projects, freelancing, and cracking interviews at top Indian IT companies.",
+      capabilities: ["Full-stack web apps", "DSA for interviews", "Bug fixing & debugging", "College project help"]
     },
     {
       icon: FileText,
-      title: "Content Creation",
-      description: "Create high-quality articles, marketing copy, and technical documentation.",
-      capabilities: ["Blog articles", "Marketing copy", "Documentation", "Social posts"]
+      title: "Content Creation for Indian Market",
+      description: "Generate viral blog posts, Instagram captions, YouTube scripts, and marketing copy in English, Hindi, or Hinglish. Perfect for content creators, bloggers, and digital marketers.",
+      capabilities: ["SEO blog posts", "Social media content", "Product descriptions", "Email campaigns"]
     },
     {
       icon: Database,
-      title: "Data Analysis",
-      description: "Transform raw data into actionable insights with advanced analysis tools.",
-      capabilities: ["Data processing", "Report generation", "Trend analysis", "Visualizations"]
+      title: "AI Study Assistant for Students",
+      description: "Get homework help, exam preparation support for JEE/NEET/UPSC, and learn any subject faster. Explains concepts in simple Hindi-English that Indian students understand.",
+      capabilities: ["JEE/NEET/UPSC prep", "Homework solutions", "Concept explanations", "Practice questions"]
     },
     {
       icon: Shield,
-      title: "Enterprise Security",
-      description: "Bank-level security with end-to-end encryption and compliance standards.",
-      capabilities: ["SOC 2 compliant", "GDPR ready", "Data encryption", "Access controls"]
+      title: "Business & Career Growth",
+      description: "Get business ideas, marketing strategies, resume building, and career advice tailored for Indian market. Perfect for entrepreneurs, freelancers, and job seekers.",
+      capabilities: ["Business planning", "Resume building", "Interview prep", "Marketing strategies"]
     }
   ];
 
   const benefits = [
     {
       icon: Rocket,
-      title: "10x Faster",
-      description: "Complete projects in hours, not days"
+      title: "Save ₹50,000+ Monthly",
+      description: "Replace expensive tools & freelancers with free AI"
     },
     {
       icon: Target,
-      title: "99% Accurate",
-      description: "Professional-grade results every time"
+      title: "Works on Slow Internet",
+      description: "Optimized for Indian internet speeds & mobile"
     },
     {
       icon: Users,
-      title: "Team Ready",
-      description: "Built for collaboration and scale"
+      title: "Hindi + English Support",
+      description: "Understands Hinglish and Indian context perfectly"
     }
   ];
 
@@ -151,9 +151,9 @@ const PremiumContent = () => {
 
         {/* CTA Section */}
         <div className="text-center">
-          <h3 className="text-3xl font-bold text-foreground mb-4">Ready to make your own wonder?</h3>
+          <h3 className="text-3xl font-bold text-foreground mb-4">Join 5,000+ Indian Students, Developers & Creators</h3>
           <p className="text-xl text-foreground/70 mb-8 max-w-2xl mx-auto">
-            Join thousands of professionals who have revolutionized their creative process with AI.
+            Start using world-class AI tools for FREE. No credit card required. No signup needed. Just open and start creating.
           </p>
           
           <Button asChild className="apple-button">

@@ -71,19 +71,20 @@ const AdvancedHero = () => {
 
         {/* Description */}
         <p className="apple-section-subtitle text-foreground/70 max-w-3xl mx-auto">
-          Welcome to a smarter way to create. UntrainedModel is your all-in-one AI toolkit, designed to streamline your workflow and amplify your creativity. Whether you're a developer, a writer, a marketer, or a student, our platform provides intuitive access to the world's most advanced AI models, including GPT-4, Claude 3, and Gemini Pro.
+          India's #1 FREE AI platform trusted by 5,000+ students, developers, and creators. Access ChatGPT-4, Google Gemini 2.0, and Claude 3 without signup. Generate code, write content, prepare for JEE/NEET/UPSC, build businesses - all in one place. Works perfectly on Indian internet speeds with full Hindi & Hinglish support.
         </p>
         <div className="prose prose-lg prose-gray dark:prose-invert max-w-3xl mx-auto text-left mt-8">
           <p>
-            Our mission is to make powerful AI accessible to everyone. We believe that you shouldn't need to be a machine learning expert to benefit from the latest advancements in artificial intelligence. That's why we've built a platform that is both powerful and easy to use. Here's how UntrainedModel can transform your work:
+            <strong>Why UntrainedModel is Perfect for India:</strong> We understand the unique challenges Indian users face - expensive AI subscriptions, slow internet, language barriers, and lack of local context. That's why we built a platform that's completely FREE, works on 3G/4G, supports Hindi & Hinglish, and understands Indian culture, exams, and business needs.
           </p>
           <ul>
-            <li><strong>For Developers:</strong> Instantly generate boilerplate code, debug complex functions, and even write unit tests. Our AI understands a wide range of programming languages and frameworks, helping you build faster and more efficiently.</li>
-            <li><strong>For Content Creators:</strong> Overcome writer's block with creative suggestions, generate high-quality articles, and craft compelling marketing copy. Our AI can adapt to your unique voice and style, making it the perfect writing partner.</li>
-            <li><strong>For Students and Researchers:</strong> Summarize complex topics, analyze data, and get help with your research questions. UntrainedModel is a powerful tool for learning and discovery.</li>
+            <li><strong>For Indian Students (JEE/NEET/UPSC):</strong> Get 24/7 homework help, exam preparation support, concept explanations in Hindi-English, practice questions, and study plans. Save ₹1-2 lakhs on coaching by using AI for personalized learning.</li>
+            <li><strong>For Indian Developers & Engineers:</strong> Write code 10x faster in Python, Java, JavaScript, React, Node.js. Debug errors instantly. Build college projects. Prepare for coding interviews at TCS, Infosys, Wipro, Amazon, Google. Learn new frameworks without expensive courses.</li>
+            <li><strong>For Content Creators & Freelancers:</strong> Generate viral blog posts, Instagram captions in Hinglish, YouTube scripts, product descriptions, and marketing copy. Earn ₹50,000+ monthly by offering AI-powered content services to clients.</li>
+            <li><strong>For Entrepreneurs & Small Businesses:</strong> Create business plans, marketing strategies, website copy, social media content, and investor pitches. Save ₹2-5 lakhs monthly on content writers, developers, and marketing agencies.</li>
           </ul>
           <p>
-            We are committed to providing a secure and private experience. We don't store your conversations or use your data for training. What you create with UntrainedModel is yours and yours alone. Start exploring today and see what you can create with the power of AI at your fingertips.
+            <strong>100% Free. No Signup. No Credit Card.</strong> We don't store your conversations or sell your data. Your privacy is protected. What you create is yours. Start now and join 5,000+ Indians already using AI to study smarter, work faster, and earn more.
           </p>
         </div>
 

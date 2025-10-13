@@ -19,6 +19,7 @@ const Navigation = () => {
 
   const navigationItems = [
     { name: 'Free AI Demo', href: '/playground' },
+    { name: 'Use Cases', href: '/use-cases' },
     { name: 'Blog', href: '/blog' },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' }

@@ -10,9 +10,9 @@ import { StructuredData } from '@/components/StructuredData';
 const Index = () => {
   return (
     <Layout
-      title="UntrainedModel - Professional AI Platform for Content, Code & Design"
-      description="Transform your workflow with advanced AI technology. Generate professional content, production-ready code, and stunning visuals using GPT-4, Claude 3, and Gemini Pro. Trusted by 5,000+ creators worldwide."
-      keywords="advanced AI platform, professional AI tools, GPT-4, Claude 3, Gemini Pro, content creation, code generation, AI design tools, business AI solutions, enterprise AI platform"
+      title="UntrainedModel - Free AI Platform for Students, Developers & Content Creators in India | GPT-4, Gemini, Claude"
+      description="India's best free AI platform for students, developers, content creators & businesses. Use ChatGPT-4, Google Gemini 2.0, Claude 3 for coding, content writing, exam prep (JEE/NEET/UPSC), business planning. No signup required. Hindi support available."
+      keywords="free AI platform India, ChatGPT alternative India, Google Gemini India, AI for students India, AI coding assistant, AI content writer, JEE NEET UPSC AI tools, free GPT-4 India, AI playground India, prompt engineering, AI for developers India, AI business tools India, Hindi AI assistant, best AI tools 2025 India"
     >
       <div className="relative">
         <StructuredData type="website" />

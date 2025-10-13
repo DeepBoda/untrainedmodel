@@ -15,102 +15,102 @@ interface BlogPost {
 const blogPosts: BlogPost[] = [
   {
     id: "1",
-    title: "How AI Is Revolutionizing Daily Tasks",
-    excerpt: "Discover how artificial intelligence is transforming everyday activities, from personal productivity to creative endeavors, making our lives more efficient and enjoyable.",
-    author: "Alex Chen",
-    publishDate: new Date("2025-08-15"),
-    readTime: "8 min read",
-    tags: ["AI", "Productivity", "Technology", "Daily Life"],
-    slug: "how-ai-is-revolutionizing-daily-tasks"
+    title: "Google Gemini 2.0 vs ChatGPT-4: Which AI is Better for Indian Users in 2025?",
+    excerpt: "Complete comparison of Google Gemini 2.0 and ChatGPT-4 for Indian students, developers, and businesses. Real-world testing, pricing analysis, and honest recommendations for the Indian market.",
+    author: "Rajesh Kumar",
+    publishDate: new Date("2025-01-15"),
+    readTime: "12 min read",
+    tags: ["AI Comparison", "Gemini 2.0", "ChatGPT-4", "India", "2025 Trends"],
+    slug: "gemini-2-vs-chatgpt4-indian-users-2025"
   },
   {
     id: "2",
-    title: "Top 5 Ways to Use ChatGPT as a Developer",
-    excerpt: "Maximize your development productivity with ChatGPT. Learn practical strategies that can transform your coding workflow and accelerate your projects.",
-    author: "Sarah Johnson",
-    publishDate: new Date("2025-08-10"),
-    readTime: "10 min read",
-    tags: ["ChatGPT", "Development", "Productivity", "Programming"],
-    slug: "top-5-ways-to-use-chatgpt-as-a-developer"
+    title: "How Indian Students Are Using AI to Crack JEE, NEET & UPSC in 2025",
+    excerpt: "Real success stories of Indian students using AI tools for competitive exam preparation. Learn proven strategies, best AI tools, and study techniques that are working right now.",
+    author: "Priya Sharma",
+    publishDate: new Date("2025-01-12"),
+    readTime: "15 min read",
+    tags: ["AI for Students", "JEE Preparation", "NEET", "UPSC", "Exam Tips", "India"],
+    slug: "ai-tools-jee-neet-upsc-preparation-2025"
   },
   {
     id: "3",
-    title: "The Future of AI Tools in Creative Industries",
-    excerpt: "Explore how artificial intelligence is reshaping creative fields, from graphic design to music production, and what it means for creative professionals.",
-    author: "Michael Rodriguez",
-    publishDate: new Date("2025-08-05"),
-    readTime: "12 min read",
-    tags: ["AI", "Creativity", "Design", "Future Tech"],
-    slug: "the-future-of-ai-tools-in-creative-industries"
+    title: "AI Prompt Engineering Masterclass: Get 10x Better Results in 2025",
+    excerpt: "Master the art of prompt engineering with latest techniques for ChatGPT, Gemini, and Claude. Includes 50+ proven prompts for coding, content writing, and business use cases.",
+    author: "Amit Patel",
+    publishDate: new Date("2025-01-10"),
+    readTime: "18 min read",
+    tags: ["Prompt Engineering", "AI Tips", "ChatGPT", "Productivity", "Tutorial"],
+    slug: "prompt-engineering-masterclass-2025"
   },
   {
     id: "4",
-    title: "Building Secure AI Applications: Best Practices Guide",
-    excerpt: "Learn essential security considerations when developing AI-powered applications, from data protection to model security and ethical AI implementation.",
-    author: "Dr. Emily Watson",
-    publishDate: new Date("2025-08-01"),
-    readTime: "15 min read",
-    tags: ["AI Security", "Cybersecurity", "Best Practices", "Development"],
-    slug: "building-secure-ai-applications-best-practices-guide"
+    title: "Make Money with AI in India: 12 Proven Ways to Earn ₹50,000+ Monthly",
+    excerpt: "Discover legitimate ways Indian freelancers and entrepreneurs are earning ₹50,000 to ₹2 lakhs monthly using AI tools. Includes step-by-step guides, client acquisition strategies, and real income proof.",
+    author: "Vikram Singh",
+    publishDate: new Date("2025-01-08"),
+    readTime: "20 min read",
+    tags: ["Make Money Online", "AI Business", "Freelancing India", "Side Hustle", "Income"],
+    slug: "make-money-with-ai-india-2025"
   },
   {
     id: "5",
-    title: "Mastering Prompt Engineering: Advanced Techniques",
-    excerpt: "Deep dive into advanced prompt engineering strategies that will help you get better results from AI models. Learn from real-world examples and expert insights.",
-    author: "Dr. Rachel Kim",
-    publishDate: new Date("2025-07-28"),
-    readTime: "14 min read",
-    tags: ["Prompt Engineering", "AI Optimization", "Best Practices", "Tutorial"],
-    slug: "mastering-prompt-engineering-advanced-techniques"
+    title: "ChatGPT vs Claude vs Gemini: The Ultimate AI Showdown 2025",
+    excerpt: "Tested all major AI models with 100+ real-world tasks. See which AI wins for coding, content writing, data analysis, and creative work. Includes speed tests and accuracy comparisons.",
+    author: "Neha Gupta",
+    publishDate: new Date("2025-01-05"),
+    readTime: "16 min read",
+    tags: ["AI Comparison", "ChatGPT", "Claude", "Gemini", "Review", "2025"],
+    slug: "chatgpt-vs-claude-vs-gemini-2025"
   },
   {
     id: "6",
-    title: "AI-Powered Code Review: Transforming Development Workflows",
-    excerpt: "Learn how AI is revolutionizing code review processes, catching bugs early, and improving code quality across development teams.",
-    author: "Marcus Thompson",
-    publishDate: new Date("2025-07-25"),
-    readTime: "11 min read",
-    tags: ["Code Review", "AI Development", "Software Engineering", "DevOps"],
-    slug: "ai-powered-code-review-transforming-development-workflows"
+    title: "AI Tools Every Indian Developer Must Use in 2025",
+    excerpt: "Curated list of 25+ AI coding assistants, debugging tools, and productivity apps that Indian developers are using to 10x their output. Most are free or have generous free tiers.",
+    author: "Arjun Reddy",
+    publishDate: new Date("2025-01-03"),
+    readTime: "14 min read",
+    tags: ["Developer Tools", "AI Coding", "Productivity", "India", "Free Tools"],
+    slug: "ai-tools-indian-developers-2025"
   },
   {
     id: "7",
-    title: "Ethical AI Development: Principles and Practices",
-    excerpt: "Explore the fundamental principles of ethical AI development and learn how to build responsible AI systems that benefit society.",
-    author: "Dr. Priya Sharma",
-    publishDate: new Date("2025-07-22"),
-    readTime: "16 min read",
-    tags: ["AI Ethics", "Responsible AI", "Machine Learning", "Technology Policy"],
-    slug: "ethical-ai-development-principles-and-practices"
+    title: "Free AI Tools for Content Creators in India: Complete Guide 2025",
+    excerpt: "Everything Indian YouTubers, bloggers, and social media creators need to know about AI tools. Create viral content, thumbnails, scripts, and captions in minutes. All free or affordable options.",
+    author: "Sneha Iyer",
+    publishDate: new Date("2025-01-01"),
+    readTime: "17 min read",
+    tags: ["Content Creation", "YouTube", "Social Media", "Free Tools", "India"],
+    slug: "free-ai-tools-content-creators-india-2025"
   },
   {
     id: "8",
-    title: "Multi-Modal AI: Beyond Text Generation",
-    excerpt: "Discover the exciting world of multi-modal AI systems that can understand and generate text, images, audio, and video content simultaneously.",
-    author: "James Liu",
-    publishDate: new Date("2025-07-18"),
+    title: "AI Resume Builder: Get Hired by Top Indian Companies in 2025",
+    excerpt: "Learn how to use AI to create ATS-friendly resumes that get interviews at TCS, Infosys, Wipro, and startups. Includes templates, keywords, and real examples that worked.",
+    author: "Karthik Menon",
+    publishDate: new Date("2024-12-28"),
     readTime: "13 min read",
-    tags: ["Multi-Modal AI", "Computer Vision", "NLP", "Innovation"],
-    slug: "multi-modal-ai-beyond-text-generation"
+    tags: ["Career", "Resume", "Job Search", "AI Tools", "India", "Placement"],
+    slug: "ai-resume-builder-indian-companies-2025"
   },
   {
     id: "9",
-    title: "AI in Data Science: Automating Analysis Workflows",
-    excerpt: "Learn how AI is transforming data science by automating complex analysis workflows, from data cleaning to insight generation.",
-    author: "Dr. Amanda Foster",
-    publishDate: new Date("2025-07-15"),
-    readTime: "12 min read",
-    tags: ["Data Science", "AI Automation", "Analytics", "Machine Learning"],
-    slug: "ai-in-data-science-automating-analysis-workflows"
+    title: "ChatGPT Prompts for Indian Businesses: 100+ Ready-to-Use Templates",
+    excerpt: "Copy-paste prompts for marketing, sales, customer service, and operations. Specifically designed for Indian SMEs, startups, and local businesses. Save 20+ hours weekly.",
+    author: "Deepak Malhotra",
+    publishDate: new Date("2024-12-25"),
+    readTime: "22 min read",
+    tags: ["Business", "ChatGPT Prompts", "Marketing", "India", "SME", "Templates"],
+    slug: "chatgpt-prompts-indian-businesses-2025"
   }
 ];
 
 const Blog = () => {
   return (
     <Layout 
-      title="AI Blog & Resources - UntrainedModel"
-      description="Discover insights, tutorials, and best practices for AI development, productivity, and innovation. Stay updated with the latest trends in artificial intelligence."
-      keywords="AI blog, artificial intelligence articles, AI tutorials, machine learning guides, AI best practices, technology insights"
+      title="AI Blog India 2025 - ChatGPT Tips, Gemini Tutorials, Prompt Engineering & Make Money with AI"
+      description="Latest AI tutorials, tips, and guides for Indian users. Learn ChatGPT prompts, Gemini AI tricks, how to make money with AI, JEE/NEET/UPSC preparation, coding tutorials, content creation strategies. Updated daily with trending AI topics for India."
+      keywords="AI blog India, ChatGPT tips India, Gemini AI tutorial, prompt engineering guide, make money with AI India, AI for students India, JEE NEET AI tools, AI coding tutorials, AI content creation, best AI tools 2025 India, free AI resources India, AI business ideas India, ChatGPT vs Gemini, AI career India"
     >
       <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/5 pt-16 relative overflow-hidden">
         {/* Playful Background */}

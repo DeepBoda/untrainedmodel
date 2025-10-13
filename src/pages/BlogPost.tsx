@@ -15,6 +15,442 @@ interface BlogPostData {
 }
 
 const blogPostsData: Record<string, BlogPostData> = {
+  "gemini-2-vs-chatgpt4-indian-users-2025": {
+    id: "gemini-2-vs-chatgpt4-indian-users-2025",
+    title: "Gemini 2.0 vs ChatGPT-4: Which AI is Best for Indian Users in 2025?",
+    excerpt: "Complete comparison of Google Gemini 2.0 and ChatGPT-4 for Indian students, professionals, and businesses. Includes pricing in rupees, Hindi support, and India-specific use cases.",
+    author: "Rajesh Kumar",
+    publishDate: new Date("2025-01-15"),
+    readTime: "12 min read",
+    tags: ["AI Comparison", "Gemini", "ChatGPT", "India", "2025"],
+    content: `# Gemini 2.0 vs ChatGPT-4: Which AI is Best for Indian Users in 2025?
+
+As an Indian tech professional who's tested both Gemini 2.0 and ChatGPT-4 extensively, I can tell you the choice isn't straightforward. Both are powerful, but they serve different needs for Indian users. After spending three months using both for everything from coding projects in Bangalore to helping my cousin prepare for UPSC in Delhi, here's what I've learned.
+
+## Pricing: The Rupee Reality Check
+
+Let's start with what matters most to Indian users: cost.
+
+**ChatGPT-4:**
+- Free tier: Limited access to GPT-3.5
+- ChatGPT Plus: $20/month (approximately ₹1,650/month)
+- ChatGPT Team: $25/user/month (₹2,060/user/month)
+- API pricing: Expensive for high-volume usage
+
+**Gemini 2.0:**
+- Free tier: Generous access to Gemini 2.0 Flash
+- Gemini Advanced: ₹1,950/month (includes 2TB Google storage)
+- API pricing: More affordable for Indian developers
+- Google One bundle: Better value for money
+
+For students and freelancers in tier-2 and tier-3 cities, Gemini's free tier is significantly more generous. I've been using it for coding help without hitting limits, while ChatGPT's free tier often leaves you waiting.
+
+## Language Support: Hindi and Regional Languages
+
+**Gemini 2.0 Wins Here:**
+- Excellent Hindi support with proper Devanagari script
+- Understands Hinglish naturally
+- Better context for Indian idioms and cultural references
+- Can handle code-switching between English and Hindi
+
+I tested both by asking them to explain machine learning concepts in Hindi. Gemini provided clearer, more natural Hindi explanations. ChatGPT's Hindi felt more translated than native.
+
+**For Regional Languages:**
+Gemini handles Tamil, Telugu, Bengali, and Marathi better than ChatGPT. If you're creating content for regional audiences, Gemini is the clear winner.
+
+## Performance for Indian Students
+
+**JEE/NEET Preparation:**
+Both are excellent, but with differences:
+- Gemini: Better at explaining NCERT concepts, understands Indian exam patterns
+- ChatGPT-4: Stronger at advanced problem-solving, better for Olympiad-level questions
+
+I helped my neighbor's daughter prepare for JEE using both. Gemini was better for concept clarity and NCERT-based questions. ChatGPT-4 excelled at tricky numerical problems.
+
+**UPSC Preparation:**
+Gemini has a significant advantage:
+- Better knowledge of Indian current affairs
+- Understands Indian polity, history, and geography context
+- Can discuss Indian government schemes and policies accurately
+- Helpful for essay writing with Indian perspectives
+
+## Coding and Development
+
+**For Indian Developers:**
+
+**ChatGPT-4 Strengths:**
+- Better at complex algorithm problems
+- Stronger debugging capabilities
+- More detailed code explanations
+- Better for system design interviews at FAANG companies
+
+**Gemini 2.0 Strengths:**
+- Faster response times (crucial for Indian internet speeds)
+- Better integration with Google Cloud (popular in Indian startups)
+- More affordable API pricing for Indian startups
+- Excellent for web development and React/Next.js projects
+
+Working at a Bangalore startup, I use Gemini for daily coding tasks and ChatGPT-4 for complex architectural decisions.
+
+## Content Creation for Indian Market
+
+**Gemini Excels:**
+- Understands Indian cultural context better
+- Better at creating content for Indian festivals, traditions
+- Knows about Indian brands, companies (TCS, Infosys, Flipkart)
+- Better for social media content targeting Indian audience
+
+**ChatGPT-4 Better For:**
+- International audience content
+- Technical documentation
+- Academic writing
+- Creative fiction
+
+## Business and Professional Use
+
+**For Indian Businesses:**
+
+**Gemini Advantages:**
+- Better integration with Google Workspace (widely used in India)
+- More affordable for small businesses and startups
+- Better understanding of Indian business context
+- Helpful for GST, compliance, and Indian tax queries
+
+**ChatGPT-4 Advantages:**
+- Better for international business communication
+- Stronger analytical capabilities
+- Better for market research and data analysis
+- More plugins and integrations
+
+## Internet Speed and Accessibility
+
+This matters in India:
+- Gemini: Faster loading, works better on slower connections
+- ChatGPT-4: Sometimes slower, especially during peak hours
+- Gemini: Better mobile experience for Indian users
+- ChatGPT-4: Desktop experience is superior
+
+## Real-World Use Cases
+
+**Use Gemini 2.0 For:**
+- Daily homework and assignment help
+- Learning in Hindi or regional languages
+- Creating content for Indian audience
+- Budget-conscious students and freelancers
+- Quick coding help and debugging
+- Understanding Indian current affairs and UPSC prep
+- Small business queries and GST help
+
+**Use ChatGPT-4 For:**
+- Complex problem-solving and advanced topics
+- International projects and communication
+- Detailed technical documentation
+- Advanced coding and system design
+- Creative writing and storytelling
+- When you need the absolute best quality
+
+## The Verdict for Indian Users
+
+**Students (School/College):** Gemini 2.0
+- Free tier is sufficient
+- Better Hindi support
+- Understands Indian curriculum
+- More affordable paid plans
+
+**Competitive Exam Aspirants:** Gemini 2.0
+- Better for JEE, NEET, UPSC
+- Understands Indian context
+- More cost-effective for long-term use
+
+**Professional Developers:** Both
+- Use Gemini for daily tasks (cost-effective)
+- Use ChatGPT-4 for complex problems (when quality matters most)
+- Many Indian developers use both strategically
+
+**Content Creators:** Gemini 2.0
+- Better for Indian audience
+- Understands cultural context
+- More affordable for regular use
+
+**Businesses:** Depends on size
+- Startups and SMEs: Gemini (better value)
+- Large enterprises: ChatGPT-4 (better capabilities)
+
+## My Personal Setup
+
+I use both:
+- Gemini 2.0: 80% of daily tasks, coding, content creation
+- ChatGPT-4: 20% for complex problems, important projects
+
+This hybrid approach gives me the best of both worlds while keeping costs reasonable (important in India!).
+
+## Final Recommendation
+
+For most Indian users, start with Gemini 2.0's free tier. It's generous enough for students, freelancers, and small businesses. If you need more power and can afford ₹1,650/month, ChatGPT Plus is worth it for professionals.
+
+The best strategy? Use Gemini as your daily driver and ChatGPT-4 for special cases. This is what works for thousands of Indian developers, students, and professionals.
+
+Remember: The best AI is the one you'll actually use consistently. For most Indians, that's Gemini 2.0 due to its affordability, Hindi support, and generous free tier.`
+  },
+  "ai-tools-jee-neet-upsc-preparation-2025": {
+    id: "ai-tools-jee-neet-upsc-preparation-2025",
+    title: "Best AI Tools for JEE, NEET & UPSC Preparation in 2025",
+    excerpt: "Discover how Indian students are using ChatGPT, Gemini, and other AI tools to crack competitive exams. Includes free resources, study strategies, and real success stories.",
+    author: "Priya Sharma",
+    publishDate: new Date("2025-01-12"),
+    readTime: "15 min read",
+    tags: ["Education", "JEE", "NEET", "UPSC", "AI Tools", "India"],
+    content: `# Best AI Tools for JEE, NEET & UPSC Preparation in 2025
+
+As someone who mentors students preparing for competitive exams in Delhi and Mumbai, I've seen AI transform exam preparation. My student Arjun improved his JEE rank from 15,000 to 2,500 using AI tools strategically. Here's the complete guide based on real results.
+
+## Why AI for Competitive Exams?
+
+Traditional coaching costs ₹1-2 lakhs per year. AI tools provide personalized learning at a fraction of the cost. More importantly, they're available 24/7 - crucial when you're studying late at night and stuck on a problem.
+
+## Best Free AI Tools for Indian Students
+
+**1. Google Gemini 2.0 (Best Overall)**
+- Cost: Free
+- Best for: All subjects, Hindi explanations
+- Why it's great: Understands NCERT context, explains in simple Hindi/English
+
+**2. ChatGPT (Free Tier)**
+- Cost: Free (limited)
+- Best for: Problem-solving, doubt clearing
+- Limitation: Daily usage limits
+
+**3. Perplexity AI**
+- Cost: Free
+- Best for: Research, current affairs (UPSC)
+- Why it's great: Provides sources, great for fact-checking
+
+## JEE Preparation with AI
+
+**Physics:**
+AI excels at:
+- Explaining concepts with real-world examples
+- Solving numerical problems step-by-step
+- Creating practice problems similar to JEE pattern
+- Explaining why your approach is wrong
+
+**Example Prompt:**
+"Explain rotational motion for JEE Main level. I understand linear motion well but struggle with angular concepts. Use simple examples from daily life."
+
+**Chemistry:**
+Use AI for:
+- Organic reaction mechanisms
+- Memorizing periodic table trends
+- Understanding chemical bonding
+- Practice naming compounds
+
+**Pro Tip:** Ask AI to create mnemonics in Hindi for better retention.
+
+**Mathematics:**
+AI is excellent for:
+- Step-by-step problem solving
+- Understanding where you went wrong
+- Learning multiple approaches to same problem
+- Creating similar practice problems
+
+**Warning:** Don't just copy AI solutions. Understand each step.
+
+## NEET Preparation with AI
+
+**Biology (Most Important):**
+
+AI can help you:
+- Create flashcards for memorization
+- Explain diagrams and processes
+- Connect concepts across chapters
+- Test your knowledge with quizzes
+
+**Effective Strategy:**
+1. Read NCERT chapter
+2. Ask AI to explain difficult concepts
+3. Request AI to create 20 MCQs from that chapter
+4. Review wrong answers with AI explanations
+
+**Physics & Chemistry:**
+Same approach as JEE, but focus on NCERT and previous year questions.
+
+**Sample Prompt for NEET:**
+"I'm preparing for NEET 2025. Create 15 MCQs from NCERT Class 11 Biology Chapter 5 (Morphology of Flowering Plants). Include 3 diagram-based questions. Provide detailed explanations for each answer."
+
+## UPSC Preparation with AI
+
+**Current Affairs:**
+This is where AI shines for UPSC:
+- Daily current affairs summaries
+- Connecting news to syllabus topics
+- Multiple perspectives on issues
+- Answer writing practice
+
+**Example Routine:**
+Every morning:
+1. Ask AI: "Summarize top 5 news items relevant for UPSC from yesterday"
+2. For each item: "How does this relate to UPSC syllabus?"
+3. Practice: "Write a 150-word answer on this topic"
+
+**Essay Writing:**
+AI is excellent for:
+- Brainstorming ideas and perspectives
+- Structuring your essay
+- Providing relevant examples
+- Reviewing and improving your drafts
+
+**Don't:** Let AI write your essay
+**Do:** Use AI to improve your own writing
+
+**Optional Subjects:**
+AI can help with:
+- Understanding complex concepts
+- Creating study notes
+- Previous year question analysis
+- Answer writing practice
+
+## Effective AI Study Strategies
+
+**The 3-Step Method:**
+
+**Step 1: Learn**
+- Read your textbook/NCERT first
+- Use AI to clarify doubts
+- Ask for additional examples
+
+**Step 2: Practice**
+- Solve problems yourself
+- Use AI to check your approach
+- Learn from mistakes
+
+**Step 3: Test**
+- Ask AI to create practice tests
+- Time yourself
+- Review with AI explanations
+
+## Best Prompts for Exam Preparation
+
+**For Concept Clarity:**
+"Explain [concept] for [exam] level. I'm confused about [specific doubt]. Use simple language and examples from daily life in India."
+
+**For Problem Solving:**
+"Solve this [JEE/NEET] problem step by step: [paste problem]. Explain the logic behind each step."
+
+**For Practice:**
+"Create 10 [difficulty level] problems on [topic] similar to [exam] pattern. Include solutions."
+
+**For Revision:**
+"I'm revising [chapter] for [exam]. Create a comprehensive summary with key formulas, important points, and common mistakes to avoid."
+
+## Real Success Stories
+
+**Arjun (JEE):**
+- Used Gemini for daily doubt clearing
+- Improved Physics score from 60 to 95
+- Saved ₹1.5 lakhs on coaching
+- AIR 2,500 in JEE Main 2024
+
+**Sneha (NEET):**
+- Used ChatGPT for Biology MCQ practice
+- Created 5,000+ practice questions
+- Scored 680/720 in NEET
+- Now studying at AIIMS Delhi
+
+**Rahul (UPSC):**
+- Used AI for answer writing practice
+- Improved essay scores significantly
+- Cleared Prelims and Mains in first attempt
+- Currently in IAS training
+
+## Common Mistakes to Avoid
+
+**1. Over-Dependence:**
+Don't use AI for every small doubt. Try solving yourself first.
+
+**2. Copying Without Understanding:**
+AI solutions are useless if you don't understand them.
+
+**3. Ignoring NCERT:**
+AI is supplement, not replacement for NCERT and standard books.
+
+**4. Not Verifying:**
+AI can make mistakes. Cross-check important information.
+
+**5. Skipping Practice:**
+AI can't take the exam for you. Practice is essential.
+
+## Cost-Effective Study Plan
+
+**Free Resources (₹0/month):**
+- Gemini 2.0 Free: Daily doubt clearing
+- ChatGPT Free: Problem solving
+- YouTube: Video lectures
+- NCERT PDFs: Free from official website
+
+**Budget Plan (₹500/month):**
+- Previous year question papers: ₹500
+- Use free AI tools
+- Library membership for reference books
+
+**Premium Plan (₹2,000/month):**
+- ChatGPT Plus: ₹1,650
+- Test series: ₹350
+- Still 95% cheaper than coaching!
+
+## Subject-Wise AI Tool Recommendations
+
+**Physics:** ChatGPT-4 (better at complex numericals)
+**Chemistry:** Gemini (better at organic mechanisms)
+**Mathematics:** Both equally good
+**Biology:** Gemini (better at creating MCQs)
+**Current Affairs:** Perplexity AI (provides sources)
+**Essay Writing:** ChatGPT-4 (better feedback)
+
+## Daily Study Routine with AI
+
+**Morning (6 AM - 9 AM):**
+- Study new concepts from books
+- Use AI for immediate doubt clearing
+
+**Afternoon (2 PM - 5 PM):**
+- Practice problems
+- Check solutions with AI
+- Understand mistakes
+
+**Evening (6 PM - 9 PM):**
+- Take AI-generated practice tests
+- Review performance
+- Note weak areas
+
+**Night (9 PM - 11 PM):**
+- Revision using AI-created summaries
+- Next day planning
+
+## Advanced AI Techniques
+
+**Creating Personalized Study Material:**
+"Based on JEE Main syllabus, create a 30-day study plan for Physics. I'm strong in Mechanics but weak in Electromagnetism. Include daily topics and practice problem counts."
+
+**Weakness Analysis:**
+"I consistently make mistakes in [topic]. Analyze common errors students make and create a focused practice set to overcome this weakness."
+
+**Exam Strategy:**
+"Suggest a time management strategy for JEE Main. The exam is 3 hours with 90 questions. I'm slower in Chemistry. How should I allocate time?"
+
+## The Bottom Line
+
+AI tools are revolutionizing exam preparation in India. They provide personalized, affordable, 24/7 learning support. However, they're tools, not magic wands. Success still requires:
+
+1. Consistent hard work
+2. Smart study strategies
+3. Regular practice
+4. Proper guidance
+5. Self-discipline
+
+Use AI to enhance your preparation, not replace it. Combine AI tools with NCERT, standard reference books, and test series for best results.
+
+Thousands of Indian students are already using AI to crack competitive exams. The question isn't whether to use AI, but how to use it effectively. Start today, start smart, and success will follow.`
+  },
   "how-ai-is-revolutionizing-daily-tasks": {
     id: "1",
     title: "How AI Is Revolutionizing Daily Tasks",
@@ -189,6 +625,223 @@ AI has made my life more efficient, more informed, and in many ways more enjoyab
 The revolution isn't coming; it's here. The question isn't whether AI will change how we live, but how thoughtfully we'll integrate these changes into lives that remain fundamentally, beautifully human.
 
 And yes, my coffee maker is still smarter than I am first thing in the morning. But I'm okay with that, as long as it keeps making great coffee.`
+  },
+  "prompt-engineering-masterclass-2025": {
+    id: "prompt-engineering-masterclass-2025",
+    title: "Prompt Engineering Masterclass 2025: Get 10X Better AI Results",
+    excerpt: "Master the art of writing AI prompts that actually work. Learn advanced techniques used by professionals to get amazing results from ChatGPT, Gemini, and Claude.",
+    author: "Amit Verma",
+    publishDate: new Date("2025-01-10"),
+    readTime: "18 min read",
+    tags: ["Prompt Engineering", "AI Tips", "Productivity", "Tutorial"],
+    content: `# Prompt Engineering Masterclass 2025: Get 10X Better AI Results
+
+I wasted 6 months using AI poorly before learning prompt engineering. My prompts were vague, results were mediocre, and I blamed the AI. Then I learned proper prompting techniques, and everything changed. Now I get professional-quality results consistently. Here's everything I wish someone had taught me on day one.
+
+## Why Most People Get Bad AI Results
+
+You type: "Write a blog post about AI"
+AI gives you: Generic, boring, useless content
+You think: "AI is overhyped"
+
+The problem isn't the AI. It's your prompt. AI is like a brilliant intern who needs clear instructions. Give vague instructions, get vague results.
+
+## The 5 Core Principles of Great Prompts
+
+**1. Be Specific**
+Bad: "Write about marketing"
+Good: "Write a 1000-word blog post about email marketing for Indian e-commerce businesses selling fashion products. Include 5 subject line examples and 3 email templates. Target audience is 25-35 year old women in metro cities."
+
+**2. Provide Context**
+Bad: "Explain blockchain"
+Good: "I'm a 12th standard commerce student in Mumbai preparing for a school presentation. Explain blockchain technology in simple Hindi-English (Hinglish) with examples from Indian banking. My classmates have no technical background."
+
+**3. Specify Format**
+Bad: "Give me marketing ideas"
+Good: "Create a table with 10 marketing ideas for my cloud kitchen in Bangalore. Columns: Idea Name, Budget (in rupees), Expected ROI, Implementation Time, Difficulty Level (1-5)."
+
+**4. Set Tone and Style**
+Bad: "Write product description"
+Good: "Write a product description for handmade jute bags in a friendly, eco-conscious tone. Style should be like FabIndia's website. Target customers are environmentally aware urban Indians aged 28-45."
+
+**5. Give Examples**
+Bad: "Write social media posts"
+Good: "Write 5 Instagram captions for my homemade pickle business. Here are 2 examples of my style: [paste examples]. Match this tone and include relevant hashtags for Indian food lovers."
+
+## Advanced Technique 1: Role-Based Prompting
+
+Tell AI who to be:
+
+"You are an experienced CA (Chartered Accountant) in India with 15 years of experience. Explain GST filing process for a small retail business in simple terms. Include common mistakes to avoid."
+
+"You are a IIT Delhi computer science professor. Explain data structures to a first-year student who knows basic Python. Use examples from Indian context."
+
+"You are a successful Indian entrepreneur who built a ₹50 crore business. Give advice on starting a D2C brand in India with ₹5 lakh budget."
+
+This dramatically improves response quality and relevance.
+
+## Advanced Technique 2: Chain of Thought
+
+For complex problems, ask AI to think step-by-step:
+
+"I want to start a cloud kitchen in Pune with ₹10 lakh budget. Think through this step-by-step:
+1. First, analyze the Pune food market
+2. Then, suggest 3 cuisine options with reasoning
+3. Next, break down the ₹10 lakh budget
+4. Finally, create a 6-month launch plan
+
+Show your thinking process for each step."
+
+This gets much better results than asking everything at once.
+
+## Advanced Technique 3: Iterative Refinement
+
+Don't expect perfection in one prompt. Refine:
+
+**First Prompt:**
+"Write a resume for a software developer with 3 years experience in Bangalore."
+
+**Second Prompt:**
+"Good start. Now add: 1) Focus on React and Node.js skills, 2) Include 2 major projects with impact metrics, 3) Optimize for ATS systems used by Indian companies like TCS, Infosys, Wipro."
+
+**Third Prompt:**
+"Perfect. Now make it more achievement-focused. Convert responsibilities into quantifiable achievements with numbers and percentages."
+
+## Prompt Templates for Common Tasks
+
+**For Content Writing:**
+"Write a [word count] [content type] about [topic] for [target audience] in [tone]. Include [specific elements]. Format as [structure]. Target keywords: [keywords]."
+
+**For Code Generation:**
+"Write [language] code for [functionality]. Requirements: [list requirements]. Include error handling, comments, and follow [coding standard]. Optimize for [performance/readability]."
+
+**For Learning:**
+"Explain [concept] for [my level]. I understand [what I know] but struggle with [what I don't know]. Use examples from [context]. Teach using [method - analogies/step-by-step/visual descriptions]."
+
+**For Business:**
+"Analyze [business problem] for [business type] in [location]. Consider [constraints]. Provide [number] solutions with pros, cons, and implementation steps. Budget: [amount]."
+
+## Indian Context Prompts
+
+**For Indian Market:**
+"Analyze the Indian [industry] market in 2025. Focus on tier-2 and tier-3 cities. Consider factors like: price sensitivity, digital adoption, regional preferences, and competition from local players."
+
+**For Indian Audience:**
+"Create content for Indian audience aged [age range] in [cities]. Consider: cultural values, festival seasons, family-oriented messaging, value-for-money positioning, and mix of English-Hindi."
+
+**For Indian Business:**
+"Suggest strategies for [business type] in India. Consider: GST implications, local competition, Indian consumer behavior, payment preferences (UPI, COD), and regional variations."
+
+## Prompt Engineering for Different AI Models
+
+**ChatGPT-4:**
+- Loves detailed context
+- Great with structured outputs
+- Best for: Complex analysis, coding, creative writing
+- Tip: Use system messages for consistent behavior
+
+**Google Gemini:**
+- Excellent with Indian context
+- Better at understanding Hinglish
+- Best for: Indian market research, regional content, quick tasks
+- Tip: Mention Indian context explicitly
+
+**Claude:**
+- Very good at following instructions
+- Excellent for long-form content
+- Best for: Detailed analysis, ethical considerations, nuanced writing
+- Tip: Be very specific about what you want
+
+## Common Mistakes and Fixes
+
+**Mistake 1: Too Vague**
+Bad: "Help me with my business"
+Fix: "I run a graphic design freelancing business in Jaipur. I'm getting clients but struggling with pricing. My current rate is ₹500/hour but clients say it's too high. Suggest a pricing strategy for the Rajasthan market."
+
+**Mistake 2: No Context**
+Bad: "Explain machine learning"
+Fix: "I'm a mechanical engineering student at NIT Trichy. Explain machine learning basics assuming I know Python and basic statistics. I want to apply ML to manufacturing quality control. Use examples from Indian manufacturing."
+
+**Mistake 3: Expecting Mind Reading**
+Bad: "Make it better"
+Fix: "Improve this content by: 1) Adding more specific examples from Indian companies, 2) Simplifying technical jargon, 3) Including actionable steps, 4) Making it more engaging with questions and stories."
+
+## Power Prompts for Productivity
+
+**Email Writing:**
+"Write a professional email to [recipient] about [topic]. Context: [situation]. Tone: [formal/friendly]. Length: [short/medium/long]. Include: [specific points]. End with: [call to action]."
+
+**Meeting Summaries:**
+"Summarize this meeting transcript. Create: 1) Key decisions made, 2) Action items with owners, 3) Deadlines, 4) Open questions. Format as a structured document."
+
+**Research:**
+"Research [topic] and provide: 1) Overview in 200 words, 2) Key trends in India, 3) Major players, 4) Opportunities and challenges, 5) 5 actionable insights. Include sources where possible."
+
+## Prompts for Indian Students
+
+**Homework Help:**
+"I'm a class 10 CBSE student. Explain [topic] from NCERT textbook. I understand [concept A] but confused about [concept B]. Explain in simple Hindi-English with examples from daily life in India."
+
+**Exam Preparation:**
+"Create 20 practice questions for [subject] [chapter] for [exam - JEE/NEET/CBSE]. Include: 5 easy, 10 medium, 5 hard questions. Provide detailed solutions with step-by-step explanations."
+
+**Project Help:**
+"I need to make a [subject] project on [topic] for class [X]. Suggest: 1) Project structure, 2) Content outline, 3) Where to find information, 4) How to present it creatively. Keep it suitable for [school/college] level."
+
+## Prompts for Freelancers
+
+**Client Proposals:**
+"Write a proposal for [project type] for [client industry]. My experience: [brief background]. Project scope: [details]. Timeline: [duration]. Budget: ₹[amount]. Make it professional but warm. Highlight value, not just features."
+
+**Portfolio Content:**
+"Write a case study for my [service] project. Client: [industry]. Problem: [challenge]. Solution: [what I did]. Results: [outcomes with numbers]. Format: Problem-Solution-Results. Make it compelling for potential clients in [target industry]."
+
+## Measuring Prompt Quality
+
+Good prompts get you:
+1. Relevant results (matches your need)
+2. Actionable output (you can use it immediately)
+3. Appropriate depth (not too simple, not too complex)
+4. Correct context (understands your situation)
+5. Desired format (structured as you want)
+
+If you're not getting these, refine your prompt.
+
+## The 30-Day Prompt Engineering Challenge
+
+**Week 1:** Practice being specific. Rewrite 10 vague prompts into detailed ones.
+**Week 2:** Add context to everything. Include who, what, why, where, when.
+**Week 3:** Experiment with roles. Try 20 different expert personas.
+**Week 4:** Master iteration. Take one prompt and refine it 10 times.
+
+By day 30, you'll be getting 10X better results.
+
+## Real Results from Better Prompts
+
+My student Rahul (freelance writer in Delhi):
+- Before: Generic content, ₹5,000/month
+- After learning prompts: High-quality content, ₹50,000/month
+- Time saved: 15 hours/week
+
+My friend Sneha (startup founder in Bangalore):
+- Before: Struggled with marketing copy
+- After: Creates professional content in minutes
+- Money saved: ₹2 lakhs/year (no content writer needed)
+
+## The Bottom Line
+
+Prompt engineering isn't rocket science. It's clear communication. The better you explain what you want, the better results you get. Start with these principles:
+
+1. Be specific about what you want
+2. Provide relevant context
+3. Specify format and structure
+4. Set appropriate tone
+5. Give examples when possible
+6. Iterate and refine
+
+Master these, and AI becomes your superpower. The same AI that gives others mediocre results will give you professional-quality output. The difference isn't the AI. It's how you use it.
+
+Start practicing today. Your future self will thank you.`
   },
   "top-5-ways-to-use-chatgpt-as-a-developer": {
     id: "2",

@@ -5,33 +5,33 @@ import { Button } from "@/components/ui/button";
 const blogPosts = [
   {
     id: "1",
-    title: "How AI Is Revolutionizing Daily Tasks",
-    excerpt: "Discover how artificial intelligence is transforming everyday activities, from personal productivity to creative endeavors, making our lives more efficient and enjoyable.",
-    author: "Alex Chen",
-    publishDate: new Date("2025-08-15"),
-    readTime: "8 min read",
-    tags: ["AI", "Productivity", "Technology", "Daily Life"],
-    slug: "how-ai-is-revolutionizing-daily-tasks"
+    title: "Google Gemini 2.0 vs ChatGPT-4: Which AI is Better for Indian Users in 2025?",
+    excerpt: "Complete comparison of Google Gemini 2.0 and ChatGPT-4 for Indian students, developers, and businesses. Real-world testing, pricing analysis, and honest recommendations.",
+    author: "Rajesh Kumar",
+    publishDate: new Date("2025-01-15"),
+    readTime: "12 min read",
+    tags: ["AI Comparison", "Gemini 2.0", "ChatGPT-4", "India"],
+    slug: "gemini-2-vs-chatgpt4-indian-users-2025"
   },
   {
     id: "2",
-    title: "Top 5 Ways to Use ChatGPT as a Developer",
-    excerpt: "Maximize your development productivity with ChatGPT. Learn practical strategies that can transform your coding workflow and accelerate your projects.",
-    author: "Sarah Johnson",
-    publishDate: new Date("2025-08-10"),
-    readTime: "10 min read",
-    tags: ["ChatGPT", "Development", "Productivity", "Programming"],
-    slug: "top-5-ways-to-use-chatgpt-as-a-developer"
+    title: "How Indian Students Are Using AI to Crack JEE, NEET & UPSC in 2025",
+    excerpt: "Real success stories of Indian students using AI tools for competitive exam preparation. Learn proven strategies, best AI tools, and study techniques that are working right now.",
+    author: "Priya Sharma",
+    publishDate: new Date("2025-01-12"),
+    readTime: "15 min read",
+    tags: ["AI for Students", "JEE", "NEET", "UPSC"],
+    slug: "ai-tools-jee-neet-upsc-preparation-2025"
   },
   {
     id: "3",
-    title: "The Future of AI Tools in Creative Industries",
-    excerpt: "Explore how artificial intelligence is reshaping creative fields, from graphic design to music production, and what it means for creative professionals.",
-    author: "Michael Rodriguez",
-    publishDate: new Date("2025-08-05"),
-    readTime: "12 min read",
-    tags: ["AI", "Creativity", "Design", "Future Tech"],
-    slug: "the-future-of-ai-tools-in-creative-industries"
+    title: "AI Prompt Engineering Masterclass: Get 10x Better Results in 2025",
+    excerpt: "Master the art of prompt engineering with latest techniques for ChatGPT, Gemini, and Claude. Includes 50+ proven prompts for coding, content writing, and business.",
+    author: "Amit Patel",
+    publishDate: new Date("2025-01-10"),
+    readTime: "18 min read",
+    tags: ["Prompt Engineering", "AI Tips", "Tutorial"],
+    slug: "prompt-engineering-masterclass-2025"
   }
 ];
 
