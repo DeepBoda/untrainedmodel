@@ -92,11 +92,11 @@ const Playground = () => {
 
   return (
     <Layout
-      title="Free AI Playground India - Test ChatGPT-4, Gemini 2.0, Claude 3 | No Signup Required"
-      description="India's most popular free AI playground. Test ChatGPT-4, Google Gemini 2.0, Claude 3 instantly without signup. Generate code, write content, solve problems, learn programming. Perfect for Indian students, developers, content creators. Works on slow internet. Hindi support."
-      keywords="free AI playground India, ChatGPT playground free, Gemini AI playground, Claude AI free, AI testing platform India, free GPT-4 access India, AI code generator free, AI content writer free India, no signup AI tool, AI for students free India, prompt engineering playground, best free AI 2025 India, AI chatbot free India, OpenAI alternative India"
+      title="Free AI Playground 2025 India | Test ChatGPT-4, Gemini 2.0 Flash, Claude 3.5 | No Signup"
+      description="India's #1 free AI playground 2025. Test ChatGPT-4, Google Gemini 2.0 Flash, Claude 3.5 Sonnet instantly. No signup, no payment. Generate code, write content, solve problems. Perfect for students, developers, creators. Works on 3G/4G. Hindi support. Try now!"
+      keywords="free AI playground 2025 India, ChatGPT 4 playground free, Gemini 2.0 playground, Claude 3.5 free, AI testing platform India, GPT-4 free access, AI code generator India, AI content writer free, no signup AI, AI for students India, prompt engineering 2025, best AI playground India, AI chatbot free, OpenAI alternative, make money with AI playground"
     >
-      <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/5 pt-16 relative overflow-hidden">
+      <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/5 pt-16 sm:pt-20 md:pt-24 relative overflow-hidden">
         {/* Welcome Section */}
         <section className="py-12">
           <div className="container mx-auto px-4 text-center">

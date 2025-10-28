@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button";
 const UseCases = () => {
   return (
     <Layout 
-      title="AI Use Cases - How to Use UntrainedModel for Students, Professionals & Businesses"
-      description="Discover practical AI use cases for Indian students, professionals, freelancers, and businesses. Learn how to use UntrainedModel for coding, content writing, learning, business planning, and more."
-      keywords="AI use cases, AI for students India, AI for content writing, AI coding assistant, AI business tools, practical AI applications, how to use AI, AI examples"
+      title="AI Use Cases India 2025 | How Students, Developers & Businesses Use ChatGPT, Gemini, Claude"
+      description="Real AI use cases for Indian students (JEE/NEET/UPSC prep), developers (coding help), content writers, freelancers, businesses. Learn how to use ChatGPT-4, Gemini 2.0, Claude 3.5 for homework, coding, content creation, business planning. Step-by-step guides with examples."
+      keywords="AI use cases India 2025, AI for students India, AI coding assistant, AI content writing, AI business tools, how to use ChatGPT India, Gemini use cases, Claude AI examples, AI for JEE NEET UPSC, AI for developers India, AI for freelancers, practical AI applications India, AI homework help, AI for startups India"
     >
       <div className="min-h-screen bg-white dark:bg-black">
         {/* Hero Section */}

@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 const About = () => {
   return (
     <Layout 
-      title="About UntrainedModel - AI Innovation Platform"
-      description="Learn about UntrainedModel's mission to democratize AI technology and empower creators, developers, and innovators with cutting-edge artificial intelligence tools."
-      keywords="about untrainedmodel, AI platform, artificial intelligence tools, AI innovation, machine learning platform"
+      title="About UntrainedModel | Free AI Platform India 2025 | Our Mission to Democratize AI"
+      description="Learn about UntrainedModel's mission to make AI accessible to every Indian. Free ChatGPT-4, Gemini 2.0, Claude 3.5 for students, developers, businesses. No signup, no payment. Built in India, for India. Empowering 1M+ users with AI tools."
+      keywords="about UntrainedModel, free AI platform India, AI for India, democratize AI, AI mission India, free AI tools 2025, AI accessibility India, Indian AI platform, AI for students India, AI for developers India, make AI accessible, AI innovation India"
     >
       <div className="min-h-screen bg-white dark:bg-black">
         {/* Hero Section */}

@@ -108,11 +108,11 @@ const blogPosts: BlogPost[] = [
 const Blog = () => {
   return (
     <Layout 
-      title="AI Blog India 2025 - ChatGPT Tips, Gemini Tutorials, Prompt Engineering & Make Money with AI"
-      description="Latest AI tutorials, tips, and guides for Indian users. Learn ChatGPT prompts, Gemini AI tricks, how to make money with AI, JEE/NEET/UPSC preparation, coding tutorials, content creation strategies. Updated daily with trending AI topics for India."
-      keywords="AI blog India, ChatGPT tips India, Gemini AI tutorial, prompt engineering guide, make money with AI India, AI for students India, JEE NEET AI tools, AI coding tutorials, AI content creation, best AI tools 2025 India, free AI resources India, AI business ideas India, ChatGPT vs Gemini, AI career India"
+      title="AI Blog India 2025 | ChatGPT vs Gemini, Make Money with AI, JEE/NEET/UPSC Prep, Prompt Engineering"
+      description="Latest AI tutorials 2025 for Indian users. ChatGPT-4 vs Gemini 2.0 comparison, make ₹50K+ monthly with AI, JEE/NEET/UPSC preparation guides, prompt engineering masterclass, AI coding tutorials, content creation tips. Free resources updated daily."
+      keywords="AI blog India 2025, ChatGPT 4 tips, Gemini 2.0 tutorial, prompt engineering 2025, make money AI India, AI for students India, JEE NEET UPSC AI, AI coding tutorial, AI content creation, best AI tools 2025, free AI resources, AI business ideas, ChatGPT vs Gemini 2025, AI career India, AI freelancing India"
     >
-      <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/5 pt-16 relative overflow-hidden">
+      <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/5 pt-16 sm:pt-20 md:pt-24 relative overflow-hidden">
         {/* Playful Background */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-20 left-20 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl animate-float" />
