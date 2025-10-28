@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /*.json$
 
-Sitemap: https://untrainedmodel.com/sitemap.xml
+Sitemap: https://untrainedmodel.xyz/sitemap.xml
