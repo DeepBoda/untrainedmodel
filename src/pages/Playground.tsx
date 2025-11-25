@@ -5,8 +5,8 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
-import { 
-  Sparkles, 
+import {
+  Sparkles,
   Heart,
   Clock,
   TrendingUp,
@@ -46,13 +46,13 @@ interface CommunityStats {
 const Playground = () => {
   const [activeTab, setActiveTab] = useState('playground');
   const [playgroundPrompt, setPlaygroundPrompt] = useState('');
-  
+
   const quickStartPrompts = {
     story: "Write a captivating short story about a time traveler who discovers that changing the past creates parallel universes. Include vivid descriptions and emotional depth.",
     code: "Create a React component called 'TaskManager' with TypeScript that allows users to add, edit, delete, and mark tasks as complete. Include proper state management and styling.",
     marketing: "Write compelling marketing copy for a new eco-friendly water bottle that keeps drinks cold for 24 hours. Include a catchy headline, key benefits, and a strong call-to-action."
   };
-  
+
   const handleQuickStart = (type: keyof typeof quickStartPrompts) => {
     setPlaygroundPrompt(quickStartPrompts[type]);
   };
@@ -96,245 +96,72 @@ const Playground = () => {
       description="India's #1 free AI playground 2025. Test ChatGPT-4, Google Gemini 2.0 Flash, Claude 3.5 Sonnet instantly. No signup, no payment. Generate code, write content, solve problems. Perfect for students, developers, creators. Works on 3G/4G. Hindi support. Try now!"
       keywords="free AI playground 2025 India, ChatGPT 4 playground free, Gemini 2.0 playground, Claude 3.5 free, AI testing platform India, GPT-4 free access, AI code generator India, AI content writer free, no signup AI, AI for students India, prompt engineering 2025, best AI playground India, AI chatbot free, OpenAI alternative, make money with AI playground"
     >
-      <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/5 pt-16 sm:pt-20 md:pt-24 relative overflow-hidden">
-        {/* Welcome Section */}
-        <section className="py-12">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold mb-4">Welcome to the AI Playground!</h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              This is your creative sandbox for exploring the power of artificial intelligence. Whether you're a writer, developer, marketer, or just curious, our playground lets you interact with leading AI models to generate text, write code, and much more. Think of it as your personal AI assistant, ready to help you with any task.
-            </p>
-          </div>
-        </section>
-        
-        {/* Playful Background */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-10 left-10 w-32 h-32 bg-yellow-400/20 rounded-full blur-xl animate-bounce" style={{ animationDuration: '3s' }} />
-          <div className="absolute top-40 right-20 w-24 h-24 bg-green-400/20 rounded-full blur-lg animate-pulse" style={{ animationDuration: '2s' }} />
-          <div className="absolute bottom-20 left-1/4 w-40 h-40 bg-purple-400/20 rounded-full blur-2xl animate-float" />
-          <div className="absolute top-1/3 right-1/3 w-20 h-20 bg-blue-400/20 rounded-full blur-md animate-ping" style={{ animationDuration: '4s' }} />
-          <div className="absolute bottom-40 right-10 w-28 h-28 bg-pink-400/20 rounded-full blur-lg animate-bounce" style={{ animationDuration: '2.5s' }} />
-        </div>
-        
-        {/* Compact Header */}
-        <div className="container mx-auto px-4 py-8 relative z-10">
-          <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold mb-2">
-              🎮 <span className="bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent">AI Playground</span> ⚡
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Welcome to your creative sandbox. The AI Playground is an interactive space where you can experiment with the world's most advanced AI models. Whether you're drafting a blog post, debugging a piece of code, or brainstorming ideas for a new project, our playground provides the tools you need to get the job done.
-            </p>
-          </div>
-          <div className="prose prose-lg prose-gray dark:prose-invert max-w-3xl mx-auto text-left mt-8">
-              <h3>How to Use the Playground</h3>
-              <p>
-                Using the AI Playground is simple. Just type a prompt into the text area below and our AI will generate a response. You can be as specific or as general as you like. For example, you could ask the AI to:
-              </p>
-              <ul>
-                <li>"Write a Python script that scrapes data from a website."</li>
-                <li>"Create a marketing plan for a new coffee shop."</li>
-                <li>"Explain the concept of quantum computing in simple terms."</li>
-              </ul>
-              <h3>Privacy and Data</h3>
-              <p>
-                We take your privacy seriously. We do not store your conversations, and we do not use your data to train our models. All interactions with the AI are processed in real-time and are not saved. For more details, please see our <Link to="/privacy">Privacy Policy</Link>.
-              </p>
-          </div>
-          
-          {/* Floating Stats - Scattered */}
-          <div className="absolute inset-0 pointer-events-none hidden lg:block">
-            <div className="absolute top-12 left-16 bg-white/10 backdrop-blur-md rounded-2xl px-4 py-2 border border-white/20 transform rotate-12 hover:rotate-0 transition-transform duration-300 pointer-events-auto">
-              <span className="text-sm font-medium">🚀 {communityStats.totalGenerations.toLocaleString()}</span>
+      <div className="min-h-screen bg-background pt-16 sm:pt-20 flex flex-col">
+        {/* Minimal Header */}
+        <div className="border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+          <div className="container flex h-14 max-w-screen-2xl items-center">
+            <div className="mr-4 hidden md:flex">
+              <h1 className="text-lg font-semibold flex items-center gap-2">
+                <Zap className="h-5 w-5 text-yellow-500" />
+                AI Playground
+              </h1>
             </div>
-            <div className="absolute top-20 right-20 bg-white/10 backdrop-blur-md rounded-2xl px-4 py-2 border border-white/20 transform -rotate-6 hover:rotate-0 transition-transform duration-300 pointer-events-auto">
-              <span className="text-sm font-medium">👥 {communityStats.activeUsers.toLocaleString()}</span>
-            </div>
-            <div className="absolute bottom-32 left-12 bg-white/10 backdrop-blur-md rounded-2xl px-4 py-2 border border-white/20 transform rotate-8 hover:rotate-0 transition-transform duration-300 pointer-events-auto">
-              <span className="text-sm font-medium">⭐ {communityStats.avgRating}/5</span>
-            </div>
-            <div className="absolute bottom-24 right-16 bg-white/10 backdrop-blur-md rounded-2xl px-4 py-2 border border-white/20 transform -rotate-4 hover:rotate-0 transition-transform duration-300 pointer-events-auto">
-              <span className="text-sm font-medium">🏆 Featured</span>
+            <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
+              <div className="w-full flex-1 md:w-auto md:flex-none">
+                {/* Add model selector or controls here if needed */}
+              </div>
+              <nav className="flex items-center gap-2">
+                <Button variant="ghost" size="sm" onClick={() => handleQuickStart('code')}>
+                  <Code2 className="h-4 w-4 mr-2" />
+                  Code
+                </Button>
+                <Button variant="ghost" size="sm" onClick={() => handleQuickStart('story')}>
+                  <Sparkles className="h-4 w-4 mr-2" />
+                  Creative
+                </Button>
+              </nav>
             </div>
           </div>
         </div>
 
-        <div className="container mx-auto px-4 pb-8 relative z-10">
-          {/* Fun Navigation */}
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-            <div className="flex justify-center">
-              <TabsList className="grid grid-cols-4 bg-white/20 backdrop-blur-md border-0 p-2 rounded-3xl shadow-lg">
-                <TabsTrigger value="playground" className="flex items-center gap-2 rounded-2xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-300 hover:scale-105">
-                  ⚡ <span className="hidden sm:inline font-medium">Create</span>
-                </TabsTrigger>
-                <TabsTrigger value="achievements" className="flex items-center gap-2 rounded-2xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-yellow-400 data-[state=active]:to-orange-500 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-300 hover:scale-105">
-                  🏆 <span className="hidden sm:inline font-medium">Rewards</span>
-                </TabsTrigger>
-                <TabsTrigger value="challenges" className="flex items-center gap-2 rounded-2xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-green-400 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-300 hover:scale-105">
-                  🎯 <span className="hidden sm:inline font-medium">Quests</span>
-                </TabsTrigger>
-                <TabsTrigger value="community" className="flex items-center gap-2 rounded-2xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-pink-400 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-300 hover:scale-105">
-                  🌍 <span className="hidden sm:inline font-medium">Friends</span>
-                </TabsTrigger>
-              </TabsList>
+        {/* Main Workspace Area */}
+        <div className="flex-1 container max-w-screen-2xl p-4 md:p-6 lg:p-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 h-full">
+
+            {/* Left Sidebar - History & Saved (Hidden on mobile) */}
+            <div className="hidden lg:block lg:col-span-3 space-y-6">
+              <Card className="h-full border-border/50 bg-muted/20">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-sm font-medium flex items-center gap-2">
+                    <Clock className="h-4 w-4" />
+                    Recent Activity
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  {savedPrompts.map((prompt) => (
+                    <div
+                      key={prompt.id}
+                      className="p-3 rounded-lg hover:bg-muted/50 cursor-pointer transition-colors border border-transparent hover:border-border/50 group"
+                      onClick={() => setPlaygroundPrompt(prompt.content)}
+                    >
+                      <div className="font-medium text-sm truncate group-hover:text-primary transition-colors">
+                        {prompt.title}
+                      </div>
+                      <div className="text-xs text-muted-foreground truncate mt-1">
+                        {prompt.content}
+                      </div>
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
             </div>
 
-            <TabsContent value="playground" className="space-y-8">
-              <div className="grid grid-cols-1 xl:grid-cols-4 gap-8">
-                {/* Enhanced Playground - Main Content */}
-                <div className="xl:col-span-3">
-                  <EnhancedPlayground initialPrompt={playgroundPrompt} />
-                </div>
+            {/* Center - Main Playground Interface */}
+            <div className="lg:col-span-9 h-full flex flex-col">
+              <EnhancedPlayground initialPrompt={playgroundPrompt} />
+            </div>
 
-                {/* Fun Sidebar */}
-                <div className="xl:col-span-1 space-y-4">
-                  {/* Hot Prompts */}
-                  <div className="bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 overflow-hidden shadow-lg">
-                    <div className="bg-gradient-to-r from-orange-400 to-red-500 text-white p-4">
-                      <h3 className="flex items-center gap-2 font-bold">
-                        🔥 Hot Prompts
-                      </h3>
-                    </div>
-                    <div className="p-0">
-                      {savedPrompts.slice(0, 3).map((savedPrompt, index) => (
-                        <div key={savedPrompt.id} className="border-b last:border-b-0 p-4 hover:bg-white/10 transition-all duration-300 cursor-pointer group">
-                          <div className="flex items-start justify-between mb-2">
-                            <h4 className="font-medium text-sm group-hover:text-primary transition-colors">{savedPrompt.title}</h4>
-                            <div className="flex items-center gap-1">
-                              {index === 0 && <span className="text-lg">🔥</span>}
-                              {index === 1 && <span className="text-lg">📈</span>}
-                              {index === 2 && <span className="text-lg">⭐</span>}
-                            </div>
-                          </div>
-                          <p className="text-xs text-muted-foreground line-clamp-2 mb-2">
-                            {savedPrompt.content}
-                          </p>
-                          <div className="flex items-center gap-3 text-xs">
-                            <span className="flex items-center gap-1">
-                              ❤️ {savedPrompt.likes}
-                            </span>
-                            <span>⏰ 2d ago</span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Quick Start */}
-                  <div className="bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 p-4 shadow-lg">
-                    <h3 className="flex items-center gap-2 font-bold mb-4">
-                      🚀 Quick Start
-                    </h3>
-                    <div className="space-y-2">
-                      <Button 
-                        onClick={() => handleQuickStart('story')}
-                        className="w-full justify-start bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white border-0 rounded-2xl transition-all duration-300 hover:scale-105"
-                      >
-                        ✨ Write Story
-                      </Button>
-                      <Button 
-                        onClick={() => handleQuickStart('code')}
-                        className="w-full justify-start bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white border-0 rounded-2xl transition-all duration-300 hover:scale-105"
-                      >
-                        💻 Code Magic
-                      </Button>
-                      <Button 
-                        onClick={() => handleQuickStart('marketing')}
-                        className="w-full justify-start bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600 text-white border-0 rounded-2xl transition-all duration-300 hover:scale-105"
-                      >
-                        📝 Marketing Copy
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="achievements">
-              <div className="space-y-6">
-                {/* User Level Card */}
-                <Card className="bg-gradient-to-r from-yellow-400/10 to-orange-500/10 border-yellow-400/20">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Trophy className="w-5 h-5 text-yellow-500" />
-                      Your Rewards
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
-                        <div className="flex items-center gap-3">
-                          <div className="text-2xl">🎯</div>
-                          <div>
-                            <h4 className="font-semibold">First Steps</h4>
-                            <p className="text-sm text-muted-foreground">Generate your first AI content</p>
-                            <Badge className="mt-1">+50 XP</Badge>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="p-4 border rounded-lg opacity-60">
-                        <div className="flex items-center gap-3">
-                          <div className="text-2xl">🔒</div>
-                          <div>
-                            <h4 className="font-semibold">Content Creator</h4>
-                            <p className="text-sm text-muted-foreground">Generate 10 pieces of content</p>
-                            <Badge variant="outline" className="mt-1">+200 XP</Badge>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="challenges">
-              <div className="space-y-6">
-                {/* Active Quests */}
-                <Card className="bg-gradient-to-r from-green-400/10 to-blue-500/10 border-green-400/20">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Target className="w-5 h-5 text-green-500" />
-                      Daily Quests
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div className="p-4 border rounded-lg">
-                      <div className="flex items-center justify-between mb-2">
-                        <h4 className="font-semibold">Daily Creator</h4>
-                        <Badge className="bg-green-500/20 text-green-700 dark:text-green-300">+75 XP</Badge>
-                      </div>
-                      <p className="text-sm text-muted-foreground mb-3">Generate 3 pieces of content today</p>
-                      <Progress value={33} className="mb-2" />
-                      <div className="flex justify-between text-sm">
-                        <span>1/3 completed</span>
-                        <span>33%</span>
-                      </div>
-                    </div>
-                    <div className="p-4 border rounded-lg">
-                      <div className="flex items-center justify-between mb-2">
-                        <h4 className="font-semibold">Code Wizard</h4>
-                        <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-300">+150 XP</Badge>
-                      </div>
-                      <p className="text-sm text-muted-foreground mb-3">Generate 5 code snippets this week</p>
-                      <Progress value={0} className="mb-2" />
-                      <div className="flex justify-between text-sm">
-                        <span>0/5 completed</span>
-                        <span>0%</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="community">
-              <div className="text-center py-12">
-                <h3 className="text-2xl font-bold mb-4">🌟 Community Coming Soon!</h3>
-                <p className="text-muted-foreground">Connect with other creators, share prompts, and collaborate on amazing projects.</p>
-              </div>
-            </TabsContent>
-          </Tabs>
+          </div>
         </div>
       </div>
     </Layout>
