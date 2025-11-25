@@ -4,35 +4,46 @@ import { Button } from "@/components/ui/button";
 
 const UseCases = () => {
   return (
-    <Layout 
+    <Layout
       title="AI Use Cases India 2025 | How Students, Developers & Businesses Use ChatGPT, Gemini, Claude"
       description="Real AI use cases for Indian students (JEE/NEET/UPSC prep), developers (coding help), content writers, freelancers, businesses. Learn how to use ChatGPT-4, Gemini 2.0, Claude 3.5 for homework, coding, content creation, business planning. Step-by-step guides with examples."
       keywords="AI use cases India 2025, AI for students India, AI coding assistant, AI content writing, AI business tools, how to use ChatGPT India, Gemini use cases, Claude AI examples, AI for JEE NEET UPSC, AI for developers India, AI for freelancers, practical AI applications India, AI homework help, AI for startups India"
     >
       <div className="min-h-screen bg-white dark:bg-black">
         {/* Hero Section */}
+        {/* Hero Section */}
         <section className="pt-32 pb-20 relative overflow-hidden">
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-20 left-20 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl animate-float" />
             <div className="absolute bottom-32 right-16 w-80 h-80 bg-purple-400/10 rounded-full blur-3xl animate-float-slow" />
+
+            {/* 3D Floating Elements */}
+            <div className="absolute top-40 right-10 w-20 h-20 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl rotate-12 animate-float hidden lg:block backdrop-blur-sm border border-white/10" />
+            <div className="absolute bottom-40 left-10 w-16 h-16 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full animate-float-slow hidden lg:block backdrop-blur-sm border border-white/10" />
           </div>
-          
+
           <div className="section-container relative z-10 text-center">
-            <div className="section-flag mx-auto mb-8">
-              💡 Practical Applications
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary border border-primary/20 mb-8 animate-fade-in-up">
+              <span className="text-sm font-medium">💡 Practical Applications</span>
             </div>
-            
-            <h1 className="apple-title text-gray-900 dark:text-white mb-6">
+
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-gray-900 dark:text-white mb-8 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
               How Indians Are Using
-              <span className="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                AI to Transform Their Work
+              <span className="block mt-2 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                AI to Transform Work
               </span>
             </h1>
-            
-            <p className="apple-section-subtitle text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto">
-              From students acing exams to entrepreneurs building businesses, discover real-world AI applications 
-              that are making a difference across India. Learn exactly how to use UntrainedModel for your specific needs.
+
+            <p className="text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+              From students acing exams to entrepreneurs building businesses, discover real-world AI applications
+              that are making a difference across India.
             </p>
+
+            <div className="flex justify-center gap-4 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+              <Button asChild size="lg" className="h-12 px-8 rounded-full shadow-lg hover:shadow-primary/25 transition-all duration-300">
+                <Link to="/playground">Start Creating Now</Link>
+              </Button>
+            </div>
           </div>
         </section>
 
@@ -56,7 +67,7 @@ const UseCases = () => {
                     📚 Homework & Assignment Help
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                    Stuck on a difficult problem? Get step-by-step explanations for math, physics, chemistry, and more. 
+                    Stuck on a difficult problem? Get step-by-step explanations for math, physics, chemistry, and more.
                     AI doesn't just give you answers—it helps you understand the concepts.
                   </p>
                   <div className="bg-blue-50 dark:bg-blue-950/30 rounded-xl p-6">
@@ -75,7 +86,7 @@ const UseCases = () => {
                     💻 Learn Programming & Coding
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                    Master Python, Java, C++, web development, and more. Get code explanations, debug errors, 
+                    Master Python, Java, C++, web development, and more. Get code explanations, debug errors,
                     and build projects faster. Perfect for CSE students and coding enthusiasts.
                   </p>
                   <div className="bg-green-50 dark:bg-green-950/30 rounded-xl p-6">
@@ -94,7 +105,7 @@ const UseCases = () => {
                     📝 Essay & Report Writing
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                    Write better essays, research papers, and project reports. Get help with structure, grammar, 
+                    Write better essays, research papers, and project reports. Get help with structure, grammar,
                     and content. Improve your English writing skills significantly.
                   </p>
                   <div className="bg-purple-50 dark:bg-purple-950/30 rounded-xl p-6">
@@ -113,7 +124,7 @@ const UseCases = () => {
                     🎯 Exam Preparation
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                    Create custom study materials, practice questions, and revision notes. Get explanations for 
+                    Create custom study materials, practice questions, and revision notes. Get explanations for
                     difficult topics and prepare more effectively for competitive exams.
                   </p>
                   <div className="bg-orange-50 dark:bg-orange-950/30 rounded-xl p-6">
@@ -154,7 +165,7 @@ const UseCases = () => {
                         Content Writing & Copywriting
                       </h3>
                       <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                        Create blog posts, articles, social media content, ad copy, and more. Perfect for content writers, 
+                        Create blog posts, articles, social media content, ad copy, and more. Perfect for content writers,
                         digital marketers, and social media managers who need to produce high-quality content quickly.
                       </p>
                       <div className="grid md:grid-cols-3 gap-4">
@@ -189,7 +200,7 @@ const UseCases = () => {
                         Software Development
                       </h3>
                       <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                        Write code faster, debug efficiently, and learn new technologies. Essential for developers, 
+                        Write code faster, debug efficiently, and learn new technologies. Essential for developers,
                         programmers, and tech professionals working on web apps, mobile apps, or software projects.
                       </p>
                       <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-6">
@@ -221,7 +232,7 @@ const UseCases = () => {
                         Business & Marketing
                       </h3>
                       <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                        Create business plans, marketing strategies, presentations, and reports. Perfect for consultants, 
+                        Create business plans, marketing strategies, presentations, and reports. Perfect for consultants,
                         business analysts, and marketing professionals.
                       </p>
                       <div className="grid md:grid-cols-2 gap-6">
@@ -273,7 +284,7 @@ const UseCases = () => {
                     Idea Validation
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                    Brainstorm business ideas, validate concepts, identify target markets, and understand competition. 
+                    Brainstorm business ideas, validate concepts, identify target markets, and understand competition.
                     Get AI-powered insights before investing time and money.
                   </p>
                 </div>
@@ -284,7 +295,7 @@ const UseCases = () => {
                     Product Development
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                    Create product specifications, user stories, feature lists, and technical requirements. 
+                    Create product specifications, user stories, feature lists, and technical requirements.
                     Plan your MVP and development roadmap efficiently.
                   </p>
                 </div>
@@ -295,7 +306,7 @@ const UseCases = () => {
                     Marketing Content
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                    Generate website copy, landing pages, email campaigns, social media content, and ad copy. 
+                    Generate website copy, landing pages, email campaigns, social media content, and ad copy.
                     Build your brand without hiring expensive agencies.
                   </p>
                 </div>
@@ -306,7 +317,7 @@ const UseCases = () => {
                     Fundraising Support
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                    Create pitch decks, business plans, financial projections, and investor emails. 
+                    Create pitch decks, business plans, financial projections, and investor emails.
                     Prepare compelling materials to attract investors and funding.
                   </p>
                 </div>
@@ -317,7 +328,7 @@ const UseCases = () => {
                     Strategy Planning
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                    Develop go-to-market strategies, pricing models, growth plans, and competitive analysis. 
+                    Develop go-to-market strategies, pricing models, growth plans, and competitive analysis.
                     Make data-informed decisions for your startup.
                   </p>
                 </div>
@@ -328,7 +339,7 @@ const UseCases = () => {
                     Team Building
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                    Write job descriptions, create interview questions, draft offer letters, and develop 
+                    Write job descriptions, create interview questions, draft offer letters, and develop
                     onboarding materials. Build your team efficiently.
                   </p>
                 </div>
@@ -339,7 +350,7 @@ const UseCases = () => {
                   💸 Save Lakhs in Operational Costs
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 text-center mb-6 max-w-3xl mx-auto">
-                  Indian startups using UntrainedModel report saving ₹2-5 lakhs monthly on content creation, 
+                  Indian startups using UntrainedModel report saving ₹2-5 lakhs monthly on content creation,
                   copywriting, and development assistance. That's money you can invest in product development and growth.
                 </p>
                 <div className="grid md:grid-cols-3 gap-4 text-center">
@@ -380,7 +391,7 @@ const UseCases = () => {
                         Visit the AI Playground
                       </h3>
                       <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
-                        No signup required! Just go to our AI Playground and start chatting with the AI. 
+                        No signup required! Just go to our AI Playground and start chatting with the AI.
                         Choose from multiple AI models including GPT-4, Claude, and Gemini based on your needs.
                       </p>
                       <Button asChild className="bg-blue-600 hover:bg-blue-700">
@@ -400,12 +411,12 @@ const UseCases = () => {
                         Write Clear, Specific Prompts
                       </h3>
                       <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
-                        The key to great AI responses is clear communication. Be specific about what you want, 
+                        The key to great AI responses is clear communication. Be specific about what you want,
                         provide context, and don't hesitate to ask follow-up questions. The AI learns from your conversation.
                       </p>
                       <div className="bg-green-50 dark:bg-green-950/30 rounded-xl p-4">
                         <p className="text-sm text-green-800 dark:text-green-200">
-                          <strong>Example:</strong> Instead of "write code", try "Write a Python function that takes a list of numbers 
+                          <strong>Example:</strong> Instead of "write code", try "Write a Python function that takes a list of numbers
                           and returns the average, with error handling for empty lists"
                         </p>
                       </div>
@@ -423,8 +434,8 @@ const UseCases = () => {
                         Review, Edit, and Use
                       </h3>
                       <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                        AI is a powerful assistant, not a replacement for your judgment. Always review the output, 
-                        make necessary edits, and verify important information. Use AI-generated content as a starting point 
+                        AI is a powerful assistant, not a replacement for your judgment. Always review the output,
+                        make necessary edits, and verify important information. Use AI-generated content as a starting point
                         and add your personal touch to make it truly yours.
                       </p>
                     </div>
@@ -443,10 +454,10 @@ const UseCases = () => {
                 Ready to Transform Your Work with AI?
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
-                Join thousands of Indian students, professionals, and entrepreneurs who are already using 
+                Join thousands of Indian students, professionals, and entrepreneurs who are already using
                 UntrainedModel to work smarter, faster, and better.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild size="lg" className="bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200">
                   <Link to="/playground">

@@ -84,7 +84,7 @@ const AdvancedHero = () => {
             </Button>
 
             <Button asChild variant="outline" size="lg" className="h-12 px-8 text-lg rounded-full border-2 hover:bg-muted/50 transition-all duration-300">
-              <Link to="/about" className="flex items-center gap-2">
+              <Link to="/use-cases" className="flex items-center gap-2">
                 <Sparkles className="h-5 w-5" />
                 Explore Features
               </Link>

@@ -49,27 +49,26 @@ const IndustryLeaders = () => {
             Premium Enterprise Platform
           </div>
         </div>
-        
+
         {/* Section Header */}
         <h2 className="apple-section-title text-foreground">
           Enterprise-grade AI
           <span className="block text-foreground/60">for modern teams</span>
         </h2>
-        
+
         <p className="apple-section-subtitle text-foreground/70">
           From startups to Fortune 500 companies, organizations worldwide trust our AI platform.
         </p>
 
         {/* Company Logos */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 mb-16 max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 mb-16 max-w-6xl mx-auto">
           {companies.map((company, index) => (
-            <div 
-              key={index} 
-              className="flex flex-col items-center justify-center p-6 rounded-2xl bg-card/50 hover:bg-card transition-all duration-300 hover:scale-105"
+            <div
+              key={index}
+              className="group flex flex-col items-center justify-center p-4 rounded-xl bg-card/30 border border-border/50 hover:bg-card hover:border-primary/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 backdrop-blur-sm"
             >
-              <div className="text-3xl mb-2">{company.logo}</div>
-              <div className="font-semibold text-foreground text-sm text-center">{company.name}</div>
-              <div className="text-xs text-foreground/60 text-center">{company.industry}</div>
+              <div className="text-2xl mb-2 transform group-hover:scale-110 transition-transform duration-300 filter grayscale group-hover:grayscale-0">{company.logo}</div>
+              <div className="font-medium text-foreground text-xs text-center opacity-70 group-hover:opacity-100 transition-opacity">{company.name}</div>
             </div>
           ))}
         </div>
@@ -83,7 +82,7 @@ const IndustryLeaders = () => {
                 <div className="apple-card-icon mx-auto">
                   <Icon className="w-6 h-6" />
                 </div>
-                
+
                 <div className="apple-card-content">
                   <h3 className="apple-card-title text-foreground">{industry.name}</h3>
                   <p className="text-foreground/70 mb-4">{industry.description}</p>

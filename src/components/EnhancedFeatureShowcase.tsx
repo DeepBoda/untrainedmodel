@@ -2,12 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { 
-  Brain, 
-  Code2, 
-  Image, 
-  MessageSquare, 
-  Zap, 
+import {
+  Brain,
+  Code2,
+  Image,
+  MessageSquare,
+  Zap,
   Sparkles,
   ArrowRight,
   Play,
@@ -89,47 +89,45 @@ const EnhancedFeatureShowcase = () => {
             Premium AI Platform
           </div>
         </div>
-        
+
         {/* Section Header */}
         <h2 className="apple-section-title text-foreground">
           Everything you need
           <span className="block text-foreground/60">in one platform</span>
         </h2>
-        
+
         <p className="apple-section-subtitle text-foreground/70">
           Powerful AI tools designed to transform your workflow and accelerate your projects.
         </p>
 
         {/* Feature Showcase */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-          
+
           {/* Feature Cards */}
           <div className="space-y-4">
             {features.map((feature, index) => {
               const Icon = feature.icon;
               const isActive = index === activeFeature;
-              
+
               return (
-                <div 
+                <div
                   key={index}
-                  className={`apple-card cursor-pointer transition-all ${
-                    isActive ? 'ring-2 ring-primary/30 bg-primary/5' : 'hover:bg-primary/5'
-                  }`}
+                  className={`apple-card cursor-pointer transition-all ${isActive ? 'ring-2 ring-primary/30 bg-primary/5' : 'hover:bg-primary/5'
+                    }`}
                   onClick={() => setActiveFeature(index)}
                 >
                   <div className="flex items-start gap-4">
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${feature.color} text-white flex items-center justify-center transition-transform ${
-                      isActive ? 'scale-110' : ''
-                    }`}>
+                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${feature.color} text-white flex items-center justify-center transition-transform ${isActive ? 'scale-110' : ''
+                      }`}>
                       <Icon className="w-6 h-6" />
                     </div>
-                    
+
                     <div className="flex-1">
                       <h3 className="apple-card-title text-foreground flex items-center">
                         {feature.title}
                         {isActive && <ChevronRight className="w-5 h-5 text-primary ml-2" />}
                       </h3>
-                      
+
                       <p className="text-foreground/70 leading-relaxed">
                         {feature.description}
                       </p>
@@ -141,26 +139,36 @@ const EnhancedFeatureShowcase = () => {
           </div>
 
           {/* Demo Display */}
-          <div className="apple-card text-center min-h-[400px] flex flex-col justify-center">
-            <div className={`w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${features[activeFeature].color} text-white flex items-center justify-center`}>
-              {React.createElement(features[activeFeature].icon, { className: 'w-8 h-8' })}
+          <div className="relative perspective-1000 group">
+            <div className="apple-card text-center min-h-[400px] flex flex-col justify-center transform transition-transform duration-700 group-hover:rotate-y-12 group-hover:rotate-x-6">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+
+              <div className={`w-20 h-20 mx-auto mb-8 rounded-2xl bg-gradient-to-br ${features[activeFeature].color} text-white flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-500`}>
+                {React.createElement(features[activeFeature].icon, { className: 'w-10 h-10' })}
+              </div>
+
+              <h3 className="text-2xl font-bold text-foreground mb-4 relative z-10">
+                {features[activeFeature].title}
+              </h3>
+
+              <p className="text-lg text-foreground/70 mb-8 leading-relaxed max-w-md mx-auto relative z-10">
+                {features[activeFeature].demo}
+              </p>
+
+              <div className="relative z-10">
+                <Button asChild className="apple-button mx-auto shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300">
+                  <Link to="/playground" className="flex items-center gap-2">
+                    <Play className="h-5 w-5" />
+                    Try It Now
+                    <ArrowRight className="h-5 w-5" />
+                  </Link>
+                </Button>
+              </div>
             </div>
-            
-            <h3 className="apple-card-title text-foreground mb-4">
-              {features[activeFeature].title}
-            </h3>
-            
-            <p className="text-foreground/70 mb-8 leading-relaxed">
-              {features[activeFeature].demo}
-            </p>
-            
-            <Button asChild className="apple-button mx-auto">
-              <Link to="/playground" className="flex items-center gap-2">
-                <Play className="h-5 w-5" />
-                Try It Now
-                <ArrowRight className="h-5 w-5" />
-              </Link>
-            </Button>
+
+            {/* Decorative Elements */}
+            <div className="absolute -top-10 -right-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-accent/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
           </div>
         </div>
 
@@ -173,12 +181,12 @@ const EnhancedFeatureShowcase = () => {
                 <div className="apple-card-icon mx-auto">
                   <Icon className="w-6 h-6" />
                 </div>
-                
+
                 <div className="apple-card-content">
                   <div className="text-3xl font-bold text-foreground mb-2">
                     {achievement.value}
                   </div>
-                  
+
                   <div className="font-semibold text-foreground/80">
                     {achievement.label}
                   </div>
