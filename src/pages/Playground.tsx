@@ -163,6 +163,62 @@ const Playground = () => {
 
           </div>
         </div>
+
+        {/* SEO Content Section */}
+        <section className="border-t border-border/40 bg-muted/20 py-16">
+          <div className="container max-w-4xl mx-auto px-4">
+            <div className="prose prose-lg dark:prose-invert max-w-none">
+              <h2 className="text-3xl font-bold text-center mb-8">Why Use UntrainedModel's AI Playground?</h2>
+
+              <div className="grid md:grid-cols-2 gap-8 mb-12">
+                <div className="bg-background p-6 rounded-xl border border-border/50 shadow-sm">
+                  <h3 className="text-xl font-semibold mb-3 flex items-center gap-2">
+                    <Zap className="w-5 h-5 text-yellow-500" />
+                    Instant Access to Top Models
+                  </h3>
+                  <p className="text-muted-foreground">
+                    Don't pay for multiple subscriptions. Access <strong>ChatGPT-4</strong>, <strong>Google Gemini 2.0 Flash</strong>, and <strong>Claude 3.5 Sonnet</strong> all in one place. Switch between models instantly to compare results.
+                  </p>
+                </div>
+                <div className="bg-background p-6 rounded-xl border border-border/50 shadow-sm">
+                  <h3 className="text-xl font-semibold mb-3 flex items-center gap-2">
+                    <Globe className="w-5 h-5 text-blue-500" />
+                    Built for India
+                  </h3>
+                  <p className="text-muted-foreground">
+                    Optimized for Indian internet speeds (works on 3G/4G). Full support for <strong>Hindi</strong>, <strong>Hinglish</strong>, and regional languages. We understand the local context for exams and business.
+                  </p>
+                </div>
+              </div>
+
+              <h3>Everything You Need to Create</h3>
+              <p>
+                Our AI Playground is designed for everyone from students to professional developers. Here is what you can do:
+              </p>
+              <ul>
+                <li><strong>For Students:</strong> Solve complex JEE/NEET physics problems, get explanations for UPSC topics, and write essays for school assignments.</li>
+                <li><strong>For Developers:</strong> Generate Python scripts, debug React code, write SQL queries, and explain complex algorithms.</li>
+                <li><strong>For Writers:</strong> Overcome writer's block, generate blog post ideas, write social media captions, and edit emails.</li>
+              </ul>
+
+              <h3>Frequently Asked Questions</h3>
+              <div className="space-y-4 not-prose mt-6">
+                <div className="border border-border/50 rounded-lg p-4 bg-background">
+                  <h4 className="font-semibold mb-2">Is this really free?</h4>
+                  <p className="text-sm text-muted-foreground">Yes! Our core playground features are completely free to use. We believe in democratizing access to AI for everyone in India.</p>
+                </div>
+                <div className="border border-border/50 rounded-lg p-4 bg-background">
+                  <h4 className="font-semibold mb-2">Do I need to sign up?</h4>
+                  <p className="text-sm text-muted-foreground">No. You can start using the playground immediately without creating an account or providing any personal information.</p>
+                </div>
+                <div className="border border-border/50 rounded-lg p-4 bg-background">
+                  <h4 className="font-semibold mb-2">Is my data private?</h4>
+                  <p className="text-sm text-muted-foreground">Absolutely. We do not store your conversations or use your data to train our models. Your privacy is our top priority.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </Layout>
   );

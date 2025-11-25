@@ -8,9 +8,9 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <img 
-                src="/uploads/bccee730-0f1a-4541-8c9f-4760c42f0c75.png" 
-                alt="UntrainedModel Logo" 
+              <img
+                src="/uploads/bccee730-0f1a-4541-8c9f-4760c42f0c75.png"
+                alt="UntrainedModel Logo"
                 className="w-8 h-8 dark:invert"
               />
               <span className="font-bold text-lg">UntrainedModel</span>
@@ -78,7 +78,7 @@ const Footer = () => {
         <div className="mt-8 pt-8 border-t border-border">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <p className="text-muted-foreground text-sm">
-              untrainedmodel
+              &copy; {new Date().getFullYear()} UntrainedModel. All rights reserved.
             </p>
             <p className="text-muted-foreground text-sm">
               Built with ❤️ for the AI community
