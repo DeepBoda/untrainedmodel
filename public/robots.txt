@@ -1,6 +1,14 @@
+# Allow all search engines
 User-agent: *
 Allow: /
+
+# Sitemap location
+Sitemap: https://untrainedmodel.xyz/sitemap.xml
+
+# Crawl delay (optional, helps prevent server overload)
+Crawl-delay: 1
+
+# Disallow admin or private areas (if any)
+Disallow: /admin/
 Disallow: /api/
 Disallow: /*.json$
-
-Sitemap: https://untrainedmodel.xyz/sitemap.xml

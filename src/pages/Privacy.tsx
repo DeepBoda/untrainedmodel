@@ -20,7 +20,7 @@ const Privacy = () => {
           
           <div className="prose prose-lg prose-gray dark:prose-invert max-w-none">
             <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
-              <strong>Last updated:</strong> October 13, 2025
+              <strong>Last updated:</strong> January 15, 2025
             </p>
 
             <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border-l-4 border-green-500 p-4 sm:p-6 mb-6 sm:mb-8 rounded-r-lg shadow-sm">

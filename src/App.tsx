@@ -7,6 +7,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { useEffect } from "react";
+import { initAnalytics, trackPageView } from "@/lib/analytics";
 import Index from "./pages/Index";
 import Playground from "./pages/Playground";
 import Blog from "./pages/Blog";
@@ -21,16 +22,22 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-// Component to handle scroll to top on route change
+// Component to handle scroll to top and analytics on route change
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   
   useEffect(() => {
     window.scrollTo(0, 0);
+    trackPageView(pathname);
   }, [pathname]);
   
   return null;
 };
+
+// Initialize analytics on app load
+if (typeof window !== 'undefined') {
+  initAnalytics();
+}
 
 const App = () => (
   <ErrorBoundary>

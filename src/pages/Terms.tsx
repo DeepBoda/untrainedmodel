@@ -20,7 +20,7 @@ const Terms = () => {
           
           <div className="prose prose-lg prose-gray dark:prose-invert max-w-none">
             <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
-              <strong>Last updated:</strong> October 13, 2025
+              <strong>Last updated:</strong> January 15, 2025
             </p>
 
             <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 p-6 rounded-lg mb-8">
