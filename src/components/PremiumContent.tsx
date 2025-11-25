@@ -99,27 +99,33 @@ const PremiumContent = () => {
           </p>
         </div>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+        {/* Features Grid - Bento Style */}
+        <div className="bento-grid mb-20">
           {features.map((feature, index) => (
-            <div key={index} className="group relative bg-card hover:bg-accent/5 border border-border/50 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <feature.icon className="w-6 h-6" />
-              </div>
+            <div
+              key={index}
+              className={`bento-card group ${index === 0 || index === 3 ? 'md:col-span-2' : ''}`}
+            >
+              <div className="glow-effect" />
+              <div className="relative z-10">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <feature.icon className="w-6 h-6" />
+                </div>
 
-              <h3 className="text-lg font-bold text-foreground mb-3">{feature.title}</h3>
+                <h3 className="text-xl font-bold text-foreground mb-3">{feature.title}</h3>
 
-              <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
-                {feature.description}
-              </p>
+                <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
+                  {feature.description}
+                </p>
 
-              <div className="space-y-2 pt-4 border-t border-border/50">
-                {feature.capabilities.map((capability, idx) => (
-                  <div key={idx} className="flex items-center gap-2">
-                    <CheckCircle className="w-3.5 h-3.5 text-green-500 flex-shrink-0" />
-                    <span className="text-xs text-muted-foreground">{capability}</span>
-                  </div>
-                ))}
+                <div className="space-y-2 pt-4 border-t border-border/10">
+                  {feature.capabilities.map((capability, idx) => (
+                    <div key={idx} className="flex items-center gap-2">
+                      <CheckCircle className="w-3.5 h-3.5 text-green-500 flex-shrink-0" />
+                      <span className="text-xs text-muted-foreground">{capability}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           ))}

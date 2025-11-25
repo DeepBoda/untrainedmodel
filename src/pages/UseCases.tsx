@@ -17,9 +17,12 @@ const UseCases = () => {
             <div className="absolute top-20 left-20 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl animate-float" />
             <div className="absolute bottom-32 right-16 w-80 h-80 bg-purple-400/10 rounded-full blur-3xl animate-float-slow" />
 
-            {/* 3D Floating Elements */}
-            <div className="absolute top-40 right-10 w-20 h-20 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl rotate-12 animate-float hidden lg:block backdrop-blur-sm border border-white/10" />
-            <div className="absolute bottom-40 left-10 w-16 h-16 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full animate-float-slow hidden lg:block backdrop-blur-sm border border-white/10" />
+            {/* 3D Glassy Glows */}
+            <div className="absolute top-1/4 right-10 w-64 h-64 bg-blue-500/30 rounded-full blur-[100px] animate-pulse-glow opacity-60" />
+            <div className="absolute bottom-1/4 left-10 w-64 h-64 bg-purple-500/30 rounded-full blur-[100px] animate-pulse-glow opacity-60" style={{ animationDelay: '2s' }} />
+
+            {/* Subtle Glass Overlay */}
+            <div className="absolute inset-0 bg-white/5 backdrop-blur-[1px]" />
           </div>
 
           <div className="section-container relative z-10 text-center">

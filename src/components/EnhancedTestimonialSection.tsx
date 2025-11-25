@@ -67,38 +67,41 @@ const EnhancedTestimonialSection = () => {
           See how Indian students, developers, and creators are using AI to study smarter, work faster, and earn more
         </p>
 
-        {/* Testimonials Grid */}
-        <div className="apple-grid apple-grid-3 gap-8 mb-20">
+        {/* Testimonials Grid - Bento Style */}
+        <div className="bento-grid gap-6 mb-20">
           {testimonials.map((testimonial, index) => (
-            <div key={testimonial.id} className="apple-card p-8 relative overflow-hidden group h-full flex flex-col">
+            <div
+              key={testimonial.id}
+              className={`bento-card p-8 relative overflow-hidden group h-full flex flex-col ${index === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
+            >
               {/* Background Gradient */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
+
               {/* Content */}
               <div className="relative z-10 flex flex-col h-full">
                 {/* Quote Icon */}
                 <div className="w-12 h-12 mb-6 bg-primary/10 rounded-full flex items-center justify-center">
                   <Quote className="w-6 h-6 text-primary" />
                 </div>
-                
+
                 {/* Rating */}
                 <div className="flex gap-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                
+
                 {/* Testimonial Content */}
-                <blockquote className="text-foreground/90 mb-6 leading-relaxed text-base flex-grow">
+                <blockquote className={`text-foreground/90 mb-6 leading-relaxed flex-grow ${index === 0 ? 'text-xl md:text-2xl' : 'text-base'}`}>
                   "{testimonial.content}"
                 </blockquote>
-                
+
                 {/* Bottom Section */}
                 <div className="mt-auto">
                   {/* User Info */}
                   <div className="flex items-center gap-4 mb-4">
-                    <img 
-                      src={testimonial.image} 
+                    <img
+                      src={testimonial.image}
                       alt={testimonial.name}
                       className="w-12 h-12 rounded-full object-cover border-2 border-primary/20"
                       onError={(e) => {
@@ -114,7 +117,7 @@ const EnhancedTestimonialSection = () => {
                       </div>
                     </div>
                   </div>
-                  
+
                   {/* Metrics */}
                   <div className="flex gap-6 text-sm pt-4 border-t border-border/20">
                     <div>

@@ -128,37 +128,39 @@ const Playground = () => {
         <div className="flex-1 container max-w-screen-2xl p-4 md:p-6 lg:p-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 h-full">
 
-            {/* Left Sidebar - History & Saved (Hidden on mobile) */}
+            {/* Left Sidebar - History & Saved */}
             <div className="hidden lg:block lg:col-span-3 space-y-6">
-              <Card className="h-full border-border/50 bg-muted/20">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-sm font-medium flex items-center gap-2">
-                    <Clock className="h-4 w-4" />
+              <div className="glass-panel rounded-2xl h-full border border-white/10 overflow-hidden flex flex-col">
+                <div className="p-4 border-b border-white/5 bg-white/5 backdrop-blur-md">
+                  <h2 className="text-sm font-semibold flex items-center gap-2 text-foreground/80">
+                    <Clock className="h-4 w-4 text-primary" />
                     Recent Activity
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2">
+                  </h2>
+                </div>
+                <div className="p-2 space-y-1 overflow-y-auto flex-1 custom-scrollbar">
                   {savedPrompts.map((prompt) => (
                     <div
                       key={prompt.id}
-                      className="p-3 rounded-lg hover:bg-muted/50 cursor-pointer transition-colors border border-transparent hover:border-border/50 group"
+                      className="p-3 rounded-xl hover:bg-white/5 cursor-pointer transition-all duration-200 group border border-transparent hover:border-white/5"
                       onClick={() => setPlaygroundPrompt(prompt.content)}
                     >
                       <div className="font-medium text-sm truncate group-hover:text-primary transition-colors">
                         {prompt.title}
                       </div>
-                      <div className="text-xs text-muted-foreground truncate mt-1">
+                      <div className="text-xs text-muted-foreground truncate mt-1 opacity-70 group-hover:opacity-100">
                         {prompt.content}
                       </div>
                     </div>
                   ))}
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </div>
 
             {/* Center - Main Playground Interface */}
             <div className="lg:col-span-9 h-full flex flex-col">
-              <EnhancedPlayground initialPrompt={playgroundPrompt} />
+              <div className="glass-panel rounded-2xl h-full border border-white/10 overflow-hidden shadow-2xl">
+                <EnhancedPlayground initialPrompt={playgroundPrompt} />
+              </div>
             </div>
 
           </div>
