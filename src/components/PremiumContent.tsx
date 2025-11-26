@@ -1,3 +1,5 @@
+"use client";
+
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
@@ -14,7 +16,7 @@ import {
   Rocket,
   Target
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 const PremiumContent = () => {
@@ -213,7 +215,7 @@ const PremiumContent = () => {
           </p>
 
           <Button asChild size="lg" className="h-14 px-10 text-lg rounded-full shadow-2xl shadow-primary/30 hover:shadow-primary/50 hover:scale-105 transition-all duration-300">
-            <Link to="/playground" className="flex items-center gap-2">
+            <Link href="/playground" className="flex items-center gap-2">
               Get Started Free Today
               <ArrowRight className="h-5 w-5" />
             </Link>

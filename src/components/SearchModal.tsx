@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
@@ -6,7 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Search, Clock, TrendingUp, ExternalLink } from 'lucide-react';
 import { searchService, SearchResult } from '@/lib/search';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -20,7 +22,7 @@ export const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
   const [selectedIndex, setSelectedIndex] = useState(-1);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   useEffect(() => {
     // Load recent searches from localStorage
@@ -35,7 +37,7 @@ export const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
       setIsLoading(true);
       const searchResults = searchService.search(query, 8);
       const searchSuggestions = searchService.getSuggestions(query);
-      
+
       setTimeout(() => {
         setResults(searchResults);
         setSuggestions(searchSuggestions);
@@ -60,7 +62,7 @@ export const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
     // Navigate to results if it's a page
     const topResult = searchService.search(searchQuery, 1)[0];
     if (topResult) {
-      navigate(topResult.url);
+      router.push(topResult.url);
       onClose();
     }
   };
@@ -71,7 +73,7 @@ export const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
       handleSearch(query);
     }
     // Navigate to the result
-    navigate(result.url);
+    router.push(result.url);
     onClose();
   };
 
@@ -80,7 +82,7 @@ export const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
     // Auto-search when clicking suggestion
     const searchResults = searchService.search(suggestion, 1);
     if (searchResults.length > 0) {
-      navigate(searchResults[0].url);
+      router.push(searchResults[0].url);
       onClose();
     }
   };
@@ -88,7 +90,7 @@ export const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'ArrowDown') {
       e.preventDefault();
-      setSelectedIndex(prev => 
+      setSelectedIndex(prev =>
         prev < results.length - 1 ? prev + 1 : prev
       );
     } else if (e.key === 'ArrowUp') {
@@ -104,7 +106,7 @@ export const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
         // If no results but there's a query, try to navigate to a relevant page
         const allResults = searchService.search(query, 1);
         if (allResults.length > 0) {
-          navigate(allResults[0].url);
+          router.push(allResults[0].url);
           onClose();
         }
       }
@@ -153,13 +155,12 @@ export const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
                   key={result.id}
                   onClick={() => handleResultClick(result)}
                   onMouseEnter={() => setSelectedIndex(index)}
-                  className={`w-full text-left p-3 rounded-lg transition-all duration-200 border ${
-                    selectedIndex === index 
-                      ? 'bg-primary/10 border-primary/30 shadow-sm' 
+                  className={`w-full text-left p-3 rounded-lg transition-all duration-200 border ${selectedIndex === index
+                      ? 'bg-primary/10 border-primary/30 shadow-sm'
                       : index === 0 && selectedIndex === -1
-                      ? 'bg-primary/5 border-primary/20 hover:bg-primary/10' 
-                      : 'border-transparent hover:bg-muted/50 hover:border-border'
-                  }`}
+                        ? 'bg-primary/5 border-primary/20 hover:bg-primary/10'
+                        : 'border-transparent hover:bg-muted/50 hover:border-border'
+                    }`}
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex-1 space-y-1">
@@ -167,8 +168,8 @@ export const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
                         <h3 className="font-medium text-sm text-foreground line-clamp-1">
                           {result.title}
                         </h3>
-                        <Badge 
-                          variant={result.type === 'blog' ? 'default' : 'outline'} 
+                        <Badge
+                          variant={result.type === 'blog' ? 'default' : 'outline'}
                           className="text-xs"
                         >
                           {result.type === 'blog' ? '📝 Blog' : result.type === 'page' ? '📄 Page' : '⚡ Feature'}

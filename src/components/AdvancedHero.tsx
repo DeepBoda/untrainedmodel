@@ -1,7 +1,9 @@
+"use client";
+
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles, Cpu, Zap, Globe, Users, Code2, Play, Star, TrendingUp, FileText } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 
 const AdvancedHero = () => {
@@ -99,14 +101,14 @@ const AdvancedHero = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center mb-20"
           >
             <Button asChild size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300">
-              <Link to="/playground" className="flex items-center gap-2">
+              <Link href="/playground" className="flex items-center gap-2">
                 <Play className="h-5 w-5 fill-current" />
                 Start Creating Free
               </Link>
             </Button>
 
             <Button asChild variant="outline" size="lg" className="h-14 px-8 text-lg rounded-full border-2 hover:bg-muted/50 transition-all duration-300 backdrop-blur-sm">
-              <Link to="/use-cases" className="flex items-center gap-2">
+              <Link href="/use-cases" className="flex items-center gap-2">
                 <Sparkles className="h-5 w-5" />
                 Explore Features
               </Link>

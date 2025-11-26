@@ -1,4 +1,4 @@
-import blogPosts from './blog-posts';
+import { blogPosts } from './blog-posts';
 
 interface SitemapURL {
   loc: string;
@@ -9,7 +9,7 @@ interface SitemapURL {
 
 export function generateSitemap(): string {
   const baseURL = 'https://untrainedmodel.com';
-  
+
   const staticPages: SitemapURL[] = [
     {
       loc: `${baseURL}/`,
@@ -60,16 +60,16 @@ export function generateSitemap(): string {
       priority: 0.3
     }
   ];
-  
+
   const blogPages: SitemapURL[] = blogPosts.map(post => ({
     loc: `${baseURL}/blog/${post.slug}`,
     lastmod: post.lastUpdated.toISOString().split('T')[0],
     changefreq: 'monthly' as const,
     priority: post.featured ? 0.8 : 0.7
   }));
-  
+
   const allPages = [...staticPages, ...blogPages];
-  
+
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${allPages.map(page => `  <url>
@@ -79,7 +79,7 @@ ${allPages.map(page => `  <url>
     <priority>${page.priority}</priority>
   </url>`).join('\n')}
 </urlset>`;
-  
+
   return xml;
 }
 
@@ -87,7 +87,7 @@ export function saveSitemap(): void {
   const sitemap = generateSitemap();
   console.log('Sitemap generated:');
   console.log(sitemap);
-  
+
   // In a real app, you would write this to public/sitemap.xml
   // For now, we'll log it and you can copy it manually
 }

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect, useRef } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -16,7 +18,7 @@ import {
   ChevronRight,
   Star
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 const EnhancedFeatureShowcase = () => {
@@ -124,8 +126,8 @@ const EnhancedFeatureShowcase = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 + index * 0.1 }}
                 className={`relative p-8 rounded-3xl cursor-pointer group transition-all duration-500 overflow-hidden border ${isActive
-                    ? 'bg-primary/5 border-primary/20 shadow-lg shadow-primary/5 scale-[1.02]'
-                    : 'bg-card/30 border-border/50 hover:bg-card/50 hover:border-primary/10'
+                  ? 'bg-primary/5 border-primary/20 shadow-lg shadow-primary/5 scale-[1.02]'
+                  : 'bg-card/30 border-border/50 hover:bg-card/50 hover:border-primary/10'
                   }`}
                 onClick={() => setActiveFeature(index)}
               >
@@ -211,7 +213,7 @@ const EnhancedFeatureShowcase = () => {
 
             <div className="relative z-10">
               <Button asChild size="lg" className="rounded-full px-8 h-12 text-base shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
-                <Link to="/playground" className="flex items-center gap-2">
+                <Link href="/playground" className="flex items-center gap-2">
                   <Play className="h-5 w-5 fill-current" />
                   Try It Now
                   <ArrowRight className="h-5 w-5" />

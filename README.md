@@ -1,212 +1,79 @@
-# UntrainedModel - AI Playground & Content Generator
+# UntrainedModel
 
-A cutting-edge AI platform that provides access to advanced AI models for text generation, code generation, and image creation. Built with React, TypeScript, Tailwind CSS, and Vite.
+UntrainedModel is a premium, open-source AI playground and generative AI platform designed for builders, developers, and creators. It features a modern, "Apple-style" aesthetic with glassmorphism, smooth animations, and a fully responsive design.
 
-## Features
+## 🚀 Features
 
-- 🤖 **Multi-Provider AI Support**: OpenAI, Google Gemini, and Anthropic Claude
-- 💬 **Text Generation**: Advanced language models for content creation
-- 💻 **Code Generation**: Intelligent code completion and generation
-- 🎨 **Image Generation**: AI-powered image creation (coming soon)
-- 📱 **Fully Responsive**: Optimized for all device sizes
-- 🌙 **Dark/Light Mode**: Theme switching support
-- ⚡ **Fast Performance**: Optimized with Vite and modern React patterns
-- 🔍 **Search Functionality**: Quick navigation and prompt discovery
-- 💾 **Prompt Templates**: Pre-built templates for common use cases
+-   **AI Playground**: A fully functional, IDE-style interface for interacting with AI models (Chat, Code, Research modes).
+-   **Blog**: A beautiful, SEO-optimized blog with dynamic routing and rich typography.
+-   **Premium UI/UX**: Built with Tailwind CSS, Framer Motion, and custom glassmorphism components.
+-   **Dark Mode**: Enforced premium dark theme for a consistent, professional look.
+-   **Performance**: Optimized for speed with static export, global loading states, and smooth page transitions.
+-   **SEO Ready**: Automatic sitemap, robots.txt, and Open Graph metadata generation.
+-   **PWA Support**: Installable as a progressive web app on mobile devices.
 
-## Getting Started
+## 🛠️ Tech Stack
 
-### Prerequisites
+-   **Framework**: [Next.js 15+](https://nextjs.org/) (App Router)
+-   **Styling**: [Tailwind CSS](https://tailwindcss.com/) + [Tailwind Animate](https://github.com/jamiebuilds/tailwindcss-animate)
+-   **Animations**: [Framer Motion](https://www.framer.com/motion/)
+-   **Icons**: [Lucide React](https://lucide.dev/)
+-   **Theme**: [next-themes](https://github.com/pacocoursey/next-themes)
+-   **Typography**: [Inter](https://fonts.google.com/specimen/Inter) & [Outfit](https://fonts.google.com/specimen/Outfit)
 
-- Node.js 18+ or Bun
-- API keys for AI providers (see Environment Variables section)
+## 📦 Installation
 
-### Installation
+1.  **Clone the repository**:
+    ```bash
+    git clone https://github.com/yourusername/untrainedmodel.git
+    cd untrainedmodel
+    ```
 
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd untrainedmodel
-```
+2.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
 
-2. Install dependencies:
-```bash
-npm install
-# or
-bun install
-```
+3.  **Run the development server**:
+    ```bash
+    npm run dev
+    ```
+    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-3. Set up environment variables (see next section)
+## 🏗️ Building for Production
 
-4. Start the development server:
-```bash
-npm run dev
-# or
-bun dev
-```
+This project is configured for **Static Export**.
 
-### Environment Variables
+1.  **Build the project**:
+    ```bash
+    npm run build
+    ```
 
-Create a `.env` file in the project root and add your API keys:
+2.  **Deploy**:
+    The build output will be in the `out/` directory. You can deploy this folder to any static hosting provider:
+    -   **GitHub Pages**
+    -   **Netlify**
+    -   **Vercel**
+    -   **AWS S3**
+    -   **Apache / Nginx**
 
-```env
-# AI Provider API Keys
-VITE_OPENAI_API_KEY=your_openai_api_key_here
-VITE_GOOGLE_API_KEY=your_google_gemini_api_key_here
-VITE_ANTHROPIC_API_KEY=your_anthropic_api_key_here
-```
-
-**Getting API Keys:**
-- **OpenAI**: Get your API key from [OpenAI Platform](https://platform.openai.com/api-keys)
-- **Google Gemini**: Get your API key from [Google AI Studio](https://aistudio.google.com/app/apikey)
-- **Anthropic Claude**: Get your API key from [Anthropic Console](https://console.anthropic.com/)
-
-> **Note**: These are frontend environment variables (prefixed with `VITE_`). Never commit your actual `.env` file to version control.
-
-## Tech Stack
-
-- **Frontend**: React 18, TypeScript, Vite
-- **Styling**: Tailwind CSS, Radix UI components
-- **Routing**: React Router DOM
-- **State Management**: React hooks, TanStack Query
-- **Icons**: Lucide React
-- **Deployment**: Vercel-ready with SPA support
-
-## Project Structure
+## 📂 Project Structure
 
 ```
 src/
-├── components/          # Reusable UI components
-│   ├── ui/             # Shadcn UI components
-│   ├── Navigation.tsx  # Main navigation
-│   ├── FuturisticHero.tsx
+├── app/                # Next.js App Router pages
+│   ├── blog/           # Blog routes
+│   ├── playground/     # Playground app
+│   ├── layout.tsx      # Root layout
+│   ├── page.tsx        # Home page
+│   └── globals.css     # Global styles
+├── components/         # Reusable UI components
+│   ├── ui/             # Shadcn/UI primitives
 │   └── ...
-├── pages/              # Page components
-│   ├── Index.tsx       # Home page
-│   ├── Playground.tsx  # AI Playground
-│   ├── Blog.tsx        # Blog listing
-│   └── ...
-├── lib/                # Utility libraries
-│   ├── ai.ts          # AI service integration
-│   ├── utils.ts       # Helper functions
-│   └── ...
-├── hooks/              # Custom React hooks
-└── assets/             # Static assets
+├── lib/                # Utilities and data
+└── ...
 ```
 
-## AI Providers & Models
+## 📄 License
 
-### Supported Providers
-
-1. **Google Gemini** (Default)
-   - `gemini-2.0-flash-exp` (Fastest, recommended)
-   - `gemini-1.5-flash`
-   - `gemini-1.5-pro`
-
-2. **OpenAI**
-   - `gpt-4o-mini` (Cost-effective)
-   - `gpt-4o`
-   - `gpt-4-turbo`
-
-3. **Anthropic Claude**
-   - `claude-3-5-haiku-20241022` (Fast)
-   - `claude-3-5-sonnet-20241022` (Balanced)
-   - `claude-3-opus-20240229` (Most capable)
-
-### Default Models
-- **Text Generation**: `gemini-2.0-flash-exp`
-- **Code Generation**: `gpt-4o-mini`
-- **Conversations**: `claude-3-5-haiku-20241022`
-
-## Responsive Design
-
-The application is fully responsive with breakpoints:
-- **Mobile**: < 640px (sm)
-- **Tablet**: 640px - 1024px (md)
-- **Desktop**: 1024px+ (lg)
-- **Large Desktop**: 1280px+ (xl)
-
-### Mobile Optimizations
-- Touch-friendly interface with proper button sizing
-- Responsive navigation with mobile menu
-- Optimized layouts for small screens
-- Progressive text sizing
-- Gesture-friendly interactions
-
-## Development
-
-### Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-
-### Adding New AI Providers
-
-1. Implement the `AIProvider` interface in `src/lib/ai.ts`
-2. Add the provider to the `AIService` constructor
-3. Update the UI to include the new provider option
-
-### Customizing Themes
-
-The application uses a comprehensive design system. Customize colors and themes in:
-- `src/index.css` - CSS variables and design tokens
-- `tailwind.config.ts` - Tailwind configuration
-
-## Deployment
-
-### Vercel (Recommended)
-
-1. Connect your repository to Vercel
-2. Add environment variables in Vercel dashboard
-3. Deploy automatically on every push
-
-### Manual Deployment
-
-1. Build the project: `npm run build`
-2. Serve the `dist` folder with any static hosting service
-3. Ensure SPA routing is configured (see `public/_redirects` and `public/vercel.json`)
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Commit changes: `git commit -m 'Add amazing feature'`
-4. Push to branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Support
-
-- Create an issue for bugs or feature requests
-- Check the documentation for common questions
-- Join our community discussions
-
----
-
-## 💰 Google AdSense Status
-
-**✅ READY FOR APPROVAL!**
-
-Your website meets all Google AdSense requirements:
-- ✅ High-quality, original content (10+ comprehensive blog posts)
-- ✅ All required pages (Privacy, Terms, About, Contact)
-- ✅ Professional design and user experience
-- ✅ Mobile-optimized and fast loading
-- ✅ Proper SEO and technical setup
-- ✅ ads.txt configured with Publisher ID: `pub-3606235083263616`
-
-**Next Step**: [Apply for AdSense](https://www.google.com/adsense)
-
-**Documentation**:
-- 📋 [AdSense Ready Checklist](./ADSENSE_READY_CHECKLIST.md)
-- 💰 [Optimization Guide](./ADSENSE_OPTIMIZATION_GUIDE.md)
-- 📊 [Quick Summary](./ADSENSE_SUMMARY.md)
-
----
-
-Built with ❤️ for the AI community
+This project is licensed under the MIT License.

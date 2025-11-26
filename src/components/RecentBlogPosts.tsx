@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import { ArrowRight, Calendar, Clock, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { blogPosts } from '@/lib/blog-posts';
@@ -58,14 +60,14 @@ const RecentBlogPosts = () => {
               transition={{ delay: index * 0.1 + 0.3 }}
             >
               <Link
-                to={`/blog/${post.slug}`}
+                href={`/blog/${post.slug}`}
                 className="group relative flex flex-col h-full bg-card/50 backdrop-blur-sm border border-border/50 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 hover:-translate-y-2"
               >
                 {/* Image Placeholder/Gradient */}
                 <div className="aspect-[16/10] bg-muted relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
                   <img
-                    src={post.imageUrl || `https://placehold.co/800x500/1a1a1a/ffffff?text=${encodeURIComponent(post.title)}`}
+                    src={post.imageUrl || `https://placehold.co/800x500/1a1a1a/ffffff?text=UntrainedModel`}
                     alt={post.title}
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                   />
@@ -121,7 +123,7 @@ const RecentBlogPosts = () => {
           className="text-center mt-16"
         >
           <Button asChild size="lg" className="rounded-full px-8 h-12 text-base shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all duration-300">
-            <Link to="/blog">
+            <Link href="/blog">
               View All Articles
               <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
