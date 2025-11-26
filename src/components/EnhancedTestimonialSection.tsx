@@ -1,4 +1,5 @@
 import { Star, Quote, Users, Building2, TrendingUp, Award } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const EnhancedTestimonialSection = () => {
   const testimonials = [
@@ -42,37 +43,59 @@ const EnhancedTestimonialSection = () => {
   ];
 
   return (
-    <section className="section-odd section-spacing relative">
+    <section className="section-odd section-spacing relative overflow-hidden">
       {/* Enhanced Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-muted/30 via-muted/20 to-background" />
-      <div className="absolute inset-0">
-        <div className="absolute top-1/3 left-1/5 w-96 h-96 bg-primary/8 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/3 right-1/5 w-80 h-80 bg-accent/6 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-primary/3 to-accent/3 rounded-full blur-3xl" />
+      <div className="absolute inset-0 bg-gradient-to-br from-muted/30 via-muted/20 to-background pointer-events-none" />
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/3 left-1/5 w-96 h-96 bg-primary/8 rounded-full blur-[100px]" />
+        <div className="absolute bottom-1/3 right-1/5 w-80 h-80 bg-accent/6 rounded-full blur-[100px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-primary/3 to-accent/3 rounded-full blur-[120px]" />
       </div>
+
       <div className="section-container relative z-10">
         {/* Section Flag */}
         <div className="flex justify-center mb-8">
-          <div className="section-flag">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="section-flag"
+          >
             <Quote className="w-4 h-4" />
             Real Success Stories from India
-          </div>
+          </motion.div>
         </div>
 
         {/* Section Title */}
-        <h2 className="apple-section-title text-foreground mb-4">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="apple-section-title text-foreground mb-4"
+        >
           Real Indians, Real Results
-        </h2>
-        <p className="apple-section-subtitle text-foreground/70 mb-16">
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="apple-section-subtitle text-foreground/70 mb-16"
+        >
           See how Indian students, developers, and creators are using AI to study smarter, work faster, and earn more
-        </p>
+        </motion.p>
 
         {/* Testimonials Grid - Bento Style */}
-        <div className="bento-grid gap-6 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20 auto-rows-[minmax(300px,auto)]">
           {testimonials.map((testimonial, index) => (
-            <div
+            <motion.div
               key={testimonial.id}
-              className={`bento-card p-8 relative overflow-hidden group h-full flex flex-col ${index === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 + index * 0.1 }}
+              className={`glass-card p-8 relative overflow-hidden group h-full flex flex-col rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-colors ${index === 0 ? 'lg:col-span-2' : ''}`}
             >
               {/* Background Gradient */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -92,74 +115,81 @@ const EnhancedTestimonialSection = () => {
                 </div>
 
                 {/* Testimonial Content */}
-                <blockquote className={`text-foreground/90 mb-6 leading-relaxed flex-grow ${index === 0 ? 'text-xl md:text-2xl' : 'text-base'}`}>
+                <blockquote className={`text-foreground/90 mb-8 leading-relaxed flex-grow ${index === 0 ? 'text-xl md:text-2xl font-medium' : 'text-base'}`}>
                   "{testimonial.content}"
                 </blockquote>
 
                 {/* Bottom Section */}
-                <div className="mt-auto">
-                  {/* User Info */}
-                  <div className="flex items-center gap-4 mb-4">
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover border-2 border-primary/20"
-                      onError={(e) => {
-                        e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(testimonial.name)}&background=6366f1&color=fff&size=48`;
-                      }}
-                    />
-                    <div>
-                      <div className="font-semibold text-foreground">
-                        {testimonial.name}
-                      </div>
-                      <div className="text-sm text-foreground/70">
-                        {testimonial.role} at {testimonial.company}
+                <div className="mt-auto pt-6 border-t border-white/10">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+                    {/* User Info */}
+                    <div className="flex items-center gap-4">
+                      <img
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        className="w-12 h-12 rounded-full object-cover border-2 border-primary/20"
+                        onError={(e) => {
+                          e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(testimonial.name)}&background=6366f1&color=fff&size=48`;
+                        }}
+                      />
+                      <div>
+                        <div className="font-bold text-foreground">
+                          {testimonial.name}
+                        </div>
+                        <div className="text-sm text-foreground/70">
+                          {testimonial.role} at {testimonial.company}
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* Metrics */}
-                  <div className="flex gap-6 text-sm pt-4 border-t border-border/20">
-                    <div>
-                      <div className="font-semibold text-primary">
-                        {testimonial.metrics.saved}
+                    {/* Metrics */}
+                    <div className="flex gap-6 text-sm">
+                      <div>
+                        <div className="font-bold text-primary">
+                          {testimonial.metrics.saved}
+                        </div>
+                        <div className="text-xs text-foreground/60">Time Saved</div>
                       </div>
-                      <div className="text-foreground/60">Time Saved</div>
-                    </div>
-                    <div>
-                      <div className="font-semibold text-primary">
-                        {testimonial.metrics.efficiency}
+                      <div>
+                        <div className="font-bold text-primary">
+                          {testimonial.metrics.efficiency}
+                        </div>
+                        <div className="text-xs text-foreground/60">Efficiency Gain</div>
                       </div>
-                      <div className="text-foreground/60">Efficiency Gain</div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Stats Grid */}
-        <div className="apple-grid apple-grid-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
             return (
-              <div key={index} className="apple-card text-center animate-float" style={{ animationDelay: `${index * 0.2}s` }}>
-                <div className="apple-card-icon mx-auto">
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 + index * 0.1 }}
+                className="text-center p-6 rounded-2xl bg-card/30 border border-border/50 backdrop-blur-sm"
+              >
+                <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                   <Icon className="w-6 h-6" />
                 </div>
-                <div className="apple-card-content">
-                  <div className="text-3xl font-bold text-foreground mb-2">
-                    {stat.value}
-                  </div>
-                  <div className="font-semibold text-foreground/80 mb-2">
-                    {stat.label}
-                  </div>
-                  <div className="text-sm text-foreground/60">
-                    {stat.description}
-                  </div>
+                <div className="text-3xl font-bold text-foreground mb-1">
+                  {stat.value}
                 </div>
-              </div>
+                <div className="font-semibold text-foreground/80 mb-1">
+                  {stat.label}
+                </div>
+                <div className="text-xs text-foreground/60">
+                  {stat.description}
+                </div>
+              </motion.div>
             );
           })}
         </div>

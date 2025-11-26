@@ -17,11 +17,19 @@ import {
   Star
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const EnhancedFeatureShowcase = () => {
   const [activeFeature, setActiveFeature] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   const features = [
     {
@@ -53,24 +61,6 @@ const EnhancedFeatureShowcase = () => {
     { icon: Trophy, label: 'User Rating', value: '4.6/5' }
   ];
 
-  // Intersection Observer for animations
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1, rootMargin: '-50px' }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   // Auto-cycle features
   useEffect(() => {
     const interval = setInterval(() => {
@@ -80,39 +70,73 @@ const EnhancedFeatureShowcase = () => {
   }, []);
 
   return (
-    <section className="section-spacing section-even">
-      <div className="section-container">
+    <section ref={containerRef} className="section-spacing section-even relative overflow-hidden">
+      {/* Parallax Background Elements */}
+      <motion.div style={{ y }} className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="section-container relative z-10">
         {/* Section Flag */}
         <div className="flex justify-center">
-          <div className="section-flag">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="section-flag"
+          >
             <Sparkles className="w-4 h-4" />
             Premium AI Platform
-          </div>
+          </motion.div>
         </div>
 
         {/* Section Header */}
-        <h2 className="apple-section-title text-foreground">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="apple-section-title text-foreground"
+        >
           Everything you need
           <span className="block text-foreground/60">in one platform</span>
-        </h2>
+        </motion.h2>
 
-        <p className="apple-section-subtitle text-foreground/70">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="apple-section-subtitle text-foreground/70"
+        >
           Powerful AI tools designed to transform your workflow and accelerate your projects.
-        </p>
+        </motion.p>
 
         {/* Feature Showcase - Bento Grid */}
-        <div className="bento-grid mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             const isActive = index === activeFeature;
 
             return (
-              <div
+              <motion.div
                 key={index}
-                className={`bento-card cursor-pointer group ${isActive ? 'ring-1 ring-primary/50 bg-primary/5' : ''}`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 + index * 0.1 }}
+                className={`relative p-8 rounded-3xl cursor-pointer group transition-all duration-500 overflow-hidden border ${isActive
+                    ? 'bg-primary/5 border-primary/20 shadow-lg shadow-primary/5 scale-[1.02]'
+                    : 'bg-card/30 border-border/50 hover:bg-card/50 hover:border-primary/10'
+                  }`}
                 onClick={() => setActiveFeature(index)}
               >
-                <div className="glow-effect" />
+                {/* Active Indicator */}
+                {isActive && (
+                  <motion.div
+                    layoutId="activeFeatureGlow"
+                    className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-50"
+                  />
+                )}
+
                 <div className="relative z-10">
                   <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.color} text-white flex items-center justify-center mb-6 shadow-lg transform group-hover:scale-110 transition-transform duration-500`}>
                     <Icon className="w-7 h-7" />
@@ -120,39 +144,75 @@ const EnhancedFeatureShowcase = () => {
 
                   <h3 className="text-xl font-bold text-foreground mb-3 flex items-center gap-2">
                     {feature.title}
-                    {isActive && <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />}
+                    {isActive && (
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        className="w-2 h-2 rounded-full bg-primary"
+                      />
+                    )}
                   </h3>
 
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed text-sm">
                     {feature.description}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
 
         {/* Demo Display */}
-        <div className="relative perspective-1000 group">
-          <div className="apple-card text-center min-h-[400px] flex flex-col justify-center transform transition-transform duration-700 group-hover:rotate-y-12 group-hover:rotate-x-6">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95, rotateX: 10 }}
+          whileInView={{ opacity: 1, scale: 1, rotateX: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative perspective-1000 group max-w-4xl mx-auto"
+        >
+          <div className="relative rounded-3xl border border-white/10 bg-black/40 backdrop-blur-xl shadow-2xl p-8 md:p-12 text-center overflow-hidden transform transition-transform duration-700 group-hover:rotate-x-2">
+            {/* Background Gradient Animation */}
+            <motion.div
+              key={activeFeature}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+              className={`absolute inset-0 bg-gradient-to-br ${features[activeFeature].color} opacity-5`}
+            />
 
-            <div className={`w-20 h-20 mx-auto mb-8 rounded-2xl bg-gradient-to-br ${features[activeFeature].color} text-white flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-500`}>
+            <motion.div
+              key={`icon-${activeFeature}`}
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ type: "spring", stiffness: 200, damping: 20 }}
+              className={`w-20 h-20 mx-auto mb-8 rounded-2xl bg-gradient-to-br ${features[activeFeature].color} text-white flex items-center justify-center shadow-lg`}
+            >
               {React.createElement(features[activeFeature].icon, { className: 'w-10 h-10' })}
-            </div>
+            </motion.div>
 
-            <h3 className="text-2xl font-bold text-foreground mb-4 relative z-10">
+            <motion.h3
+              key={`title-${activeFeature}`}
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              className="text-3xl font-bold text-foreground mb-6 relative z-10"
+            >
               {features[activeFeature].title}
-            </h3>
+            </motion.h3>
 
-            <p className="text-lg text-foreground/70 mb-8 leading-relaxed max-w-md mx-auto relative z-10">
+            <motion.p
+              key={`demo-${activeFeature}`}
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.1 }}
+              className="text-lg text-muted-foreground mb-10 leading-relaxed max-w-2xl mx-auto relative z-10"
+            >
               {features[activeFeature].demo}
-            </p>
+            </motion.p>
 
             <div className="relative z-10">
-              <Button asChild className="apple-button mx-auto shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300">
+              <Button asChild size="lg" className="rounded-full px-8 h-12 text-base shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
                 <Link to="/playground" className="flex items-center gap-2">
-                  <Play className="h-5 w-5" />
+                  <Play className="h-5 w-5 fill-current" />
                   Try It Now
                   <ArrowRight className="h-5 w-5" />
                 </Link>
@@ -161,33 +221,38 @@ const EnhancedFeatureShowcase = () => {
           </div>
 
           {/* Decorative Elements */}
-          <div className="absolute -top-10 -right-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-accent/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-        </div>
-      </div>
+          <div className="absolute -top-10 -right-10 w-32 h-32 bg-primary/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-accent/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        </motion.div>
 
-      {/* Achievements */}
-      <div className="apple-grid apple-grid-3 max-w-4xl mx-auto">
-        {achievements.map((achievement, index) => {
-          const Icon = achievement.icon;
-          return (
-            <div key={index} className="apple-card text-center">
-              <div className="apple-card-icon mx-auto">
-                <Icon className="w-6 h-6" />
-              </div>
+        {/* Achievements */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mt-20">
+          {achievements.map((achievement, index) => {
+            const Icon = achievement.icon;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 + index * 0.1 }}
+                className="text-center p-6 rounded-2xl border border-border/50 bg-card/30 backdrop-blur-sm hover:bg-card/50 transition-colors"
+              >
+                <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                  <Icon className="w-6 h-6" />
+                </div>
 
-              <div className="apple-card-content">
                 <div className="text-3xl font-bold text-foreground mb-2">
                   {achievement.value}
                 </div>
 
-                <div className="font-semibold text-foreground/80">
+                <div className="font-semibold text-muted-foreground">
                   {achievement.label}
                 </div>
-              </div>
-            </div>
-          );
-        })}
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

@@ -1,83 +1,132 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Calendar, Star } from "lucide-react";
+import { ArrowRight, Calendar, Clock, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { blogPosts } from '@/lib/blog-posts';
-
+import { Badge } from "@/components/ui/badge";
+import { motion } from "framer-motion";
 
 const RecentBlogPosts = () => {
+  const recentPosts = blogPosts.slice(0, 3);
+
   return (
-    <section className="section-spacing section-odd">
-      <div className="section-container">
-        <div className="flex justify-center">
-          <div className="section-flag">
-            <Calendar className="w-4 h-4" />
-            Latest Insights
-          </div>
+    <section className="section-spacing section-odd relative overflow-hidden">
+      {/* Ambient Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px]" />
+      </div>
+
+      <div className="section-container relative z-10">
+        <div className="flex flex-col items-center text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary border border-primary/20 mb-6"
+          >
+            <Sparkles className="w-4 h-4" />
+            <span className="text-sm font-medium">Latest Insights</span>
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-5xl font-bold mb-6 tracking-tight"
+          >
+            From Our <span className="text-gradient-premium">Blog</span>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-xl text-muted-foreground max-w-2xl"
+          >
+            Explore the latest trends, tutorials, and insights in the world of AI.
+          </motion.p>
         </div>
 
-        <h2 className="apple-section-title text-foreground">
-          From Our Blog
-        </h2>
-
-        <p className="apple-section-subtitle text-foreground/70">
-          Explore the latest trends, tutorials, and insights in the world of AI.
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-          {blogPosts.map((post) => (
-            <Link
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {recentPosts.map((post, index) => (
+            <motion.div
               key={post.id}
-              to={`/blog/${post.slug}`}
-              className="group relative flex flex-col h-full bg-card rounded-2xl border border-border/50 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 + 0.3 }}
             >
-              {/* Card Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-              <div className="p-8 relative z-10 flex flex-col h-full">
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {post.tags.slice(0, 2).map((tag, i) => (
-                    <span key={i} className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
-                      {tag}
-                    </span>
-                  ))}
+              <Link
+                to={`/blog/${post.slug}`}
+                className="group relative flex flex-col h-full bg-card/50 backdrop-blur-sm border border-border/50 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 hover:-translate-y-2"
+              >
+                {/* Image Placeholder/Gradient */}
+                <div className="aspect-[16/10] bg-muted relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
+                  <img
+                    src={post.imageUrl || `https://placehold.co/800x500/1a1a1a/ffffff?text=${encodeURIComponent(post.title)}`}
+                    alt={post.title}
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute bottom-4 left-4 z-20">
+                    <Badge className="bg-primary/90 hover:bg-primary text-primary-foreground border-none backdrop-blur-md">
+                      {post.category}
+                    </Badge>
+                  </div>
                 </div>
 
-                <h3 className="text-xl font-bold mb-4 leading-tight group-hover:text-primary transition-colors">
-                  {post.title}
-                </h3>
-
-                <p className="text-muted-foreground leading-relaxed mb-8 flex-1">
-                  {post.excerpt}
-                </p>
-
-                <div className="flex items-center justify-between pt-6 border-t border-border/50">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xs">
-                      {post.author[0]}
+                <div className="p-6 flex flex-col h-full">
+                  <div className="flex items-center gap-3 text-xs text-muted-foreground mb-4">
+                    <div className="flex items-center gap-1">
+                      <Calendar className="w-3 h-3" />
+                      {post.publishDate.toLocaleDateString()}
                     </div>
-                    <div className="flex flex-col">
-                      <span className="text-xs font-medium text-foreground">{post.author}</span>
-                      <span className="text-[10px] text-muted-foreground">{post.publishDate.toLocaleDateString()}</span>
+                    <div className="flex items-center gap-1">
+                      <Clock className="w-3 h-3" />
+                      {post.readTime}
                     </div>
                   </div>
-                  <span className="inline-flex items-center gap-2 text-primary font-medium text-sm group-hover:translate-x-1 transition-transform">
-                    Read Article <ArrowRight className="w-4 h-4" />
-                  </span>
+
+                  <h3 className="text-xl font-bold mb-3 leading-tight group-hover:text-primary transition-colors line-clamp-2">
+                    {post.title}
+                  </h3>
+
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1 line-clamp-3">
+                    {post.excerpt}
+                  </p>
+
+                  <div className="flex items-center justify-between pt-4 border-t border-border/50 mt-auto">
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-[10px]">
+                        {post.author[0]}
+                      </div>
+                      <span className="text-xs font-medium text-foreground">{post.author}</span>
+                    </div>
+                    <span className="inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:translate-x-1 transition-transform">
+                      Read <ArrowRight className="w-4 h-4" />
+                    </span>
+                  </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            </motion.div>
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <Button asChild className="apple-button">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6 }}
+          className="text-center mt-16"
+        >
+          <Button asChild size="lg" className="rounded-full px-8 h-12 text-base shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all duration-300">
             <Link to="/blog">
-              View All Posts
+              View All Articles
               <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
           </Button>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
