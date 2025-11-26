@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import { Menu, X, Search, ChevronUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { ThemeToggle } from '@/components/ui/theme-toggle';
+
 import { SearchModal } from '@/components/SearchModal';
 import { useGlobalShortcuts } from '@/hooks/useKeyboardShortcuts';
 import { cn } from '@/lib/utils';
@@ -98,7 +98,6 @@ const Navigation = () => {
               >
                 <Search className="h-5 w-5" />
               </Button>
-              <ThemeToggle />
               <Button asChild variant="premium" size="sm" className="shadow-neon">
                 <Link href="/playground">Start Free Demo</Link>
               </Button>
@@ -108,7 +107,6 @@ const Navigation = () => {
               <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(true)}>
                 <Search className="h-5 w-5" />
               </Button>
-              <ThemeToggle />
               <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)}>
                 {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </Button>

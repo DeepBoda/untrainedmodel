@@ -131,15 +131,16 @@ const BlogPostClient = ({ post, relatedPosts }: BlogPostClientProps) => {
                     transition={{ duration: 0.6, delay: 0.4 }}
                 >
                     <GlassCard className="p-8 md:p-12 bg-background/40 backdrop-blur-xl border-white/5">
-                        <div className="prose prose-lg dark:prose-invert max-w-none 
+                        <div className="prose prose-xl dark:prose-invert max-w-none 
               prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-foreground
-              prose-p:text-muted-foreground prose-p:leading-relaxed
+              prose-p:text-gray-300 prose-p:leading-relaxed prose-p:text-lg
               prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-              prose-img:rounded-2xl prose-img:shadow-xl
-              prose-pre:bg-black/50 prose-pre:border prose-pre:border-white/10 prose-pre:backdrop-blur-md
-              prose-blockquote:border-l-primary prose-blockquote:bg-primary/5 prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:rounded-r-lg prose-blockquote:not-italic
-              prose-strong:text-foreground
-              prose-code:text-primary prose-code:bg-primary/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:before:content-none prose-code:after:content-none"
+              prose-img:rounded-2xl prose-img:shadow-xl prose-img:border prose-img:border-white/10
+              prose-pre:bg-black/50 prose-pre:border prose-pre:border-white/10 prose-pre:backdrop-blur-md prose-pre:p-6 prose-pre:rounded-xl
+              prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-primary/5 prose-blockquote:py-4 prose-blockquote:px-8 prose-blockquote:rounded-r-xl prose-blockquote:not-italic prose-blockquote:text-xl prose-blockquote:font-medium
+              prose-strong:text-white prose-strong:font-bold
+              prose-code:text-primary prose-code:bg-primary/10 prose-code:px-2 prose-code:py-1 prose-code:rounded-md prose-code:before:content-none prose-code:after:content-none prose-code:font-mono prose-code:text-sm
+              prose-li:text-gray-300 prose-li:text-lg"
                         >
                             <ReactMarkdown>{post.content}</ReactMarkdown>
                         </div>

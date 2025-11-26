@@ -9,17 +9,24 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
     Sparkles, Code, TrendingUp, Send, Copy, RefreshCw, Zap,
     Layout, Settings, History, ChevronRight, Terminal,
-    MessageSquare, Play, Save, Share2
+    MessageSquare, Play, Save, Share2, Bot
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { aiService } from '@/lib/ai';
+import { SettingsModal } from '@/components/playground/SettingsModal';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 const PlaygroundClient = () => {
     const [activeMode, setActiveMode] = useState<'chat' | 'code' | 'research'>('chat');
     const [input, setInput] = useState('');
     const [isGenerating, setIsGenerating] = useState(false);
     const [messages, setMessages] = useState<Array<{ role: 'user' | 'ai', content: string, type?: 'code' | 'text' }>>([
-        { role: 'ai', content: "Hello! I'm your AI assistant. Choose a mode on the left and let's build something amazing.", type: 'text' }
+        { role: 'ai', content: "Hello! I'm your AI assistant. Configure your API keys in Settings ⚙️ and let's build something amazing.", type: 'text' }
     ]);
+    const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+    const [selectedProvider, setSelectedProvider] = useState('google');
+    const [selectedModel, setSelectedModel] = useState('gemini-2.0-flash-exp');
+
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
     const scrollToBottom = () => {
@@ -30,31 +37,50 @@ const PlaygroundClient = () => {
         scrollToBottom();
     }, [messages]);
 
-    const handleSend = () => {
-        if (!input.trim()) return;
+    // Update available models when provider changes
+    useEffect(() => {
+        const models = aiService.getModelsForProvider(selectedProvider);
+        if (models.length > 0) {
+            setSelectedModel(models[0]);
+        }
+    }, [selectedProvider]);
+
+    const handleSend = async () => {
+        if (!input.trim() || isGenerating) return;
 
         const userMsg = input;
         setInput('');
         setMessages(prev => [...prev, { role: 'user', content: userMsg, type: 'text' }]);
         setIsGenerating(true);
 
-        // Simulate AI response
-        setTimeout(() => {
-            let response = "";
-            let type: 'text' | 'code' = 'text';
+        try {
+            // Get keys from localStorage
+            const storedKeys = localStorage.getItem('ai_api_keys');
+            const keys = storedKeys ? JSON.parse(storedKeys) : {};
+            const apiKey = keys[selectedProvider];
 
-            if (activeMode === 'code') {
-                response = `// Here is a solution for you\nfunction optimizeAlgorithm(data) {\n  return data.reduce((acc, curr) => {\n    // Optimized logic here\n    return acc + curr;\n  }, 0);\n}`;
-                type = 'code';
-            } else if (activeMode === 'research') {
-                response = "Based on current market data, we're seeing a 15% increase in adoption rates for AI-driven development tools. Key drivers include:\n1. Efficiency gains\n2. Cost reduction\n3. Improved code quality";
-            } else {
-                response = "I can certainly help with that. Here's a breakdown of how we can approach this problem...";
-            }
+            const response = await aiService.generateResponse(
+                userMsg,
+                activeMode === 'code' ? 'code' : 'text',
+                selectedProvider,
+                selectedModel,
+                apiKey
+            );
 
-            setMessages(prev => [...prev, { role: 'ai', content: response, type }]);
+            setMessages(prev => [...prev, {
+                role: 'ai',
+                content: response.content,
+                type: activeMode === 'code' ? 'code' : 'text'
+            }]);
+        } catch (error: any) {
+            setMessages(prev => [...prev, {
+                role: 'ai',
+                content: `Error: ${error.message}. Please check your API keys in Settings.`,
+                type: 'text'
+            }]);
+        } finally {
             setIsGenerating(false);
-        }, 1500);
+        }
     };
 
     const modes = [
@@ -65,6 +91,7 @@ const PlaygroundClient = () => {
 
     return (
         <div className="h-screen pt-16 flex overflow-hidden bg-background">
+            <SettingsModal isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} />
 
             {/* Sidebar */}
             <div className="w-64 border-r border-white/5 bg-black/20 backdrop-blur-xl flex flex-col hidden md:flex">
@@ -108,6 +135,38 @@ const PlaygroundClient = () => {
                             ))}
                         </div>
                     </div>
+
+                    <div>
+                        <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3 px-2">Model Settings</h3>
+                        <div className="space-y-3 px-2">
+                            <div className="space-y-1">
+                                <label className="text-xs text-muted-foreground">Provider</label>
+                                <Select value={selectedProvider} onValueChange={setSelectedProvider}>
+                                    <SelectTrigger className="w-full bg-white/5 border-white/10 h-8 text-xs">
+                                        <SelectValue />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="google">Google Gemini</SelectItem>
+                                        <SelectItem value="openai">OpenAI</SelectItem>
+                                        <SelectItem value="anthropic">Anthropic</SelectItem>
+                                    </SelectContent>
+                                </Select>
+                            </div>
+                            <div className="space-y-1">
+                                <label className="text-xs text-muted-foreground">Model</label>
+                                <Select value={selectedModel} onValueChange={setSelectedModel}>
+                                    <SelectTrigger className="w-full bg-white/5 border-white/10 h-8 text-xs">
+                                        <SelectValue />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        {aiService.getModelsForProvider(selectedProvider).map(model => (
+                                            <SelectItem key={model} value={model}>{model}</SelectItem>
+                                        ))}
+                                    </SelectContent>
+                                </Select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="p-4 border-t border-white/5">
@@ -119,7 +178,10 @@ const PlaygroundClient = () => {
                             <div className="font-medium">Demo User</div>
                             <div className="text-xs text-muted-foreground">Free Plan</div>
                         </div>
-                        <Settings className="w-4 h-4 ml-auto text-muted-foreground cursor-pointer hover:text-white" />
+                        <Settings
+                            className="w-4 h-4 ml-auto text-muted-foreground cursor-pointer hover:text-white transition-colors"
+                            onClick={() => setIsSettingsOpen(true)}
+                        />
                     </div>
                 </div>
             </div>
@@ -132,14 +194,13 @@ const PlaygroundClient = () => {
                         <Badge variant="outline" className="bg-primary/10 border-primary/20 text-primary">
                             {modes.find(m => m.id === activeMode)?.label} Mode
                         </Badge>
-                        <span className="text-xs text-muted-foreground">v2.0.0</span>
+                        <span className="text-xs text-muted-foreground hidden sm:inline-block">
+                            Using {selectedProvider} / {selectedModel}
+                        </span>
                     </div>
                     <div className="flex items-center gap-2">
-                        <Button variant="ghost" size="icon" className="h-8 w-8">
-                            <Share2 className="w-4 h-4" />
-                        </Button>
-                        <Button variant="ghost" size="icon" className="h-8 w-8">
-                            <Save className="w-4 h-4" />
+                        <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => setIsSettingsOpen(true)}>
+                            <Settings className="w-4 h-4" />
                         </Button>
                     </div>
                 </header>
@@ -163,7 +224,7 @@ const PlaygroundClient = () => {
                                         ? "bg-black border-white/10 text-primary"
                                         : "bg-primary text-white border-primary"
                                 )}>
-                                    {msg.role === 'ai' ? <Sparkles className="w-4 h-4" /> : <div className="text-xs font-bold">U</div>}
+                                    {msg.role === 'ai' ? <Bot className="w-4 h-4" /> : <div className="text-xs font-bold">U</div>}
                                 </div>
 
                                 <div className={cn(
@@ -175,10 +236,10 @@ const PlaygroundClient = () => {
                                     {msg.type === 'code' ? (
                                         <div className="font-mono text-sm overflow-x-auto">
                                             <div className="flex items-center justify-between mb-2 pb-2 border-b border-white/10 text-xs text-muted-foreground">
-                                                <span>JavaScript</span>
+                                                <span>TypeScript</span>
                                                 <Copy className="w-3 h-3 cursor-pointer hover:text-white" />
                                             </div>
-                                            <pre className="text-green-400">{msg.content}</pre>
+                                            <pre className="text-green-400 whitespace-pre-wrap">{msg.content}</pre>
                                         </div>
                                     ) : (
                                         <p className="leading-relaxed whitespace-pre-wrap">{msg.content}</p>
