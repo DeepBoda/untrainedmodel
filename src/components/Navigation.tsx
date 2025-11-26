@@ -66,7 +66,7 @@ const Navigation = () => {
                 <img
                   src="/uploads/bccee730-0f1a-4541-8c9f-4760c42f0c75.png"
                   alt="UntrainedModel Logo"
-                  className="w-8 h-8 relative z-10 dark:invert transition-transform duration-300 group-hover:scale-110"
+                  className="w-8 h-8 relative z-10 transition-transform duration-300 group-hover:scale-110"
                 />
               </div>
               <span className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70 group-hover:to-primary transition-all duration-300">

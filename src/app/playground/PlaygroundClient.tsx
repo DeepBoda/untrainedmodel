@@ -95,7 +95,20 @@ const PlaygroundClient = () => {
 
             {/* Sidebar */}
             <div className="w-64 border-r border-white/5 bg-black/20 backdrop-blur-xl flex flex-col hidden md:flex">
-                <div className="p-4 border-b border-white/5">
+                <div className="p-4 border-b border-white/5 space-y-4">
+                    <div className="flex items-center space-x-2 px-2">
+                        <div className="relative w-8 h-8">
+                            <div className="absolute inset-0 bg-primary/20 rounded-full blur-lg" />
+                            <img
+                                src="/uploads/bccee730-0f1a-4541-8c9f-4760c42f0c75.png"
+                                alt="UntrainedModel Logo"
+                                className="w-8 h-8 relative z-10"
+                            />
+                        </div>
+                        <span className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">
+                            UntrainedModel
+                        </span>
+                    </div>
                     <Button variant="premium" className="w-full shadow-neon justify-start gap-2">
                         <Sparkles className="w-4 h-4" /> New Project
                     </Button>
