@@ -7,94 +7,143 @@ const Blog = () => {
 
   return (
     <Layout
-      title="AI Blog India 2025 | ChatGPT vs Gemini, Make Money with AI, JEE/NEET/UPSC Prep, Prompt Engineering"
-      description="Latest AI tutorials 2025 for Indian users. ChatGPT-4 vs Gemini 2.0 comparison, make ₹50K+ monthly with AI, JEE/NEET/UPSC preparation guides, prompt engineering masterclass, AI coding tutorials, content creation tips. Free resources updated daily."
-      keywords="AI blog India 2025, ChatGPT 4 tips, Gemini 2.0 tutorial, prompt engineering 2025, make money AI India, AI for students India, JEE NEET UPSC AI, AI coding tutorial, AI content creation, best AI tools 2025, free AI resources, AI business ideas, ChatGPT vs Gemini 2025, AI career India, AI freelancing India"
+      title="AI Insights & Tutorials | UntrainedModel Blog"
+      description="Expert guides, tutorials, and insights on AI development, prompt engineering, and the future of technology in India."
+      keywords="AI blog, ChatGPT tutorials, Gemini guides, AI development India, tech blog"
     >
-      <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/5 pt-16 sm:pt-20 md:pt-24 relative overflow-hidden">
-        {/* Playful Background */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 left-20 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-32 right-16 w-80 h-80 bg-purple-400/10 rounded-full blur-3xl animate-float-slow" />
-          <div className="absolute top-1/3 right-1/4 w-48 h-48 bg-pink-400/10 rounded-full blur-2xl animate-bounce" style={{ animationDuration: '4s' }} />
-        </div>
+      <div className="min-h-screen bg-background pt-24 pb-20">
+        <div className="container max-w-7xl mx-auto px-4">
 
-        {/* Header */}
-        <section className="py-20 relative z-10">
-          <div className="section-container text-center">
-            <div className="section-flag mx-auto mb-8">
-              📝 AI Knowledge Hub
+          {/* Header */}
+          <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in-up">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+              Latest <span className="text-gradient-premium">Insights</span>
+            </h1>
+            <p className="text-xl text-muted-foreground mb-8">
+              Deep dives into AI, development, and the future of tech.
+            </p>
+
+            {/* Search & Filter */}
+            <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
+              <div className="relative w-full max-w-md">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <Input
+                  placeholder="Search articles..."
+                  className="pl-10 h-12 rounded-full bg-muted/50 border-border/50 focus:ring-primary/20"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+              </div>
             </div>
 
-            <h1 className="apple-title text-foreground mb-6">
-              Discover AI
-              <span className="block bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
-                Insights & Tutorials
-              </span>
-            </h1>
-
-            <p className="apple-section-subtitle text-foreground/70 mb-12">
-              Expert guides, practical tutorials, and cutting-edge insights to master AI technology
-            </p>
-          </div>
-        </section>
-
-        {/* Blog Posts */}
-        <section className="pb-20 relative z-10">
-          <div className="section-container">
-            <div className="apple-grid apple-grid-3 gap-8">
-              {blogPosts.map((post, index) => (
-                <Link
-                  key={post.id}
-                  to={`/blog/${post.slug}`}
-                  className="apple-card group hover:scale-105 transition-all duration-500 animate-float flex flex-col h-full"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+            {/* Categories */}
+            <div className="flex flex-wrap justify-center gap-2 mt-6">
+              {categories.map(category => (
+                <button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${selectedCategory === category
+                      ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/25'
+                      : 'bg-muted/50 text-muted-foreground hover:bg-muted'
+                    }`}
                 >
-                  {/* Post Header */}
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
-                      📅 {post.publishDate.toLocaleDateString()}
-                      <span className="mx-2">•</span>
-                      ⏱️ {post.readTime}
-                    </div>
-
-                    <h3 className="text-xl font-bold mb-3 leading-tight group-hover:text-primary transition-colors">
-                      {post.title}
-                    </h3>
-
-                    <p className="text-muted-foreground leading-relaxed mb-6">
-                      {post.excerpt}
-                    </p>
-                  </div>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {post.tags.slice(0, 3).map((tag) => (
-                      <span key={tag} className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full font-medium">
-                        {tag}
-                      </span>
-                    ))}
-                    {post.tags.length > 3 && (
-                      <span className="px-3 py-1 bg-muted text-muted-foreground text-xs rounded-full">
-                        +{post.tags.length - 3} more
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Footer */}
-                  <div className="flex items-center justify-between pt-4 border-t border-border/20">
-                    <span className="text-sm text-muted-foreground">
-                      👤 {post.author}
-                    </span>
-                    <span className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 group-hover:bg-primary/20 text-primary rounded-full text-sm font-medium transition-all duration-300">
-                      Read More 🚀
-                    </span>
-                  </div>
-                </Link>
+                  {category}
+                </button>
               ))}
             </div>
           </div>
-        </section>
+
+          {/* Featured Post (Hero) */}
+          {featuredPost && (
+            <div className="mb-16 animate-fade-in-up delay-100">
+              <Link to={`/blog/${featuredPost.slug}`} className="group relative block rounded-3xl overflow-hidden aspect-[21/9] border border-border/50">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
+                <img
+                  src={featuredPost.imageUrl || `https://placehold.co/1200x630/1a1a1a/ffffff?text=${encodeURIComponent(featuredPost.title)}`}
+                  alt={featuredPost.title}
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute bottom-0 left-0 p-8 md:p-12 z-20 max-w-4xl">
+                  <Badge className="mb-4 bg-primary/20 text-primary hover:bg-primary/30 border-primary/20">
+                    {featuredPost.category}
+                  </Badge>
+                  <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight group-hover:text-primary/90 transition-colors">
+                    {featuredPost.title}
+                  </h2>
+                  <p className="text-lg text-gray-300 mb-6 line-clamp-2 max-w-2xl">
+                    {featuredPost.excerpt}
+                  </p>
+                  <div className="flex items-center gap-6 text-sm text-gray-400">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center font-bold text-white">
+                        {featuredPost.author[0]}
+                      </div>
+                      <span>{featuredPost.author}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Calendar className="w-4 h-4" />
+                      <span>{featuredPost.publishDate.toLocaleDateString()}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-4 h-4" />
+                      <span>{featuredPost.readTime}</span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </div>
+          )}
+
+          {/* Bento Grid for Remaining Posts */}
+          <div className="bento-grid gap-6">
+            {remainingPosts.map((post, index) => (
+              <Link
+                key={post.id}
+                to={`/blog/${post.slug}`}
+                className={`bento-card group flex flex-col h-full ${index === 0 || index === 3 ? 'md:col-span-2' : ''}`}
+              >
+                <div className="glow-effect" />
+
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="flex items-center justify-between mb-4">
+                    <Badge variant="outline" className="bg-primary/5 border-primary/20 text-primary">
+                      {post.category}
+                    </Badge>
+                    <span className="text-xs text-muted-foreground flex items-center gap-1">
+                      <Clock className="w-3 h-3" /> {post.readTime}
+                    </span>
+                  </div>
+
+                  <h3 className={`font-bold mb-3 group-hover:text-primary transition-colors ${index === 0 || index === 3 ? 'text-2xl' : 'text-xl'}`}>
+                    {post.title}
+                  </h3>
+
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1 line-clamp-3">
+                    {post.excerpt}
+                  </p>
+
+                  <div className="flex items-center justify-between pt-4 border-t border-border/10 mt-auto">
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <span>{post.publishDate.toLocaleDateString()}</span>
+                    </div>
+                    <span className="inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:translate-x-1 transition-transform">
+                      Read <ArrowRight className="w-4 h-4" />
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          {filteredPosts.length === 0 && (
+            <div className="text-center py-20">
+              <div className="text-6xl mb-4">🔍</div>
+              <h3 className="text-2xl font-bold mb-2">No articles found</h3>
+              <p className="text-muted-foreground">Try adjusting your search or category filter.</p>
+            </div>
+          )}
+
+        </div>
       </div>
     </Layout>
   );
