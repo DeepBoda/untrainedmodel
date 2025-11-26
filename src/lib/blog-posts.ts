@@ -618,8 +618,6 @@ export interface BlogPost {
   imageUrl?: string;
 }
 
-const blogPosts: BlogPost[] = [
+export const blogPosts: BlogPost[] = [
   post1, post2, post3, post4, post5, post6, post7, post8, post9, post10, post11, post12
 ];
-
-export default blogPosts;

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
-import blogPosts from "@/lib/blog-posts";
+import { blogPosts } from '@/lib/blog-posts';
 
 const Blog = () => {
 

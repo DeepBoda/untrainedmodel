@@ -1,171 +1,179 @@
-import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Clock, User, Calendar, Tag } from "lucide-react";
-import Layout from "@/components/Layout";
-import { Button } from "@/components/ui/button";
-import blogPosts from "@/lib/blog-posts";
+import { useParams, Link } from 'react-router-dom';
+import { blogPosts } from '@/lib/blog-posts';
+import Layout from '@/components/Layout';
+import { Button } from '@/components/ui/button';
+import { ArrowLeft, Calendar, Clock, Tag, Share2, User, ChevronRight } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
+import { Helmet } from 'react-helmet-async';
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
-  const post = blogPosts.find(p => p.slug === slug);
+  const post = blogPosts.find((p) => p.slug === slug);
 
   if (!post) {
     return (
-      <Layout title="Post Not Found">
-        <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/5 pt-24 flex items-center justify-center">
+      <Layout title="Post Not Found" description="The requested blog post could not be found.">
+        <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
-            <p className="text-muted-foreground mb-8">The blog post you're looking for doesn't exist.</p>
-            <Link to="/blog">
-              <Button>
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Back to Blog
-              </Button>
-            </Link>
+            <Button asChild>
+              <Link to="/blog">Back to Blog</Link>
+            </Button>
           </div>
         </div>
       </Layout>
     );
   }
 
+  // Get related posts (excluding current one)
+  const relatedPosts = blogPosts
+    .filter(p => p.id !== post.id)
+    .slice(0, 2);
+
   return (
     <Layout
-      title={post.title}
-      description={post.metaDescription || post.excerpt}
-      keywords={post.keywords?.join(', ')}
+      title={`${post.title} | UntrainedModel Blog`}
+      description={post.metaDescription}
+      keywords={post.keywords.join(', ')}
     >
-      <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/5 pt-24">
-        <article className="section-container max-w-4xl mx-auto py-12">
-          {/* Back Button */}
-          <Link to="/blog" className="inline-flex items-center text-primary hover:underline mb-8">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Blog
-          </Link>
+      <Helmet>
+        <meta property="og:type" content="article" />
+        <meta property="article:published_time" content={post.publishDate.toISOString()} />
+        <meta property="article:author" content={post.author} />
+      </Helmet>
 
-          {/* Post Header */}
-          <header className="mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">{post.title}</h1>
+      <div className="min-h-screen bg-background pt-24 pb-20">
+        {/* Progress Bar */}
+        <div className="fixed top-0 left-0 w-full h-1 bg-muted z-50">
+          <div className="h-full bg-primary origin-left scale-x-0 animate-scroll-progress" />
+        </div>
 
-            <div className="flex flex-wrap items-center gap-6 text-muted-foreground mb-6">
-              <div className="flex items-center gap-2">
-                <User className="h-4 w-4" />
-                <span>{post.author}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Calendar className="h-4 w-4" />
-                <span>{post.publishDate.toLocaleDateString()}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4" />
-                <span>{post.readTime}</span>
-              </div>
-            </div>
+        <article className="container max-w-4xl mx-auto px-4">
+          {/* Breadcrumb & Back */}
+          <div className="flex items-center gap-2 text-sm text-muted-foreground mb-8 animate-fade-in">
+            <Link to="/blog" className="hover:text-primary transition-colors flex items-center gap-1">
+              <ArrowLeft className="w-4 h-4" />
+              Back to Blog
+            </Link>
+            <ChevronRight className="w-4 h-4" />
+            <span className="truncate max-w-[200px]">{post.title}</span>
+          </div>
 
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2">
+          {/* Header Section */}
+          <header className="mb-12 text-center animate-fade-in-up">
+            <div className="flex flex-wrap justify-center gap-2 mb-6">
               {post.tags.map((tag) => (
-                <span key={tag} className="inline-flex items-center gap-1 px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">
-                  <Tag className="h-3 w-3" />
+                <span key={tag} className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium border border-primary/20">
                   {tag}
                 </span>
               ))}
             </div>
+
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-8 leading-tight text-foreground">
+              {post.title}
+            </h1>
+
+            <div className="flex flex-wrap items-center justify-center gap-6 text-muted-foreground border-y border-border/40 py-6">
+              <div className="flex items-center gap-2">
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
+                  {post.author[0]}
+                </div>
+                <div className="text-left">
+                  <div className="text-sm font-semibold text-foreground">{post.author}</div>
+                  <div className="text-xs">Author</div>
+                </div>
+              </div>
+              <div className="w-px h-8 bg-border/40 hidden sm:block" />
+              <div className="flex items-center gap-2">
+                <Calendar className="w-5 h-5" />
+                <div className="text-left">
+                  <div className="text-sm font-semibold text-foreground">
+                    {post.publishDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                  </div>
+                  <div className="text-xs">Published</div>
+                </div>
+              </div>
+              <div className="w-px h-8 bg-border/40 hidden sm:block" />
+              <div className="flex items-center gap-2">
+                <Clock className="w-5 h-5" />
+                <div className="text-left">
+                  <div className="text-sm font-semibold text-foreground">{post.readTime}</div>
+                  <div className="text-xs">Read Time</div>
+                </div>
+              </div>
+            </div>
           </header>
 
-          {/* Post Content */}
-          <div className="prose prose-lg max-w-none dark:prose-invert">
+          {/* Featured Image (Placeholder if none) */}
+          <div className="mb-12 rounded-3xl overflow-hidden shadow-2xl border border-border/20 aspect-video relative group animate-fade-in-up delay-100">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
+            <img
+              src={post.imageUrl || `https://placehold.co/1200x630/1a1a1a/ffffff?text=${encodeURIComponent(post.title)}`}
+              alt={post.title}
+              className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+            />
+          </div>
+
+          {/* Content */}
+          <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary prose-img:rounded-2xl prose-pre:bg-muted/50 prose-pre:border prose-pre:border-border/50 animate-fade-in-up delay-200">
             <ReactMarkdown>{post.content}</ReactMarkdown>
           </div>
 
-          {/* Engagement Section */}
-          <div className="mt-12 py-8 border-t border-b border-border space-y-8">
-            {/* Share */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-              <h3 className="font-semibold text-lg">Share this article:</h3>
-              <div className="flex gap-4">
-                <button
-                  onClick={() => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(window.location.href)}`, '_blank')}
-                  className="p-2 rounded-full bg-blue-500/10 text-blue-500 hover:bg-blue-500/20 transition-colors"
-                >
-                  Twitter
-                </button>
-                <button
-                  onClick={() => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`, '_blank')}
-                  className="p-2 rounded-full bg-blue-700/10 text-blue-700 hover:bg-blue-700/20 transition-colors"
-                >
-                  LinkedIn
-                </button>
-                <button
-                  onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`, '_blank')}
-                  className="p-2 rounded-full bg-blue-600/10 text-blue-600 hover:bg-blue-600/20 transition-colors"
-                >
-                  Facebook
-                </button>
-              </div>
-            </div>
-
-            {/* Feedback */}
-            <div className="text-center p-6 bg-muted/30 rounded-xl">
-              <h3 className="font-semibold mb-4">Was this article helpful?</h3>
-              <div className="flex justify-center gap-4">
-                <Button variant="outline" className="gap-2">
-                  👍 Yes
-                </Button>
-                <Button variant="outline" className="gap-2">
-                  👎 No
-                </Button>
-              </div>
-            </div>
-
-            {/* Newsletter */}
-            <div className="bg-primary/5 p-8 rounded-2xl text-center">
-              <h3 className="text-2xl font-bold mb-2">Subscribe to our Newsletter</h3>
-              <p className="text-muted-foreground mb-6">Get the latest AI insights delivered to your inbox weekly.</p>
-              <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto" onSubmit={(e) => e.preventDefault()}>
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1 px-4 py-2 rounded-md border border-input bg-background"
-                  required
-                />
-                <Button type="submit">Subscribe</Button>
-              </form>
+          {/* Share Section */}
+          <div className="mt-16 py-8 border-t border-border/40 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <h3 className="font-semibold text-lg">Share this article</h3>
+            <div className="flex gap-4">
+              <Button variant="outline" size="icon" className="rounded-full hover:bg-[#1DA1F2] hover:text-white hover:border-[#1DA1F2] transition-colors">
+                <Share2 className="w-4 h-4" />
+              </Button>
+              {/* Add real share links here */}
             </div>
           </div>
 
           {/* Author Bio */}
-          {post.authorBio && (
-            <div className="mt-12 p-6 bg-muted/50 rounded-lg border border-border">
-              <h3 className="text-lg font-semibold mb-2">About the Author</h3>
-              <p className="text-muted-foreground">{post.authorBio}</p>
+          <div className="mt-12 p-8 rounded-3xl bg-muted/30 border border-border/50 flex flex-col sm:flex-row gap-6 items-center sm:items-start text-center sm:text-left">
+            <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center text-2xl font-bold text-primary flex-shrink-0">
+              {post.author[0]}
             </div>
-          )}
-
-          {/* Related Posts */}
-          <div className="mt-12 pt-12 border-t border-border">
-            <h3 className="text-2xl font-bold mb-6">Related Articles</h3>
-            <div className="grid gap-6 md:grid-cols-2">
-              {blogPosts
-                .filter(p => p.slug !== slug && p.tags.some(tag => post.tags.includes(tag)))
-                .slice(0, 2)
-                .map((relatedPost) => (
-                  <Link
-                    key={relatedPost.slug}
-                    to={`/blog/${relatedPost.slug}`}
-                    className="apple-card group hover:scale-105 transition-all duration-300"
-                  >
-                    <h4 className="font-semibold mb-2 group-hover:text-primary transition-colors">
-                      {relatedPost.title}
-                    </h4>
-                    <p className="text-sm text-muted-foreground line-clamp-2">
-                      {relatedPost.excerpt}
-                    </p>
-                    <div className="mt-4 text-sm text-primary">Read more →</div>
-                  </Link>
-                ))}
+            <div>
+              <h3 className="text-xl font-bold mb-2">About {post.author}</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                {post.authorBio}
+              </p>
             </div>
           </div>
         </article>
+
+        {/* Related Articles */}
+        <section className="container max-w-6xl mx-auto px-4 mt-24">
+          <h2 className="text-3xl font-bold mb-8 text-center">Read Next</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {relatedPosts.map((relatedPost) => (
+              <Link
+                key={relatedPost.id}
+                to={`/blog/${relatedPost.slug}`}
+                className="group bg-card border border-border/50 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              >
+                <div className="aspect-video bg-muted relative overflow-hidden">
+                  <div className="absolute inset-0 bg-primary/10 group-hover:bg-primary/20 transition-colors" />
+                  {/* Placeholder for related post image */}
+                  <div className="absolute inset-0 flex items-center justify-center text-muted-foreground/20 font-bold text-4xl">
+                    {relatedPost.title[0]}
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="text-sm text-primary font-medium mb-2">{relatedPost.category}</div>
+                  <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                    {relatedPost.title}
+                  </h3>
+                  <p className="text-muted-foreground line-clamp-2">
+                    {relatedPost.excerpt}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
       </div>
     </Layout>
   );
