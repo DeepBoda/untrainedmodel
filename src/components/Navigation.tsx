@@ -64,7 +64,7 @@ const Navigation = () => {
               <div className="relative w-8 h-8">
                 <div className="absolute inset-0 bg-primary/20 rounded-full blur-lg group-hover:bg-primary/40 transition-all duration-300" />
                 <img
-                  src="/uploads/bccee730-0f1a-4541-8c9f-4760c42f0c75.png"
+                  src="/logo.png"
                   alt="UntrainedModel Logo"
                   className="w-8 h-8 relative z-10 transition-transform duration-300 group-hover:scale-110"
                 />
@@ -114,7 +114,7 @@ const Navigation = () => {
           </nav>
 
           {isOpen && (
-            <div className="lg:hidden border-t border-white/10 bg-background/95 backdrop-blur-xl">
+            <div className="lg:hidden absolute top-16 left-0 right-0 border-b border-white/10 bg-background/95 backdrop-blur-xl shadow-2xl animate-in slide-in-from-top-5 duration-200">
               <div className="px-4 pt-4 pb-6 space-y-2">
                 {navigationItems.map((item) => (
                   <Link key={item.name} href={item.href} className={cn(

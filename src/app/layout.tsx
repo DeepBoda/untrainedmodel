@@ -43,10 +43,15 @@ export const metadata: Metadata = {
         creator: "@untrainedmodel", // Replace with actual handle if available
     },
     icons: {
-        icon: "/favicon.ico",
-        shortcut: "/favicon.ico",
-        apple: "/apple-touch-icon.png",
+        icon: "/favicon.ico?v=3",
+        shortcut: "/favicon.ico?v=3",
+        apple: "/apple-touch-icon.png?v=3",
+        other: {
+            rel: "icon",
+            url: "/icon.svg?v=3",
+        },
     },
+    manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({

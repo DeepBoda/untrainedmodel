@@ -100,7 +100,7 @@ const PlaygroundClient = () => {
                         <div className="relative w-8 h-8">
                             <div className="absolute inset-0 bg-primary/20 rounded-full blur-lg" />
                             <img
-                                src="/uploads/bccee730-0f1a-4541-8c9f-4760c42f0c75.png"
+                                src="/logo.png"
                                 alt="UntrainedModel Logo"
                                 className="w-8 h-8 relative z-10"
                             />
