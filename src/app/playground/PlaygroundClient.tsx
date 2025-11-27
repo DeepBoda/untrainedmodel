@@ -102,7 +102,7 @@ const PlaygroundClient = () => {
                             <img
                                 src="/logo.png"
                                 alt="UntrainedModel Logo"
-                                className="w-8 h-8 relative z-10"
+                                className="w-8 h-8 relative z-10 filter drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]"
                             />
                         </div>
                         <span className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">

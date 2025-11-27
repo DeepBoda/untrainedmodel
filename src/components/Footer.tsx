@@ -9,9 +9,9 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <img
-                src="/uploads/bccee730-0f1a-4541-8c9f-4760c42f0c75.png"
+                src="/logo.png"
                 alt="UntrainedModel Logo"
-                className="w-8 h-8 dark:invert opacity-80"
+                className="w-8 h-8 filter drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]"
               />
               <span className="font-bold text-lg bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">UntrainedModel</span>
             </div>
