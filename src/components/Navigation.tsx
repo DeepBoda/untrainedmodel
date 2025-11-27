@@ -61,12 +61,12 @@ const Navigation = () => {
         <div className="container mx-auto px-4">
           <nav className="flex items-center justify-between h-16">
             <Link href="/" className="flex items-center space-x-2 group">
-              <div className="relative w-8 h-8">
+              <div className="relative w-12 h-12">
                 <div className="absolute inset-0 bg-primary/20 rounded-full blur-lg group-hover:bg-primary/40 transition-all duration-300" />
                 <img
                   src="/logo.png"
                   alt="UntrainedModel Logo"
-                  className="w-8 h-8 relative z-10 transition-transform duration-300 group-hover:scale-110 filter drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]"
+                  className="w-12 h-12 relative z-10 transition-transform duration-300 group-hover:scale-110 filter drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]"
                 />
               </div>
               <span className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70 group-hover:to-primary transition-all duration-300">

@@ -97,12 +97,12 @@ const PlaygroundClient = () => {
             <div className="w-64 border-r border-white/5 bg-black/20 backdrop-blur-xl flex flex-col hidden md:flex">
                 <div className="p-4 border-b border-white/5 space-y-4">
                     <div className="flex items-center space-x-2 px-2">
-                        <div className="relative w-8 h-8">
+                        <div className="relative w-12 h-12">
                             <div className="absolute inset-0 bg-primary/20 rounded-full blur-lg" />
                             <img
                                 src="/logo.png"
                                 alt="UntrainedModel Logo"
-                                className="w-8 h-8 relative z-10 filter drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]"
+                                className="w-12 h-12 relative z-10 filter drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]"
                             />
                         </div>
                         <span className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">
