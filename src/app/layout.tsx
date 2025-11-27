@@ -44,12 +44,12 @@ export const metadata: Metadata = {
         creator: "@untrainedmodel", // Replace with actual handle if available
     },
     icons: {
-        icon: "/favicon.ico?v=9",
-        shortcut: "/favicon.ico?v=9",
-        apple: "/apple-touch-icon.png?v=9",
+        icon: "/favicon.ico?v=13",
+        shortcut: "/favicon.ico?v=13",
+        apple: "/apple-touch-icon.png?v=13",
         other: {
             rel: "icon",
-            url: "/icon.svg?v=9",
+            url: "/icon.svg?v=13",
         },
     },
     manifest: "/site.webmanifest",
