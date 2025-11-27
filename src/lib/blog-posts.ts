@@ -293,7 +293,7 @@ const post4: BlogPost = {
   category: "DevOps",
   featured: false,
   metaDescription: "A deep dive into Platform Engineering. Learn how to build IDPs, implement self-service workflows, and scale your DevOps practice.",
-  keywords: ["platform engineering", "internal developer platform", "backstage spotify", "kubernetes abstraction", "devops 2025"],
+  keywords: ["platform engineering", "internal developer platform", "backstage spotify", "kubernetes abstraction", "devops 2025", "idp architecture", "self-service devops"],
   imageUrl: "/images/blog/platform-eng.svg",
   content: `# Platform Engineering 101: Why DevOps is Dead (Long Live DevOps)
 
@@ -365,7 +365,7 @@ const post5: BlogPost = {
   category: "System Design",
   featured: false,
   metaDescription: "Learn how to architect systems for 100 million users. Covers sharding, caching, edge computing, and event-driven architectures.",
-  keywords: ["system design interview", "scalability guide", "database sharding", "distributed caching", "event driven architecture"],
+  keywords: ["system design interview", "scalability guide", "database sharding", "distributed caching", "event driven architecture", "100 million users architecture", "high availability systems"],
   imageUrl: "/images/blog/system-design.svg",
   content: `# Designing for 100 Million Users: A 2025 System Design Guide
 
@@ -440,7 +440,7 @@ const post6: BlogPost = {
   category: "Web Development",
   featured: false,
   metaDescription: "Advanced TypeScript tutorial for senior engineers. Learn conditional types, infer keyword, and template literal types.",
-  keywords: ["advanced typescript", "typescript tutorial", "typescript generics", "utility types", "type safety"],
+  keywords: ["advanced typescript", "typescript tutorial", "typescript generics", "utility types", "type safety", "conditional types", "template literal types", "typescript 6.0 features"],
   imageUrl: "/images/blog/typescript.svg",
   content: `# Mastering TypeScript 6.0: Advanced Patterns for Large Scale Apps
 

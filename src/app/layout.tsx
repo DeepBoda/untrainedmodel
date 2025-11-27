@@ -5,6 +5,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Providers } from "@/components/Providers";
 import { JsonLd } from "@/components/JsonLd";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
@@ -43,15 +44,26 @@ export const metadata: Metadata = {
         creator: "@untrainedmodel", // Replace with actual handle if available
     },
     icons: {
-        icon: "/favicon.ico?v=3",
-        shortcut: "/favicon.ico?v=3",
-        apple: "/apple-touch-icon.png?v=3",
+        icon: "/favicon.ico?v=9",
+        shortcut: "/favicon.ico?v=9",
+        apple: "/apple-touch-icon.png?v=9",
         other: {
             rel: "icon",
-            url: "/icon.svg?v=3",
+            url: "/icon.svg?v=9",
         },
     },
     manifest: "/site.webmanifest",
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
 };
 
 export default function RootLayout({
@@ -61,6 +73,15 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" suppressHydrationWarning>
+            <head>
+                {/* Google AdSense Placeholder - Replace 'client=ca-pub-XXXXXXXXXXXXXXXX' with your actual ID */}
+                <Script
+                    async
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+                    crossOrigin="anonymous"
+                    strategy="lazyOnload"
+                />
+            </head>
             <body className={`${inter.variable} ${outfit.variable} font-sans antialiased min-h-screen flex flex-col`}>
                 <Providers>
                     <JsonLd />
