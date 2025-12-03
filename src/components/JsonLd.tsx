@@ -6,7 +6,9 @@ export const JsonLd = () => {
         "url": "https://untrainedmodel.xyz",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://untrainedmodel.xyz/uploads/bccee730-0f1a-4541-8c9f-4760c42f0c75.png"
+            "url": "https://untrainedmodel.xyz/logo.png",
+            "width": 512,
+            "height": 512
         },
         "description": "Free AI tools for content and code generation",
         "sameAs": []

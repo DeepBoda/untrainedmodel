@@ -11,7 +11,10 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 
 export const metadata: Metadata = {
-    metadataBase: new URL('https://untrainedmodel.xyz'), // Replace with actual domain
+    metadataBase: new URL('https://untrainedmodel.xyz'),
+    alternates: {
+        canonical: './',
+    },
     title: {
         default: "UntrainedModel - Generative AI Platform",
         template: "%s | UntrainedModel"
