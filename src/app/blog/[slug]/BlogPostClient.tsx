@@ -19,9 +19,10 @@ const BlogPostClient = ({ post, relatedPosts }: BlogPostClientProps) => {
         <div className="min-h-screen bg-background relative overflow-hidden">
 
             {/* Ambient Background */}
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-                <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] animate-pulse-glow" />
-                <div className="absolute bottom-[10%] left-[-5%] w-[500px] h-[500px] bg-accent/10 rounded-full blur-[100px] animate-pulse-glow delay-1000" />
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-neon-purple/20 rounded-full blur-[100px] animate-pulse-slow" />
+                <div className="absolute bottom-[10%] left-[-5%] w-[500px] h-[500px] bg-neon-blue/20 rounded-full blur-[100px] animate-pulse-slow delay-1000" />
+                <div className="absolute top-0 left-0 w-full h-full bg-[url('/grid.svg')] opacity-20" />
             </div>
 
             {/* Progress Bar */}

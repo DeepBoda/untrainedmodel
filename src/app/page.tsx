@@ -28,6 +28,7 @@ const Index = () => {
                 <div className="absolute inset-0 pointer-events-none">
                     <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-neon-purple/20 rounded-full blur-[120px] animate-pulse-slow" />
                     <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-neon-blue/20 rounded-full blur-[120px] animate-pulse-slow delay-1000" />
+                    <div className="absolute top-0 left-0 w-full h-full bg-[url('/grid.svg')] opacity-20" />
                 </div>
 
                 <div className="container relative z-10 px-4 md:px-6">
@@ -42,16 +43,16 @@ const Index = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5 }}
                             >
-                                <Badge variant="neon" className="mb-4">
-                                    <Zap className="w-3 h-3 mr-1" />
-                                    Free AI Lab for Builders
+                                <Badge variant="neon" className="mb-6 px-4 py-1.5 text-sm">
+                                    <Zap className="w-4 h-4 mr-2 text-yellow-400 fill-yellow-400" />
+                                    The Future of AI is Untrained
                                 </Badge>
-                                <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-6">
-                                    UntrainedModel <br />
-                                    <span className="bg-clip-text text-transparent bg-gradient-to-br from-white to-gray-400">Free AI Playground</span>
+                                <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-none mb-6">
+                                    Raw Potential. <br />
+                                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-neon-purple via-neon-blue to-neon-cyan animate-gradient">Infinite Intelligence.</span>
                                 </h1>
                                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                                    Your free AI lab for content, code & research. Generate blogs, scripts, and market insights without limits.
+                                    Your free AI lab for content, code & research. Unleash the power of the "Vibrant U" model without limits.
                                 </p>
                             </motion.div>
 
@@ -61,13 +62,13 @@ const Index = () => {
                                 transition={{ duration: 0.5, delay: 0.2 }}
                                 className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
                             >
-                                <Button asChild variant="premium" size="lg" className="shadow-neon">
+                                <Button asChild variant="premium" size="lg" className="h-14 px-8 text-lg shadow-neon hover:scale-105 transition-transform">
                                     <Link href="/playground">
-                                        Start Free Demo
-                                        <ArrowRight className="w-4 h-4 ml-2" />
+                                        Start Building
+                                        <ArrowRight className="w-5 h-5 ml-2" />
                                     </Link>
                                 </Button>
-                                <Button asChild variant="glass" size="lg">
+                                <Button asChild variant="glass" size="lg" className="h-14 px-8 text-lg">
                                     <Link href="/use-cases">Explore Use Cases</Link>
                                 </Button>
                             </motion.div>
@@ -76,138 +77,65 @@ const Index = () => {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.4 }}
-                                className="flex items-center justify-center lg:justify-start gap-8 pt-4 text-muted-foreground/60 text-sm"
+                                className="flex items-center justify-center lg:justify-start gap-8 pt-4 text-muted-foreground/60 text-sm font-mono"
                             >
                                 <span className="flex items-center gap-2"><Shield className="w-4 h-4" /> No Credit Card</span>
                                 <span className="flex items-center gap-2"><Users className="w-4 h-4" /> Open Access</span>
+                                <span className="flex items-center gap-2"><Cpu className="w-4 h-4" /> 100% Free</span>
                             </motion.div>
                         </motion.div>
 
-                        {/* Hero Visual - Chat/IDE Simulation */}
+                        {/* Hero Visual - Glowing Logo */}
                         <motion.div
                             style={{ scale }}
-                            className="relative hidden lg:block perspective-1000"
+                            className="relative hidden lg:flex items-center justify-center perspective-1000"
                         >
                             <motion.div
-                                initial={{ rotateX: 20, rotateY: -20, opacity: 0 }}
-                                animate={{ rotateX: 10, rotateY: -10, opacity: 1 }}
-                                transition={{ duration: 1, type: "spring" }}
-                                whileHover={{ rotateX: 5, rotateY: -5 }}
-                                className="relative z-10 transform-style-3d"
+                                animate={{ y: [0, -20, 0], rotate: [0, 5, -5, 0] }}
+                                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                                className="relative z-10"
                             >
-                                {/* Main Interface Card */}
-                                <GlassCard className="w-full aspect-[4/3] flex flex-col border-white/20 shadow-2xl bg-black/80 backdrop-blur-xl overflow-hidden p-0">
-                                    {/* Mock Header */}
-                                    <div className="h-10 border-b border-white/10 flex items-center px-4 gap-2 bg-white/5">
-                                        <div className="flex gap-2">
-                                            <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                                            <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                                            <div className="w-3 h-3 rounded-full bg-green-500/80" />
-                                        </div>
-                                        <div className="ml-4 flex items-center gap-2 text-xs text-muted-foreground font-mono bg-black/40 px-3 py-1 rounded-full border border-white/5">
-                                            <Terminal className="w-3 h-3" />
-                                            untrained-model-cli
-                                        </div>
-                                    </div>
+                                {/* Glowing Aura */}
+                                <div className="absolute inset-0 bg-neon-purple/30 rounded-full blur-[80px] animate-pulse-glow" />
 
-                                    {/* Chat/Code Content */}
-                                    <div className="flex-1 p-6 font-mono text-sm space-y-4 overflow-hidden relative">
-                                        {/* User Message */}
-                                        <motion.div
-                                            initial={{ opacity: 0, x: -20 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            transition={{ delay: 0.5 }}
-                                            className="flex gap-3"
-                                        >
-                                            <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0 text-white font-bold text-xs">U</div>
-                                            <div className="bg-white/10 p-3 rounded-2xl rounded-tl-none border border-white/5 text-white/90">
-                                                Generate a Python script to analyze stock market trends using pandas.
-                                            </div>
-                                        </motion.div>
+                                {/* Main Logo */}
+                                <div className="relative w-[500px] h-[500px] flex items-center justify-center">
+                                    <img
+                                        src="/logo.png"
+                                        alt="UntrainedModel Iconic Logo"
+                                        className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(168,85,247,0.6)]"
+                                    />
+                                </div>
 
-                                        {/* AI Response */}
-                                        <motion.div
-                                            initial={{ opacity: 0, x: 20 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            transition={{ delay: 1.5 }}
-                                            className="flex gap-3 flex-row-reverse"
-                                        >
-                                            <div className="w-8 h-8 rounded-full bg-neon-purple flex items-center justify-center shrink-0 text-white font-bold">
-                                                <Zap className="w-4 h-4 fill-white" />
-                                            </div>
-                                            <div className="bg-black/50 p-4 rounded-2xl rounded-tr-none border border-white/10 w-full max-w-[90%]">
-                                                <div className="flex items-center justify-between mb-2 border-b border-white/10 pb-2">
-                                                    <span className="text-xs text-muted-foreground">analysis.py</span>
-                                                    <div className="flex gap-1">
-                                                        <div className="w-2 h-2 rounded-full bg-red-500" />
-                                                        <div className="w-2 h-2 rounded-full bg-yellow-500" />
-                                                    </div>
-                                                </div>
-                                                <pre className="text-xs text-green-400 overflow-x-auto">
-                                                    <code>
-                                                        {`import pandas as pd
-import yfinance as yf
-
-def analyze_trends(ticker):
-    # Fetch data
-    data = yf.download(ticker, period="1y")
-    
-    # Calculate Moving Averages
-    data['SMA_50'] = data['Close'].rolling(50).mean()
-    data['SMA_200'] = data['Close'].rolling(200).mean()
-    
-    return data`}
-                                                    </code>
-                                                </pre>
-                                            </div>
-                                        </motion.div>
-
-                                        {/* Typing Indicator */}
-                                        <motion.div
-                                            initial={{ opacity: 0 }}
-                                            animate={{ opacity: [0, 1, 0] }}
-                                            transition={{ delay: 1.2, duration: 1.5, repeat: 0 }}
-                                            className="absolute left-14 top-24 flex gap-1"
-                                        >
-                                            <div className="w-1.5 h-1.5 bg-muted-foreground rounded-full animate-bounce" />
-                                            <div className="w-1.5 h-1.5 bg-muted-foreground rounded-full animate-bounce delay-75" />
-                                            <div className="w-1.5 h-1.5 bg-muted-foreground rounded-full animate-bounce delay-150" />
-                                        </motion.div>
-                                    </div>
-                                </GlassCard>
-
-                                {/* Floating Elements - More Relatable */}
+                                {/* Floating Elements */}
                                 <motion.div
-                                    animate={{ y: [0, -15, 0] }}
-                                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                                    className="absolute -top-6 -right-6 z-20"
+                                    animate={{ x: [0, 20, 0], y: [0, -10, 0] }}
+                                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                                    className="absolute -top-10 -right-10"
                                 >
-                                    <GlassCard className="p-3 flex items-center gap-3 bg-black/80 backdrop-blur-xl border-neon-purple/30 shadow-glow-intense">
-                                        <div className="p-2 bg-neon-purple/20 rounded-lg text-neon-purple">
-                                            <Cpu className="w-4 h-4" />
+                                    <GlassCard className="p-4 flex items-center gap-3 bg-black/60 backdrop-blur-xl border-neon-cyan/30 shadow-glow-intense rounded-2xl">
+                                        <div className="p-2 bg-neon-cyan/20 rounded-xl text-neon-cyan">
+                                            <Cpu className="w-6 h-6" />
                                         </div>
                                         <div>
-                                            <div className="text-[10px] text-muted-foreground uppercase tracking-wider">Status</div>
-                                            <div className="text-xs font-bold text-white flex items-center gap-1">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                                                Processing
-                                            </div>
+                                            <div className="text-[10px] text-muted-foreground uppercase tracking-wider font-bold">Model Status</div>
+                                            <div className="text-sm font-bold text-white">Online</div>
                                         </div>
                                     </GlassCard>
                                 </motion.div>
 
                                 <motion.div
-                                    animate={{ y: [0, 15, 0] }}
+                                    animate={{ x: [0, -20, 0], y: [0, 10, 0] }}
                                     transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                                    className="absolute -bottom-4 -left-4 z-20"
+                                    className="absolute -bottom-10 -left-10"
                                 >
-                                    <GlassCard className="p-3 flex items-center gap-3 bg-black/80 backdrop-blur-xl border-neon-blue/30 shadow-glow">
-                                        <div className="p-2 bg-neon-blue/20 rounded-lg text-neon-blue">
-                                            <Shield className="w-4 h-4" />
+                                    <GlassCard className="p-4 flex items-center gap-3 bg-black/60 backdrop-blur-xl border-neon-purple/30 shadow-glow rounded-2xl">
+                                        <div className="p-2 bg-neon-purple/20 rounded-xl text-neon-purple">
+                                            <Zap className="w-6 h-6" />
                                         </div>
                                         <div>
-                                            <div className="text-[10px] text-muted-foreground uppercase tracking-wider">Security</div>
-                                            <div className="text-xs font-bold text-white">Enterprise Grade</div>
+                                            <div className="text-[10px] text-muted-foreground uppercase tracking-wider font-bold">Latency</div>
+                                            <div className="text-sm font-bold text-white">12ms</div>
                                         </div>
                                     </GlassCard>
                                 </motion.div>

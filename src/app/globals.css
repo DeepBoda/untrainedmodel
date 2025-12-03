@@ -138,6 +138,11 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  ::selection {
+    background-color: hsl(var(--primary));
+    color: white;
+  }
 }
 
 @layer components {

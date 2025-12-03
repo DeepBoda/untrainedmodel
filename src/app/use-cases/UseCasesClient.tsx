@@ -120,8 +120,9 @@ const UseCasesClient = () => {
         <div className="min-h-screen pt-24 pb-20 relative overflow-hidden">
             {/* Background Elements */}
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-neon-purple/10 rounded-full blur-[120px]" />
-                <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-neon-blue/10 rounded-full blur-[120px]" />
+                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-neon-purple/20 rounded-full blur-[120px] animate-pulse-slow" />
+                <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-neon-blue/20 rounded-full blur-[120px] animate-pulse-slow delay-1000" />
+                <div className="absolute top-0 left-0 w-full h-full bg-[url('/grid.svg')] opacity-20" />
             </div>
 
             <div className="container relative z-10 px-4 md:px-6">

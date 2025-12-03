@@ -30,10 +30,11 @@ const BlogClient = () => {
         <div className="min-h-screen bg-background relative overflow-hidden">
 
             {/* Ambient Gradient Lighting */}
-            <div className="absolute top-0 left-0 w-full h-[800px] overflow-hidden pointer-events-none z-0">
-                <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-purple-500/20 rounded-full blur-[120px] animate-pulse-glow" />
-                <div className="absolute top-[10%] right-[-10%] w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[100px] animate-pulse-glow delay-1000" />
-                <div className="absolute bottom-[-20%] left-[20%] w-[600px] h-[600px] bg-violet-500/20 rounded-full blur-[120px] animate-pulse-glow delay-2000" />
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-neon-purple/20 rounded-full blur-[120px] animate-pulse-slow" />
+                <div className="absolute top-[10%] right-[-10%] w-[500px] h-[500px] bg-neon-blue/20 rounded-full blur-[100px] animate-pulse-slow delay-1000" />
+                <div className="absolute bottom-[-20%] left-[20%] w-[600px] h-[600px] bg-neon-cyan/20 rounded-full blur-[120px] animate-pulse-slow delay-2000" />
+                <div className="absolute top-0 left-0 w-full h-full bg-[url('/grid.svg')] opacity-20" />
             </div>
 
             <div className="container max-w-7xl mx-auto px-4 pt-24 pb-20 relative z-10">

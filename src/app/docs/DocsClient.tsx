@@ -26,7 +26,9 @@ const DocsClient = () => {
         <div className="min-h-screen pt-24 pb-20 relative">
             {/* Background */}
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-20 left-10 w-[500px] h-[500px] bg-neon-purple/5 rounded-full blur-[100px]" />
+                <div className="absolute top-20 left-10 w-[500px] h-[500px] bg-neon-purple/10 rounded-full blur-[100px] animate-pulse-slow" />
+                <div className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-neon-blue/10 rounded-full blur-[100px] animate-pulse-slow delay-1000" />
+                <div className="absolute top-0 left-0 w-full h-full bg-[url('/grid.svg')] opacity-20" />
             </div>
 
             <div className="container px-4 md:px-6">

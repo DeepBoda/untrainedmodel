@@ -5,6 +5,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Providers } from "@/components/Providers";
 import { JsonLd } from "@/components/JsonLd";
+import { ScrollProgress } from "@/components/ScrollProgress";
 import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -87,6 +88,7 @@ export default function RootLayout({
             </head>
             <body className={`${inter.variable} ${outfit.variable} font-sans antialiased min-h-screen flex flex-col`}>
                 <Providers>
+                    <ScrollProgress />
                     <JsonLd />
                     <Navigation />
                     <main className="flex-1">
