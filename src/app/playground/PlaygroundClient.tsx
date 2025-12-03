@@ -325,8 +325,11 @@ const PlaygroundClient = () => {
                 <div className="p-6 bg-gradient-to-t from-black via-black/95 to-transparent absolute bottom-0 left-0 right-0 z-40">
                     <div className="max-w-[1600px] mx-auto relative group">
                         <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-purple/50 to-neon-blue/50 rounded-2xl blur opacity-0 group-hover:opacity-30 transition duration-500 group-focus-within:opacity-70" />
-                        <GlassCard className="relative p-2 pr-2 flex items-end gap-2 bg-black/80 backdrop-blur-2xl border-white/10 shadow-2xl rounded-2xl transition-all duration-300 group-focus-within:border-white/20">
-                            <div className="flex-1">
+                        <GlassCard
+                            className="relative w-full p-3 flex items-end gap-3 bg-black/80 backdrop-blur-2xl border-white/10 shadow-2xl rounded-3xl transition-all duration-300 group-focus-within:border-white/20 cursor-text"
+                            onClick={() => inputRef.current?.focus()}
+                        >
+                            <div className="flex-1 py-1">
                                 <textarea
                                     ref={inputRef}
                                     value={input}
@@ -338,22 +341,25 @@ const PlaygroundClient = () => {
                                         }
                                     }}
                                     placeholder={`Ask anything in ${activeMode} mode...`}
-                                    className="w-full bg-transparent border-none focus:ring-0 resize-none max-h-32 min-h-[52px] py-3.5 px-4 text-sm placeholder:text-muted-foreground/50 text-white"
+                                    className="w-full bg-transparent border-none outline-none ring-0 focus:ring-0 focus:outline-none shadow-none resize-none min-h-[48px] max-h-64 py-3 px-2 text-base placeholder:text-muted-foreground/50 text-white leading-relaxed"
                                     rows={1}
                                     autoFocus
                                 />
                             </div>
-                            <div className="flex gap-2 pb-1.5 pr-1">
+                            <div className="flex gap-2 pb-2 pr-1">
                                 <Button
                                     size="icon"
                                     variant="ghost"
-                                    className="text-muted-foreground hover:text-white hover:bg-white/10 rounded-xl"
+                                    className="text-muted-foreground hover:text-white hover:bg-white/10 rounded-xl h-10 w-10"
                                 >
                                     <Layout className="w-5 h-5" />
                                 </Button>
                                 <Button
                                     size="icon"
-                                    onClick={handleSend}
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleSend();
+                                    }}
                                     disabled={!input.trim() || isGenerating}
                                     className={cn(
                                         "transition-all duration-300 rounded-xl w-10 h-10",
