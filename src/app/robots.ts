@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: '/private/',
         },
-        sitemap: 'https://untrainedmodel.xyz/sitemap.xml', // Replace with actual domain
+        sitemap: 'https://untrainedmodel.xyz/sitemap.xml',
     }
 }

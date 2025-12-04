@@ -4,7 +4,7 @@ import { blogPosts } from '@/lib/blog-posts'
 export const dynamic = 'force-static'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://untrainedmodel.xyz' // Replace with actual domain
+    const baseUrl = 'https://untrainedmodel.xyz'
 
     const posts = blogPosts.map((post) => ({
         url: `${baseUrl}/blog/${post.slug}`,
