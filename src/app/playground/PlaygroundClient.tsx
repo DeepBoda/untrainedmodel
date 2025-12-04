@@ -23,6 +23,7 @@ const PlaygroundClient = () => {
     const [messages, setMessages] = useState<Array<{ role: 'user' | 'ai', content: string, type?: 'code' | 'text' }>>([
         { role: 'ai', content: "Hello! I'm your AI assistant. Configure your API keys in Settings ⚙️ and let's build something amazing.", type: 'text' }
     ]);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);
     const [selectedProvider, setSelectedProvider] = useState('google');
     const [selectedModel, setSelectedModel] = useState('gemini-2.0-flash-exp');
@@ -72,10 +73,11 @@ const PlaygroundClient = () => {
                 content: response.content,
                 type: activeMode === 'code' ? 'code' : 'text'
             }]);
-        } catch (error: any) {
+        } catch (error: unknown) {
+            const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
             setMessages(prev => [...prev, {
                 role: 'ai',
-                content: `Error: ${error.message}. Please check your API keys in Settings.`,
+                content: `Error: ${errorMessage}. Please check your API keys in Settings.`,
                 type: 'text'
             }]);
         } finally {
@@ -114,6 +116,11 @@ const PlaygroundClient = () => {
         inputRef.current?.focus();
     };
 
+    // Close mobile menu when mode changes
+    useEffect(() => {
+        setIsMobileMenuOpen(false);
+    }, [activeMode]);
+
     return (
         <div className="fixed inset-0 pt-16 flex bg-black overflow-hidden z-40" onClick={handleContainerClick}>
             {/* Ambient Background */}
@@ -125,10 +132,31 @@ const PlaygroundClient = () => {
 
             <SettingsModal isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} />
 
-            {/* Sidebar */}
-            <div className="w-72 border-r border-white/10 bg-black/40 backdrop-blur-2xl flex flex-col hidden md:flex relative z-20 shrink-0 h-full">
+            {/* Mobile Menu Overlay */}
+            <AnimatePresence>
+                {isMobileMenuOpen && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 md:hidden"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                    />
+                )}
+            </AnimatePresence>
+
+            {/* Sidebar - Responsive */}
+            <div className={cn(
+                "w-72 border-r border-white/10 bg-black/95 md:bg-black/40 backdrop-blur-2xl flex flex-col fixed inset-y-0 left-0 z-50 md:relative md:z-20 shrink-0 h-full transition-transform duration-300 ease-in-out md:translate-x-0 pt-16 md:pt-0",
+                isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+            )}>
                 <div className="p-4 border-b border-white/5 space-y-4">
-                    <div className="flex items-center space-x-3 px-2">
+                    <div className="flex items-center space-x-3 px-2 md:hidden">
+                        <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)} className="ml-auto">
+                            <ChevronRight className="w-5 h-5 rotate-180" />
+                        </Button>
+                    </div>
+                    <div className="flex items-center space-x-3 px-2 hidden md:flex">
                         <div className="relative w-10 h-10">
                             <div className="absolute inset-0 bg-primary/20 rounded-full blur-lg" />
                             <img
@@ -153,7 +181,7 @@ const PlaygroundClient = () => {
                             {modes.map(mode => (
                                 <button
                                     key={mode.id}
-                                    onClick={() => setActiveMode(mode.id as any)}
+                                    onClick={() => setActiveMode(mode.id as 'chat' | 'code' | 'research')}
                                     className={cn(
                                         "w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 group relative overflow-hidden",
                                         activeMode === mode.id
@@ -238,14 +266,17 @@ const PlaygroundClient = () => {
             </div>
 
             {/* Main Content */}
-            <div className="flex-1 flex flex-col relative z-10 min-w-0 h-full">
+            <div className="flex-1 flex flex-col relative z-10 min-w-0 h-full transition-all duration-300">
                 {/* Header */}
-                <header className="h-16 border-b border-white/5 bg-black/20 backdrop-blur-md flex items-center justify-between px-6 sticky top-0 z-30 shrink-0">
+                <header className="h-16 border-b border-white/5 bg-black/20 backdrop-blur-md flex items-center justify-between px-4 md:px-6 sticky top-0 z-30 shrink-0">
                     <div className="flex items-center gap-3">
+                        <Button variant="ghost" size="icon" className="md:hidden -ml-2" onClick={() => setIsMobileMenuOpen(true)}>
+                            <Layout className="w-5 h-5" />
+                        </Button>
                         <Badge variant="outline" className="bg-primary/10 border-primary/20 text-primary px-3 py-1">
                             {modes.find(m => m.id === activeMode)?.label} Mode
                         </Badge>
-                        <div className="h-4 w-[1px] bg-white/10" />
+                        <div className="h-4 w-[1px] bg-white/10 hidden sm:block" />
                         <span className="text-xs text-muted-foreground font-mono hidden sm:inline-block">
                             {selectedProvider} :: {selectedModel}
                         </span>
@@ -266,21 +297,21 @@ const PlaygroundClient = () => {
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 className={cn(
-                                    "flex gap-6 group",
+                                    "flex gap-4 md:gap-6 group",
                                     msg.role === 'user' ? "flex-row-reverse" : ""
                                 )}
                             >
                                 <div className={cn(
-                                    "w-10 h-10 rounded-full flex items-center justify-center shrink-0 border shadow-lg transition-transform group-hover:scale-110 mt-1",
+                                    "w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center shrink-0 border shadow-lg transition-transform group-hover:scale-110 mt-1",
                                     msg.role === 'ai'
                                         ? "bg-black/60 border-white/10 text-primary backdrop-blur-xl"
                                         : "bg-primary text-white border-primary shadow-neon"
                                 )}>
-                                    {msg.role === 'ai' ? <Bot className="w-5 h-5" /> : <div className="text-sm font-bold">U</div>}
+                                    {msg.role === 'ai' ? <Bot className="w-4 h-4 md:w-5 md:h-5" /> : <div className="text-xs md:text-sm font-bold">U</div>}
                                 </div>
 
                                 <div className={cn(
-                                    "max-w-[85%] rounded-3xl p-6 shadow-xl relative overflow-hidden",
+                                    "max-w-[85%] rounded-3xl p-4 md:p-6 shadow-xl relative overflow-hidden",
                                     msg.role === 'user'
                                         ? "bg-gradient-to-br from-primary to-purple-600 text-white rounded-tr-sm"
                                         : "bg-white/5 border border-white/10 backdrop-blur-md rounded-tl-sm hover:border-white/20 transition-colors"
@@ -303,7 +334,7 @@ const PlaygroundClient = () => {
                                             </div>
                                         </div>
                                     ) : (
-                                        <p className="leading-relaxed whitespace-pre-wrap text-[16px] tracking-wide font-light">{msg.content}</p>
+                                        <p className="leading-relaxed whitespace-pre-wrap text-[15px] md:text-[16px] tracking-wide font-light">{msg.content}</p>
                                     )}
                                 </div>
                             </motion.div>
@@ -330,7 +361,7 @@ const PlaygroundClient = () => {
                 </ScrollArea>
 
                 {/* Input Area */}
-                <div className="p-6 bg-gradient-to-t from-black via-black/95 to-transparent absolute bottom-0 left-0 right-0 z-40">
+                <div className="p-4 md:p-6 bg-gradient-to-t from-black via-black/95 to-transparent absolute bottom-0 left-0 right-0 z-40">
                     <div className="max-w-[1600px] mx-auto relative group">
                         <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-purple/50 to-neon-blue/50 rounded-2xl blur opacity-0 group-hover:opacity-30 transition duration-500 group-focus-within:opacity-70" />
                         <GlassCard
@@ -358,7 +389,7 @@ const PlaygroundClient = () => {
                                 <Button
                                     size="icon"
                                     variant="ghost"
-                                    className="text-muted-foreground hover:text-white hover:bg-white/10 rounded-xl h-10 w-10"
+                                    className="text-muted-foreground hover:text-white hover:bg-white/10 rounded-xl h-10 w-10 hidden sm:flex"
                                 >
                                     <Layout className="w-5 h-5" />
                                 </Button>

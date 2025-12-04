@@ -12,7 +12,7 @@ const ContactClient = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         // Mock submission
-        console.log("Form submitted");
+        // Form submission logic would go here
         alert("Thanks for reaching out! We'll get back to you soon.");
     };
 
