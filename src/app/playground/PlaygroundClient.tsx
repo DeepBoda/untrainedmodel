@@ -351,65 +351,70 @@ const PlaygroundClient = () => {
                     </div>
                 </ScrollArea>
 
-                {/* Input Area */}
-                <div className="p-4 bg-gradient-to-t from-black via-black/95 to-transparent absolute bottom-0 left-0 right-0 z-40">
-                    <div className="max-w-3xl mx-auto relative group">
-                        <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-purple/50 to-neon-blue/50 rounded-3xl blur opacity-0 group-hover:opacity-20 transition duration-500 group-focus-within:opacity-50" />
-                        <GlassCard
-                            className="relative w-full p-2 pl-4 flex items-end gap-2 bg-black/90 backdrop-blur-2xl border-white/10 shadow-2xl rounded-3xl transition-all duration-300 group-focus-within:border-white/20 cursor-text ring-1 ring-white/5"
-                            onClick={() => inputRef.current?.focus()}
-                        >
-                            <div className="flex-1 py-3">
-                                <textarea
-                                    ref={inputRef}
-                                    value={input}
-                                    onChange={(e) => setInput(e.target.value)}
-                                    onKeyDown={(e) => {
-                                        if (e.key === 'Enter' && !e.shiftKey) {
-                                            e.preventDefault();
-                                            handleSend();
-                                        }
-                                    }}
-                                    placeholder={`Ask anything in ${activeMode} mode...`}
-                                    className="w-full bg-transparent border-none outline-none ring-0 focus:ring-0 focus:outline-none shadow-none resize-none min-h-[24px] max-h-64 text-[16px] placeholder:text-muted-foreground/50 text-white leading-relaxed custom-scrollbar"
-                                    rows={1}
-                                    autoFocus
-                                    style={{ height: 'auto', overflow: 'hidden' }}
-                                    onInput={(e) => {
-                                        const target = e.target as HTMLTextAreaElement;
-                                        target.style.height = 'auto';
-                                        target.style.height = `${target.scrollHeight}px`;
-                                    }}
-                                />
-                            </div>
-                            <div className="flex gap-2 pb-2 pr-2">
-                                <Button
-                                    size="icon"
-                                    variant="ghost"
-                                    className="text-muted-foreground hover:text-white hover:bg-white/10 rounded-full h-9 w-9 hidden sm:flex transition-colors"
-                                >
-                                    <Layout className="w-4 h-4" />
-                                </Button>
-                                <Button
-                                    size="icon"
-                                    onClick={(e) => {
-                                        e.stopPropagation();
+                {/* Input Area - Pro "Command Center" Style */}
+                <div className="p-6 bg-black/80 backdrop-blur-xl border-t border-white/5 absolute bottom-0 left-0 right-0 z-40">
+                    <div className="max-w-5xl mx-auto relative">
+                        <div className="relative bg-zinc-900/50 border border-white/10 rounded-xl overflow-hidden ring-1 ring-white/5 focus-within:ring-primary/50 focus-within:border-primary/50 transition-all duration-300 shadow-2xl">
+                            <textarea
+                                ref={inputRef}
+                                value={input}
+                                onChange={(e) => setInput(e.target.value)}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter' && !e.shiftKey) {
+                                        e.preventDefault();
                                         handleSend();
-                                    }}
-                                    disabled={!input.trim() || isGenerating}
-                                    className={cn(
-                                        "transition-all duration-300 rounded-full w-9 h-9",
-                                        input.trim() ? "bg-white text-black hover:scale-105 shadow-lg shadow-white/20" : "bg-white/10 text-muted-foreground"
-                                    )}
-                                >
-                                    <Send className="w-4 h-4" />
-                                </Button>
+                                    }
+                                }}
+                                placeholder={`Message ${activeMode}...`}
+                                className="w-full bg-transparent border-none outline-none ring-0 focus:ring-0 focus:outline-none shadow-none resize-none min-h-[56px] max-h-64 py-4 px-4 text-base md:text-lg placeholder:text-muted-foreground/40 text-white leading-relaxed custom-scrollbar font-light"
+                                rows={1}
+                                autoFocus
+                                style={{ height: 'auto', overflow: 'hidden' }}
+                                onInput={(e) => {
+                                    const target = e.target as HTMLTextAreaElement;
+                                    target.style.height = 'auto';
+                                    target.style.height = `${target.scrollHeight}px`;
+                                }}
+                            />
+
+                            {/* Toolbar / Actions */}
+                            <div className="flex items-center justify-between px-3 pb-3 pt-1">
+                                <div className="flex items-center gap-2">
+                                    <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+                                        <Layout className="w-4 h-4" />
+                                    </Button>
+                                    <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+                                        <Code className="w-4 h-4" />
+                                    </Button>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                    <span className="text-[10px] text-muted-foreground/50 font-mono hidden sm:inline-block">
+                                        {input.length} / 2000
+                                    </span>
+                                    <Button
+                                        size="sm"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            handleSend();
+                                        }}
+                                        disabled={!input.trim() || isGenerating}
+                                        className={cn(
+                                            "transition-all duration-300 rounded-lg h-8 px-4 font-medium text-xs uppercase tracking-wider",
+                                            input.trim()
+                                                ? "bg-primary text-white shadow-glow hover:scale-105"
+                                                : "bg-white/5 text-muted-foreground hover:bg-white/10"
+                                        )}
+                                    >
+                                        {isGenerating ? "Thinking..." : "Send"}
+                                    </Button>
+                                </div>
                             </div>
-                        </GlassCard>
-                        <div className="text-center mt-3 flex items-center justify-center gap-2 opacity-50">
+                        </div>
+
+                        <div className="text-center mt-3 flex items-center justify-center gap-2 opacity-30 hover:opacity-100 transition-opacity duration-300">
                             <Shield className="w-3 h-3 text-muted-foreground" />
-                            <p className="text-[10px] text-muted-foreground">
-                                Private & Secure. AI can make mistakes.
+                            <p className="text-[10px] text-muted-foreground font-mono">
+                                AI-Generated Content. Verify important information.
                             </p>
                         </div>
                     </div>

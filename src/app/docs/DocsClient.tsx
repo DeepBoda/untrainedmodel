@@ -116,6 +116,84 @@ const DocsClient = () => {
                             </div>
                         </section>
 
+                        {/* Available Models */}
+                        <section id="models" className="space-y-6 scroll-mt-24">
+                            <h2 className="text-2xl font-bold flex items-center gap-2">
+                                <Code className="w-6 h-6 text-neon-pink" />
+                                Available Models
+                            </h2>
+                            <div className="grid gap-6 md:grid-cols-3">
+                                <GlassCard className="p-6 space-y-4">
+                                    <div className="flex items-center gap-3 mb-2">
+                                        <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
+                                            <span className="text-lg">🤖</span>
+                                        </div>
+                                        <h3 className="font-bold">OpenAI</h3>
+                                    </div>
+                                    <ul className="space-y-2 text-sm text-muted-foreground">
+                                        <li className="flex items-center gap-2">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                                            gpt-4o-mini
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                                            gpt-4o
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                                            gpt-4-turbo
+                                        </li>
+                                    </ul>
+                                </GlassCard>
+
+                                <GlassCard className="p-6 space-y-4">
+                                    <div className="flex items-center gap-3 mb-2">
+                                        <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center">
+                                            <span className="text-lg">⚡</span>
+                                        </div>
+                                        <h3 className="font-bold">Google</h3>
+                                    </div>
+                                    <ul className="space-y-2 text-sm text-muted-foreground">
+                                        <li className="flex items-center gap-2">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                                            gemini-2.0-flash-exp
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                                            gemini-1.5-flash
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                                            gemini-1.5-pro
+                                        </li>
+                                    </ul>
+                                </GlassCard>
+
+                                <GlassCard className="p-6 space-y-4">
+                                    <div className="flex items-center gap-3 mb-2">
+                                        <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center">
+                                            <span className="text-lg">🧠</span>
+                                        </div>
+                                        <h3 className="font-bold">Anthropic</h3>
+                                    </div>
+                                    <ul className="space-y-2 text-sm text-muted-foreground">
+                                        <li className="flex items-center gap-2">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-purple-500" />
+                                            claude-3-5-haiku
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-purple-500" />
+                                            claude-3-5-sonnet
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-purple-500" />
+                                            claude-3-opus
+                                        </li>
+                                    </ul>
+                                </GlassCard>
+                            </div>
+                        </section>
+
                         {/* Roadmap */}
                         <section id="roadmap" className="space-y-6 scroll-mt-24">
                             <h2 className="text-2xl font-bold flex items-center gap-2">

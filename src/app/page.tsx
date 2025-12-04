@@ -147,7 +147,7 @@ const Index = () => {
 
             {/* Trust Strip */}
             <section className="py-12 border-y border-white/5 bg-white/2 backdrop-blur-sm">
-                <div className="container px-4 text-center">
+                <div className="section-container text-center">
                     <p className="text-sm text-muted-foreground mb-8 uppercase tracking-widest">Built for the builders of tomorrow</p>
                     <div className="flex flex-wrap justify-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
                         {['Developers', 'Traders', 'Researchers', 'Creators', 'Students'].map((item) => (
@@ -203,7 +203,7 @@ const Index = () => {
             </section>
 
             {/* Use Cases Teaser */}
-            <section className="py-24 bg-black/20">
+            <section className="section-spacing bg-black/20">
                 <div className="section-container">
                     <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
                         <div className="space-y-6">
@@ -260,7 +260,7 @@ const Index = () => {
             </section>
 
             {/* Playground Teaser */}
-            <section className="py-24 relative overflow-hidden">
+            <section className="section-spacing relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none" />
                 <div className="section-container text-center">
                     <Badge variant="neon" className="mb-6">Live Demo</Badge>
@@ -318,8 +318,8 @@ const Index = () => {
             </section>
 
             {/* Community / Openness */}
-            <section className="py-24 border-y border-white/5 bg-black/40">
-                <div className="container px-4 text-center">
+            <section className="section-spacing border-y border-white/5 bg-black/40">
+                <div className="section-container text-center">
                     <h2 className="text-3xl font-bold mb-12">Why is this free?</h2>
                     <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
                         {[
@@ -340,7 +340,7 @@ const Index = () => {
             </section>
 
             {/* How It Works - Step by Step */}
-            <section className="py-24 relative">
+            <section className="section-spacing relative">
                 <div className="section-container">
                     <div className="text-center mb-20">
                         <Badge variant="outline" className="mb-4">Simple Workflow</Badge>
@@ -380,8 +380,8 @@ const Index = () => {
             </section>
 
             {/* Testimonials / Social Proof */}
-            <section className="py-24 bg-white/2 border-y border-white/5 overflow-hidden">
-                <div className="container px-4">
+            <section className="section-spacing bg-white/2 border-y border-white/5 overflow-hidden">
+                <div className="section-container">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold mb-6">Loved by Builders</h2>
                     </div>
@@ -418,9 +418,9 @@ const Index = () => {
             <RecentBlogPosts />
 
             {/* Final CTA */}
-            <section className="py-32 relative overflow-hidden">
+            <section className="section-spacing relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-neon-purple/20 via-neon-blue/20 to-neon-cyan/20 blur-3xl opacity-30" />
-                <div className="container relative z-10 text-center px-4">
+                <div className="section-container relative z-10 text-center">
                     <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight">
                         Ready to build the future?
                     </h2>
