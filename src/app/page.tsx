@@ -203,7 +203,7 @@ const Index = () => {
             </section>
 
             {/* Use Cases Teaser */}
-            <section className="section-spacing bg-black/20">
+            <section className="py-24 bg-black/20">
                 <div className="section-container">
                     <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
                         <div className="space-y-6">
@@ -260,7 +260,7 @@ const Index = () => {
             </section>
 
             {/* Playground Teaser */}
-            <section className="section-spacing relative overflow-hidden">
+            <section className="py-24 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none" />
                 <div className="section-container text-center">
                     <Badge variant="neon" className="mb-6">Live Demo</Badge>
@@ -318,7 +318,7 @@ const Index = () => {
             </section>
 
             {/* Community / Openness */}
-            <section className="py-20 border-y border-white/5 bg-black/40">
+            <section className="py-24 border-y border-white/5 bg-black/40">
                 <div className="container px-4 text-center">
                     <h2 className="text-3xl font-bold mb-12">Why is this free?</h2>
                     <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
@@ -340,7 +340,7 @@ const Index = () => {
             </section>
 
             {/* How It Works - Step by Step */}
-            <section className="section-spacing relative">
+            <section className="py-24 relative">
                 <div className="section-container">
                     <div className="text-center mb-20">
                         <Badge variant="outline" className="mb-4">Simple Workflow</Badge>

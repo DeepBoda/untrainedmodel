@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from 'react';
+import { ScrollProgress } from "@/components/ScrollProgress";
+import { useRef, useState, useEffect } from "react";
 import { Button } from '@/components/ui/button';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { Badge } from '@/components/ui/badge';
@@ -29,6 +30,7 @@ const PlaygroundClient = () => {
     const [selectedModel, setSelectedModel] = useState('gemini-2.0-flash-exp');
 
     const messagesEndRef = useRef<HTMLDivElement>(null);
+    const scrollRef = useRef<HTMLDivElement>(null);
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -156,20 +158,8 @@ const PlaygroundClient = () => {
                             <ChevronRight className="w-5 h-5 rotate-180" />
                         </Button>
                     </div>
-                    <div className="flex items-center space-x-3 px-2 hidden md:flex">
-                        <div className="relative w-10 h-10">
-                            <div className="absolute inset-0 bg-primary/20 rounded-full blur-lg" />
-                            <img
-                                src="/logo.png"
-                                alt="UntrainedModel Logo"
-                                className="w-10 h-10 relative z-10 filter drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]"
-                            />
-                        </div>
-                        <span className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70 tracking-tight">
-                            Untrained
-                        </span>
-                    </div>
-                    <Button variant="premium" className="w-full shadow-neon justify-start gap-2 h-10 font-semibold">
+                    {/* Logo removed to avoid redundancy with Top Navbar */}
+                    <Button variant="premium" className="w-full shadow-neon justify-start gap-2 h-10 font-semibold mt-2">
                         <Sparkles className="w-4 h-4" /> New Project
                     </Button>
                 </div>
@@ -289,7 +279,8 @@ const PlaygroundClient = () => {
                 </header>
 
                 {/* Chat/Output Area */}
-                <ScrollArea className="flex-1 p-4 md:p-8">
+                <ScrollArea className="flex-1 p-4 md:p-8" viewportRef={scrollRef}>
+                    <ScrollProgress containerRef={scrollRef} className="absolute top-0 left-0 right-0 z-50" />
                     <div className="max-w-[1600px] mx-auto space-y-8 pb-32">
                         {messages.map((msg, idx) => (
                             <motion.div
@@ -311,7 +302,7 @@ const PlaygroundClient = () => {
                                 </div>
 
                                 <div className={cn(
-                                    "max-w-[85%] rounded-3xl p-4 md:p-6 shadow-xl relative overflow-hidden",
+                                    "max-w-[85%] rounded-3xl p-5 md:p-7 shadow-xl relative overflow-hidden",
                                     msg.role === 'user'
                                         ? "bg-gradient-to-br from-primary to-purple-600 text-white rounded-tr-sm"
                                         : "bg-white/5 border border-white/10 backdrop-blur-md rounded-tl-sm hover:border-white/20 transition-colors"
@@ -334,7 +325,7 @@ const PlaygroundClient = () => {
                                             </div>
                                         </div>
                                     ) : (
-                                        <p className="leading-relaxed whitespace-pre-wrap text-[15px] md:text-[16px] tracking-wide font-light">{msg.content}</p>
+                                        <p className="leading-relaxed whitespace-pre-wrap text-[16px] md:text-[17px] tracking-wide font-light">{msg.content}</p>
                                     )}
                                 </div>
                             </motion.div>
@@ -380,7 +371,7 @@ const PlaygroundClient = () => {
                                         }
                                     }}
                                     placeholder={`Ask anything in ${activeMode} mode...`}
-                                    className="w-full bg-transparent border-none outline-none ring-0 focus:ring-0 focus:outline-none shadow-none resize-none min-h-[48px] max-h-64 py-3 px-2 text-base placeholder:text-muted-foreground/50 text-white leading-relaxed"
+                                    className="w-full bg-transparent border-none outline-none ring-0 focus:ring-0 focus:outline-none shadow-none resize-none min-h-[48px] max-h-64 py-3 px-2 text-base md:text-lg placeholder:text-muted-foreground/50 text-white leading-relaxed"
                                     rows={1}
                                     autoFocus
                                 />
