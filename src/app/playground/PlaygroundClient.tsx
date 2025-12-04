@@ -352,14 +352,14 @@ const PlaygroundClient = () => {
                 </ScrollArea>
 
                 {/* Input Area */}
-                <div className="p-4 md:p-6 bg-gradient-to-t from-black via-black/95 to-transparent absolute bottom-0 left-0 right-0 z-40">
-                    <div className="max-w-[1600px] mx-auto relative group">
-                        <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-purple/50 to-neon-blue/50 rounded-2xl blur opacity-0 group-hover:opacity-30 transition duration-500 group-focus-within:opacity-70" />
+                <div className="p-4 bg-gradient-to-t from-black via-black/95 to-transparent absolute bottom-0 left-0 right-0 z-40">
+                    <div className="max-w-3xl mx-auto relative group">
+                        <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-purple/50 to-neon-blue/50 rounded-3xl blur opacity-0 group-hover:opacity-20 transition duration-500 group-focus-within:opacity-50" />
                         <GlassCard
-                            className="relative w-full p-3 flex items-end gap-3 bg-black/80 backdrop-blur-2xl border-white/10 shadow-2xl rounded-3xl transition-all duration-300 group-focus-within:border-white/20 cursor-text"
+                            className="relative w-full p-2 pl-4 flex items-end gap-2 bg-black/90 backdrop-blur-2xl border-white/10 shadow-2xl rounded-3xl transition-all duration-300 group-focus-within:border-white/20 cursor-text ring-1 ring-white/5"
                             onClick={() => inputRef.current?.focus()}
                         >
-                            <div className="flex-1 py-1">
+                            <div className="flex-1 py-3">
                                 <textarea
                                     ref={inputRef}
                                     value={input}
@@ -371,18 +371,24 @@ const PlaygroundClient = () => {
                                         }
                                     }}
                                     placeholder={`Ask anything in ${activeMode} mode...`}
-                                    className="w-full bg-transparent border-none outline-none ring-0 focus:ring-0 focus:outline-none shadow-none resize-none min-h-[48px] max-h-64 py-3 px-2 text-base md:text-lg placeholder:text-muted-foreground/50 text-white leading-relaxed"
+                                    className="w-full bg-transparent border-none outline-none ring-0 focus:ring-0 focus:outline-none shadow-none resize-none min-h-[24px] max-h-64 text-[16px] placeholder:text-muted-foreground/50 text-white leading-relaxed custom-scrollbar"
                                     rows={1}
                                     autoFocus
+                                    style={{ height: 'auto', overflow: 'hidden' }}
+                                    onInput={(e) => {
+                                        const target = e.target as HTMLTextAreaElement;
+                                        target.style.height = 'auto';
+                                        target.style.height = `${target.scrollHeight}px`;
+                                    }}
                                 />
                             </div>
-                            <div className="flex gap-2 pb-2 pr-1">
+                            <div className="flex gap-2 pb-2 pr-2">
                                 <Button
                                     size="icon"
                                     variant="ghost"
-                                    className="text-muted-foreground hover:text-white hover:bg-white/10 rounded-xl h-10 w-10 hidden sm:flex"
+                                    className="text-muted-foreground hover:text-white hover:bg-white/10 rounded-full h-9 w-9 hidden sm:flex transition-colors"
                                 >
-                                    <Layout className="w-5 h-5" />
+                                    <Layout className="w-4 h-4" />
                                 </Button>
                                 <Button
                                     size="icon"
@@ -392,11 +398,11 @@ const PlaygroundClient = () => {
                                     }}
                                     disabled={!input.trim() || isGenerating}
                                     className={cn(
-                                        "transition-all duration-300 rounded-xl w-10 h-10",
-                                        input.trim() ? "bg-primary text-white shadow-neon hover:scale-105" : "bg-white/10 text-muted-foreground"
+                                        "transition-all duration-300 rounded-full w-9 h-9",
+                                        input.trim() ? "bg-white text-black hover:scale-105 shadow-lg shadow-white/20" : "bg-white/10 text-muted-foreground"
                                     )}
                                 >
-                                    <Send className="w-5 h-5" />
+                                    <Send className="w-4 h-4" />
                                 </Button>
                             </div>
                         </GlassCard>
