@@ -115,7 +115,7 @@ const PlaygroundClient = () => {
     };
 
     return (
-        <div className="fixed inset-0 pt-16 flex bg-black overflow-hidden" onClick={handleContainerClick}>
+        <div className="fixed inset-0 pt-16 flex bg-black overflow-hidden z-40" onClick={handleContainerClick}>
             {/* Ambient Background */}
             <div className="absolute inset-0 pointer-events-none z-0">
                 <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-neon-purple/10 rounded-full blur-[120px] animate-pulse-slow" />
@@ -157,12 +157,15 @@ const PlaygroundClient = () => {
                                     className={cn(
                                         "w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 group relative overflow-hidden",
                                         activeMode === mode.id
-                                            ? "bg-white/10 text-white shadow-glow border border-white/5"
-                                            : "text-muted-foreground hover:text-white hover:bg-white/5"
+                                            ? "bg-white/10 text-white shadow-glow border border-white/5 translate-x-1"
+                                            : "text-muted-foreground hover:text-white hover:bg-white/5 hover:translate-x-1"
                                     )}
                                 >
                                     {activeMode === mode.id && (
-                                        <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-transparent opacity-50" />
+                                        <>
+                                            <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-transparent opacity-50" />
+                                            <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-primary shadow-[0_0_10px_rgba(168,85,247,0.8)]" />
+                                        </>
                                     )}
                                     <mode.icon className={cn("w-4 h-4 transition-colors", activeMode === mode.id ? mode.color : "group-hover:text-white")} />
                                     <span className="relative z-10">{mode.label}</span>
@@ -263,12 +266,12 @@ const PlaygroundClient = () => {
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 className={cn(
-                                    "flex gap-4 group",
+                                    "flex gap-6 group",
                                     msg.role === 'user' ? "flex-row-reverse" : ""
                                 )}
                             >
                                 <div className={cn(
-                                    "w-10 h-10 rounded-full flex items-center justify-center shrink-0 border shadow-lg transition-transform group-hover:scale-110",
+                                    "w-10 h-10 rounded-full flex items-center justify-center shrink-0 border shadow-lg transition-transform group-hover:scale-110 mt-1",
                                     msg.role === 'ai'
                                         ? "bg-black/60 border-white/10 text-primary backdrop-blur-xl"
                                         : "bg-primary text-white border-primary shadow-neon"
@@ -277,25 +280,30 @@ const PlaygroundClient = () => {
                                 </div>
 
                                 <div className={cn(
-                                    "max-w-[85%] rounded-2xl p-6 shadow-xl",
+                                    "max-w-[85%] rounded-3xl p-6 shadow-xl relative overflow-hidden",
                                     msg.role === 'user'
-                                        ? "bg-primary text-white rounded-tr-sm"
+                                        ? "bg-gradient-to-br from-primary to-purple-600 text-white rounded-tr-sm"
                                         : "bg-white/5 border border-white/10 backdrop-blur-md rounded-tl-sm hover:border-white/20 transition-colors"
                                 )}>
+                                    {/* Subtle noise/texture overlay for AI messages */}
+                                    {msg.role === 'ai' && <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] pointer-events-none" />}
+
                                     {msg.type === 'code' ? (
-                                        <div className="font-mono text-sm overflow-hidden rounded-lg border border-white/10 bg-black/50">
+                                        <div className="font-mono text-sm overflow-hidden rounded-xl border border-white/10 bg-black/50 shadow-inner">
                                             <div className="flex items-center justify-between px-4 py-2 border-b border-white/10 bg-white/5">
-                                                <span className="text-xs text-muted-foreground font-medium">Generated Code</span>
+                                                <span className="text-xs text-muted-foreground font-medium flex items-center gap-2">
+                                                    <Terminal className="w-3 h-3" /> Generated Code
+                                                </span>
                                                 <Button variant="ghost" size="sm" className="h-6 w-6 p-0 hover:text-white">
                                                     <Copy className="w-3 h-3" />
                                                 </Button>
                                             </div>
-                                            <div className="p-4 overflow-x-auto">
-                                                <pre className="text-green-400 whitespace-pre-wrap">{msg.content}</pre>
+                                            <div className="p-4 overflow-x-auto custom-scrollbar">
+                                                <pre className="text-green-400 whitespace-pre-wrap font-code leading-relaxed">{msg.content}</pre>
                                             </div>
                                         </div>
                                     ) : (
-                                        <p className="leading-relaxed whitespace-pre-wrap text-[15px]">{msg.content}</p>
+                                        <p className="leading-relaxed whitespace-pre-wrap text-[16px] tracking-wide font-light">{msg.content}</p>
                                     )}
                                 </div>
                             </motion.div>

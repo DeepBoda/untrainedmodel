@@ -122,26 +122,52 @@
     scroll-behavior: smooth;
   }
 
-  /* Hide scrollbar */
+  /* Custom Scrollbar */
   ::-webkit-scrollbar {
-    display: none;
+    width: 6px;
+    height: 6px;
   }
 
-  /* Hide scrollbar for Firefox */
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+
+  /* Hide scrollbar for Firefox but keep functionality */
   html {
-    scrollbar-width: none;
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground) / 0.3) transparent;
     scroll-padding-top: 5rem;
   }
 
-  /* Ensure scrolling still works */
-  body {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  /* Global Selection */
+  ::selection {
+    background-color: hsl(270 72% 68%);
+    /* Neon Purple */
+    color: white;
+    text-shadow: 0 0 8px hsl(270 72% 68% / 0.5);
   }
 
-  ::selection {
-    background-color: hsl(var(--primary));
-    color: white;
+  /* Remove default focus rings and replace with custom if needed */
+  *:focus-visible {
+    outline: 2px solid hsl(var(--primary) / 0.5);
+    outline-offset: 2px;
+  }
+
+  /* Kill the blue ring on inputs specifically if handled by component */
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none;
+    box-shadow: none;
   }
 }
 
