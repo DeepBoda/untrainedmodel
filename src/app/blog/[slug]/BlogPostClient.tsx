@@ -8,6 +8,7 @@ import ReactMarkdown from 'react-markdown';
 import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
 import { BlogPost } from "@/lib/blog-posts";
+import AdUnit from "@/components/AdUnit";
 
 interface BlogPostClientProps {
     post: BlogPost;
@@ -147,6 +148,11 @@ const BlogPostClient = ({ post, relatedPosts }: BlogPostClientProps) => {
                         </div>
                     </GlassCard>
                 </motion.div>
+
+                {/* AdSense Unit - After Content */}
+                <div className="mt-12 flex justify-center">
+                    <AdUnit className="w-full max-w-[728px] min-h-[90px] bg-white/5 rounded-xl flex items-center justify-center" />
+                </div>
 
                 {/* Share Section */}
                 <div className="mt-16 py-8 border-t border-border/40 flex flex-col sm:flex-row items-center justify-between gap-4">

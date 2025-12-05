@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Search, Calendar, Clock, ArrowRight, Sparkles, FileText } from "lucide-react";
 import { motion } from "framer-motion";
+import AdUnit from "@/components/AdUnit";
 
 const BlogClient = () => {
     const [searchQuery, setSearchQuery] = useState("");
@@ -174,7 +175,7 @@ const BlogClient = () => {
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="mb-24"
+                        className="mb-12"
                     >
                         <Link href={`/blog/${featuredPost.slug}`} className="group relative block rounded-[2rem] overflow-hidden aspect-[21/9] border border-white/10 shadow-2xl">
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent z-10" />
@@ -213,6 +214,11 @@ const BlogClient = () => {
                         </Link>
                     </motion.div>
                 )}
+
+                {/* AdSense Unit - Between Featured and Grid */}
+                <div className="mb-24 flex justify-center">
+                    <AdUnit className="w-full max-w-[728px] min-h-[90px] bg-white/5 rounded-xl flex items-center justify-center" />
+                </div>
 
                 {/* Standard Grid for Remaining Posts */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
