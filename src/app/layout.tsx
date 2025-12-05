@@ -81,7 +81,7 @@ export default function RootLayout({
                 {/* Google AdSense Placeholder - Replace 'client=ca-pub-XXXXXXXXXXXXXXXX' with your actual ID */}
                 <Script
                     async
-                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3606235083263616"
                     crossOrigin="anonymous"
                     strategy="lazyOnload"
                 />
