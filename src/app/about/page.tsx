@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
     return (
-        <div className="min-h-screen bg-white dark:bg-black">
+        <div className="min-h-screen bg-black text-white">
             {/* Hero Section */}
             <section className="pt-32 pb-20 relative overflow-hidden">
                 <div className="absolute inset-0 pointer-events-none">

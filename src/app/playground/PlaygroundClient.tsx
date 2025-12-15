@@ -352,7 +352,7 @@ const PlaygroundClient = () => {
                 </ScrollArea>
 
                 {/* Input Area - Pro "Command Center" Style */}
-                <div className="p-6 bg-black/80 backdrop-blur-xl border-t border-white/5 absolute bottom-0 left-0 right-0 z-40">
+                <div className="p-6 bg-black/80 backdrop-blur-xl border-t border-white/5 absolute bottom-0 left-0 right-0 z-40 md:relative md:z-auto">
                     <div className="max-w-5xl mx-auto relative">
                         <div className="relative bg-zinc-900/50 border border-white/10 rounded-xl overflow-hidden ring-1 ring-white/5 focus-within:ring-primary/50 focus-within:border-primary/50 transition-all duration-300 shadow-2xl">
                             <textarea

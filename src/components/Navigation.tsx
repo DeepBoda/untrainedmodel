@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Search, ChevronUp } from 'lucide-react';
+import { Menu, X, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import Image from 'next/image';
@@ -15,9 +15,8 @@ import { cn } from '@/lib/utils';
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [showScrollTop, setShowScrollTop] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
+
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const pathname = usePathname();
 
@@ -33,12 +32,7 @@ const Navigation = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-
       setIsScrolled(scrollTop > 10);
-      setShowScrollTop(scrollTop > 300);
-      setScrollProgress(Math.max(0, Math.min(scrollPercent, 100)));
     };
 
     handleScroll(); // Initial call
@@ -138,47 +132,6 @@ const Navigation = () => {
           )}
         </div>
       </header>
-
-      {showScrollTop && (
-        <div className="fixed bottom-6 right-6 z-40">
-          <div
-            className="relative w-14 h-14 cursor-pointer group"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          >
-            {/* Progress Circle */}
-            <svg className="w-14 h-14 transform -rotate-90 absolute inset-0" viewBox="0 0 56 56">
-              {/* Background Circle */}
-              <circle
-                cx="28"
-                cy="28"
-                r="24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                className="text-muted/20"
-              />
-              {/* Progress Circle */}
-              <circle
-                cx="28"
-                cy="28"
-                r="24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeDasharray={`${2 * Math.PI * 24}`}
-                strokeDashoffset={`${2 * Math.PI * 24 * (1 - scrollProgress / 100)}`}
-                className="text-primary transition-all duration-200 ease-out"
-              />
-            </svg>
-
-            {/* Button Circle */}
-            <div className="absolute inset-1 bg-background/80 backdrop-blur-md rounded-full shadow-lg hover:shadow-neon transition-all duration-300 group-hover:scale-105 flex items-center justify-center border border-white/10">
-              <ChevronUp className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors duration-200" />
-            </div>
-          </div>
-        </div>
-      )}
 
       <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </>

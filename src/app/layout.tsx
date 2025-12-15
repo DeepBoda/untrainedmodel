@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { Providers } from "@/components/Providers";
 import { JsonLd } from "@/components/JsonLd";
 import { ScrollProgress } from "@/components/ScrollProgress";
+import { BackToTop } from "@/components/BackToTop";
 import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -86,7 +87,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" suppressHydrationWarning>
+        <html lang="en" suppressHydrationWarning className="dark">
             <head>
                 {/* Google AdSense Placeholder - Replace 'client=ca-pub-XXXXXXXXXXXXXXXX' with your actual ID */}
                 <meta name="google-adsense-account" content="ca-pub-3606235083263616" />
@@ -100,6 +101,7 @@ export default function RootLayout({
             <body className={`${inter.variable} ${outfit.variable} font-sans antialiased min-h-screen flex flex-col`}>
                 <Providers>
                     <ScrollProgress />
+                    <BackToTop />
                     <JsonLd />
                     <Navigation />
                     <main className="flex-1">
