@@ -124,7 +124,7 @@ const PlaygroundClient = () => {
     }, [activeMode]);
 
     return (
-        <div className="fixed inset-0 pt-16 flex bg-black overflow-hidden z-40" onClick={handleContainerClick}>
+        <div className="relative flex w-full h-[calc(100vh-64px)] bg-black overflow-hidden border-b border-white/10" onClick={handleContainerClick}>
             {/* Ambient Background */}
             <div className="absolute inset-0 pointer-events-none z-0">
                 <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-neon-purple/10 rounded-full blur-[120px] animate-pulse-slow" />
@@ -149,7 +149,7 @@ const PlaygroundClient = () => {
 
             {/* Sidebar - Responsive */}
             <div className={cn(
-                "w-72 border-r border-white/10 bg-black/95 md:bg-black/40 backdrop-blur-2xl flex flex-col fixed inset-y-0 left-0 z-50 md:relative md:z-20 shrink-0 h-full transition-transform duration-300 ease-in-out md:translate-x-0 pt-16 md:pt-0",
+                "w-72 border-r border-white/10 bg-black/95 md:bg-black/40 backdrop-blur-2xl flex flex-col absolute inset-y-0 left-0 z-50 md:relative md:z-20 shrink-0 h-full transition-transform duration-300 ease-in-out md:translate-x-0",
                 isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
             )}>
                 <div className="p-4 border-b border-white/5 space-y-4">

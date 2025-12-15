@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { Menu, X, Search, ChevronUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import Image from 'next/image';
 
 import { SearchModal } from '@/components/SearchModal';
 import { useGlobalShortcuts } from '@/hooks/useKeyboardShortcuts';
@@ -24,6 +25,7 @@ const Navigation = () => {
     { name: 'Use Cases', href: '/use-cases' },
     { name: 'Blog', href: '/blog' },
     { name: 'Docs', href: '/docs' },
+    { name: 'About', href: '/about' },
     { name: 'Playground', href: '/playground' },
     { name: 'Contact', href: '/contact' }
   ];
@@ -63,9 +65,11 @@ const Navigation = () => {
             <Link href="/" className="flex items-center space-x-2 group">
               <div className="relative w-12 h-12">
                 <div className="absolute inset-0 bg-primary/20 rounded-full blur-lg group-hover:bg-primary/40 transition-all duration-300" />
-                <img
+                <Image
                   src="/logo.png"
                   alt="UntrainedModel Logo"
+                  width={48}
+                  height={48}
                   className="w-12 h-12 relative z-10 transition-transform duration-300 group-hover:scale-110 filter drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]"
                 />
               </div>
