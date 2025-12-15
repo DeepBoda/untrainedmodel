@@ -67,7 +67,7 @@ const RecentBlogPosts = () => {
                 <div className="aspect-[16/10] bg-muted relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
                   <img
-                    src={post.imageUrl || `https://placehold.co/800x500/1a1a1a/ffffff?text=UntrainedModel`}
+                    src={post.imageUrl || "/og-image.png"}
                     alt={post.title}
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                   />

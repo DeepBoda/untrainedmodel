@@ -14,7 +14,7 @@ const AdUnit = ({ className, slotId, format = "auto", layoutKey }: AdUnitProps) 
 
     useEffect(() => {
         try {
-            // @ts-ignore
+            // @ts-ignore: google-adsense
             (window.adsbygoogle = window.adsbygoogle || []).push({});
         } catch (err) {
             console.error("AdSense error:", err);

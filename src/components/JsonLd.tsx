@@ -11,7 +11,10 @@ export const JsonLd = () => {
             "height": 512
         },
         "description": "Free AI tools for content and code generation",
-        "sameAs": []
+        "sameAs": [
+            "https://twitter.com/untrainedmodel",
+            "https://github.com/untrainedmodel"
+        ]
     };
 
     const websiteSchema = {

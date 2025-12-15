@@ -120,7 +120,7 @@ const BlogPostClient = ({ post, relatedPosts }: BlogPostClientProps) => {
                 >
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 pointer-events-none" />
                     <img
-                        src={post.imageUrl || `https://placehold.co/1200x630/1a1a1a/ffffff?text=${encodeURIComponent(post.title)}`}
+                        src={post.imageUrl || "/og-image.png"}
                         alt={post.title}
                         className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000"
                     />
@@ -149,10 +149,7 @@ const BlogPostClient = ({ post, relatedPosts }: BlogPostClientProps) => {
                     </GlassCard>
                 </motion.div>
 
-                {/* AdSense Unit - After Content */}
-                <div className="mt-12 flex justify-center">
-                    <AdUnit className="w-full max-w-[728px] min-h-[90px] bg-white/5 rounded-xl flex items-center justify-center" />
-                </div>
+
 
                 {/* Share Section */}
                 <div className="mt-16 py-8 border-t border-border/40 flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -198,7 +195,7 @@ const BlogPostClient = ({ post, relatedPosts }: BlogPostClientProps) => {
                                     <div className="aspect-video bg-muted relative overflow-hidden">
                                         <div className="absolute inset-0 bg-primary/10 group-hover:bg-primary/20 transition-colors z-10" />
                                         <img
-                                            src={relatedPost.imageUrl || `https://placehold.co/800x450/1a1a1a/ffffff?text=${encodeURIComponent(relatedPost.title)}`}
+                                            src={relatedPost.imageUrl || "/og-image.png"}
                                             alt={relatedPost.title}
                                             className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                                         />

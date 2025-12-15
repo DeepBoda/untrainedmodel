@@ -180,7 +180,7 @@ const BlogClient = () => {
                         <Link href={`/blog/${featuredPost.slug}`} className="group relative block rounded-[2rem] overflow-hidden aspect-[21/9] border border-white/10 shadow-2xl">
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent z-10" />
                             <img
-                                src={featuredPost.imageUrl || `https://placehold.co/1200x630/1a1a1a/ffffff?text=UntrainedModel`}
+                                src={featuredPost.imageUrl || "/og-image.png"}
                                 alt={featuredPost.title}
                                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000"
                             />
@@ -215,10 +215,7 @@ const BlogClient = () => {
                     </motion.div>
                 )}
 
-                {/* AdSense Unit - Between Featured and Grid */}
-                <div className="mb-24 flex justify-center">
-                    <AdUnit className="w-full max-w-[728px] min-h-[90px] bg-white/5 rounded-xl flex items-center justify-center" />
-                </div>
+
 
                 {/* Standard Grid for Remaining Posts */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
