@@ -1,7 +1,7 @@
 {
   "name": "UntrainedModel - Professional AI Platform",
   "short_name": "UntrainedModel",
-  "description": "Transform your workflow with advanced AI technology. Generate professional content, production-ready code, and stunning visuals using GPT-4, Claude 3, and Gemini Pro.",
+  "description": "Transform your workflow with advanced AI technology. Generate professional content, production-ready code, and stunning visuals using GPT-5, Claude 4.5, and Gemini Pro.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -9,7 +9,11 @@
   "orientation": "portrait-primary",
   "scope": "/",
   "lang": "en-US",
-  "categories": ["productivity", "utilities", "developer"],
+  "categories": [
+    "productivity",
+    "utilities",
+    "developer"
+  ],
   "icons": [
     {
       "src": "/uploads/bccee730-0f1a-4541-8c9f-4760c42f0c75.png",

@@ -3,8 +3,8 @@ import HomeClient from "./HomeClient";
 
 export const metadata: Metadata = {
     title: "UntrainedModel - Free AI Playground, Content & Code Tools",
-    description: "The ultimate free AI lab. Access GPT-4o, Claude 3.5, and Gemini models without a subscription. Generate code, write blogs, and analyze markets instantly.",
-    keywords: ["Free AI Playground", "GPT-4o Free", "Claude 3.5 Sonnet Free", "AI Code Generator", "AI Blog Writer", "Market Analysis AI", "UntrainedModel"],
+    description: "The ultimate free AI lab. Access GPT-5, Claude 4.5, and Gemini Pro models without a subscription. Generate code, write blogs, and analyze markets instantly.",
+    keywords: ["Free AI Playground", "GPT-5 Free", "Claude 4.5 Free", "AI Code Generator", "AI Blog Writer", "Market Analysis AI", "UntrainedModel"],
     openGraph: {
         title: "UntrainedModel - Free AI Playground & Tools",
         description: "Build, write, and research with top-tier AI models for free. No credit card required.",

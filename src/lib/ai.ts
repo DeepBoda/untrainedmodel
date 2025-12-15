@@ -22,7 +22,7 @@ export interface AIResponse {
 
 class OpenAIProvider implements AIProvider {
   name = 'OpenAI';
-  models = ['gpt-4o-mini', 'gpt-4o', 'gpt-4-turbo'];
+  models = ['gpt-5-preview', 'gpt-4o', 'gpt-4o-mini', 'o1-preview'];
   private defaultKey = process.env.NEXT_PUBLIC_OPENAI_API_KEY;
 
   async generateText(prompt: string, model: string, apiKey?: string): Promise<string> {
@@ -69,7 +69,7 @@ class OpenAIProvider implements AIProvider {
 
 class GeminiProvider implements AIProvider {
   name = 'Google';
-  models = ['gemini-2.0-flash-exp', 'gemini-1.5-flash', 'gemini-1.5-pro'];
+  models = ['gemini-2.0-pro-exp', 'gemini-2.0-flash-exp', 'gemini-1.5-pro'];
   private defaultKey = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
 
   async generateText(prompt: string, model: string, apiKey?: string): Promise<string> {
@@ -118,7 +118,7 @@ class GeminiProvider implements AIProvider {
 
 class ClaudeProvider implements AIProvider {
   name = 'Anthropic';
-  models = ['claude-3-5-haiku-20241022', 'claude-3-5-sonnet-20240620', 'claude-3-opus-20240229'];
+  models = ['claude-4.5-sonnet', 'claude-4.5-opus', 'claude-3.5-sonnet'];
   private defaultKey = process.env.NEXT_PUBLIC_ANTHROPIC_API_KEY;
 
   async generateText(prompt: string, model: string, apiKey?: string): Promise<string> {

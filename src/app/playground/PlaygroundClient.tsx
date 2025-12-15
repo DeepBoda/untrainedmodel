@@ -27,7 +27,7 @@ const PlaygroundClient = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);
     const [selectedProvider, setSelectedProvider] = useState('google');
-    const [selectedModel, setSelectedModel] = useState('gemini-2.0-flash-exp');
+    const [selectedModel, setSelectedModel] = useState('gemini-2.0-pro-exp');
 
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const scrollRef = useRef<HTMLDivElement>(null);
