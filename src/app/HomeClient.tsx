@@ -48,12 +48,12 @@ const Index = () => {
                                     <Zap className="w-4 h-4 mr-2 text-yellow-400 fill-yellow-400" />
                                     The Future of AI is Untrained
                                 </Badge>
-                                <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-none mb-6">
-                                    Raw Potential. <br />
-                                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-neon-purple via-neon-blue to-neon-cyan animate-gradient">Infinite Intelligence.</span>
+                                <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-tight mb-6">
+                                    Free AI Playground: <br />
+                                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-neon-purple via-neon-blue to-neon-cyan animate-gradient">GPT-5, Claude 4.5 & Gemini Pro</span>
                                 </h1>
                                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                                    Your free AI lab for content, code & research. Unleash the power of the "Vibrant U" model without limits.
+                                    The #1 Free AI Platform for India. Generate code, write blogs, and analyze data with the world's best models. No credit card. No login required.
                                 </p>
                             </motion.div>
 
