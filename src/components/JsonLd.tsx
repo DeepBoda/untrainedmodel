@@ -6,7 +6,7 @@ export const JsonLd = () => {
         "url": "https://untrainedmodel.xyz",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://untrainedmodel.xyz/logo.png",
+            "url": "https://untrainedmodel.xyz/logo-optimized.png",
             "width": 512,
             "height": 512
         },

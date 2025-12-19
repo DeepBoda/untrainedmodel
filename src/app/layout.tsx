@@ -9,8 +9,19 @@ import { ScrollProgress } from "@/components/ScrollProgress";
 import { BackToTop } from "@/components/BackToTop";
 import Script from "next/script";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
+const inter = Inter({
+    subsets: ["latin"],
+    variable: "--font-inter",
+    display: 'swap',
+    preload: true,
+});
+
+const outfit = Outfit({
+    subsets: ["latin"],
+    variable: "--font-outfit",
+    display: 'swap',
+    preload: true,
+});
 
 export const viewport: Viewport = {
     themeColor: [
@@ -89,13 +100,19 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning className="dark">
             <head>
-                {/* Google AdSense Placeholder - Replace 'client=ca-pub-XXXXXXXXXXXXXXXX' with your actual ID */}
+                {/* Resource Hints for Performance */}
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+                <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+                <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
+                {/* Google AdSense */}
                 <meta name="google-adsense-account" content="ca-pub-3606235083263616" />
                 <Script
                     async
                     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3606235083263616"
                     crossOrigin="anonymous"
-                    strategy="lazyOnload"
+                    strategy="afterInteractive"
                 />
             </head>
             <body className={`${inter.variable} ${outfit.variable} font-sans antialiased min-h-screen flex flex-col`}>

@@ -60,7 +60,7 @@ const Navigation = () => {
               <div className="relative w-12 h-12">
                 <div className="absolute inset-0 bg-primary/20 rounded-full blur-lg group-hover:bg-primary/40 transition-all duration-300" />
                 <Image
-                  src="/logo.png"
+                  src="/logo-optimized.png"
                   alt="UntrainedModel Logo"
                   width={48}
                   height={48}

@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <img
-                src="/logo.png"
+                src="/logo-optimized.png"
                 alt="UntrainedModel Logo"
                 className="w-12 h-12 filter drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]"
               />

@@ -102,7 +102,7 @@ const Index = () => {
                                 {/* Main Logo */}
                                 <div className="relative w-[500px] h-[500px] flex items-center justify-center">
                                     <Image
-                                        src="/logo.png"
+                                        src="/logo-optimized.png"
                                         alt="UntrainedModel Iconic Logo"
                                         width={500}
                                         height={500}

@@ -16,7 +16,7 @@ export default function NotFound() {
                 <div className="mb-8 relative w-32 h-32 mx-auto">
                     <div className="absolute inset-0 bg-primary/30 rounded-full blur-xl animate-pulse" />
                     <img
-                        src="/logo.png"
+                        src="/logo-optimized.png"
                         alt="Lost in Latent Space"
                         className="w-full h-full relative z-10 drop-shadow-[0_0_15px_rgba(168,85,247,0.8)]"
                     />
