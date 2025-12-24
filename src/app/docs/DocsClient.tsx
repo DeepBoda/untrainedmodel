@@ -133,15 +133,15 @@ const DocsClient = () => {
                                     <ul className="space-y-2 text-sm text-muted-foreground">
                                         <li className="flex items-center gap-2">
                                             <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
-                                            gpt-4o-mini
+                                            GPT-5o-mini
                                         </li>
                                         <li className="flex items-center gap-2">
                                             <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
-                                            gpt-4o
+                                            GPT-5o
                                         </li>
                                         <li className="flex items-center gap-2">
                                             <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
-                                            gpt-4-turbo
+                                            GPT-5-turbo
                                         </li>
                                     </ul>
                                 </GlassCard>

@@ -169,7 +169,7 @@ Prompt engineering can only take you so far. To get state-of-the-art performance
 *   **Style Transfer**: Make the model speak in your brand's voice.
 *   **Format Adherence**: Force the model to output valid JSON or SQL 100% of the time.
 *   **Privacy**: Run small, fine-tuned 7B models locally instead of sending data to OpenAI.
-*   **Cost**: Self-hosted fine-tuned models can be 10x cheaper than GPT-4 API at scale.
+*   **Cost**: Self-hosted fine-tuned models can be 10x cheaper than GPT-5 API at scale.
 
 ## The Technique: LoRA (Low-Rank Adaptation)
 Full fine-tuning is expensive. LoRA freezes the pre-trained model weights and injects trainable rank decomposition matrices into each layer of the Transformer architecture.
@@ -228,7 +228,7 @@ Data quality is everything. You need "Instruction-Response" pairs.
 \`\`\`
 
 ## Evaluation
-Don't trust the loss curve alone. Use **LLM-as-a-Judge** to evaluate your fine-tuned model against a gold standard using GPT-4o.
+Don't trust the loss curve alone. Use **LLM-as-a-Judge** to evaluate your fine-tuned model against a gold standard using GPT-5o.
 
 ## Conclusion
 Fine-tuning is a powerful tool in the AI engineer's arsenal. With tools like LoRA and Unsloth, it's accessible to everyone.
@@ -951,7 +951,7 @@ async function submitUserMessage(userInput: string) {
   const aiState = getMutableAIState();
   
   const ui = render({
-    model: "gpt-4-turbo",
+    model: "GPT-5-turbo",
     provider: openai,
     messages: [ ...aiState.get(), { role: "user", content: userInput }],
     text: ({ content, done }) => <div className="text-message">{content}</div>,
@@ -1013,7 +1013,7 @@ Understanding how proteins fold is key to curing diseases. It used to take month
 DeepMind's **AlphaFold** solved the 50-year-old "Protein Folding Problem", predicting the 3D structure of nearly all known proteins. This accelerates drug discovery by years.
 
 ## 3. Medical LLMs (Med-PaLM)
-General LLMs (GPT-4) are bad at medicine (hallucinations).
+General LLMs (GPT-5) are bad at medicine (hallucinations).
 **Med-PaLM** is fine-tuned on medical journals and exams. It was the first AI to pass the US Medical Licensing Exam (USMLE).
 
 ## Conclusion

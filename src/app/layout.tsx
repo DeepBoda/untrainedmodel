@@ -7,6 +7,7 @@ import { Providers } from "@/components/Providers";
 import { JsonLd } from "@/components/JsonLd";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { BackToTop } from "@/components/BackToTop";
+import { EnhancedSchema } from "@/components/EnhancedSchema";
 import Script from "next/script";
 
 const inter = Inter({
@@ -39,35 +40,49 @@ export const metadata: Metadata = {
         canonical: './',
     },
     title: {
-        default: "UntrainedModel - Generative AI Platform",
+        default: "Free AI Playground 2025 | ChatGPT Alternative - No Credit Card",
         template: "%s | UntrainedModel"
     },
-    description: "Empowering everyone with accessible AI tools for productivity, creativity, and innovation. Free AI lab for content, code & research.",
-    keywords: ["AI", "artificial intelligence", "ChatGPT", "Gemini", "productivity", "AI tools", "machine learning", "automation", "generative ai", "free ai tools"],
+    description: "🚀 Access GPT-5, Claude & Gemini for FREE. Best AI playground for developers worldwide. No signup, no credit card required. Start building with AI today!",
+    keywords: [
+        // Primary global keywords
+        "free AI tools", "AI playground", "ChatGPT alternative", "free AI",
+        "AI for developers", "free ChatGPT", "AI tools for developers",
+        // Specific tools
+        "GPT-5 free", "Claude free", "Gemini free", "free AI API",
+        "AI coding assistant", "AI content generator", "AI research tool",
+        // Use cases
+        "AI for coding", "AI for content writing", "AI for research",
+        "free AI playground online", "best free AI tools 2025",
+        // Generic
+        "AI", "artificial intelligence", "ChatGPT", "Gemini", "Claude",
+        "machine learning", "automation", "generative AI",
+        "productivity", "AI tools"
+    ],
     authors: [{ name: "UntrainedModel Team" }],
     creator: "UntrainedModel",
     openGraph: {
         type: "website",
         locale: "en_US",
         url: "https://untrainedmodel.xyz",
-        title: "UntrainedModel - Generative AI Platform",
-        description: "Your free AI lab for content, code & research. Generate blogs, scripts, and market insights without limits.",
+        title: "Free AI Playground 2025 | ChatGPT, Claude & Gemini Alternative",
+        description: "Access GPT-5, Claude & Gemini for free. Best AI playground for developers, content creators & researchers worldwide. No credit card required.",
         siteName: "UntrainedModel",
         images: [
             {
-                url: "/og-image.png", // Needs to be added to public folder
+                url: "/og-image.png",
                 width: 1200,
                 height: 630,
-                alt: "UntrainedModel Platform Preview",
+                alt: "UntrainedModel - Free AI Playground",
             },
         ],
     },
     twitter: {
         card: "summary_large_image",
-        title: "UntrainedModel - Generative AI Platform",
-        description: "Your free AI lab for content, code & research. Generate blogs, scripts, and market insights without limits.",
+        title: "Free AI Playground | ChatGPT Alternative - UntrainedModel",
+        description: "🚀 Access GPT-5, Claude & Gemini for FREE. No signup, no credit card. Best AI tools for developers worldwide.",
         images: ["/og-image.png"],
-        creator: "@untrainedmodel", // Replace with actual handle if available
+        creator: "@untrainedmodel",
     },
     icons: {
         icon: "/favicon.ico?v=13",
@@ -100,6 +115,16 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning className="dark">
             <head>
+                {/* International Targeting */}
+                <link rel="alternate" hrefLang="x-default" href="https://untrainedmodel.xyz/" />
+                <link rel="alternate" hrefLang="en" href="https://untrainedmodel.xyz/" />
+                <link rel="alternate" hrefLang="en-us" href="https://untrainedmodel.xyz/" />
+                <link rel="alternate" hrefLang="en-gb" href="https://untrainedmodel.xyz/" />
+                <link rel="alternate" hrefLang="en-ca" href="https://untrainedmodel.xyz/" />
+                <link rel="alternate" hrefLang="en-au" href="https://untrainedmodel.xyz/" />
+                <link rel="alternate" hrefLang="en-in" href="https://untrainedmodel.xyz/" />
+                <meta name="google" content="notranslate" />
+
                 {/* Resource Hints for Performance */}
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -120,6 +145,7 @@ export default function RootLayout({
                     <ScrollProgress />
                     <BackToTop />
                     <JsonLd />
+                    <EnhancedSchema />
                     <Navigation />
                     <main className="flex-1">
                         {children}

@@ -22,7 +22,7 @@ export interface AIResponse {
 
 class OpenAIProvider implements AIProvider {
   name = 'OpenAI';
-  models = ['gpt-5-preview', 'gpt-4o', 'gpt-4o-mini', 'o1-preview'];
+  models = ['gpt-5-preview', 'GPT-5o', 'GPT-5o-mini', 'o1-preview'];
   private defaultKey = process.env.NEXT_PUBLIC_OPENAI_API_KEY;
 
   async generateText(prompt: string, model: string, apiKey?: string): Promise<string> {

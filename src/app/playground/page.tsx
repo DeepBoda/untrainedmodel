@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 
 export const metadata: Metadata = {
     title: "Free AI Playground | UntrainedModel",
-    description: "Experiment with GPT-4o, Claude 3.5, and Gemini models for free. No signup required. The ultimate AI sandbox.",
+    description: "Experiment with GPT-5o, Claude 3.5, and Gemini models for free. No signup required. The ultimate AI sandbox.",
     openGraph: {
         title: "Free AI Playground - UntrainedModel",
         description: "Access top-tier AI models for free. Generate code, write content, and experiment without limits.",
@@ -31,7 +31,7 @@ export default function PlaygroundPage() {
                             our playground provides a unified environment to interact with multiple AI providers without expensive subscriptions.
                         </p>
                         <p>
-                            We support models from Google (Gemini), OpenAI (GPT-4), and Anthropic (Claude), giving you the flexibility to choose the best tool for your specific task.
+                            We support models from Google (Gemini), OpenAI (GPT-5), and Anthropic (Claude), giving you the flexibility to choose the best tool for your specific task.
                             The interface is designed for productivity, featuring syntax highlighting for code, markdown support for structured text, and specialized modes for Chat, Coding, and Research.
                         </p>
                     </div>
@@ -52,7 +52,7 @@ export default function PlaygroundPage() {
                                 <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary text-sm font-bold">2</div>
                                 <div>
                                     <strong className="block text-foreground">Multi-Model Support</strong>
-                                    <span className="text-muted-foreground">Compare results between Gemini 2.0, GPT-4o, and Claude 3.5 Sonnet side-by-side to find the best output.</span>
+                                    <span className="text-muted-foreground">Compare results between Gemini 2.0, GPT-5o, and Claude 3.5 Sonnet side-by-side to find the best output.</span>
                                 </div>
                             </li>
                             <li className="flex gap-3">
@@ -99,7 +99,7 @@ export default function PlaygroundPage() {
                         <AccordionItem value="item-2">
                             <AccordionTrigger>Which AI models can I use?</AccordionTrigger>
                             <AccordionContent>
-                                Currently, we support Google's Gemini Pro and Flash models, with integration for OpenAI's GPT-4o and Anthropic's Claude 3.5 coming soon for pro users.
+                                Currently, we support Google's Gemini Pro and Flash models, with integration for OpenAI's GPT-5o and Anthropic's Claude 3.5 coming soon for pro users.
                             </AccordionContent>
                         </AccordionItem>
                         <AccordionItem value="item-3">

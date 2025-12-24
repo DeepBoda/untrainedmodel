@@ -22,7 +22,7 @@ export const JsonLd = () => {
         "@type": "WebSite",
         "name": "UntrainedModel",
         "url": "https://untrainedmodel.xyz",
-        "description": "Access powerful AI tools for free. Generate high-quality content, code, and images using GPT-4, Gemini, and Claude.",
+        "description": "Access powerful AI tools for free. Generate high-quality content, code, and images using GPT-5, Gemini, and Claude.",
         "publisher": organizationSchema
     };
 
@@ -49,7 +49,7 @@ export const JsonLd = () => {
                 "name": "Is UntrainedModel free to use?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Yes, UntrainedModel provides free access to AI tools for content and code generation using models like GPT-4, Gemini, and Claude."
+                    "text": "Yes, UntrainedModel provides free access to AI tools for content and code generation using models like GPT-5, Gemini, and Claude."
                 }
             },
             {
@@ -57,7 +57,7 @@ export const JsonLd = () => {
                 "name": "What AI models does UntrainedModel support?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "UntrainedModel supports multiple AI models including OpenAI's GPT-4, Google's Gemini, and Anthropic's Claude for various content and code generation tasks."
+                    "text": "UntrainedModel supports multiple AI models including OpenAI's GPT-5, Google's Gemini, and Anthropic's Claude for various content and code generation tasks."
                 }
             },
             {

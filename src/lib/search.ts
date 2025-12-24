@@ -28,7 +28,7 @@ const searchIndex: SearchIndex = {
   },
   'playground': {
     title: 'AI Playground - Create, Experiment, and Share',
-    content: 'Interactive AI playground for text generation, code generation, and image creation. Experiment with GPT-4, Claude, and Gemini models with real-time results.',
+    content: 'Interactive AI playground for text generation, code generation, and image creation. Experiment with GPT-5, Claude, and Gemini models with real-time results.',
     url: '/playground',
     type: 'page',
     keywords: ['playground', 'ai', 'generate', 'text', 'code', 'image', 'gpt', 'claude', 'gemini', 'experiment']
@@ -146,7 +146,7 @@ export class SearchService {
 
     const normalizedQuery = query.toLowerCase().trim();
     const queryTerms = normalizedQuery.split(/\s+/);
-    
+
     const results: SearchResult[] = [];
 
     Object.entries(this.index).forEach(([id, item]) => {

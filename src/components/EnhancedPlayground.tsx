@@ -6,11 +6,11 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from '@/components/ui/resizable';
-import { 
-  Play, 
-  Sparkles, 
-  Code, 
-  Image, 
+import {
+  Play,
+  Sparkles,
+  Code,
+  Image,
   MessageSquare,
   Upload,
   RotateCcw,
@@ -39,7 +39,7 @@ interface EnhancedPlaygroundProps {
 
 export const EnhancedPlayground = ({ initialPrompt }: EnhancedPlaygroundProps) => {
   const [prompt, setPrompt] = useState('');
-  
+
   useEffect(() => {
     if (initialPrompt) {
       setPrompt(initialPrompt);
@@ -51,11 +51,11 @@ export const EnhancedPlayground = ({ initialPrompt }: EnhancedPlaygroundProps) =
   const [activeTab, setActiveTab] = useState('text');
   const [provider, setProvider] = useState('google');
   const [model, setModel] = useState('gemini-2.0-flash-exp');
-  
+
   useEffect(() => {
     const modelMap = {
       google: 'gemini-2.0-flash-exp',
-      openai: 'gpt-4o-mini', 
+      openai: 'GPT-5o-mini',
       anthropic: 'claude-3-5-haiku-20241022'
     };
     setModel(modelMap[provider as keyof typeof modelMap]);
@@ -65,7 +65,7 @@ export const EnhancedPlayground = ({ initialPrompt }: EnhancedPlaygroundProps) =
   const [dragActive, setDragActive] = useState(false);
   const [promptVersions, setPromptVersions] = useState<PromptVersion[]>([]);
   const [currentVersionIndex, setCurrentVersionIndex] = useState(-1);
-  
+
   const fileInputRef = useRef<HTMLInputElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { toast } = useToast();
@@ -100,26 +100,26 @@ export const EnhancedPlayground = ({ initialPrompt }: EnhancedPlaygroundProps) =
     setIsLoading(true);
     setIsStreaming(true);
     setOutput('');
-    
+
     try {
       if (!showPreview) setShowPreview(true);
-      
+
       const response = await aiService.generateResponse(
-        prompt, 
+        prompt,
         activeTab as 'text' | 'code' | 'image',
         provider,
         model
       );
-      
+
       setOutput(response.content);
-      
+
       // Update current version with output
       if (promptVersions[0]?.content === prompt) {
-        setPromptVersions(prev => prev.map((v, i) => 
+        setPromptVersions(prev => prev.map((v, i) =>
           i === 0 ? { ...v, output: response.content } : v
         ));
       }
-      
+
       toast({
         title: "Generation Complete!",
         description: `Generated ${response.content.length} characters using ${model}`,
@@ -155,7 +155,7 @@ export const EnhancedPlayground = ({ initialPrompt }: EnhancedPlaygroundProps) =
   const handleDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     setDragActive(false);
-    
+
     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
       handleFileUpload(e.dataTransfer.files);
     }
@@ -187,7 +187,7 @@ export const EnhancedPlayground = ({ initialPrompt }: EnhancedPlaygroundProps) =
     a.download = `ai-output-${Date.now()}.txt`;
     a.click();
     URL.revokeObjectURL(url);
-    
+
     toast({
       title: "Exported!",
       description: "Output saved to downloads",
@@ -202,10 +202,10 @@ export const EnhancedPlayground = ({ initialPrompt }: EnhancedPlaygroundProps) =
       "Include real-world examples",
       "Make it more conversational"
     ];
-    
+
     const randomSuggestion = suggestions[Math.floor(Math.random() * suggestions.length)];
     setPrompt(prev => prev + '\n\n' + randomSuggestion);
-    
+
     toast({
       title: "Suggestion Added",
       description: "Prompt enhanced with AI suggestion",
@@ -216,7 +216,7 @@ export const EnhancedPlayground = ({ initialPrompt }: EnhancedPlaygroundProps) =
     setPrompt(version.content);
     setOutput(version.output);
     setCurrentVersionIndex(index);
-    
+
     toast({
       title: "Version Restored",
       description: `Reverted to version from ${version.timestamp.toLocaleTimeString()}`,
@@ -233,7 +233,7 @@ export const EnhancedPlayground = ({ initialPrompt }: EnhancedPlaygroundProps) =
             Enhanced
           </Badge>
         </div>
-        
+
         <div className="flex items-center gap-2">
           <Button
             variant="outline"
@@ -243,7 +243,7 @@ export const EnhancedPlayground = ({ initialPrompt }: EnhancedPlaygroundProps) =
             {showPreview ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
             {showPreview ? 'Hide' : 'Show'} Preview
           </Button>
-          
+
           <Button
             variant="outline"
             size="sm"
@@ -300,7 +300,7 @@ export const EnhancedPlayground = ({ initialPrompt }: EnhancedPlaygroundProps) =
                     <Wand2 className="w-5 h-5" />
                     Prompt Studio
                   </CardTitle>
-                  
+
                   <div className="flex items-center gap-2">
                     <Button
                       variant="outline"
@@ -311,7 +311,7 @@ export const EnhancedPlayground = ({ initialPrompt }: EnhancedPlaygroundProps) =
                       <TrendingUp className="w-4 h-4" />
                       Enhance
                     </Button>
-                    
+
                     <Button
                       variant="outline"
                       size="sm"
@@ -324,7 +324,7 @@ export const EnhancedPlayground = ({ initialPrompt }: EnhancedPlaygroundProps) =
                   </div>
                 </div>
               </CardHeader>
-              
+
               <CardContent>
                 <div
                   onDrop={handleDrop}
@@ -340,7 +340,7 @@ export const EnhancedPlayground = ({ initialPrompt }: EnhancedPlaygroundProps) =
                     className="min-h-[200px] resize-none focus:ring-2 focus:ring-primary transition-all"
                     disabled={isLoading}
                   />
-                  
+
                   {dragActive && (
                     <div className="absolute inset-0 border-2 border-dashed border-primary bg-primary/5 flex items-center justify-center">
                       <div className="text-center">
@@ -350,7 +350,7 @@ export const EnhancedPlayground = ({ initialPrompt }: EnhancedPlaygroundProps) =
                     </div>
                   )}
                 </div>
-                
+
                 <input
                   ref={fileInputRef}
                   type="file"
@@ -358,7 +358,7 @@ export const EnhancedPlayground = ({ initialPrompt }: EnhancedPlaygroundProps) =
                   onChange={(e) => e.target.files && handleFileUpload(e.target.files)}
                   className="hidden"
                 />
-                
+
                 {/* Character count and stats */}
                 <div className="flex items-center justify-between mt-2 text-sm text-muted-foreground">
                   <span>{prompt.length} characters</span>
@@ -381,9 +381,8 @@ export const EnhancedPlayground = ({ initialPrompt }: EnhancedPlaygroundProps) =
                     {promptVersions.slice(0, 5).map((version, index) => (
                       <div
                         key={version.id}
-                        className={`flex items-center justify-between p-2 rounded border cursor-pointer hover:bg-muted/50 transition-colors ${
-                          index === currentVersionIndex ? 'border-primary bg-primary/5' : ''
-                        }`}
+                        className={`flex items-center justify-between p-2 rounded border cursor-pointer hover:bg-muted/50 transition-colors ${index === currentVersionIndex ? 'border-primary bg-primary/5' : ''
+                          }`}
                         onClick={() => revertToVersion(version, index)}
                       >
                         <div className="flex-1 min-w-0">
@@ -419,7 +418,7 @@ export const EnhancedPlayground = ({ initialPrompt }: EnhancedPlaygroundProps) =
                   </>
                 )}
               </Button>
-              
+
               <Button
                 variant="outline"
                 onClick={() => setPrompt('')}
