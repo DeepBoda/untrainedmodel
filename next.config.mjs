@@ -8,7 +8,6 @@ const nextConfig = {
     },
     compress: true, // Enable gzip compression
     poweredByHeader: false, // Remove X-Powered-By header for security
-    swcMinify: true, // Use SWC for faster minification
 
     // Experimental optimizations
     experimental: {
