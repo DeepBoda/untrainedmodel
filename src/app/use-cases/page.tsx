@@ -32,7 +32,7 @@ export default function UseCasesPage() {
                         <div className="space-y-6">
                             <h3>👨‍💻 For Developers: Beyond Code Generation</h3>
                             <p>
-                                Most developers use AI to "write a function that does X." While useful, this barely scratches the surface. The real power of models like <strong>GPT-5o</strong> and <strong>Claude 3.5 Sonnet</strong> is in <em>architectural reasoning</em> and <em>debugging</em>.
+                                Most developers use AI to "write a function that does X." While useful, this barely scratches the surface. The real power of models like <strong>GPT-5</strong> and <strong>Claude 4.5 Sonnet</strong> is in <em>architectural reasoning</em> and <em>debugging</em>.
                             </p>
                             <h4>Workflow 1: The "Senior Engineer" Review</h4>
                             <p>
@@ -56,7 +56,7 @@ export default function UseCasesPage() {
                             </p>
                             <h4>Workflow 1: Sentiment Analysis</h4>
                             <p>
-                                Paste a transcript of an earnings call into <strong>Gemini Pro</strong> (due to its large context window).
+                                Paste a transcript of an earnings call into <strong>Gemini 3 Pro</strong> (due to its large context window).
                                 <br />
                                 <strong>Prompt:</strong> <em>"Analyze the CEO's tone during the Q&A session. Flag any hesitation when discussing future guidance or supply chain issues. Output a sentiment score from 1-10."</em>
                             </p>

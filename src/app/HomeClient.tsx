@@ -46,14 +46,14 @@ const Index = () => {
                             >
                                 <Badge variant="neon" className="mb-6 px-4 py-1.5 text-sm">
                                     <Zap className="w-4 h-4 mr-2 text-yellow-400 fill-yellow-400" />
-                                    The Future of AI is Untrained
+                                    The Agentic AI Era is Here
                                 </Badge>
                                 <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-tight mb-6">
-                                    Free AI Playground: <br />
-                                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-neon-purple via-neon-blue to-neon-cyan animate-gradient">GPT-5, Claude 4.5 & Gemini Pro</span>
+                                    Build AI Agents<br />
+                                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-neon-purple via-neon-blue to-neon-cyan animate-gradient">with Gemini 3 Pro, GPT-5 & Claude 4.5 Sonnet</span>
                                 </h1>
                                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                                    The #1 Free AI Platform for India. Generate code, write blogs, and analyze data with the world's best models. No credit card. No login required.
+                                    The world's first free Agentic AI playground. Build autonomous AI agents, multi-agent systems, and intelligent automation. No credit card. No signup. Forever free.
                                 </p>
                             </motion.div>
 

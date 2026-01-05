@@ -37,7 +37,7 @@ const AdvancedHero = () => {
   };
 
   const stats = [
-    { label: 'AI Models', value: '25+', icon: Cpu, description: 'GPT-5, Claude 4.5, Gemini Pro' },
+    { label: 'AI Models', value: '25+', icon: Cpu, description: 'GPT-5, Claude 4.5 Sonnet, Gemini 3 Pro' },
     { label: 'Active Users', value: '5K+', icon: Users, description: 'Growing community worldwide' },
     { label: 'Content Generated', value: '500K+', icon: Code2, description: 'Articles, code, and more' },
     { label: 'Countries Served', value: '80+', icon: Globe, description: 'Global accessibility' }
@@ -89,7 +89,7 @@ const AdvancedHero = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
           >
-            India's #1 FREE AI platform. Access GPT-5, Gemini 2.0 Pro, and Claude 4.5 Sonnet instantly.
+            India's #1 FREE AI platform. Access GPT-5, Gemini 3 Pro, and Claude 4.5 Sonnet instantly.
             No signup required. Built for students, developers, and creators.
           </motion.p>
 

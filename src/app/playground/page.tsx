@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 
 export const metadata: Metadata = {
     title: "Free AI Playground | UntrainedModel",
-    description: "Experiment with GPT-5o, Claude 3.5, and Gemini models for free. No signup required. The ultimate AI sandbox.",
+    description: "Experiment with GPT-5, Claude 4.5 Sonnet, and Gemini 3 Pro models for free. No signup required. The ultimate AI sandbox.",
     openGraph: {
         title: "Free AI Playground - UntrainedModel",
         description: "Access top-tier AI models for free. Generate code, write content, and experiment without limits.",
@@ -33,7 +33,7 @@ export default function PlaygroundPage() {
                         </p>
                         <p>
                             This comprehensive guide will walk you through exactly how to leverage this playground to its fullest potential.
-                            We will cover the specific strengths of each model we offer—<strong>Google's Gemini 2.0</strong>, <strong>OpenAI's GPT-5o</strong>, and <strong>Anthropic's Claude 3.5 Sonnet</strong>—and
+                            We will cover the specific strengths of each model we offer—<strong>Google's Gemini 3 Pro</strong>, <strong>OpenAI's GPT-5</strong>, and <strong>Anthropic's Claude 4.5 Sonnet</strong>—and
                             provide actionable, expert-level strategies for prompting them effectively. Whether you are debugging complex React hooks, writing a master's thesis,
                             or analyzing financial markets, this guide is your manual for success.
                         </p>
@@ -54,14 +54,14 @@ export default function PlaygroundPage() {
                                 <div className="bg-secondary/10 border border-border rounded-xl p-8">
                                     <h3 className="text-2xl font-bold mb-4 flex items-center">
                                         <span className="w-8 h-8 rounded-full bg-blue-500/20 text-blue-500 flex items-center justify-center mr-3 text-sm">G</span>
-                                        Google Gemini 2.0 (Pro & Flash)
+                                        Google Gemini 3 Pro (& Flash)
                                     </h3>
                                     <div className="space-y-4 text-muted-foreground">
                                         <p>
                                             <strong>Best For:</strong> Large Context Analysis, Multimodal Tasks, and Speed.
                                         </p>
                                         <p>
-                                            Gemini 2.0 represents Google's pinnacle of AI engineering. Its standout feature is its massive <strong>context window</strong> (up to 2 million tokens in Pro).
+                                            Gemini 3 Pro represents Google's pinnacle of AI engineering. Its standout feature is its massive <strong>context window</strong> (up to 10 million tokens in Pro).
                                             This means you can paste entire codebases, 500-page textbooks, or lengthy legal contracts, and Gemini can "hold" all that information in its working memory simultaneously.
                                         </p>
                                         <ul className="list-disc pl-6 space-y-2">
@@ -74,18 +74,18 @@ export default function PlaygroundPage() {
                                 <div className="bg-secondary/10 border border-border rounded-xl p-8">
                                     <h3 className="text-2xl font-bold mb-4 flex items-center">
                                         <span className="w-8 h-8 rounded-full bg-green-500/20 text-green-500 flex items-center justify-center mr-3 text-sm">O</span>
-                                        OpenAI GPT-5o (Omni)
+                                        OpenAI GPT-5 (Omni)
                                     </h3>
                                     <div className="space-y-4 text-muted-foreground">
                                         <p>
                                             <strong>Best For:</strong> General Reasoning, Coding, and Instruction Following.
                                         </p>
                                         <p>
-                                            GPT-5o is the industry standard for a reason. It excels at <strong>complex logical reasoning</strong> and strictly adhering to detailed system instructions.
-                                            If you need a model to output a response in a very specific JSON format, or to follow a 15-step complex workflow without hallucinating, GPT-5o is your reliable workhorse.
+                                            GPT-5 is the industry standard for a reason. It excels at <strong>complex logical reasoning</strong> and strictly adhering to detailed system instructions.
+                                            If you need a model to output a response in a very specific JSON format, or to follow a 15-step complex workflow without hallucinating, GPT-5 is your reliable workhorse.
                                         </p>
                                         <ul className="list-disc pl-6 space-y-2">
-                                            <li><strong>Coding Proficiency:</strong> GPT-5o has been trained on a massive dataset of GitHub repositories. It is exceptionally skilled at Python, JavaScript/TypeScript, and SQL. It rarely makes syntax errors and understands modern frameworks like Next.js 15.</li>
+                                            <li><strong>Coding Proficiency:</strong> GPT-5 has been trained on a massive dataset of GitHub repositories. It is exceptionally skilled at Python, JavaScript/TypeScript, and SQL. It rarely makes syntax errors and understands modern frameworks like Next.js 15.</li>
                                             <li><strong>Mathematical Logic:</strong> It scores highest on benchmarks involving math word problems and logical puzzles, making it great for STEM homework help.</li>
                                         </ul>
                                     </div>
@@ -94,7 +94,7 @@ export default function PlaygroundPage() {
                                 <div className="bg-secondary/10 border border-border rounded-xl p-8">
                                     <h3 className="text-2xl font-bold mb-4 flex items-center">
                                         <span className="w-8 h-8 rounded-full bg-orange-500/20 text-orange-500 flex items-center justify-center mr-3 text-sm">C</span>
-                                        Anthropic Claude 3.5 Sonnet
+                                        Anthropic Claude 4.5 Sonnet
                                     </h3>
                                     <div className="space-y-4 text-muted-foreground">
                                         <p>
@@ -159,7 +159,7 @@ export default function PlaygroundPage() {
                                 <div>
                                     <h3 className="text-2xl font-bold mb-4 text-foreground">✍️ For Writers: The Creative Editor</h3>
                                     <p className="text-muted-foreground mb-4">
-                                        Writer's block is a thing of the past. Use Claude 3.5 Sonnet to brainstorm outlines, character arcs, or alternative headlines.
+                                        Writer's block is a thing of the past. Use Claude 4.5 Sonnet to brainstorm outlines, character arcs, or alternative headlines.
                                     </p>
                                     <div className="bg-secondary/20 p-6 rounded-lg border-l-4 border-purple-500">
                                         <h4 className="font-semibold mb-2 text-foreground">Pro Workflow: Style Transfer</h4>
@@ -252,7 +252,7 @@ export default function PlaygroundPage() {
                         <AccordionItem value="item-2">
                             <AccordionTrigger>Which AI model should I use for coding?</AccordionTrigger>
                             <AccordionContent>
-                                For comprehensive full-stack development, we recommend <strong>GPT-5o</strong> due to its superior reasoning capabilities. However, for quick scripts or explaining code, <strong>Claude 3.5 Sonnet</strong> is excellent. If you are analyzing a massive legacy codebase, use <strong>Gemini Pro</strong> for its large context window.
+                                For comprehensive full-stack development, we recommend <strong>GPT-5</strong> due to its superior reasoning capabilities. However, for quick scripts or explaining code, <strong>Claude 4.5 Sonnet</strong> is excellent. If you are analyzing a massive legacy codebase, use <strong>Gemini 3 Pro</strong> for its large context window.
                             </AccordionContent>
                         </AccordionItem>
                         <AccordionItem value="item-3">

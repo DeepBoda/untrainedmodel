@@ -2,18 +2,22 @@ import { Metadata } from "next";
 import HomeClient from "./HomeClient";
 
 export const metadata: Metadata = {
-    title: "UntrainedModel - Free AI Playground, Content & Code Tools",
-    description: "The ultimate free AI lab. Access GPT-5, Claude 4.5, and Gemini Pro models without a subscription. Generate code, write blogs, and analyze markets instantly.",
-    keywords: ["Free AI Playground", "GPT-5 Free", "Claude 4.5 Free", "AI Code Generator", "AI Blog Writer", "Market Analysis AI", "UntrainedModel"],
+    title: "Free Agentic AI Playground 2026 | Build AI Agents with Gemini 3 Pro & GPT-5",
+    description: "The ultimate Agentic AI lab for 2026. Build autonomous AI agents with Gemini 3 Pro, GPT-5, Claude 4.5 Sonnet. Multi-agent orchestration, code generation, content creation. Free forever, no credit card.",
+    keywords: [
+        "Agentic AI Playground", "AI Agents 2026", "Gemini 3 Pro Free", "GPT-5 Free", "Claude 4.5 Sonnet Free",
+        "Multi-agent Systems", "AI Orchestration", "Autonomous AI", "AI Code Generation",
+        "AI Automation", "Agentic Workflows", "Free AI Tools 2026", "UntrainedModel"
+    ],
     openGraph: {
-        title: "UntrainedModel - Free AI Playground & Tools",
-        description: "Build, write, and research with top-tier AI models for free. No credit card required.",
+        title: "Free Agentic AI Playground 2026 | Gemini 3 Pro, GPT-5, Claude 4.5 Sonnet",
+        description: "Build autonomous AI agents for free. Access Gemini 3 Pro, GPT-5, Claude 4.5 Sonnet. Multi-agent orchestration, intelligent automation. No credit card required.",
         images: [
             {
                 url: "/og-image.png",
                 width: 1200,
                 height: 630,
-                alt: "UntrainedModel Platform",
+                alt: "UntrainedModel - Agentic AI Platform 2026",
             },
         ],
     },

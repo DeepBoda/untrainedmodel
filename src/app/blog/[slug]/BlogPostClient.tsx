@@ -16,8 +16,40 @@ interface BlogPostClientProps {
 }
 
 const BlogPostClient = ({ post, relatedPosts }: BlogPostClientProps) => {
+    // Generate Article structured data for rich search results
+    const articleSchema = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": post.title,
+        "image": post.imageUrl || "/og-image.png",
+        "author": {
+            "@type": "Person",
+            "name": post.author,
+            "description": post.authorBio
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "UntrainedModel AI Labs",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://untrainedmodel.xyz/logo-optimized.png"
+            }
+        },
+        "datePublished": post.publishDate.toISOString(),
+        "dateModified": post.lastUpdated.toISOString(),
+        "description": post.metaDescription,
+        "keywords": post.keywords.join(", "),
+        "articleSection": post.category,
+        "wordCount": post.content.split(/\s+/).length
+    };
+
     return (
         <div className="min-h-screen bg-background relative overflow-hidden">
+            {/* Structured Data for SEO */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+            />
 
             {/* Ambient Background */}
             <div className="absolute inset-0 pointer-events-none">

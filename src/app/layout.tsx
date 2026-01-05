@@ -40,47 +40,54 @@ export const metadata: Metadata = {
         canonical: './',
     },
     title: {
-        default: "Free AI Playground 2025 | ChatGPT Alternative - No Credit Card",
+        default: "Free AI Agents & Agentic AI Playground 2026 | Gemini 3 Pro, GPT-5 & Claude 4.5 Sonnet",
         template: "%s | UntrainedModel"
     },
-    description: "🚀 Access GPT-5, Claude & Gemini for FREE. Best AI playground for developers worldwide. No signup, no credit card required. Start building with AI today!",
+    description: "🚀 Build with Agentic AI & AI Agents in 2026. Access Gemini 3 Pro, GPT-5, Claude 4.5 Sonnet FREE. Multi-agent systems, AI orchestration, code generation. No credit card, no signup required.",
     keywords: [
+        // 2026 Trending Keywords
+        "agentic AI", "AI agents", "agentic AI platform", "multi-agent systems", "AI orchestration",
+        "Gemini 3 Pro free", "Gemini 3 Flash", "AI agents 2026", "autonomous AI", "intelligent automation",
         // Primary global keywords
-        "free AI tools", "AI playground", "ChatGPT alternative", "free AI",
+        "free AI tools 2026", "AI playground", "ChatGPT alternative", "free AI",
         "AI for developers", "free ChatGPT", "AI tools for developers",
         // Specific tools
-        "GPT-5 free", "Claude free", "Gemini free", "free AI API",
-        "AI coding assistant", "AI content generator", "AI research tool",
+        "GPT-5 free", "Claude 4.5 Sonnet free", "Gemini 3 Pro free", "free AI API",
+        "AI coding assistant", "AI code generation", "AI content generator", "AI research tool",
+        // Advanced features
+        "agentic workflows", "AI automation", "domain-specific AI", "physical AI",
+        "multimodal AI", "AI collaboration", "human-AI collaboration",
         // Use cases
         "AI for coding", "AI for content writing", "AI for research",
-        "free AI playground online", "best free AI tools 2025",
+        "free AI playground online", "best free AI tools 2026",
         // Generic
         "AI", "artificial intelligence", "ChatGPT", "Gemini", "Claude",
         "machine learning", "automation", "generative AI",
-        "productivity", "AI tools"
+        "productivity", "AI tools", "LLM", "large language models"
     ],
-    authors: [{ name: "UntrainedModel Team" }],
-    creator: "UntrainedModel",
+    authors: [{ name: "UntrainedModel AI Labs" }],
+    creator: "UntrainedModel AI Labs",
+    publisher: "UntrainedModel AI Labs",
     openGraph: {
         type: "website",
         locale: "en_US",
         url: "https://untrainedmodel.xyz",
-        title: "Free AI Playground 2025 | ChatGPT, Claude & Gemini Alternative",
-        description: "Access GPT-5, Claude & Gemini for free. Best AI playground for developers, content creators & researchers worldwide. No credit card required.",
+        title: "Free Agentic AI Playground 2026 | Gemini 3 Pro, GPT-5, Claude 4.5 Sonnet",
+        description: "Build with AI Agents & Agentic AI. Access Gemini 3 Pro, GPT-5, Claude 4.5 Sonnet for free. Multi-agent systems, AI orchestration, autonomous AI tools. No credit card required.",
         siteName: "UntrainedModel",
         images: [
             {
                 url: "/og-image.png",
                 width: 1200,
                 height: 630,
-                alt: "UntrainedModel - Free AI Playground",
+                alt: "UntrainedModel - Free Agentic AI Playground 2026",
             },
         ],
     },
     twitter: {
         card: "summary_large_image",
-        title: "Free AI Playground | ChatGPT Alternative - UntrainedModel",
-        description: "🚀 Access GPT-5, Claude & Gemini for FREE. No signup, no credit card. Best AI tools for developers worldwide.",
+        title: "Free Agentic AI Playground 2026 | Gemini 3 Pro, GPT-5 & Claude 4.5 Sonnet",
+        description: "🚀 Access Gemini 3 Pro, GPT-5, Claude 4.5 Sonnet FREE. Build AI Agents, Multi-agent Systems. No signup, no credit card. Start with Agentic AI today!",
         images: ["/og-image.png"],
         creator: "@untrainedmodel",
     },

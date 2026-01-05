@@ -156,15 +156,11 @@ const DocsClient = () => {
                                     <ul className="space-y-2 text-sm text-muted-foreground">
                                         <li className="flex items-center gap-2">
                                             <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-                                            gemini-2.0-flash-exp
+                                            gemini-3-flash-exp
                                         </li>
                                         <li className="flex items-center gap-2">
                                             <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-                                            gemini-1.5-flash
-                                        </li>
-                                        <li className="flex items-center gap-2">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-                                            gemini-1.5-pro
+                                            gemini-3-pro
                                         </li>
                                     </ul>
                                 </GlassCard>

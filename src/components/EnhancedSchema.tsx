@@ -65,7 +65,7 @@ export function EnhancedSchema() {
         "featureList": [
             "Free GPT-5 Access",
             "Claude AI Integration",
-            "Gemini Pro Access",
+            "Gemini 3 Pro Access",
             "Code Generation",
             "Content Writing",
             "Research Tools"

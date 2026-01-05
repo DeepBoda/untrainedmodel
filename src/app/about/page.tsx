@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
     title: "About UntrainedModel | Free AI Platform India 2025 | Our Mission to Democratize AI",
-    description: "Learn about UntrainedModel's mission to make AI accessible to every Indian. Free GPT-5, Gemini Pro, Claude 4.5 for students, developers, businesses. No signup, no payment. Built in India, for India. Empowering 1M+ users with AI tools.",
+    description: "Learn about UntrainedModel's mission to make AI accessible to every Indian. Free GPT-5, Gemini 3 Pro, Claude 4.5 Sonnet for students, developers, businesses. No signup, no payment. Built in India, for India. Empowering 1M+ users with AI tools.",
     keywords: "about UntrainedModel, free AI platform India, AI for India, democratize AI, AI mission India, free AI tools 2025, AI accessibility India, Indian AI platform, AI for students India, AI for developers India, make AI accessible, AI innovation India",
 };
 
@@ -102,7 +102,7 @@ export default function AboutPage() {
                             </p>
 
                             <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
-                                We realized that while AI technology was advancing at breakneck speed, the user experience was lagging behind. Powerful models like GPT-5, Claude 4.5, and Gemini Pro were available, but using them effectively required technical knowledge that most people didn't have. Our mission became to bridge this gap.
+                                We realized that while AI technology was advancing at breakneck speed, the user experience was lagging behind. Powerful models like GPT-5, Claude 4.5 Sonnet, and Gemini 3 Pro were available, but using them effectively required technical knowledge that most people didn't have. Our mission became to bridge this gap.
                             </p>
 
                             <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
