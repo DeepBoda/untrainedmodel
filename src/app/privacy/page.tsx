@@ -145,18 +145,19 @@ export default function PrivacyPage() {
                         If we ever change our privacy practices, we'll update this page and change the "Last updated" date. We'll always maintain our commitment to your privacy.
                     </p>
 
-                    <h2 className="text-2xl font-bold mt-8 mb-4">
-                        Contact Us
-                    </h2>
-
-                    <p className="text-muted-foreground">
-                        If you have any questions about this Privacy Policy or our privacy practices, please contact us:
-                    </p>
-
-                    <ul className="space-y-2 text-muted-foreground mt-4">
-                        <li>• <strong>Email:</strong> privacy@untrainedmodel.com</li>
-                        <li>• <strong>Address:</strong> UntrainedModel, India</li>
-                    </ul>
+                    <section className="mb-12">
+                        <h2 className="text-2xl font-bold mb-4">8. Contact Us</h2>
+                        <p className="text-muted-foreground leading-relaxed mb-4">
+                            If you have any questions about this Privacy Policy, please contact us at:
+                        </p>
+                        <div className="bg-white/5 p-6 rounded-lg border border-white/10">
+                            <p className="font-semibold text-white mb-2">UntrainedModel AI Labs</p>
+                            <p className="text-muted-foreground">No. 12, 4th Floor, Sector 6</p>
+                            <p className="text-muted-foreground">HSR Layout, Bengaluru</p>
+                            <p className="text-muted-foreground mb-4">Karnataka 560102, India</p>
+                            <p className="text-primary">Email: privacy@untrainedmodel.xyz</p>
+                        </div>
+                    </section>
 
                     <div className="bg-blue-500/10 rounded-xl p-4 sm:p-6 mt-8 sm:mt-10 shadow-md border border-blue-500/20">
                         <h3 className="text-base sm:text-lg font-semibold text-blue-200 mb-2 sm:mb-3 flex items-center gap-2">

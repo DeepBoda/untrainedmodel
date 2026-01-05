@@ -214,19 +214,19 @@ export default function TermsPage() {
                         We might update these terms occasionally. If we make big changes, we'll let you know on our website. By continuing to use UntrainedModel, you agree to the updated terms.
                     </p>
 
-                    <h2 className="text-2xl font-bold mt-8 mb-4">
-                        11. Questions?
-                    </h2>
-
-                    <p className="text-muted-foreground mb-4">
-                        Have questions about these terms? We're here to help!
-                    </p>
-
-                    <ul className="space-y-2 text-muted-foreground">
-                        <li>• Visit our <Link href="/contact" className="text-blue-400 underline">Contact Page</Link></li>
-                        <li>• Check out our <Link href="/blog" className="text-blue-400 underline">Blog</Link> for tips and guides</li>
-                        <li>• Read our <Link href="/privacy" className="text-blue-400 underline">Privacy Policy</Link></li>
-                    </ul>
+                    <section className="mb-12">
+                        <h2 className="text-2xl font-bold mt-8 mb-4">11. Contact Information</h2>
+                        <p className="text-muted-foreground leading-relaxed mb-4">
+                            Documentation related to these Terms or other legal policies can be requested at:
+                        </p>
+                        <div className="bg-white/5 p-6 rounded-lg border border-white/10">
+                            <p className="font-semibold text-white mb-2">UntrainedModel AI Labs</p>
+                            <p className="text-muted-foreground">No. 12, 4th Floor, Sector 6</p>
+                            <p className="text-muted-foreground">HSR Layout, Bengaluru</p>
+                            <p className="text-muted-foreground mb-4">Karnataka 560102, India</p>
+                            <p className="text-primary">Email: legal@untrainedmodel.xyz</p>
+                        </div>
+                    </section>
 
                     <div className="bg-blue-500/10 rounded-xl p-6 mt-8">
                         <h3 className="text-xl font-bold mb-3">

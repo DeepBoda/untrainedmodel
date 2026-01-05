@@ -7,12 +7,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Mail, MessageSquare, Users, Send, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const ContactClient = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        // Mock submission
-        // Form submission logic would go here
         alert("Thanks for reaching out! We'll get back to you soon.");
     };
 
@@ -40,53 +39,110 @@ const ContactClient = () => {
                     </p>
                 </div>
 
-                <div className="max-w-4xl mx-auto">
-                    {/* Contact Info & FAQ */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="grid md:grid-cols-3 gap-6"
-                    >
-                        <GlassCard className="p-6 flex flex-col items-center text-center hover:bg-white/5 transition-colors">
-                            <div className="w-16 h-16 rounded-full bg-blue-500/20 flex items-center justify-center mb-4">
-                                <Mail className="w-8 h-8 text-blue-400" />
-                            </div>
-                            <h3 className="font-bold text-lg mb-2">Email Support</h3>
-                            <p className="text-muted-foreground text-sm mb-4">
-                                For general inquiries and technical support.
-                            </p>
-                            <a href="mailto:hello@untrainedmodel.xyz" className="text-primary hover:underline font-medium">
-                                hello@untrainedmodel.xyz
-                            </a>
-                        </GlassCard>
+                <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
 
-                        <GlassCard className="p-6 flex flex-col items-center text-center hover:bg-white/5 transition-colors">
-                            <div className="w-16 h-16 rounded-full bg-purple-500/20 flex items-center justify-center mb-4">
-                                <Users className="w-8 h-8 text-purple-400" />
+                    {/* Contact Form */}
+                    <GlassCard className="p-8">
+                        <h2 className="text-2xl font-bold mb-6">Send us a Message</h2>
+                        <form onSubmit={handleSubmit} className="space-y-6">
+                            <div className="grid md:grid-cols-2 gap-4">
+                                <div className="space-y-2">
+                                    <label className="text-sm font-medium text-muted-foreground">Name</label>
+                                    <Input placeholder="John Doe" required className="bg-black/20 border-white/10 focus:border-primary/50" />
+                                </div>
+                                <div className="space-y-2">
+                                    <label className="text-sm font-medium text-muted-foreground">Email</label>
+                                    <Input type="email" placeholder="john@example.com" required className="bg-black/20 border-white/10 focus:border-primary/50" />
+                                </div>
                             </div>
-                            <h3 className="font-bold text-lg mb-2">Community</h3>
-                            <p className="text-muted-foreground text-sm mb-4">
-                                Join our Discord server to chat with other users.
-                            </p>
-                            <a href="#" className="text-primary hover:underline font-medium">
-                                Join Discord Server
-                            </a>
-                        </GlassCard>
 
-                        <GlassCard className="p-6 flex flex-col items-center text-center hover:bg-white/5 transition-colors">
-                            <div className="w-16 h-16 rounded-full bg-pink-500/20 flex items-center justify-center mb-4">
-                                <Sparkles className="w-8 h-8 text-pink-400" />
+                            <div className="space-y-2">
+                                <label className="text-sm font-medium text-muted-foreground">Subject</label>
+                                <Select>
+                                    <SelectTrigger className="bg-black/20 border-white/10">
+                                        <SelectValue placeholder="Select a topic" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="support">Technical Support</SelectItem>
+                                        <SelectItem value="feedback">Feedback & Suggestions</SelectItem>
+                                        <SelectItem value="business">Business Partnership</SelectItem>
+                                        <SelectItem value="other">Other</SelectItem>
+                                    </SelectContent>
+                                </Select>
                             </div>
-                            <h3 className="font-bold text-lg mb-2">Partnerships</h3>
-                            <p className="text-muted-foreground text-sm mb-4">
-                                Interested in collaborating with UntrainedModel?
-                            </p>
-                            <a href="mailto:partners@untrainedmodel.xyz" className="text-primary hover:underline font-medium">
-                                partners@untrainedmodel.xyz
-                            </a>
-                        </GlassCard>
-                    </motion.div>
+
+                            <div className="space-y-2">
+                                <label className="text-sm font-medium text-muted-foreground">Message</label>
+                                <Textarea
+                                    placeholder="How can we help you?"
+                                    className="min-h-[150px] bg-black/20 border-white/10 focus:border-primary/50"
+                                    required
+                                />
+                            </div>
+
+                            <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white shadow-neon">
+                                <Send className="w-4 h-4 mr-2" /> Send Message
+                            </Button>
+                        </form>
+                    </GlassCard>
+
+                    {/* Contact Info & Details */}
+                    <div className="space-y-6">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5 }}
+                            className="grid gap-6"
+                        >
+                            <GlassCard className="p-6 flex items-start gap-4 hover:bg-white/5 transition-colors">
+                                <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center shrink-0">
+                                    <Mail className="w-6 h-6 text-blue-400" />
+                                </div>
+                                <div>
+                                    <h3 className="font-bold text-lg mb-1">Email Us</h3>
+                                    <p className="text-muted-foreground text-sm mb-2">
+                                        For general inquiries and support.
+                                    </p>
+                                    <a href="mailto:hello@untrainedmodel.xyz" className="text-primary hover:underline font-medium block">
+                                        hello@untrainedmodel.xyz
+                                    </a>
+                                </div>
+                            </GlassCard>
+
+                            <GlassCard className="p-6 flex items-start gap-4 hover:bg-white/5 transition-colors">
+                                <div className="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center shrink-0">
+                                    <Users className="w-6 h-6 text-purple-400" />
+                                </div>
+                                <div>
+                                    <h3 className="font-bold text-lg mb-1">Visit Us</h3>
+                                    <p className="text-muted-foreground text-sm mb-2">
+                                        Come say hello at our HQ.
+                                    </p>
+                                    <address className="not-italic text-sm text-gray-300 leading-relaxed">
+                                        UntrainedModel AI Labs<br />
+                                        No. 12, 4th Floor, Sector 6<br />
+                                        HSR Layout, Bengaluru<br />
+                                        Karnataka 560102, India
+                                    </address>
+                                </div>
+                            </GlassCard>
+
+                            <GlassCard className="p-6 flex items-start gap-4 hover:bg-white/5 transition-colors">
+                                <div className="w-12 h-12 rounded-full bg-pink-500/20 flex items-center justify-center shrink-0">
+                                    <Sparkles className="w-6 h-6 text-pink-400" />
+                                </div>
+                                <div>
+                                    <h3 className="font-bold text-lg mb-1">Partnerships</h3>
+                                    <p className="text-muted-foreground text-sm mb-2">
+                                        Interested in collaborating?
+                                    </p>
+                                    <a href="mailto:partners@untrainedmodel.xyz" className="text-primary hover:underline font-medium block">
+                                        partners@untrainedmodel.xyz
+                                    </a>
+                                </div>
+                            </GlassCard>
+                        </motion.div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -16,6 +16,7 @@ export interface BlogPost {
   metaDescription: string;
   keywords: string[];
   imageUrl?: string;
+  published?: boolean;
 }
 
 // 1. AI Web Development (Expanded)
@@ -312,75 +313,108 @@ const post3: BlogPost = {
   metaDescription: "Deep dive into React Server Components (RSC). Learn how they work, when to use them, and how they optimize performance.",
   keywords: ["react server components", "nextjs rsc", "react 19", "server actions", "frontend architecture"],
   imageUrl: "/images/blog/react-performance.svg",
-  content: "# React Server Components: The Architecture of 2025\n" + 
-      "\n" + 
-      "React Server Components (RSC) represent the biggest shift in the React ecosystem since Hooks. They allow you to render components exclusively on the server, reducing the JavaScript bundle sent to the client to **zero**.\n" + 
-      "\n" + 
-      "## The Problem with Client-Side Rendering (CSR)\n" + 
-      "In traditional CSR (React 18 and below):\n" + 
-      "1.  User downloads a massive JS bundle (React + App Code).\n" + 
-      "2.  Browser parses and executes JS.\n" + 
-      "3.  App fetches data from API (Waterfall).\n" + 
-      "4.  App renders.\n" + 
-      "\n" + 
-      "This leads to slow **Time to Interactive (TTI)** and poor SEO.\n" + 
-      "\n" + 
-      "## The RSC Solution\n" + 
-      "With RSC:\n" + 
-      "1.  Server fetches data directly (no API latency, direct DB connection).\n" + 
-      "2.  Server renders component to a special binary format.\n" + 
-      "3.  Client streams the result and reconciles it intelligently.\n" + 
-      "\n" + 
-      "### When to use Server vs. Client Components?\n" + 
-      "\n" + 
-      "| Feature | Server Component | Client Component |\n" + 
-      "| :--- | :--- | :--- |\n" + 
-      "| Fetch Data | ✅ (Direct DB access) | ❌ (Via API) |\n" + 
-      "| Access Backend Resources | ✅ | ❌ |\n" + 
-      "| Keep Sensitive Keys | ✅ (Secrets safe) | ❌ |\n" + 
-      "| Use State (useState) | ❌ | ✅ |\n" + 
-      "| Use Effects (useEffect) | ❌ | ✅ |\n" + 
-      "| Add Event Listeners | ❌ | ✅ |\n" + 
-      "\n" + 
-      "## Composition Pattern: The \"Hole\"\n" + 
-      "A common misconception is that you can't put Client Components inside Server Components. You can!\n" + 
-      "\n" + 
-      "\\\x60\\\x60\\\x60tsx\n" + 
-      "// ServerComponent.tsx\n" + 
-      "import ClientComponent from './ClientComponent';\n" + 
-      "import db from '@/lib/db';\n" + 
-      "\n" + 
-      "export default async function ServerComponent() {\n" + 
-      "  const data = await db.query('SELECT * FROM posts');\n" + 
-      "  \n" + 
-      "  return (\n" + 
-      "    <div className=\"layout\">\n" + 
-      "      {/* Passing Server Data to Client Component */}\n" + 
-      "      <ClientComponent initialData={data}>\n" + 
-      "        <h1>{data.title}</h1>\n" + 
-      "      </ClientComponent>\n" + 
-      "    </div>\n" + 
-      "  );\n" + 
-      "}\n" + 
-      "\\\x60\\\x60\\\x60\n" + 
-      "\n" + 
-      "## Server Actions: The New API Layer\n" + 
-      "Mutations are now first-class citizens. No more \\\x60useEffect\\\x60 fetch calls for form submissions.\n" + 
-      "\n" + 
-      "\\\x60\\\x60\\\x60tsx\n" + 
-      "// actions.ts\n" + 
-      "'use server'\n" + 
-      "\n" + 
-      "export async function createPost(formData: FormData) {\n" + 
-      "  const title = formData.get('title');\n" + 
-      "  await db.post.create({ data: { title } });\n" + 
-      "  revalidatePath('/posts'); // Instant cache invalidation\n" + 
-      "}\n" + 
-      "\\\x60\\\x60\\\x60\n" + 
-      "\n" + 
-      "## Conclusion\n" + 
-      "RSC simplifies the mental model of building apps by blurring the line between backend and frontend, giving you the best of both worlds: Server Performance + Client Interactivity.\n" + 
-      "\n"
+  content: "# React Server Components Deep Dive: The Architecture of 2025\n" +
+      "\n" +
+      "React Server Components (RSC) are not just a new feature; they are a paradigm shift. They fundamentally change how we build, ship, and run React applications.\n" +
+      "\n" +
+      "In this deep dive, we will move beyond the basics and explore the internal architecture, performance implications, and design patterns that define the next era of web development.\n" +
+      "\n" +
+      "## Table of Contents\n" +
+      "1. [The death of the \"Waterfall\"](#waterfall)\n" +
+      "2. [The Wire Format (What actually gets sent?)](#wire-format)\n" +
+      "3. [Streaming & Suspense](#streaming)\n" +
+      "4. [Server Actions: Beyond Forms](#server-actions)\n" +
+      "5. [Caching Strategies](#caching)\n" +
+      "\n" +
+      "## 1. The death of the \"Waterfall\"\n" +
+      "\n" +
+      "In a traditional Client-Side Rendered (CSR) app, data fetching is often coupled to the component tree.\n" +
+      "\n" +
+      "**The CSR Waterfall:**\n" +
+      "1. Load JS bundle.\n" +
+      "2. Render <UserPage>. Fetch User data.\n" +
+      "3. Render <Posts>. Fetch Posts data.\n" +
+      "4. Render <Comments>. Fetch Comments data.\n" +
+      "\n" +
+      "This sequential chaining destroys performance.\n" +
+      "\n" +
+      "**The RSC Solution:**\n" +
+      "Because RSCs run on the server, they have direct, low-latency access to your data sources. You can resolve all these data requirements in a single pass on the server before sending anything to the client.\n" +
+      "\n" +
+      "## 2. The Wire Format (What actually gets sent?)\n" +
+      "\n" +
+      "RSCs do not output HTML. They output a special binary format (JSON-like) that represents the UI tree.\n" +
+      "\n" +
+      "**Example Payload:**\n" +
+      "\x60\x60\x60json\n" +
+      "M1:{\"id\":\"./src/ClientComponent.js\",\"chunks\":[\"client-chunk\"],\"name\":\"default\"}\n" +
+      "J0:[\"$\@1\",null]\n" +
+      "\x60\x60\x60\n" +
+      "\n" +
+      "This format allows React on the client to merge the new server tree with the existing client state **without losing state**. This is the key difference between RSC and traditional SSR (HTML replacements).\n" +
+      "\n" +
+      "## 3. Streaming & Suspense\n" +
+      "\n" +
+      "RSC shines when combined with Streaming. You don't have to wait for the *entire* page to render.\n" +
+      "\n" +
+      "\x60\x60\x60tsx\n" +
+      "import { Suspense } from 'react';\n" +
+      "import { RecommendedProducts } from './components';\n" +
+      "\n" +
+      "export default function Page() {\n" +
+      "  return (\n" +
+      "    <main>\n" +
+      "      <h1>Product Details</h1>\n" +
+      "      <ProductDetails />\n" +
+      "      <Suspense fallback={<Skeleton />}>\n" +
+      "        <RecommendedProducts />\n" +
+      "      </Suspense>\n" +
+      "    </main>\n" +
+      "  );\n" +
+      "}\n" +
+      "\x60\x60\x60\n" +
+      "\n" +
+      "In this example, the HTML for `ProductDetails` is sent immediately. The connection is kept open. Once `RecommendedProducts` finishes fetching on the server, its UI chunks are streamed in, and React on the client swaps the Skeleton for the real content.\n" +
+      "\n" +
+      "## 4. Server Actions: Beyond Forms\n" +
+      "\n" +
+      "Server Actions are just RPC (Remote Procedure Calls) disguised as functions. Secure by default.\n" +
+      "\n" +
+      "### Optimistic UI\n" +
+      "\n" +
+      "\x60\x60\x60tsx\n" +
+      "'use client'\n" +
+      "import { useOptimistic } from 'react';\n" +
+      "\n" +
+      "export function LikeButton({ likes, onClick }) {\n" +
+      "  const [optimisticLikes, addOptimisticLike] = useOptimistic(\n" +
+      "    likes,\n" +
+      "    (state, newLike) => state + 1\n" +
+      "  );\n" +
+      "\n" +
+      "  return (\n" +
+      "    <button onClick={async () => {\n" +
+      "        addOptimisticLike(1);\n" +
+      "        await onClick();\n" +
+      "    }}>\n" +
+      "      {optimisticLikes} Likes\n" +
+      "    </button>\n" +
+      "  );\n" +
+      "}\n" +
+      "\x60\x60\x60\n" +
+      "\n" +
+      "## 5. Caching Strategies (The Next.js Layer)\n" +
+      "\n" +
+      "Next.js wraps standard React features with an opinionated caching layer.\n" +
+      "\n" +
+      "*   **Request Memoization**: Deduplicates identical fetch requests in the same render pass.\n" +
+      "*   **Data Cache**: Persistent HTTP cache across user requests.\n" +
+      "*   **Full Route Cache**: Caches the RSC payload at build time (Static) or revalidation time.\n" +
+      "\n" +
+      "## Conclusion\n" +
+      "\n" +
+      "React Server Components are not trying to kill the client. They are trying to save it from bloat. By moving heavy lifting to the server, we can build richer, faster, and more accessible applications.\n"
+,
 };
 
 // 4. Platform Engineering (Expanded)
@@ -400,59 +434,88 @@ const post4: BlogPost = {
   metaDescription: "A deep dive into Platform Engineering. Learn how to build IDPs, implement self-service workflows, and scale your DevOps practice.",
   keywords: ["platform engineering", "internal developer platform", "backstage spotify", "kubernetes abstraction", "devops 2025", "idp architecture"],
   imageUrl: "/images/blog/platform-eng.svg",
-  content: "# Platform Engineering 101: Why DevOps is Dead (Long Live DevOps)\n" + 
-      "\n" + 
-      "\"You build it, you run it.\" It sounded great in theory. In practice, it turned developers into amateur sysadmins, drowning in YAML files and Kubernetes manifests.\n" + 
-      "\n" + 
-      "Enter **Platform Engineering**.\n" + 
-      "\n" + 
-      "## The Cognitive Load Problem\n" + 
-      "\n" + 
-      "Modern cloud-native architectures are complex. Expecting every product developer to master Terraform, Helm, Istio, and Prometheus is unrealistic and inefficient.\n" + 
-      "\n" + 
-      "**Platform Engineering** is the discipline of designing and building toolchains and workflows that enable self-service capabilities for software engineering organizations in the cloud-native era.\n" + 
-      "\n" + 
-      "## The Internal Developer Platform (IDP)\n" + 
-      "\n" + 
-      "The IDP is the product you build for your internal customers (developers). It acts as a \"Golden Path\" (or Paved Road).\n" + 
-      "\n" + 
-      "### Key Components of an IDP\n" + 
-      "1.  **Developer Control Plane**: The interface (CLI, GUI, API) developers interact with. Example: **Backstage**.\n" + 
-      "2.  **Integration Plane**: The glue that connects tools. Example: **Crossplane**.\n" + 
-      "3.  **Infrastructure Plane**: The actual compute/storage. Example: **AWS/EKS**.\n" + 
-      "\n" + 
-      "## Building with Backstage\n" + 
-      "\n" + 
-      "Spotify's Backstage has become the de-facto standard for IDP frontends. It treats infrastructure as code entities.\n" + 
-      "\n" + 
-      "\\\x60\\\x60\\\x60yaml\n" + 
-      "# catalog-info.yaml\n" + 
-      "apiVersion: backstage.io/v1alpha1\n" + 
-      "kind: Component\n" + 
-      "metadata:\n" + 
-      "  name: payment-service\n" + 
-      "  description: Handles credit card processing\n" + 
-      "  tags:\n" + 
-      "    - java\n" + 
-      "    - payments\n" + 
-      "spec:\n" + 
-      "  type: service\n" + 
-      "  lifecycle: production\n" + 
-      "  owner: team-payments\n" + 
-      "  system: payment-system\n" + 
-      "\\\x60\\\x60\\\x60\n" + 
-      "\n" + 
-      "## Treating Platform as a Product\n" + 
-      "\n" + 
-      "The biggest mistake platform teams make is building what they *think* developers need. Instead:\n" + 
-      "1.  **User Research**: Interview your developers. \"Where do you get stuck?\"\n" + 
-      "2.  **MVP**: Start small (e.g., a simple deployment CLI).\n" + 
-      "3.  **Marketing**: Evangelize your platform internally.\n" + 
-      "\n" + 
-      "## Conclusion\n" + 
-      "\n" + 
-      "DevOps isn't dead; it has evolved. Platform Engineering is the industrialization of DevOps principles.\n" + 
-      "\n"
+  content: "# Platform Engineering 101: Building the Golden Path\n" +
+      "\n" +
+      "DevOps promised us speed. Instead, it gave us YAML fatigue. Developers are drowning in complexity, managing Terraform states, Helm charts, and Kubernetes manifests just to deploy a Hello World app.\n" +
+      "\n" +
+      "The solution is not \"more DevOps\". The solution is **Platform Engineering**.\n" +
+      "\n" +
+      "## Table of Contents\n" +
+      "1. [The Cognitive Load Problem](#cognitive-load)\n" +
+      "2. [What is an IDP? (Internal Developer Platform)](#idp)\n" +
+      "3. [Building with Backstage](#backstage)\n" +
+      "4. [Kubernetes Abstraction: Crossplane vs ArgoCD](#k8s)\n" +
+      "5. [Measuring Success: DORA Metrics](#dora)\n" +
+      "\n" +
+      "## 1. The Cognitive Load Problem\n" +
+      "\n" +
+      "In 2025, a Full Stack Developer is expected to know:\n" +
+      "*   React/Next.js (Frontend)\n" +
+      "*   Node/Go (Backend)\n" +
+      "*   Postgres/Redis (Database)\n" +
+      "*   Docker (Containerization)\n" +
+      "*   Kubernetes (Orchestration)\n" +
+      "*   Terraform/AWS (Infrastructure)\n" +
+      "*   Prometheus/Grafana (Observability)\n" +
+      "\n" +
+      "This defines **Cognitive Overload**. When developers spend 40% of their time fighting infrastructure, feature velocity plummets.\n" +
+      "\n" +
+      "## 2. What is an IDP? (Internal Developer Platform)\n" +
+      "\n" +
+      "An IDP is a product you build for your internal customers (developers). It abstracts the complexity of the underlying infrastructure into golden paths.\n" +
+      "\n" +
+      "**The \"Golden Path\" Principle**:\n" +
+      "> \"If I want to build a standard microservice, it should be one click. If I want to deviate, I can, but I lose the platform guarantees.\"\n" +
+      "\n" +
+      "### Architecture of an IDP\n" +
+      "1.  **Portal**: The frontend (Backstage).\n" +
+      "2.  **Orchestrator**: The logic (Humanitec, Port).\n" +
+      "3.  **Platform Plane**: The resources (K8s, AWS RDS).\n" +
+      "\n" +
+      "## 3. Building with Backstage\n" +
+      "\n" +
+      "Spotify's Backstage is the industry standard. It organizes your software ecosystem into a Catalog.\n" +
+      "\n" +
+      "**Example: Component Definition**\n" +
+      "\x60\x60\x60yaml\n" +
+      "apiVersion: backstage.io/v1alpha1\n" +
+      "kind: Component\n" +
+      "metadata:\n" +
+      "  name: payment-service\n" +
+      "  description: Handles credit card processing\n" +
+      "  tags: [java, spring-boot, payments]\n" +
+      "spec:\n" +
+      "  type: service\n" +
+      "  lifecycle: production\n" +
+      "  owner: team-fintech\n" +
+      "  system: payment-platform\n" +
+      "  dependsOn:\n" +
+      "    - resource:postgres-db\n" +
+      "\x60\x60\x60\n" +
+      "\n" +
+      "## 4. Kubernetes Abstraction: Crossplane vs ArgoCD\n" +
+      "\n" +
+      "How do developers provision resources? Do they open a Jira ticket? **No.**\n" +
+      "\n" +
+      "### Crossplane (Infrastructure as Data)\n" +
+      "Crossplane allows you to define \"Composite Resources\" (XRs). You can define a \"Corporate Database\" that maps to an AWS RDS instance with encryption and backups enforced.\n" +
+      "\n" +
+      "### ArgoCD (GitOps)\n" +
+      "ArgoCD ensures that what is in Git is what is running in the cluster. It provides the deployment automation rail.\n" +
+      "\n" +
+      "## 5. Measuring Success: DORA Metrics\n" +
+      "\n" +
+      "How do you know if your Platform Team is successful? Measure these 4 metrics:\n" +
+      "\n" +
+      "1.  **Deployment Frequency**: How often do you ship? (Target: On-demand)\n" +
+      "2.  **Lead Time for Changes**: Time from commit to production. (Target: < 1 hour)\n" +
+      "3.  **Change Failure Rate**: Percentage of deployments causing failure. (Target: < 5%)\n" +
+      "4.  **Time to Restore Service (MTTR)**: How fast do you recover? (Target: < 1 hour)\n" +
+      "\n" +
+      "## Conclusion\n" +
+      "\n" +
+      "Platform Engineering is not about hiding tools; it's about reducing friction. By treating your platform as a product, you unlock the true potential of your engineering organization. Stop building tickets. Start building paths.\n"
+,
 };
 
 // 5. System Design (Expanded)
@@ -615,67 +678,82 @@ const post6: BlogPost = {
   metaDescription: "Advanced TypeScript tutorial for senior engineers. Learn conditional types, infer keyword, and template literal types.",
   keywords: ["advanced typescript", "typescript tutorial", "typescript generics", "utility types", "type safety"],
   imageUrl: "/images/blog/typescript.svg",
-  content: "# Mastering TypeScript 6.0: Advanced Patterns for Large Scale Apps\n" + 
-      "\n" + 
-      "TypeScript is easy to learn but hard to master. In large codebases, \"any\" is the enemy. We need precise, expressive types that catch bugs before they happen.\n" + 
-      "\n" + 
-      "## 1. Template Literal Types\n" + 
-      "\n" + 
-      "You can manipulate strings at the type level.\n" + 
-      "\n" + 
-      "\\\x60\\\x60\\\x60typescript\n" + 
-      "type World = \"world\";\n" + 
-      "type Greeting = \\\x60Hello \\${World}\\\x60; // \"Hello world\"\n" + 
-      "\n" + 
-      "type Color = \"red\" | \"blue\";\n" + 
-      "type Quantity = \"light\" | \"dark\";\n" + 
-      "type Palette = \\\x60\\${Quantity}-\\${Color}\\\x60; \n" + 
-      "// \"light-red\" | \"light-blue\" | \"dark-red\" | \"dark-blue\"\n" + 
-      "\\\x60\\\x60\\\x60\n" + 
-      "\n" + 
-      "## 2. Conditional Types & The \\\x60infer\\\x60 Keyword\n" + 
-      "\n" + 
-      "Conditional types are like ternary operators for types.\n" + 
-      "\n" + 
-      "\\\x60\\\x60\\\x60typescript\n" + 
-      "type IsString<T> = T extends string ? true : false;\n" + 
-      "type A = IsString<\"hello\">; // true\n" + 
-      "\\\x60\\\x60\\\x60\n" + 
-      "\n" + 
-      "The \\\x60infer\\\x60 keyword allows you to extract types from within other types.\n" + 
-      "\n" + 
+  content: "# Mastering TypeScript 6.0: Desing Patterns for 2025\n" +
+      "\n" +
+      "TypeScript has won. It is the default for web development. But most developers stop at interface props. To truly master TypeScript, you need to think in sets, distributions, and typelevel logic.\n" +
+      "\n" +
+      "This guide covers advanced patterns used in large-scale libraries like tRPC, Zod, and Prisma.\n" +
+      "\n" +
+      "## 1. The `infer` Keyword: Mining Type Data\n" +
+      "\n" +
+      "The most powerful keyword in TypeScript. It allows you to extract subtypes from a larger type.\n" +
+      "\n" +
       "\x60\x60\x60typescript\n" +
       "type ReturnType<T> = T extends (...args: any[]) => infer R ? R : any;\n" +
       "\n" +
-      "function getUser() { return { name: \"Alice\", id: 1 }; }\n" +
-      "type User = ReturnType<typeof getUser>; // { name: string; id: number }\n" +
+      "async function fetchUser() { return { id: 1, name: \"Alice\" }; }\n" +
+      "type User = Awaited<ReturnType<typeof fetchUser>>;\n" +
+      "// User is { id: number; name: string }\n" +
       "\x60\x60\x60\n" +
-
       "\n" +
-      "## 3. Branded Types (Nominal Typing)\n" +
+      "## 2. Template Literal Types (String Manipulation)\n" +
       "\n" +
-      "TypeScript is structurally typed. Sometimes you want nominal typing (e.g., to distinguish between \x60USD\x60 and \x60EUR\x60).\n" +
+      "You can perform string concatenation at the type level. This is great for typings events or CSS classes.\n" +
       "\n" +
       "\x60\x60\x60typescript\n" +
-      "type Brand<K, T> = K & { __brand: T };\n" +
+      "type EventType = \"click\" | \"hover\";\n" +
+      "type ElementType = \"Button\" | \"Input\";\n" +
       "\n" +
-      "type USD = Brand<number, \"USD\">;\n" +
-      "type EUR = Brand<number, \"EUR\">;\n" +
+      "type HandlerName = \"on\${ElementType}\${Capitalize<EventType>}\";\n" +
+      "// \"onButtonClick\" | \"onButtonHover\" | \"onInputClick\" | \"onInputHover\"\n" +
+      "\x60\x60\x60\n" +
       "\n" +
-      "const dollars = 10 as USD;\n" +
-      "const euros = 10 as EUR;\n" +
+      "## 3. Recursive Types (JSON & Awaitable)\n" +
       "\n" +
-      "// dollars = euros; // Error! Type 'EUR' is not assignable to type 'USD'.\n" +
+      "Types can refer to themselves. Essential for defining JSON structures or infinitely nested arrays.\n" +
+      "\n" +
+      "\x60\x60\x60typescript\n" +
+      "type JSONValue = string | number | boolean | null | JSONObject | JSONArray;\n" +
+      "interface JSONObject { [key: string]: JSONValue }\n" +
+      "interface JSONArray extends Array<JSONValue> {}\n" +
+      "\x60\x60\x60\n" +
+      "\n" +
+      "## 4. Opaque Types (Branded Types)\n" +
+      "\n" +
+      "Prevent accidental assignment of similar types (e.g. UserID vs PostID) even if they are both strings.\n" +
+      "\n" +
+      "\x60\x60\x60typescript\n" +
+      "declare const __brand: unique symbol;\n" +
+      "type Brand<B> = { [__brand]: B };\n" +
+      "type Branded<T, B> = T & Brand<B>;\n" +
+      "\n" +
+      "type UserId = Branded<string, \"UserId\">;\n" +
+      "type PostId = Branded<string, \"PostId\">;\n" +
+      "\n" +
+      "const id1 = \"123\" as UserId;\n" +
+      "const id2 = \"456\" as PostId;\n" +
+      "// id1 = id2; // Error!\n" +
+      "\x60\x60\x60\n" +
+      "\n" +
+      "## 5. Mapped Types Modifiers\n" +
+      "\n" +
+      "Remove readonly and optional flags using `-`.\n" +
+      "\n" +
+      "\x60\x60\x60typescript\n" +
+      "type Mutable<T> = {\n" +
+      "  -readonly [P in keyof T]: T[P];\n" +
+      "}\n" +
       "\x60\x60\x60\n" +
       "\n" +
       "## Conclusion\n" +
       "\n" +
-      "Advanced TypeScript isn't just about showing off. It's about encoding your business logic into the type system, making invalid states unrepresentable.\n"
-    ,
+      "Mastering these patterns allows you to build library-grade type definitions that guide developers and catch bugs at compile time. In 2025, Typescript is your documentation.\n"
+,
 };
 
 // 7. NEW: Prompt Engineering
 const post7: BlogPost = {
+  published: false,
   id: "7",
   title: "Prompt Engineering Masterclass: Zero-Shot, Chain-of-Thought, and ReAct",
   excerpt: "Unlock the full potential of GPT-5 and Claude 3.5. Learn the scientific frameworks behind effective prompting like CoT, ToT, and ReAct.",
@@ -738,6 +816,7 @@ const post7: BlogPost = {
 
 // 8. NEW: AI for Students
 const post8: BlogPost = {
+  published: false,
   id: "8",
   title: "AI for Indian Students: Ace JEE, NEET & UPSC with Smart Study Tools",
   excerpt: "How to use free AI tools like UntrainedModel to act as your personal 24/7 tutor. Create practice tests, summarize NCERTs, and solve doubts instantly.",
@@ -793,6 +872,7 @@ const post8: BlogPost = {
 
 // 9. NEW: Gemini vs GPT-5
 const post9: BlogPost = {
+  published: false,
   id: "9",
   title: "Gemini Pro vs GPT-5 vs Claude 4.5: The Ultimate Showdown (2025)",
   excerpt: "We tested the big three on code generation, creative writing, and reasoning. The results will surprise you. Which model reigns supreme?",
@@ -850,6 +930,7 @@ const post9: BlogPost = {
 
 // 10. NEW: AI in Finance
 const post10: BlogPost = {
+  published: false,
   id: "10",
   title: "Algo Trading with AI: How to Build Your First Bot",
   excerpt: "Learn how to use Python and AI to analyze market data and execute trades. A beginner's guide to algorithmic trading in Indian markets (NSE/BSE).",
@@ -922,6 +1003,7 @@ const post10: BlogPost = {
 
 // 11. NEW: Ethical AI
 const post11: BlogPost = {
+  published: false,
   id: "11",
   title: "The Ethics of AI: Bias, Jobs, and the Future of Humanity",
   excerpt: "As AI becomes more powerful, ethical questions become critical. We explore the impact of AI on employment, privacy, and societal bias.",
@@ -967,6 +1049,7 @@ const post11: BlogPost = {
 
 // 12. NEW: Python AI Agents
 const post12: BlogPost = {
+  published: false,
   id: "12",
   title: "Building Autonomous Agents with Python & AutoGen",
   excerpt: "A technical walkthrough of Microsoft's AutoGen framework. Learn how to create a team of AI agents that collaborate to solve complex coding tasks.",
@@ -1040,6 +1123,7 @@ const post12: BlogPost = {
 
 // 13. NEW: Generative UI
 const post13: BlogPost = {
+  published: false,
   id: "13",
   title: "Generative UI: The End of Static Interfaces?",
   excerpt: "Vercel's v0 and Next.js are pioneering Generative UI. Learn how to render React components on the fly based on user intent.",
@@ -1113,6 +1197,7 @@ const post13: BlogPost = {
 
 // 14. NEW: AI in Healthcare
 const post14: BlogPost = {
+  published: false,
   id: "14",
   title: "AI in Healthcare: Diagnosing Diseases with Deep Learning",
   excerpt: "How Google's Med-PaLM and other models are revolutionizing radiology, drug discovery, and patient care.",
@@ -1152,6 +1237,7 @@ const post14: BlogPost = {
 
 // 15. NEW: SEO in AI Era
 const post15: BlogPost = {
+  published: false,
   id: "15",
   title: "SEO in the Age of SGE: How to Rank in 2025",
   excerpt: "Search Generative Experience (SGE) has changed SEO forever. Keywords are dead. Entities and E-E-A-T are the new kings.",
@@ -1192,6 +1278,7 @@ const post15: BlogPost = {
 
 // 16. NEW: CSS vs Tailwind
 const post16: BlogPost = {
+  published: false,
   id: "16",
   title: "Tailwind CSS vs. CSS-in-JS: The Verdict for 2025",
   excerpt: "The debate continues. We analyze the performance, developer experience, and scalability of Tailwind vs. Styled Components in modern Next.js apps.",
@@ -1231,8 +1318,10 @@ const post16: BlogPost = {
       "\n"
 };
 
-export const blogPosts: BlogPost[] = [
+const allPosts: BlogPost[] = [
   post1, post2, post3, post4, post5, post6,
   post7, post8, post9, post10, post11, post12,
   post13, post14, post15, post16
 ];
+
+export const blogPosts = allPosts.filter(post => post.published !== false);
