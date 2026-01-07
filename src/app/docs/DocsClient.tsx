@@ -133,11 +133,11 @@ const DocsClient = () => {
                                     <ul className="space-y-2 text-sm text-muted-foreground">
                                         <li className="flex items-center gap-2">
                                             <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
-                                            GPT-5o-mini
+                                            GPT-5-mini
                                         </li>
                                         <li className="flex items-center gap-2">
                                             <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
-                                            GPT-5o
+                                            GPT-5
                                         </li>
                                         <li className="flex items-center gap-2">
                                             <span className="w-1.5 h-1.5 rounded-full bg-green-500" />

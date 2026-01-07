@@ -82,7 +82,7 @@ const RecentBlogPosts = () => {
                   <div className="flex items-center gap-3 text-xs text-muted-foreground mb-4">
                     <div className="flex items-center gap-1">
                       <Calendar className="w-3 h-3" />
-                      {post.publishDate.toLocaleDateString()}
+                      {new Date(post.publishDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                     </div>
                     <div className="flex items-center gap-1">
                       <Clock className="w-3 h-3" />

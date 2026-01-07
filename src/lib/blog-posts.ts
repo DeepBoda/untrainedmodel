@@ -146,7 +146,7 @@ const post1: BlogPost = {
     "\n" +
     "## Conclusion\n" +
     "\n" +
-    "The developer of 2025 is an orchestrator of intelligence. By mastering Agents, RAG, and modern frameworks, you position yourself at the forefront of this revolution.\n" +
+    "The developer of 2026 is an orchestrator of intelligence. By mastering Agents, RAG, and modern frameworks, you position yourself at the forefront of this revolution.\n" +
     "\\\n"
 };
 
@@ -224,7 +224,7 @@ const post2: BlogPost = {
     "\n" +
     "## 4. The Tool: Unsloth\n" +
     "\n" +
-    "In 2025, if you aren't using **Unsloth**, you are wasting time.\n" +
+    "In 2026, if you aren't using **Unsloth**, you are wasting time.\n" +
     "*   **Speed**: 2x faster training.\n" +
     "*   **Memory**: 60% less VRAM usage.\n" +
     "*   **Custom Kernels**: Rewrites PyTorch internals for optimization.\n" +

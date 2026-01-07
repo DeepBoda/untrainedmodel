@@ -203,7 +203,7 @@ const BlogClient = () => {
                                     </div>
                                     <div className="flex items-center gap-2">
                                         <Calendar className="w-4 h-4" />
-                                        <span>{featuredPost.publishDate.toLocaleDateString()}</span>
+                                        <span>{new Date(featuredPost.publishDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                                     </div>
                                     <div className="flex items-center gap-2">
                                         <Clock className="w-4 h-4" />
@@ -248,7 +248,7 @@ const BlogClient = () => {
 
                                     <div className="flex items-center justify-between pt-6 border-t border-white/5 mt-auto">
                                         <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                                            <span>{post.publishDate.toLocaleDateString()}</span>
+                                            <span>{new Date(post.publishDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                                         </div>
                                         <span className="inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:translate-x-1 transition-transform">
                                             Read Article <ArrowRight className="w-4 h-4" />
