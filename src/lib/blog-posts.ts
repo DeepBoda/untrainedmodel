@@ -22,7 +22,7 @@ export interface BlogPost {
 // 1. AI Web Development (Expanded)
 const post1: BlogPost = {
   id: "1",
-  title: "The Ultimate Guide to AI-Powered Web Development in 2025: From Next.js to Agents",
+  title: "The Ultimate Guide to AI-Powered Web Development in 2026: From Next.js to Agents",
   excerpt: "A comprehensive 3000-word guide on building AI-native applications. Learn how to integrate GPT-5, build RAG pipelines, and deploy autonomous agents using Next.js 15.",
   author: "Dr. Sarah Chen",
   authorBio: "Principal AI Architect at TechFlow. Ex-Google Brain. Specializes in LLM integration and autonomous agents.",
@@ -36,7 +36,7 @@ const post1: BlogPost = {
   metaDescription: "Master AI-powered web development in 2025. Learn about Agentic workflows, RAG implementation, and the modern AI stack.",
   keywords: ["agentic ai", "rag pipeline", "nextjs 16 ai", "langchain tutorial", "vector database", "gpt-5 integration"],
   imageUrl: "/images/blog/ai-web-dev.svg",
-  content: "# The Ultimate Guide to AI-Powered Web Development in 2025: From Next.js to Agents\n" +
+  content: "# The Ultimate Guide to AI-Powered Web Development in 2026: From Next.js to Agents\n" +
     "\n" +
     "The web development landscape has shifted tectonically. We are no longer just building interfaces; we are building **intelligent systems**. In 2025, the \"Full Stack\" now includes Vector Databases, LLM Orchestration, and Agentic Workflows.\n" +
     "\n" +
@@ -153,7 +153,7 @@ const post1: BlogPost = {
 // 2. Machine Learning (Expanded)
 const post2: BlogPost = {
   id: "2",
-  title: "Fine-Tuning LLMs in 2025: A Practical Guide to LoRA and Unsloth",
+  title: "Fine-Tuning LLMs in 2026: A Practical Guide to LoRA and Unsloth",
   excerpt: "Stop relying on generic models. Learn how to fine-tune Llama 3 and Mistral on your own data for superior performance and lower costs using Unsloth and PEFT.",
   author: "Alex Rivera",
   authorBio: "ML Ops Lead at DataBricks. Expert in model optimization and distributed training.",
@@ -167,7 +167,7 @@ const post2: BlogPost = {
   metaDescription: "Complete guide to fine-tuning LLMs using LoRA and PEFT. Optimize Llama 3 and Mistral for your specific use case.",
   keywords: ["fine tuning llm", "llama 3 fine tuning", "lora training", "peft guide", "custom llm", "unsloth tutorial"],
   imageUrl: "/images/blog/ml-beginners.svg",
-  content: "# Fine-Tuning LLMs in 2025: From \"Prompt Engineering\" to \"Model Engineering\"\n" +
+  content: "# Fine-Tuning LLMs in 2026: From \"Prompt Engineering\" to \"Model Engineering\"\n" +
     "\n" +
     "Prompt engineering is powerful, but it hits a ceiling. When you need a model to follow a strict schema, adopt a specific persona, or reason in a domain-specific language (DSL), you need **Fine-Tuning**.\n" +
     "\n" +
@@ -299,7 +299,7 @@ const post2: BlogPost = {
 // 3. React Performance (Expanded)
 const post3: BlogPost = {
   id: "3",
-  title: "React Server Components Deep Dive: The Architecture of 2025",
+  title: "React Server Components Deep Dive: The Architecture of 2026",
   excerpt: "RSC is not just a feature; it's a paradigm shift. Explainers on partial hydration, streaming, and how to mix Client and Server components efficiently.",
   author: "Emily Rodriguez",
   authorBio: "Senior Frontend Architect at Vercel. React Core Contributor.",
@@ -313,7 +313,7 @@ const post3: BlogPost = {
   metaDescription: "Deep dive into React Server Components (RSC). Learn how they work, when to use them, and how they optimize performance.",
   keywords: ["react server components", "nextjs rsc", "react 19", "server actions", "frontend architecture"],
   imageUrl: "/images/blog/react-performance.svg",
-  content: "# React Server Components Deep Dive: The Architecture of 2025\n" +
+  content: "# React Server Components Deep Dive: The Architecture of 2026\n" +
     "\n" +
     "React Server Components (RSC) are not just a new feature; they are a paradigm shift. They fundamentally change how we build, ship, and run React applications.\n" +
     "\n" +
@@ -521,7 +521,7 @@ const post4: BlogPost = {
 // 5. System Design (Expanded)
 const post5: BlogPost = {
   id: "5",
-  title: "Designing for 100 Million Users: A 2025 System Design Masterclass",
+  title: "Designing for 100 Million Users: A 2026 System Design Masterclass",
   excerpt: "From global distribution to database sharding. A masterclass in architecting scalable, resilient, and high-performance distributed systems.",
   author: "James Wilson",
   authorBio: "Distinguished Engineer at Netflix. 20 years of experience building internet-scale systems.",
@@ -678,7 +678,7 @@ const post6: BlogPost = {
   metaDescription: "Advanced TypeScript tutorial for senior engineers. Learn conditional types, infer keyword, and template literal types.",
   keywords: ["advanced typescript", "typescript tutorial", "typescript generics", "utility types", "type safety"],
   imageUrl: "/images/blog/typescript.svg",
-  content: "# Mastering TypeScript 6.0: Desing Patterns for 2025\n" +
+  content: "# Mastering TypeScript 6.0: Desing Patterns for 2026\n" +
     "\n" +
     "TypeScript has won. It is the default for web development. But most developers stop at interface props. To truly master TypeScript, you need to think in sets, distributions, and typelevel logic.\n" +
     "\n" +
@@ -888,7 +888,7 @@ const post9: BlogPost = {
   metaDescription: "Detailed comparison of Gemini Pro, GPT-5, and Claude 4.5. Benchmarks on coding, writing, and logic.",
   keywords: ["gpt-5 vs gemini", "claude 4.5 review", "best ai model 2025", "ai model comparison", "llm benchmarks"],
   imageUrl: "/images/blog/ai-battle.svg",
-  content: "# Gemini Pro vs GPT-5 vs Claude 4.5: The 2025 Benchmark\n" +
+  content: "# Gemini Pro vs GPT-5 vs Claude 4.5: The 2026 Benchmark\n" +
     "\n" +
     "The AI wars are heating up. We have three titans: OpenAI's GPT-5, Google's Gemini 2.0 Pro, and Anthropic's Claude 4.5 Sonnet. Which one should you use?\n" +
     "\n" +
@@ -1239,7 +1239,7 @@ const post14: BlogPost = {
 const post15: BlogPost = {
   published: false,
   id: "15",
-  title: "SEO in the Age of SGE: How to Rank in 2025",
+  title: "SEO in the Age of SGE: How to Rank in 2026",
   excerpt: "Search Generative Experience (SGE) has changed SEO forever. Keywords are dead. Entities and E-E-A-T are the new kings.",
   author: "Mark Digital",
   authorBio: "SEO Strategist. Helping brands navigate the zero-click future.",
@@ -1280,7 +1280,7 @@ const post15: BlogPost = {
 const post16: BlogPost = {
   published: false,
   id: "16",
-  title: "Tailwind CSS vs. CSS-in-JS: The Verdict for 2025",
+  title: "Tailwind CSS vs. CSS-in-JS: The Verdict for 2026",
   excerpt: "The debate continues. We analyze the performance, developer experience, and scalability of Tailwind vs. Styled Components in modern Next.js apps.",
   author: "Chris Frontend",
   authorBio: "UI Engineer at StartupX. Tailwind Evangelist.",
