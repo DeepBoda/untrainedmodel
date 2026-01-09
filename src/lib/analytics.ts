@@ -1,16 +1,16 @@
 // Google Analytics 4 Integration
-export const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // Replace with your GA4 ID
+export const GA_MEASUREMENT_ID = 'G-VLSKCHSKE6'; // From .env.example
 
 // Initialize Google Analytics
 export function initGA() {
   if (typeof window === 'undefined') return;
-  
+
   // Load GA4 script
   const script1 = document.createElement('script');
   script1.async = true;
   script1.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
   document.head.appendChild(script1);
-  
+
   // Initialize gtag
   const script2 = document.createElement('script');
   script2.innerHTML = `
@@ -27,7 +27,7 @@ export function initGA() {
 // Track page views
 export function trackPageView(url: string) {
   if (typeof window === 'undefined' || !(window as any).gtag) return;
-  
+
   (window as any).gtag('config', GA_MEASUREMENT_ID, {
     page_path: url,
   });
@@ -36,7 +36,7 @@ export function trackPageView(url: string) {
 // Track custom events
 export function trackEvent(action: string, category: string, label?: string, value?: number) {
   if (typeof window === 'undefined' || !(window as any).gtag) return;
-  
+
   (window as any).gtag('event', action, {
     event_category: category,
     event_label: label,
@@ -60,11 +60,11 @@ export function trackEngagement(action: string, details?: string) {
 }
 
 // Microsoft Clarity Integration (optional but recommended)
-export const CLARITY_ID = 'XXXXXXXXXX'; // Replace with your Clarity ID
+export const CLARITY_ID = ''; // Optional: Add your Clarity ID from .env.example
 
 export function initClarity() {
   if (typeof window === 'undefined') return;
-  
+
   const script = document.createElement('script');
   script.innerHTML = `
     (function(c,l,a,r,i,t,y){
@@ -79,14 +79,14 @@ export function initClarity() {
 // Performance monitoring
 export function trackPerformance() {
   if (typeof window === 'undefined' || !window.performance) return;
-  
+
   window.addEventListener('load', () => {
     setTimeout(() => {
       const perfData = window.performance.timing;
       const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
       const connectTime = perfData.responseEnd - perfData.requestStart;
       const renderTime = perfData.domComplete - perfData.domLoading;
-      
+
       trackEvent('page_load_time', 'Performance', 'Load Time', pageLoadTime);
       trackEvent('connect_time', 'Performance', 'Connect Time', connectTime);
       trackEvent('render_time', 'Performance', 'Render Time', renderTime);

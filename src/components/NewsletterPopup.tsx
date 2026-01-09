@@ -53,8 +53,16 @@ export default function NewsletterPopup() {
             });
         }
 
-        // Here you would integrate with your email service (Mailchimp, ConvertKit, etc.)
-        // For now, just simulate success
+        // TODO: Integrate with email service (Mailchimp, ConvertKit, Beehiiv, etc.)
+        // Example API call:
+        // const response = await fetch('/api/newsletter', {
+        //   method: 'POST',
+        //   headers: { 'Content-Type': 'application/json' },
+        //   body: JSON.stringify({ email }),
+        // });
+        // if (!response.ok) throw new Error('Failed to subscribe');
+
+        // DEMO MODE: Simulating success for now
         setTimeout(() => {
             setStatus('success');
             setTimeout(() => setShow(false), 2000);
