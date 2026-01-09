@@ -10,7 +10,7 @@
     "start": "next start",
     "lint": "next lint",
     "optimize-images": "node scripts/optimize-images.js",
-    "analyze": "next experimental-analyze"
+    "analyze": "ANALYZE=true next build --webpack"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
