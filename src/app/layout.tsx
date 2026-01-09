@@ -138,17 +138,6 @@ export default function RootLayout({
                 <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
                 <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
-                {/* Google Tag Manager */}
-                <script
-                    dangerouslySetInnerHTML={{
-                        __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                        })(window,document,'script','dataLayer','GTM-TSTK7HPL');`,
-                    }}
-                ></script>
-
                 {/* Google AdSense */}
                 <meta name="google-adsense-account" content="ca-pub-3606235083263616" />
                 <script
@@ -174,15 +163,6 @@ export default function RootLayout({
                 ></script>
             </head>
             <body className={`${inter.variable} ${outfit.variable} font-sans antialiased min-h-screen flex flex-col`}>
-                {/* Google Tag Manager (noscript) */}
-                <noscript>
-                    <iframe
-                        src="https://www.googletagmanager.com/ns.html?id=GTM-TSTK7HPL"
-                        height="0"
-                        width="0"
-                        style={{ display: 'none', visibility: 'hidden' }}
-                    ></iframe>
-                </noscript>
                 <Providers>
                     <ScrollProgress />
                     <BackToTop />
