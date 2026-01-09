@@ -1,6 +1,5 @@
 "use client";
 
-import { ScrollProgress } from "@/components/ScrollProgress";
 import { useRef, useState, useEffect } from "react";
 import { Button } from '@/components/ui/button';
 import { GlassCard } from '@/components/ui/GlassCard';
@@ -10,7 +9,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
     Sparkles, Code, TrendingUp, Send, Copy, RefreshCw, Zap,
     Layout, Settings, History, ChevronRight, Terminal,
-    MessageSquare, Play, Save, Share2, Bot, Shield
+    MessageSquare, Play, Save, Share2, Bot, Shield, Wand2,
+    Brain, Rocket, Lightbulb
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { aiService } from '@/lib/ai';
@@ -21,9 +21,7 @@ const PlaygroundClient = () => {
     const [activeMode, setActiveMode] = useState<'chat' | 'code' | 'research'>('chat');
     const [input, setInput] = useState('');
     const [isGenerating, setIsGenerating] = useState(false);
-    const [messages, setMessages] = useState<Array<{ role: 'user' | 'ai', content: string, type?: 'code' | 'text' }>>([
-        { role: 'ai', content: "Hello! I'm your AI assistant. Configure your API keys in Settings ⚙️ and let's build something amazing.", type: 'text' }
-    ]);
+    const [messages, setMessages] = useState<Array<{ role: 'user' | 'ai', content: string, type?: 'code' | 'text' }>>([]);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);
     const [selectedProvider, setSelectedProvider] = useState('google');
@@ -88,9 +86,16 @@ const PlaygroundClient = () => {
     };
 
     const modes = [
-        { id: 'chat', icon: MessageSquare, label: 'Chat', color: 'text-neon-purple' },
-        { id: 'code', icon: Code, label: 'Code', color: 'text-neon-blue' },
-        { id: 'research', icon: TrendingUp, label: 'Research', color: 'text-neon-cyan' },
+        { id: 'chat', icon: MessageSquare, label: 'Chat Mode', color: 'text-neon-purple', desc: 'General conversation' },
+        { id: 'code', icon: Code, label: 'Code Mode', color: 'text-neon-blue', desc: 'Programming & debugging' },
+        { id: 'research', icon: TrendingUp, label: 'Research', color: 'text-neon-cyan', desc: 'Analysis & insights' },
+    ];
+
+    const suggestions = [
+        { icon: Code, text: "Build a React component with TypeScript", color: "from-blue-500 to-cyan-500" },
+        { icon: Brain, text: "Explain quantum computing simply", color: "from-purple-500 to-pink-500" },
+        { icon: Rocket, text: "Create a marketing strategy", color: "from-orange-500 to-red-500" },
+        { icon: Lightbulb, text: "Debug this Python error", color: "from-green-500 to-emerald-500" },
     ];
 
     // Auto-focus input on mount and global keydown
@@ -122,6 +127,9 @@ const PlaygroundClient = () => {
     useEffect(() => {
         setIsMobileMenuOpen(false);
     }, [activeMode]);
+
+    // Show welcome screen if no messages
+    const showWelcome = messages.length === 0;
 
     return (
         <div className="relative flex w-full h-[calc(100vh-64px)] bg-black overflow-hidden border-b border-white/10" onClick={handleContainerClick}>
@@ -186,7 +194,10 @@ const PlaygroundClient = () => {
                                         </>
                                     )}
                                     <mode.icon className={cn("w-4 h-4 transition-colors", activeMode === mode.id ? mode.color : "group-hover:text-white")} />
-                                    <span className="relative z-10">{mode.label}</span>
+                                    <div className="flex flex-col items-start">
+                                        <span className="relative z-10">{mode.label}</span>
+                                        <span className="text-[10px] text-muted-foreground">{mode.desc}</span>
+                                    </div>
                                     {activeMode === mode.id && <ChevronRight className="w-3 h-3 ml-auto opacity-50" />}
                                 </button>
                             ))}
@@ -194,142 +205,210 @@ const PlaygroundClient = () => {
                     </div>
 
                     <div>
-                        <h3 className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-4 px-2">Recent History</h3>
-                        <div className="space-y-1">
-                            {['React Component', 'Market Analysis', 'Blog Post Draft'].map((item, i) => (
-                                <button key={i} className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-muted-foreground hover:text-white hover:bg-white/5 transition-colors text-left truncate group">
-                                    <History className="w-3 h-3 shrink-0 group-hover:text-primary transition-colors" />
-                                    <span className="truncate">{item}</span>
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-
-                    <div>
                         <h3 className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-4 px-2">Configuration</h3>
-                        <div className="space-y-4 px-2">
-                            <div className="space-y-1.5">
-                                <label className="text-xs text-muted-foreground font-medium">Provider</label>
+                        <div className="space-y-3 px-2">
+                            <div>
+                                <label className="text-xs text-muted-foreground mb-1.5 block">Provider</label>
                                 <Select value={selectedProvider} onValueChange={setSelectedProvider}>
-                                    <SelectTrigger className="w-full bg-black/40 border-white/10 h-9 text-xs focus:ring-primary/50">
+                                    <SelectTrigger className="w-full h-9 bg-white/5 border-white/10">
                                         <SelectValue />
                                     </SelectTrigger>
-                                    <SelectContent className="bg-black/90 border-white/10 backdrop-blur-xl">
+                                    <SelectContent>
                                         <SelectItem value="google">Google Gemini</SelectItem>
                                         <SelectItem value="openai">OpenAI</SelectItem>
                                         <SelectItem value="anthropic">Anthropic</SelectItem>
                                     </SelectContent>
                                 </Select>
                             </div>
-                            <div className="space-y-1.5">
-                                <label className="text-xs text-muted-foreground font-medium">Model</label>
+                            <div>
+                                <label className="text-xs text-muted-foreground mb-1.5 block">Model</label>
                                 <Select value={selectedModel} onValueChange={setSelectedModel}>
-                                    <SelectTrigger className="w-full bg-black/40 border-white/10 h-9 text-xs focus:ring-primary/50">
+                                    <SelectTrigger className="w-full h-9 bg-white/5 border-white/10">
                                         <SelectValue />
                                     </SelectTrigger>
-                                    <SelectContent className="bg-black/90 border-white/10 backdrop-blur-xl">
-                                        {aiService.getModelsForProvider(selectedProvider).map(model => (
+                                    <SelectContent>
+                                        {aiService.getModelsForProvider(selectedProvider).map((model) => (
                                             <SelectItem key={model} value={model}>{model}</SelectItem>
                                         ))}
                                     </SelectContent>
                                 </Select>
                             </div>
+                            <Button
+                                variant="outline"
+                                size="sm"
+                                className="w-full"
+                                onClick={() => setIsSettingsOpen(true)}
+                            >
+                                <Settings className="w-3.5 h-3.5 mr-2" />
+                                API Keys
+                            </Button>
                         </div>
                     </div>
                 </div>
 
-                <div className="p-4 border-t border-white/5 bg-black/20 mt-auto">
-                    <div className="flex items-center gap-3 px-2">
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center font-bold text-xs text-white shadow-lg ring-2 ring-white/10">
-                            DP
-                        </div>
-                        <div className="text-sm">
-                            <div className="font-bold text-white">Demo User</div>
-                            <div className="text-xs text-muted-foreground">Pro Plan</div>
-                        </div>
-                        <Settings
-                            className="w-4 h-4 ml-auto text-muted-foreground cursor-pointer hover:text-white transition-colors hover:rotate-90 duration-300"
-                            onClick={() => setIsSettingsOpen(true)}
-                        />
-                    </div>
+                <div className="p-4 border-t border-white/5 opacity-50 hover:opacity-100 transition-opacity">
+                    <p className="text-[10px] text-muted-foreground text-center">
+                        Demo User • Free Tier
+                    </p>
                 </div>
             </div>
 
-            {/* Main Content */}
-            <div className="flex-1 flex flex-col relative z-10 min-w-0 h-full transition-all duration-300">
-                {/* Header */}
-                <header className="h-16 border-b border-white/5 bg-black/20 backdrop-blur-md flex items-center justify-between px-4 md:px-6 sticky top-0 z-30 shrink-0">
+            {/* Main Chat Area */}
+            <div className="flex-1 flex flex-col relative z-10">
+                {/* Top Bar */}
+                <div className="flex items-center justify-between px-6 py-4 border-b border-white/5 bg-black/60 backdrop-blur-xl">
                     <div className="flex items-center gap-3">
-                        <Button variant="ghost" size="icon" className="md:hidden -ml-2" onClick={() => setIsMobileMenuOpen(true)}>
-                            <Layout className="w-5 h-5" />
-                        </Button>
-                        <Badge variant="outline" className="bg-primary/10 border-primary/20 text-primary px-3 py-1">
-                            {modes.find(m => m.id === activeMode)?.label} Mode
-                        </Badge>
-                        <div className="h-4 w-[1px] bg-white/10 hidden sm:block" />
-                        <span className="text-xs text-muted-foreground font-mono hidden sm:inline-block">
-                            {selectedProvider} :: {selectedModel}
-                        </span>
+                        <button
+                            className="md:hidden"
+                            onClick={() => setIsMobileMenuOpen(true)}
+                        >
+                            <Layout className="w-5 h-5 text-muted-foreground" />
+                        </button>
+                        <div>
+                            <h1 className="text-sm font-bold text-white flex items-center gap-2">
+                                <Badge variant="outline" className="text-[10px]">{activeMode}</Badge>
+                                AI Playground
+                            </h1>
+                            <p className="text-xs text-muted-foreground mt-0.5">
+                                {selectedProvider} :: {selectedModel}
+                            </p>
+                        </div>
                     </div>
                     <div className="flex items-center gap-2">
-                        <Button variant="ghost" size="icon" className="h-9 w-9 hover:bg-white/5" onClick={() => setIsSettingsOpen(true)}>
+                        <Button variant="ghost" size="icon" className="h-8 w-8">
+                            <History className="w-4 h-4" />
+                        </Button>
+                        <Button variant="ghost" size="icon" className="h-8 w-8">
+                            <Share2 className="w-4 h-4" />
+                        </Button>
+                        <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => setIsSettingsOpen(true)}>
                             <Settings className="w-4 h-4" />
                         </Button>
                     </div>
-                </header>
+                </div>
 
-                {/* Chat/Output Area */}
-                <ScrollArea className="flex-1 p-4 md:p-8" viewportRef={scrollRef}>
-                    <ScrollProgress containerRef={scrollRef} className="absolute top-0 left-0 right-0 z-50" />
-                    <div className="max-w-[1600px] mx-auto space-y-8 pb-32">
-                        {messages.map((msg, idx) => (
+                {/* Messages Area */}
+                <ScrollArea className="flex-1 relative">
+                    <div className="max-w-5xl mx-auto px-4 md:px-8 pt-12 pb-32 space-y-8">
+                        {showWelcome ? (
                             <motion.div
-                                key={idx}
-                                initial={{ opacity: 0, y: 10 }}
+                                initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className={cn(
-                                    "flex gap-4 md:gap-6 group",
-                                    msg.role === 'user' ? "flex-row-reverse" : ""
-                                )}
+                                className="max-w-3xl mx-auto text-center space-y-8 pt-12"
                             >
-                                <div className={cn(
-                                    "w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center shrink-0 border shadow-lg transition-transform group-hover:scale-110 mt-1",
-                                    msg.role === 'ai'
-                                        ? "bg-black/60 border-white/10 text-primary backdrop-blur-xl"
-                                        : "bg-primary text-white border-primary shadow-neon"
-                                )}>
-                                    {msg.role === 'ai' ? <Bot className="w-4 h-4 md:w-5 md:h-5" /> : <div className="text-xs md:text-sm font-bold">U</div>}
+                                {/* Hero Section */}
+                                <div className="space-y-4">
+                                    <motion.div
+                                        initial={{ scale: 0.8, opacity: 0 }}
+                                        animate={{ scale: 1, opacity: 1 }}
+                                        transition={{ delay: 0.1 }}
+                                        className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-primary to-purple-600 shadow-glow mb-4"
+                                    >
+                                        <Wand2 className="w-10 h-10 text-white" />
+                                    </motion.div>
+                                    <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-purple-200 to-white">
+                                        Welcome to AI Playground
+                                    </h1>
+                                    <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+                                        Your personal AI assistant powered by{' '}
+                                        <span className="text-primary font-semibold">{selectedProvider}</span>.
+                                        Start building, learning, and creating with cutting-edge AI models.
+                                    </p>
                                 </div>
 
-                                <div className={cn(
-                                    "max-w-[85%] rounded-3xl p-5 md:p-7 shadow-xl relative overflow-hidden",
-                                    msg.role === 'user'
-                                        ? "bg-gradient-to-br from-primary to-purple-600 text-white rounded-tr-sm"
-                                        : "bg-white/5 border border-white/10 backdrop-blur-md rounded-tl-sm hover:border-white/20 transition-colors"
-                                )}>
-                                    {/* Subtle noise/texture overlay for AI messages */}
-                                    {msg.role === 'ai' && <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] pointer-events-none" />}
+                                {/* Quick Start Suggestions */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-12">
+                                    {suggestions.map((suggestion, i) => (
+                                        <motion.button
+                                            key={i}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: 0.2 + i * 0.1 }}
+                                            onClick={() => setInput(suggestion.text)}
+                                            className="group p-4 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all duration-300 text-left"
+                                        >
+                                            <div className={cn(
+                                                "w-10 h-10 rounded-lg bg-gradient-to-br flex items-center justify-center mb-3 group-hover:scale-110 transition-transform",
+                                                suggestion.color
+                                            )}>
+                                                <suggestion.icon className="w-5 h-5 text-white" />
+                                            </div>
+                                            <p className="text-sm text-white group-hover:text-primary transition-colors">
+                                                {suggestion.text}
+                                            </p>
+                                        </motion.button>
+                                    ))}
+                                </div>
 
-                                    {msg.type === 'code' ? (
-                                        <div className="font-mono text-sm overflow-hidden rounded-xl border border-white/10 bg-black/50 shadow-inner">
-                                            <div className="flex items-center justify-between px-4 py-2 border-b border-white/10 bg-white/5">
-                                                <span className="text-xs text-muted-foreground font-medium flex items-center gap-2">
-                                                    <Terminal className="w-3 h-3" /> Generated Code
-                                                </span>
-                                                <Button variant="ghost" size="sm" className="h-6 w-6 p-0 hover:text-white">
-                                                    <Copy className="w-3 h-3" />
-                                                </Button>
-                                            </div>
-                                            <div className="p-4 overflow-x-auto custom-scrollbar">
-                                                <pre className="text-green-400 whitespace-pre-wrap font-code leading-relaxed">{msg.content}</pre>
-                                            </div>
-                                        </div>
-                                    ) : (
-                                        <p className="leading-relaxed whitespace-pre-wrap text-[16px] md:text-[17px] tracking-wide font-light">{msg.content}</p>
-                                    )}
+                                {/* Features */}
+                                <div className="flex items-center justify-center gap-8 mt-12 text-xs text-muted-foreground">
+                                    <div className="flex items-center gap-2">
+                                        <Zap className="w-4 h-4 text-yellow-500" />
+                                        <span>Lightning Fast</span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <Shield className="w-4 h-4 text-green-500" />
+                                        <span>Secure & Private</span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <Sparkles className="w-4 h-4 text-purple-500" />
+                                        <span>100% Free</span>
+                                    </div>
                                 </div>
                             </motion.div>
-                        ))}
+                        ) : (
+                            // Existing chat messages
+                            messages.map((msg, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: i * 0.05 }}
+                                    className={cn(
+                                        "flex gap-4 items-start relative z-10",
+                                        msg.role === 'user' ? "flex-row-reverse" : "flex-row"
+                                    )}
+                                >
+                                    {/* Avatar */}
+                                    <div className={cn(
+                                        "w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center shrink-0 backdrop-blur-xl border font-medium text-sm md:text-base shadow-xl",
+                                        msg.role === 'user'
+                                            ? "bg-gradient-to-br from-primary to-purple-600 border-purple-500/20 text-white"
+                                            : "bg-black/60 border-white/10 text-primary"
+                                    )}>
+                                        {msg.role === 'ai' ? <Bot className="w-4 h-4 md:w-5 md:h-5" /> : <div className="text-xs md:text-sm font-bold">U</div>}
+                                    </div>
+
+                                    <div className={cn(
+                                        "max-w-[85%] rounded-3xl p-5 md:p-7 shadow-xl relative overflow-hidden",
+                                        msg.role === 'user'
+                                            ? "bg-gradient-to-br from-primary to-purple-600 text-white rounded-tr-sm"
+                                            : "bg-white/5 border border-white/10 backdrop-blur-md rounded-tl-sm hover:border-white/20 transition-colors"
+                                    )}>
+                                        {/* Subtle noise/texture overlay for AI messages */}
+                                        {msg.role === 'ai' && <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] pointer-events-none" />}
+
+                                        {msg.type === 'code' ? (
+                                            <div className="font-mono text-sm overflow-hidden rounded-xl border border-white/10 bg-black/50 shadow-inner">
+                                                <div className="flex items-center justify-between px-4 py-2 border-b border-white/10 bg-white/5">
+                                                    <span className="text-xs text-muted-foreground font-medium flex items-center gap-2">
+                                                        <Terminal className="w-3 h-3" /> Generated Code
+                                                    </span>
+                                                    <Button variant="ghost" size="sm" className="h-6 w-6 p-0 hover:text-white">
+                                                        <Copy className="w-3 h-3" />
+                                                    </Button>
+                                                </div>
+                                                <div className="p-4 overflow-x-auto custom-scrollbar">
+                                                    <pre className="text-green-400 whitespace-pre-wrap font-code leading-relaxed">{msg.content}</pre>
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            <p className="leading-relaxed whitespace-pre-wrap text-[16px] md:text-[17px] tracking-wide font-light">{msg.content}</p>
+                                        )}
+                                    </div>
+                                </motion.div>
+                            ))
+                        )}
 
                         {isGenerating && (
                             <motion.div
@@ -351,7 +430,7 @@ const PlaygroundClient = () => {
                     </div>
                 </ScrollArea>
 
-                {/* Input Area - Pro "Command Center" Style */}
+                {/* Input Area - Fixed at bottom */}
                 <div className="p-6 bg-black/80 backdrop-blur-xl border-t border-white/5 absolute bottom-0 left-0 right-0 z-40 md:relative md:z-auto">
                     <div className="max-w-5xl mx-auto relative">
                         <div className="relative bg-zinc-900/50 border border-white/10 rounded-xl overflow-hidden ring-1 ring-white/5 focus-within:ring-primary/50 focus-within:border-primary/50 transition-all duration-300 shadow-2xl">

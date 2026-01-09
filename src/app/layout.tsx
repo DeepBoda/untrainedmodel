@@ -9,7 +9,6 @@ import { ScrollProgress } from "@/components/ScrollProgress";
 import { BackToTop } from "@/components/BackToTop";
 import { EnhancedSchema } from "@/components/EnhancedSchema";
 import NewsletterPopup from "@/components/NewsletterPopup";
-import StickyCTA from "@/components/StickyCTA";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -190,7 +189,6 @@ export default function RootLayout({
                     <JsonLd />
                     <EnhancedSchema />
                     <NewsletterPopup />
-                    <StickyCTA />
                     <Navigation />
                     <main className="flex-1">
                         {children}
