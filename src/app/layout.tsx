@@ -4,7 +4,6 @@ import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Providers } from "@/components/Providers";
-import { JsonLd } from "@/components/JsonLd";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { BackToTop } from "@/components/BackToTop";
 import { EnhancedSchema } from "@/components/EnhancedSchema";
@@ -39,30 +38,14 @@ export const metadata: Metadata = {
         canonical: './',
     },
     title: {
-        default: "Free AI Agents & Agentic AI Playground 2026 | Gemini 3 Pro, GPT-5 & Claude 4.5 Sonnet",
+        default: "UntrainedModel: Free AI Playground for Developers & Creators",
         template: "%s | UntrainedModel"
     },
-    description: "🚀 Build with Agentic AI & AI Agents in 2026. Access Gemini 3 Pro, GPT-5, Claude 4.5 Sonnet FREE. Multi-agent systems, AI orchestration, code generation. No credit card, no signup required.",
+    description: "🚀 Access the latest AI models like GPT-5, Gemini 3 Pro, and Claude 4.5 Sonnet for free. Build, test, and create with our powerful AI playground. No signup required.",
     keywords: [
-        // 2026 Trending Keywords
-        "agentic AI", "AI agents", "agentic AI platform", "multi-agent systems", "AI orchestration",
-        "Gemini 3 Pro free", "Gemini 3 Flash", "AI agents 2026", "autonomous AI", "intelligent automation",
-        // Primary global keywords
-        "free AI tools 2026", "AI playground", "ChatGPT alternative", "free AI",
-        "AI for developers", "free ChatGPT", "AI tools for developers",
-        // Specific tools
-        "GPT-5 free", "Claude 4.5 Sonnet free", "Gemini 3 Pro free", "free AI API",
-        "AI coding assistant", "AI code generation", "AI content generator", "AI research tool",
-        // Advanced features
-        "agentic workflows", "AI automation", "domain-specific AI", "physical AI",
-        "multimodal AI", "AI collaboration", "human-AI collaboration",
-        // Use cases
-        "AI for coding", "AI for content writing", "AI for research",
-        "free AI playground online", "best free AI tools 2026",
-        // Generic
-        "AI", "artificial intelligence", "ChatGPT", "Gemini", "Claude",
-        "machine learning", "automation", "generative AI",
-        "productivity", "AI tools", "LLM", "large language models"
+        "AI playground", "free AI tools", "agentic AI", "AI for developers", "GPT-5", "Gemini 3 Pro",
+        "Claude 4.5 Sonnet", "AI code generation", "AI content creation", "generative AI",
+        "ChatGPT alternative", "free AI API", "multi-agent systems", "AI orchestration"
     ],
     authors: [{ name: "UntrainedModel AI Labs" }],
     creator: "UntrainedModel AI Labs",
@@ -71,22 +54,22 @@ export const metadata: Metadata = {
         type: "website",
         locale: "en_US",
         url: "https://untrainedmodel.xyz",
-        title: "Free Agentic AI Playground 2026 | Gemini 3 Pro, GPT-5, Claude 4.5 Sonnet",
-        description: "Build with AI Agents & Agentic AI. Access Gemini 3 Pro, GPT-5, Claude 4.5 Sonnet for free. Multi-agent systems, AI orchestration, autonomous AI tools. No credit card required.",
+        title: "UntrainedModel: Free AI Playground for Developers & Creators",
+        description: "Access GPT-5, Gemini 3 Pro, and Claude 4.5 Sonnet for free. Build, test, and create with our powerful AI playground. No signup required.",
         siteName: "UntrainedModel",
         images: [
             {
                 url: "/og-image.png",
                 width: 1200,
                 height: 630,
-                alt: "UntrainedModel - Free Agentic AI Playground 2026",
+                alt: "UntrainedModel - Free AI Playground for Developers & Creators",
             },
         ],
     },
     twitter: {
         card: "summary_large_image",
-        title: "Free Agentic AI Playground 2026 | Gemini 3 Pro, GPT-5 & Claude 4.5 Sonnet",
-        description: "🚀 Access Gemini 3 Pro, GPT-5, Claude 4.5 Sonnet FREE. Build AI Agents, Multi-agent Systems. No signup, no credit card. Start with Agentic AI today!",
+        title: "UntrainedModel: Free AI Playground for Developers & Creators",
+        description: "🚀 Access GPT-5, Gemini 3 Pro, and Claude 4.5 Sonnet for free. Build, test, and create with our powerful AI playground. No signup required.",
         images: ["/og-image.png"],
         creator: "@untrainedmodel",
     },
@@ -144,12 +127,32 @@ export default function RootLayout({
                     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3606235083263616"
                     crossOrigin="anonymous"
                 ></script>
+
+                {/* Google Tag Manager */}
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                            })(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GTM_ID}');
+                        `,
+                    }}
+                />
             </head>
             <body className={`${inter.variable} ${outfit.variable} font-sans antialiased min-h-screen flex flex-col`}>
+                <noscript>
+                    <iframe
+                        src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID}`}
+                        height="0"
+                        width="0"
+                        style={{ display: 'none', visibility: 'hidden' }}
+                    ></iframe>
+                </noscript>
                 <Providers>
                     <ScrollProgress />
                     <BackToTop />
-                    <JsonLd />
                     <EnhancedSchema />
                     <Navigation />
                     <main className="flex-1">

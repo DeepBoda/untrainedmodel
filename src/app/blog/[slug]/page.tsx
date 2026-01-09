@@ -29,6 +29,8 @@ export function generateStaticParams() {
     }));
 }
 
+import { ArticleSchema } from '@/components/ArticleSchema';
+
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
     const post = blogPosts.find((p) => p.slug === slug);
@@ -41,5 +43,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         .filter(p => p.id !== post.id)
         .slice(0, 2);
 
-    return <BlogPostClient post={post} relatedPosts={relatedPosts} />;
+    return (
+        <>
+            <ArticleSchema post={post} />
+            <BlogPostClient post={post} relatedPosts={relatedPosts} />
+        </>
+    );
 }
