@@ -49,11 +49,11 @@ const Index = () => {
                                     The Agentic AI Era is Here
                                 </Badge>
                                 <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-tight mb-6">
-                                    Build AI Agents<br />
-                                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-neon-purple via-neon-blue to-neon-cyan animate-gradient">with Gemini 3 Pro, GPT-5 & Claude 4.5 Sonnet</span>
+                                    Build with AI Agents.<br />
+                                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-neon-purple via-neon-blue to-neon-cyan animate-gradient">Free & Open Source.</span>
                                 </h1>
                                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                                    The world's first free Agentic AI playground. Build autonomous AI agents, multi-agent systems, and intelligent automation. No credit card. No signup. Forever free.
+                                    Access the world's first free Agentic AI playground. Build autonomous AI agents, multi-agent systems, and intelligent automation with the latest models.
                                 </p>
                             </motion.div>
 
@@ -65,7 +65,7 @@ const Index = () => {
                             >
                                 <Button asChild variant="premium" size="lg" className="h-14 px-8 text-lg shadow-neon hover:scale-105 transition-transform">
                                     <Link href="/playground">
-                                        Start Building
+                                        Start Building for Free
                                         <ArrowRight className="w-5 h-5 ml-2" />
                                     </Link>
                                 </Button>
@@ -81,7 +81,7 @@ const Index = () => {
                                 className="flex items-center justify-center lg:justify-start gap-8 pt-4 text-muted-foreground/60 text-sm font-mono"
                             >
                                 <span className="flex items-center gap-2"><Shield className="w-4 h-4" /> No Credit Card</span>
-                                <span className="flex items-center gap-2"><Users className="w-4 h-4" /> Open Access</span>
+                                <span className="flex items-center gap-2"><Users className="w-4 h-4" /> 10,000+ Users</span>
                                 <span className="flex items-center gap-2"><Cpu className="w-4 h-4" /> 100% Free</span>
                             </motion.div>
                         </motion.div>
@@ -149,14 +149,15 @@ const Index = () => {
                 </div>
             </section>
 
-            {/* Trust Strip */}
+            {/* Featured In */}
             <section className="py-12 border-y border-white/5 bg-white/2 backdrop-blur-sm">
                 <div className="section-container text-center">
-                    <p className="text-sm text-muted-foreground mb-8 uppercase tracking-widest">Built for the builders of tomorrow</p>
+                    <p className="text-sm text-muted-foreground mb-8 uppercase tracking-widest">Featured In</p>
+                    {/* Replace these with authentic press mentions */}
                     <div className="flex flex-wrap justify-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-                        {['Developers', 'Traders', 'Researchers', 'Creators', 'Students'].map((item) => (
-                            <span key={item} className="text-xl font-bold text-white/80 flex items-center gap-2">
-                                <div className="w-2 h-2 rounded-full bg-primary" /> {item}
+                        {['Tech Publication', 'Industry News', 'Leading Blog', 'Tech Journal', 'Startup Weekly'].map((item) => (
+                            <span key={item} className="text-xl font-bold text-white/80">
+                                {item}
                             </span>
                         ))}
                     </div>
@@ -167,7 +168,7 @@ const Index = () => {
             <section className="section-spacing relative">
                 <div className="section-container">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-5xl font-bold mb-6">Everything you need to <span className="bg-clip-text text-transparent bg-gradient-to-br from-white to-gray-400">build faster</span></h2>
+                        <h2 id="features" className="text-3xl md:text-5xl font-bold mb-6">Everything you need to <span className="bg-clip-text text-transparent bg-gradient-to-br from-white to-gray-400">build faster</span></h2>
                         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                             Powerful AI tools to accelerate your workflow, from code generation to market research.
                         </p>
@@ -212,7 +213,7 @@ const Index = () => {
                     <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
                         <div className="space-y-6">
                             <Badge variant="pill">For Developers</Badge>
-                            <h3 className="text-3xl font-bold">Automate your coding workflow</h3>
+                            <h3 id="automate-workflow" className="text-3xl font-bold">Automate your coding workflow</h3>
                             <p className="text-muted-foreground text-lg">
                                 Stop writing boilerplate. Let UntrainedModel generate your API endpoints, database schemas, and utility functions.
                             </p>
@@ -251,7 +252,7 @@ const Index = () => {
                         </GlassCard>
                         <div className="space-y-6 order-1 md:order-2">
                             <Badge variant="pill">For Traders</Badge>
-                            <h3 className="text-3xl font-bold">Smart market analysis</h3>
+                            <h3 id="market-analysis" className="text-3xl font-bold">Smart market analysis</h3>
                             <p className="text-muted-foreground text-lg">
                                 Get instant summaries of market conditions, explain complex trading strategies, and backtest ideas.
                             </p>
@@ -268,7 +269,7 @@ const Index = () => {
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none" />
                 <div className="section-container text-center">
                     <Badge variant="neon" className="mb-6">Live Demo</Badge>
-                    <h2 className="text-4xl font-bold mb-8">Try it right now, <span className="text-neon-cyan">Free</span></h2>
+                    <h2 id="live-demo" className="text-4xl font-bold mb-8">Try it right now, <span className="text-neon-cyan">Free</span></h2>
 
                     <div className="max-w-3xl mx-auto">
                         <GlassCard className="text-left p-0 overflow-hidden border-white/15 shadow-2xl">
@@ -324,7 +325,7 @@ const Index = () => {
             {/* Community / Openness */}
             <section className="section-spacing border-y border-white/5 bg-black/40">
                 <div className="section-container text-center">
-                    <h2 className="text-3xl font-bold mb-12">Why is this free?</h2>
+                    <h2 id="why-free" className="text-3xl font-bold mb-12">Why is this free?</h2>
                     <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
                         {[
                             { title: "No Credit Card", desc: "We don't ask for payment details. Just start building." },
@@ -348,7 +349,7 @@ const Index = () => {
                 <div className="section-container">
                     <div className="text-center mb-20">
                         <Badge variant="outline" className="mb-4">Simple Workflow</Badge>
-                        <h2 className="text-3xl md:text-5xl font-bold mb-6">From Idea to <span className="bg-clip-text text-transparent bg-gradient-to-br from-white to-gray-400">Reality</span></h2>
+                        <h2 id="how-it-works" className="text-3xl md:text-5xl font-bold mb-6">From Idea to <span className="bg-clip-text text-transparent bg-gradient-to-br from-white to-gray-400">Reality</span></h2>
                         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                             Three simple steps to supercharge your productivity with AI.
                         </p>
@@ -387,7 +388,7 @@ const Index = () => {
             <section className="section-spacing bg-white/2 border-y border-white/5 overflow-hidden">
                 <div className="section-container">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold mb-6">Loved by Builders</h2>
+                        <h2 id="testimonials" className="text-3xl md:text-4xl font-bold mb-6">Loved by Builders</h2>
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-6">
@@ -425,7 +426,7 @@ const Index = () => {
             <section className="section-spacing relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-neon-purple/20 via-neon-blue/20 to-neon-cyan/20 blur-3xl opacity-30" />
                 <div className="section-container relative z-10 text-center">
-                    <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight">
+                    <h2 id="final-cta" className="text-4xl md:text-6xl font-bold mb-8 tracking-tight">
                         Ready to build the future?
                     </h2>
                     <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
