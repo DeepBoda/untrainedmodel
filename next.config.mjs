@@ -2,9 +2,10 @@
 const nextConfig = {
     reactStrictMode: true,
     output: 'export',
+    swcMinify: true, // Use SWC for faster minification
     images: {
         unoptimized: true, // Required for static export
-        formats: ['image/webp'],
+        formats: ['image/webp', 'image/avif'], // Modern image formats
     },
     compress: true, // Enable gzip compression
     poweredByHeader: false, // Remove X-Powered-By header for security
@@ -12,6 +13,7 @@ const nextConfig = {
     // Experimental optimizations
     experimental: {
         optimizeCss: true, // Optimize CSS delivery
+        optimizePackageImports: ['lucide-react', 'framer-motion'], // Optimize large packages
     },
 };
 
