@@ -147,17 +147,14 @@ export default function RootLayout({
                 ></script>
 
                 {/* Google Analytics 4 */}
-                <script async src="https://www.googletagmanager.com/gtag/js?id=G-VLSKCHSKE6"></script>
+                <script async src="https://www.googletagmanager.com/gtag/js?id=G-4WLN3WVJ9J"></script>
                 <script
                     dangerouslySetInnerHTML={{
                         __html: `
                             window.dataLayer = window.dataLayer || [];
                             function gtag(){dataLayer.push(arguments);}
                             gtag('js', new Date());
-                            gtag('config', 'G-VLSKCHSKE6', {
-                                page_path: window.location.pathname,
-                                send_page_view: true
-                            });
+                            gtag('config', 'G-4WLN3WVJ9J');
                         `,
                     }}
                 ></script>
