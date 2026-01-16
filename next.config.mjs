@@ -2,7 +2,7 @@
 const nextConfig = {
     reactStrictMode: true,
     output: 'export',
-    swcMinify: true, // Use SWC for faster minification
+
     images: {
         unoptimized: true, // Required for static export
         formats: ['image/webp', 'image/avif'], // Modern image formats

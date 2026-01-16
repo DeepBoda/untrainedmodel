@@ -753,7 +753,7 @@ const post6: BlogPost = {
 
 // 7. NEW: Prompt Engineering
 const post7: BlogPost = {
-  published: false,
+  published: true,
   id: "7",
   title: "Prompt Engineering Masterclass: Zero-Shot, Chain-of-Thought, and ReAct",
   excerpt: "Unlock the full potential of GPT-5 and Claude 3.5. Learn the scientific frameworks behind effective prompting like CoT, ToT, and ReAct.",
@@ -816,7 +816,7 @@ const post7: BlogPost = {
 
 // 8. NEW: AI for Students
 const post8: BlogPost = {
-  published: false,
+  published: true,
   id: "8",
   title: "AI for Indian Students: Ace JEE, NEET & UPSC with Smart Study Tools",
   excerpt: "How to use free AI tools like UntrainedModel to act as your personal 24/7 tutor. Create practice tests, summarize NCERTs, and solve doubts instantly.",
@@ -872,7 +872,7 @@ const post8: BlogPost = {
 
 // 9. NEW: Gemini vs GPT-5
 const post9: BlogPost = {
-  published: false,
+  published: true,
   id: "9",
   title: "Gemini 3 Pro vs GPT-5 vs Claude 4.5 Sonnet: The Ultimate Showdown (2026)",
   excerpt: "We tested the big three on code generation, creative writing, and reasoning. The results will surprise you. Which model reigns supreme?",
@@ -930,7 +930,7 @@ const post9: BlogPost = {
 
 // 10. NEW: AI in Finance
 const post10: BlogPost = {
-  published: false,
+  published: true,
   id: "10",
   title: "Algo Trading with AI: How to Build Your First Bot",
   excerpt: "Learn how to use Python and AI to analyze market data and execute trades. A beginner's guide to algorithmic trading in Indian markets (NSE/BSE).",
@@ -1003,7 +1003,7 @@ const post10: BlogPost = {
 
 // 11. NEW: Ethical AI
 const post11: BlogPost = {
-  published: false,
+  published: true,
   id: "11",
   title: "The Ethics of AI: Bias, Jobs, and the Future of Humanity",
   excerpt: "As AI becomes more powerful, ethical questions become critical. We explore the impact of AI on employment, privacy, and societal bias.",
@@ -1049,7 +1049,7 @@ const post11: BlogPost = {
 
 // 12. NEW: Python AI Agents
 const post12: BlogPost = {
-  published: false,
+  published: true,
   id: "12",
   title: "Building Autonomous Agents with Python & AutoGen",
   excerpt: "A technical walkthrough of Microsoft's AutoGen framework. Learn how to create a team of AI agents that collaborate to solve complex coding tasks.",

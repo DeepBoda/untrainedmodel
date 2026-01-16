@@ -1,8 +1,8 @@
 <svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:hsl(347.5, 70%, 60%);stop-opacity:1" />
-      <stop offset="100%" style="stop-color:hsl(27.5, 70%, 60%);stop-opacity:1" />
+      <stop offset="0%" style="stop-color:hsl(242.5, 70%, 60%);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:hsl(282.5, 70%, 60%);stop-opacity:1" />
     </linearGradient>
     <filter id="glow">
       <feGaussianBlur stdDeviation="15" result="coloredBlur"/>
@@ -16,8 +16,8 @@
   <rect width="800" height="400" fill="url(#grad)" opacity="0.1"/>
   
   <!-- Abstract Shapes -->
-  <circle cx="535" cy="159" r="96" fill="url(#grad)" opacity="0.2" filter="url(#glow)"/>
-  <path d="M48 393 Q 214 23 474 267" stroke="url(#grad)" stroke-width="4" fill="none" opacity="0.5"/>
+  <circle cx="460" cy="182" r="78" fill="url(#grad)" opacity="0.2" filter="url(#glow)"/>
+  <path d="M42 227 Q 438 26 785 216" stroke="url(#grad)" stroke-width="4" fill="none" opacity="0.5"/>
   
   <!-- Content Placeholder Grid -->
   <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">

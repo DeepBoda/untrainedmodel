@@ -386,7 +386,7 @@ const PlaygroundClient = () => {
                                             : "bg-white/5 border border-white/10 backdrop-blur-md rounded-tl-sm hover:border-white/20 transition-colors"
                                     )}>
                                         {/* Subtle noise/texture overlay for AI messages */}
-                                        {msg.role === 'ai' && <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] pointer-events-none" />}
+                                        {msg.role === 'ai' && <div className="absolute inset-0 bg-noise opacity-[0.05] pointer-events-none mix-blend-overlay" />}
 
                                         {msg.type === 'code' ? (
                                             <div className="font-mono text-sm overflow-hidden rounded-xl border border-white/10 bg-black/50 shadow-inner">
