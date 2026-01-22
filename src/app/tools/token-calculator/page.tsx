@@ -79,7 +79,12 @@ export default function TokenCalculatorPage() {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
 
-            <div className="text-center mb-12">
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-center mb-12"
+            >
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-500/10 text-neon-blue mb-6 border border-blue-500/20 shadow-[0_0_30px_rgba(59,130,246,0.2)]">
                     <Calculator className="w-8 h-8" />
                 </div>
@@ -87,11 +92,16 @@ export default function TokenCalculatorPage() {
                 <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                     Accurate real-time token estimation for LLM developers. Optimize context windows and predict API costs.
                 </p>
-            </div>
+            </motion.div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Input Area */}
-                <div className="lg:col-span-2">
+                <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="lg:col-span-2"
+                >
                     <GlassCard className="h-full flex flex-col p-1 overflow-hidden transition-all hover:border-blue-500/30">
                         <div className="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-white/[0.02]">
                             <span className="text-xs font-mono text-muted-foreground uppercase tracking-wider flex items-center gap-2">
@@ -114,10 +124,15 @@ export default function TokenCalculatorPage() {
                             spellCheck={false}
                         />
                     </GlassCard>
-                </div>
+                </motion.div>
 
                 {/* Stats Sidebar */}
-                <div className="space-y-6">
+                <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="space-y-6"
+                >
                     <GlassCard className="p-6 space-y-6 bg-gradient-to-b from-blue-900/10 to-transparent border-blue-500/10">
                         <div className="text-center space-y-2">
                             <p className="text-[10px] font-bold text-blue-400 uppercase tracking-widest mb-1">Estimated Tokens</p>
@@ -165,7 +180,7 @@ export default function TokenCalculatorPage() {
                             *Estimates based on current provider pricing per 1M input tokens.
                         </p>
                     </GlassCard>
-                </div>
+                </motion.div>
             </div>
 
             {/* Deep Content for SEO */}

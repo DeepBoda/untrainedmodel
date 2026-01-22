@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Coins, TrendingUp, Download, Upload, Info } from 'lucide-react';
 import { toast } from 'sonner';
+import { motion } from 'framer-motion';
 
 export default function CostEstimatorPage() {
     const [inputTokens, setInputTokens] = useState([100000]); // 100k
@@ -79,7 +80,12 @@ export default function CostEstimatorPage() {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
 
-            <div className="text-center mb-16">
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-center mb-16"
+            >
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-purple-500/10 text-neon-purple mb-6 border border-purple-500/20 shadow-[0_0_30px_rgba(168,85,247,0.2)]">
                     <Coins className="w-8 h-8" />
                 </div>
@@ -87,11 +93,16 @@ export default function CostEstimatorPage() {
                 <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                     Visualize and compare your monthly AI inference costs. Updated for 2026 pricing.
                 </p>
-            </div>
+            </motion.div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                 {/* Controls */}
-                <div className="lg:col-span-4 space-y-6">
+                <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="lg:col-span-4 space-y-6"
+                >
                     <GlassCard className="p-8 space-y-8 sticky top-32 border-purple-500/20">
                         <div>
                             <label className="flex items-center justify-between text-sm font-medium text-white mb-4">
@@ -140,10 +151,15 @@ export default function CostEstimatorPage() {
                             </Button>
                         </div>
                     </GlassCard>
-                </div>
+                </motion.div>
 
                 {/* Results Table */}
-                <div className="lg:col-span-8">
+                <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="lg:col-span-8"
+                >
                     <div className="grid gap-3">
                         {MODELS.sort((a, b) => calculateCost(a) - calculateCost(b)).map((model, i) => {
                             const cost = calculateCost(model);
@@ -186,7 +202,7 @@ export default function CostEstimatorPage() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </div>
     );
