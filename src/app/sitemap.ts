@@ -16,6 +16,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const routes = [
         { route: '', priority: 1.0, changeFrequency: 'daily' as const },
         { route: '/playground', priority: 0.9, changeFrequency: 'daily' as const },
+        { route: '/tools', priority: 0.9, changeFrequency: 'weekly' as const },
+        { route: '/tools/token-calculator', priority: 0.8, changeFrequency: 'weekly' as const },
+        { route: '/tools/cost-estimator', priority: 0.8, changeFrequency: 'weekly' as const },
         { route: '/blog', priority: 0.8, changeFrequency: 'weekly' as const },
         { route: '/use-cases', priority: 0.8, changeFrequency: 'weekly' as const },
         { route: '/docs', priority: 0.7, changeFrequency: 'weekly' as const },

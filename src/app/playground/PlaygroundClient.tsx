@@ -49,16 +49,23 @@ const PlaygroundClient = () => {
     const handleSend = async () => {
         if (!input.trim() || isGenerating) return;
 
+        // Check for API key BEFORE clearing input or adding message
+        const storedKeys = localStorage.getItem('ai_api_keys');
+        const keys = storedKeys ? JSON.parse(storedKeys) : {};
+        const apiKey = keys[selectedProvider];
+
+        if (!apiKey) {
+            setIsSettingsOpen(true);
+            return;
+        }
+
         const userMsg = input;
         setInput('');
         setMessages(prev => [...prev, { role: 'user', content: userMsg, type: 'text' }]);
         setIsGenerating(true);
 
         try {
-            // Get keys from localStorage
-            const storedKeys = localStorage.getItem('ai_api_keys');
-            const keys = storedKeys ? JSON.parse(storedKeys) : {};
-            const apiKey = keys[selectedProvider];
+            // Keys are already retrieved above
 
             const response = await aiService.generateResponse(
                 userMsg,

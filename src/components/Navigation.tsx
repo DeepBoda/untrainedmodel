@@ -22,6 +22,7 @@ const Navigation = () => {
 
   const navigationItems = [
     { name: 'Use Cases', href: '/use-cases' },
+    { name: 'Tools', href: '/tools' },
     { name: 'Blog', href: '/blog' },
     { name: 'Docs', href: '/docs' },
     { name: 'About', href: '/about' },
