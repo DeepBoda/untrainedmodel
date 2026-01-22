@@ -16,6 +16,7 @@ import { cn } from '@/lib/utils';
 import { aiService } from '@/lib/ai';
 import { SettingsModal } from '@/components/playground/SettingsModal';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { MagneticButton } from "@/components/ui/MagneticButton";
 
 const PlaygroundClient = () => {
     const [activeMode, setActiveMode] = useState<'chat' | 'code' | 'research'>('chat');
@@ -184,29 +185,38 @@ const PlaygroundClient = () => {
                         <h3 className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-4 px-2">Core Modes</h3>
                         <div className="space-y-1">
                             {modes.map(mode => (
-                                <button
+                                <MagneticButton
                                     key={mode.id}
                                     onClick={() => setActiveMode(mode.id as 'chat' | 'code' | 'research')}
                                     className={cn(
                                         "w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 group relative overflow-hidden",
                                         activeMode === mode.id
                                             ? "bg-white/10 text-white shadow-glow border border-white/5 translate-x-1"
-                                            : "text-muted-foreground hover:text-white hover:bg-white/5 hover:translate-x-1"
+                                            : "text-muted-foreground hover:text-white hover:bg-white/10 hover:translate-x-1 hover:shadow-lg hover:shadow-primary/5"
                                     )}
                                 >
                                     {activeMode === mode.id && (
-                                        <>
-                                            <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-transparent opacity-50" />
-                                            <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-primary shadow-[0_0_10px_rgba(168,85,247,0.8)]" />
-                                        </>
+                                        <motion.div
+                                            layoutId="activeMode"
+                                            className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent opacity-50"
+                                            transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                        />
                                     )}
-                                    <mode.icon className={cn("w-4 h-4 transition-colors", activeMode === mode.id ? mode.color : "group-hover:text-white")} />
-                                    <div className="flex flex-col items-start">
-                                        <span className="relative z-10">{mode.label}</span>
-                                        <span className="text-[10px] text-muted-foreground">{mode.desc}</span>
-                                    </div>
-                                    {activeMode === mode.id && <ChevronRight className="w-3 h-3 ml-auto opacity-50" />}
-                                </button>
+                                    <motion.div
+                                        whileHover={{ scale: 1.1, rotate: [0, -5, 5, 0] }}
+                                        transition={{ duration: 0.4 }}
+                                    >
+                                        <mode.icon className={cn("w-5 h-5 relative z-10", activeMode === mode.id && "text-primary")} />
+                                    </motion.div>
+                                    <span className="relative z-10">{mode.label}</span>
+                                    {activeMode === mode.id && (
+                                        <motion.div
+                                            initial={{ scale: 0 }}
+                                            animate={{ scale: 1 }}
+                                            className="ml-auto w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_10px_2px_rgba(168,85,247,0.5)]"
+                                        />
+                                    )}
+                                </MagneticButton>
                             ))}
                         </div>
                     </div>
@@ -324,28 +334,42 @@ const PlaygroundClient = () => {
                                 </div>
 
                                 {/* Quick Start Suggestions */}
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-12">
+                                <motion.div
+                                    initial="hidden"
+                                    animate="show"
+                                    variants={{
+                                        hidden: { opacity: 0 },
+                                        show: {
+                                            opacity: 1,
+                                            transition: {
+                                                staggerChildren: 0.1
+                                            }
+                                        }
+                                    }}
+                                    className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-12"
+                                >
                                     {suggestions.map((suggestion, i) => (
                                         <motion.button
                                             key={i}
-                                            initial={{ opacity: 0, y: 20 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            transition={{ delay: 0.2 + i * 0.1 }}
+                                            variants={{
+                                                hidden: { opacity: 0, y: 20 },
+                                                show: { opacity: 1, y: 0 }
+                                            }}
                                             onClick={() => setInput(suggestion.text)}
-                                            className="group p-4 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all duration-300 text-left"
+                                            className="group p-4 rounded-xl bg-white/5 border border-white/10 hover:border-primary/30 hover:bg-white/10 transition-all duration-300 text-left hover:shadow-lg hover:shadow-primary/10"
                                         >
                                             <div className={cn(
-                                                "w-10 h-10 rounded-lg bg-gradient-to-br flex items-center justify-center mb-3 group-hover:scale-110 transition-transform",
+                                                "w-10 h-10 rounded-lg bg-gradient-to-br flex items-center justify-center mb-3 group-hover:scale-110 transition-transform shadow-inner",
                                                 suggestion.color
                                             )}>
                                                 <suggestion.icon className="w-5 h-5 text-white" />
                                             </div>
-                                            <p className="text-sm text-white group-hover:text-primary transition-colors">
+                                            <p className="text-sm text-white group-hover:text-primary transition-colors font-medium">
                                                 {suggestion.text}
                                             </p>
                                         </motion.button>
                                     ))}
-                                </div>
+                                </motion.div>
 
                                 {/* Features */}
                                 <div className="flex items-center justify-center gap-8 mt-12 text-xs text-muted-foreground">
@@ -440,7 +464,7 @@ const PlaygroundClient = () => {
                 {/* Input Area - Fixed at bottom */}
                 <div className="p-6 bg-black/80 backdrop-blur-xl border-t border-white/5 absolute bottom-0 left-0 right-0 z-40 md:relative md:z-auto">
                     <div className="max-w-5xl mx-auto relative">
-                        <div className="relative bg-zinc-900/50 border border-white/10 rounded-xl overflow-hidden ring-1 ring-white/5 focus-within:ring-primary/50 focus-within:border-primary/50 transition-all duration-300 shadow-2xl">
+                        <div className="relative bg-zinc-900/50 border border-white/10 rounded-xl overflow-hidden ring-1 ring-white/5 focus-within:ring-primary/50 focus-within:border-primary/50 transition-all duration-500 shadow-2xl focus-within:shadow-[0_0_40px_rgba(168,85,247,0.25)]">
                             <textarea
                                 ref={inputRef}
                                 value={input}

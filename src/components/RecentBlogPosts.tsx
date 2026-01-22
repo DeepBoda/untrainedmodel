@@ -5,7 +5,9 @@ import { ArrowRight, Calendar, Clock, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { blogPosts } from '@/lib/blog-posts';
 import { Badge } from "@/components/ui/badge";
+
 import { motion } from "framer-motion";
+import { GlassCard } from "@/components/ui/GlassCard";
 
 const RecentBlogPosts = () => {
   const recentPosts = blogPosts.slice(0, 3);
@@ -61,55 +63,56 @@ const RecentBlogPosts = () => {
             >
               <Link
                 href={`/blog/${post.slug}`}
-                className="group relative flex flex-col h-full bg-card/50 backdrop-blur-sm border border-border/50 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 hover:-translate-y-2"
+                className="group h-full block"
               >
-                {/* Image Placeholder/Gradient */}
-                <div className="aspect-[16/10] bg-muted relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
-                  <img
-                    src={post.imageUrl || "/og-image.png"}
-                    alt={post.title}
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute bottom-4 left-4 z-20">
-                    <Badge className="bg-primary/90 hover:bg-primary text-primary-foreground border-none backdrop-blur-md">
-                      {post.category}
-                    </Badge>
-                  </div>
-                </div>
-
-                <div className="p-6 flex flex-col h-full">
-                  <div className="flex items-center gap-3 text-xs text-muted-foreground mb-4">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="w-3 h-3" />
-                      {new Date(post.publishDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="w-3 h-3" />
-                      {post.readTime}
+                <GlassCard className="flex flex-col h-full bg-card/40 backdrop-blur-xl border-white/10 p-0 overflow-hidden hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 hover:-translate-y-2">
+                  {/* Image Placeholder/Gradient */}
+                  <div className="aspect-[16/10] bg-muted relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
+                    <img
+                      src={post.imageUrl || "/og-image.png"}
+                      alt={post.title}
+                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute bottom-4 left-4 z-20">
+                      <Badge className="bg-primary/90 hover:bg-primary text-primary-foreground border-none backdrop-blur-md">
+                        {post.category}
+                      </Badge>
                     </div>
                   </div>
-
-                  <h3 className="text-xl font-bold mb-3 leading-tight group-hover:text-primary transition-colors line-clamp-2">
-                    {post.title}
-                  </h3>
-
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1 line-clamp-3">
-                    {post.excerpt}
-                  </p>
-
-                  <div className="flex items-center justify-between pt-4 border-t border-border/50 mt-auto">
-                    <div className="flex items-center gap-2">
-                      <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-[10px]">
-                        {post.author[0]}
+                  <div className="p-6 flex flex-col h-full border-t border-white/5 bg-white/[0.02]">
+                    <div className="flex items-center gap-3 text-xs text-muted-foreground mb-4">
+                      <div className="flex items-center gap-1">
+                        <Calendar className="w-3 h-3" />
+                        {new Date(post.publishDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                       </div>
-                      <span className="text-xs font-medium text-foreground">{post.author}</span>
+                      <div className="flex items-center gap-1">
+                        <Clock className="w-3 h-3" />
+                        {post.readTime}
+                      </div>
                     </div>
-                    <span className="inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:translate-x-1 transition-transform">
-                      Read <ArrowRight className="w-4 h-4" />
-                    </span>
+
+                    <h3 className="text-xl font-bold mb-3 leading-tight group-hover:text-primary transition-colors line-clamp-2">
+                      {post.title}
+                    </h3>
+
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1 line-clamp-3">
+                      {post.excerpt}
+                    </p>
+
+                    <div className="flex items-center justify-between pt-4 border-t border-border/50 mt-auto">
+                      <div className="flex items-center gap-2">
+                        <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-[10px]">
+                          {post.author[0]}
+                        </div>
+                        <span className="text-xs font-medium text-foreground">{post.author}</span>
+                      </div>
+                      <span className="inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:translate-x-1 transition-transform">
+                        Read <ArrowRight className="w-4 h-4" />
+                      </span>
+                    </div>
                   </div>
-                </div>
+                </GlassCard>
               </Link>
             </motion.div>
           ))}
@@ -130,7 +133,7 @@ const RecentBlogPosts = () => {
           </Button>
         </motion.div>
       </div>
-    </section>
+    </section >
   );
 };
 

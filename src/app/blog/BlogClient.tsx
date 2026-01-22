@@ -87,7 +87,7 @@ const BlogClient = () => {
                             style={{ transformStyle: 'preserve-3d' }}
                         >
                             {/* Main Card (Fake App Screen) */}
-                            <GlassCard className="relative p-6 shadow-2xl overflow-hidden group border-white/10">
+                            <GlassCard className="relative p-6 shadow-2xl overflow-hidden group border-white/10 bg-black/60 backdrop-blur-xl">
                                 {/* Fake UI Header */}
                                 <div className="flex items-center justify-between mb-6 border-b border-white/5 pb-4">
                                     <div className="flex gap-2">
@@ -228,7 +228,7 @@ const BlogClient = () => {
                             transition={{ delay: index * 0.1 }}
                         >
                             <Link href={`/blog/${post.slug}`} className="h-full block">
-                                <GlassCard className="group flex flex-col h-full hover:bg-white/10 transition-all duration-500 hover:-translate-y-1">
+                                <GlassCard className="group flex flex-col h-full hover:bg-white/10 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5 border-white/10">
                                     <div className="flex items-center justify-between mb-6">
                                         <Badge variant="outline" className="bg-primary/10 border-primary/20 text-primary">
                                             {post.category}

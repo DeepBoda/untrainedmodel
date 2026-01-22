@@ -9,6 +9,23 @@ import { ArrowRight, Code, FileText, TrendingUp, Terminal, Zap, Users, Shield, C
 import Link from "next/link";
 import Image from "next/image";
 import { useRef } from "react";
+import { AnimatedNumber } from "@/components/ui/AnimatedNumber";
+import { Spotlight } from "@/components/ui/Spotlight";
+import { MagneticButton } from "@/components/ui/MagneticButton";
+
+const fadeInUp = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.5 }
+};
+
+const staggerContainer = {
+    animate: {
+        transition: {
+            staggerChildren: 0.1
+        }
+    }
+};
 
 const Index = () => {
     const targetRef = useRef<HTMLDivElement>(null);
@@ -48,11 +65,28 @@ const Index = () => {
                                     <Zap className="w-4 h-4 mr-2 text-yellow-400 fill-yellow-400" />
                                     The Agentic AI Era is Here
                                 </Badge>
-                                <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-tight mb-6">
-                                    Build AI Agents<br />
-                                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-neon-purple via-neon-blue to-neon-cyan animate-gradient">with Gemini 3 Pro, GPT-5 & Claude 4.5 Sonnet</span>
+                                <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[1.1] mb-6">
+                                    <motion.span
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        transition={{ duration: 1, staggerChildren: 0.1 }}
+                                    >
+                                        {'Build AI Agents'.split('').map((char, index) => (
+                                            <motion.span
+                                                key={index}
+                                                initial={{ opacity: 0, y: 20 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                transition={{ duration: 0.5, delay: index * 0.05 }}
+                                                className="inline-block"
+                                            >
+                                                {char === ' ' ? '\u00A0' : char}
+                                            </motion.span>
+                                        ))}
+                                    </motion.span>
+                                    <br />
+                                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-neon-purple via-neon-blue to-neon-cyan animate-gradient">with Gemini 3, GPT-5 & Claude</span>
                                 </h1>
-                                <p className="text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                                <p className="text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light tracking-wide">
                                     The world's first free Agentic AI playground. Build autonomous AI agents, multi-agent systems, and intelligent automation. No credit card. No signup. Forever free.
                                 </p>
                             </motion.div>
@@ -139,7 +173,9 @@ const Index = () => {
                                         </div>
                                         <div>
                                             <div className="text-[10px] text-muted-foreground uppercase tracking-wider font-bold">Latency</div>
-                                            <div className="text-sm font-bold text-white">12ms</div>
+                                            <div className="text-sm font-bold text-white flex items-center gap-1 tabular-nums">
+                                                <AnimatedNumber value={12} />ms
+                                            </div>
                                         </div>
                                     </GlassCard>
                                 </motion.div>
@@ -167,13 +203,19 @@ const Index = () => {
             <section className="section-spacing relative">
                 <div className="section-container">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-5xl font-bold mb-6">Everything you need to <span className="bg-clip-text text-transparent bg-gradient-to-br from-white to-gray-400">build faster</span></h2>
-                        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                        <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tighter">Everything you need to <span className="bg-clip-text text-transparent bg-gradient-to-br from-white to-gray-400">build faster</span></h2>
+                        <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-light">
                             Powerful AI tools to accelerate your workflow, from code generation to market research.
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-3 gap-8">
+                    <motion.div
+                        variants={staggerContainer}
+                        initial="initial"
+                        whileInView="animate"
+                        viewport={{ once: true }}
+                        className="grid md:grid-cols-3 gap-8"
+                    >
                         {[
                             {
                                 icon: FileText,
@@ -194,15 +236,17 @@ const Index = () => {
                                 color: "text-neon-cyan"
                             }
                         ].map((feature, i) => (
-                            <GlassCard key={i} className="h-full">
-                                <div className={`w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 ${feature.color}`}>
-                                    <feature.icon className="w-6 h-6" />
-                                </div>
-                                <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-                                <p className="text-muted-foreground leading-relaxed">{feature.desc}</p>
-                            </GlassCard>
+                            <motion.div key={i} variants={fadeInUp} className="h-full">
+                                <Spotlight className="h-full p-8" spotlightColor="rgba(168, 85, 247, 0.2)">
+                                    <div className={`w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 ${feature.color}`}>
+                                        <feature.icon className="w-6 h-6" />
+                                    </div>
+                                    <h3 className="text-xl font-bold mb-3 tracking-tight">{feature.title}</h3>
+                                    <p className="text-muted-foreground leading-relaxed font-light">{feature.desc}</p>
+                                </Spotlight>
+                            </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
             </section>
 
@@ -255,8 +299,8 @@ const Index = () => {
                             <p className="text-muted-foreground text-lg">
                                 Get instant summaries of market conditions, explain complex trading strategies, and backtest ideas.
                             </p>
-                            <Button variant="link" asChild className="p-0 text-neon-purple">
-                                <Link href="/use-cases">View Trading Use Cases <ArrowRight className="w-4 h-4 ml-1" /></Link>
+                            <Button variant="link" asChild className="p-0 text-neon-purple group">
+                                <Link href="/use-cases">View Trading Use Cases <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" /></Link>
                             </Button>
                         </div>
                     </div>
@@ -306,7 +350,9 @@ const Index = () => {
                                                 &nbsp;&nbsp;# ... code continues<br />
                                             </code>
                                         </div>
-                                        <p className="text-xs text-muted-foreground mt-2">Generated in 1.2s</p>
+                                        <p className="text-xs text-muted-foreground mt-2 font-mono flex items-center gap-1">
+                                            Generated in <span className="text-white"><AnimatedNumber value={1.2} />s</span>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
