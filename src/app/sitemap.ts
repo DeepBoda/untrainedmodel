@@ -28,7 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         { route: '/terms', priority: 0.3, changeFrequency: 'yearly' as const },
     ].map(({ route, priority, changeFrequency }) => ({
         url: `${baseUrl}${route}`,
-        lastModified: new Date(),
+        lastModified: new Date().toISOString().split('T')[0],
         changeFrequency,
         priority,
     }))

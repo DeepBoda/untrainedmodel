@@ -65,25 +65,8 @@ const Index = () => {
                                     <Zap className="w-4 h-4 mr-2 text-yellow-400 fill-yellow-400" />
                                     The Agentic AI Era is Here
                                 </Badge>
-                                <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[1.1] mb-6">
-                                    <motion.span
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
-                                        transition={{ duration: 1, staggerChildren: 0.1 }}
-                                    >
-                                        {'Build AI Agents'.split('').map((char, index) => (
-                                            <motion.span
-                                                key={index}
-                                                initial={{ opacity: 0, y: 20 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                transition={{ duration: 0.5, delay: index * 0.05 }}
-                                                className="inline-block"
-                                            >
-                                                {char === ' ' ? '\u00A0' : char}
-                                            </motion.span>
-                                        ))}
-                                    </motion.span>
-                                    <br />
+                                <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[1.1] mb-6 animate-fade-in-up">
+                                    Build AI Agents<br />
                                     <span className="bg-clip-text text-transparent bg-gradient-to-r from-neon-purple via-neon-blue to-neon-cyan animate-gradient">with Gemini 3, GPT-5 & Claude</span>
                                 </h1>
                                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light tracking-wide">
@@ -97,13 +80,13 @@ const Index = () => {
                                 transition={{ duration: 0.5, delay: 0.2 }}
                                 className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
                             >
-                                <Button asChild variant="premium" size="lg" className="h-14 px-8 text-lg shadow-neon hover:scale-105 transition-transform">
+                                <Button asChild variant="premium" size="lg" className="h-14 px-8 text-lg shadow-neon hover:scale-105 transition-transform" aria-label="Start Building AI Agents">
                                     <Link href="/playground">
                                         Start Building
                                         <ArrowRight className="w-5 h-5 ml-2" />
                                     </Link>
                                 </Button>
-                                <Button asChild variant="glass" size="lg" className="h-14 px-8 text-lg">
+                                <Button asChild variant="glass" size="lg" className="h-14 px-8 text-lg" aria-label="Explore AI Use Cases">
                                     <Link href="/use-cases">Explore Use Cases</Link>
                                 </Button>
                             </motion.div>

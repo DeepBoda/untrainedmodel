@@ -46,6 +46,7 @@ export default function NewsletterPopup() {
         setStatus('loading');
 
         // Track event
+        // Analytics tracking for conversion
         if (typeof window !== 'undefined' && (window as any).gtag) {
             (window as any).gtag('event', 'newsletter_signup', {
                 source: 'exit_intent_popup',
@@ -53,16 +54,8 @@ export default function NewsletterPopup() {
             });
         }
 
-        // TODO: Integrate with email service (Mailchimp, ConvertKit, Beehiiv, etc.)
-        // Example API call:
-        // const response = await fetch('/api/newsletter', {
-        //   method: 'POST',
-        //   headers: { 'Content-Type': 'application/json' },
-        //   body: JSON.stringify({ email }),
-        // });
-        // if (!response.ok) throw new Error('Failed to subscribe');
-
-        // DEMO MODE: Simulating success for now
+        // Simulate API call for subscriber storage
+        // In production, replacing with actual provider (e.g. ConvertKit/BeeHiiv)
         setTimeout(() => {
             setStatus('success');
             setTimeout(() => setShow(false), 2000);

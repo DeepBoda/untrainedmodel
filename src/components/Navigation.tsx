@@ -57,7 +57,7 @@ const Navigation = () => {
       )}>
         <div className="container mx-auto px-4">
           <nav className="flex items-center justify-between h-16">
-            <Link href="/" className="flex items-center space-x-2 group">
+            <Link href="/" className="flex items-center space-x-2 group" aria-label="UntrainedModel Home">
               <div className="relative w-12 h-12">
                 <div className="absolute inset-0 bg-primary/20 rounded-full blur-lg group-hover:bg-primary/40 transition-all duration-300" />
                 <Image
@@ -65,6 +65,7 @@ const Navigation = () => {
                   alt="UntrainedModel Logo"
                   width={48}
                   height={48}
+                  priority
                   className="w-12 h-12 relative z-10 transition-transform duration-300 group-hover:scale-110 filter drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]"
                 />
               </div>
@@ -103,10 +104,10 @@ const Navigation = () => {
             </div>
 
             <div className="lg:hidden flex items-center space-x-2">
-              <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(true)}>
+              <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(true)} aria-label="Open Search">
                 <Search className="h-5 w-5" />
               </Button>
-              <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)}>
+              <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle Menu">
                 {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </Button>
             </div>
