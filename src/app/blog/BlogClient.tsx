@@ -184,11 +184,11 @@ const BlogClient = () => {
                                 alt={featuredPost.title}
                                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000"
                             />
-                            <div className="absolute bottom-0 left-0 p-8 md:p-16 z-20 max-w-4xl">
+                            <div className="absolute bottom-0 left-0 p-6 md:p-10 z-20 max-w-4xl">
                                 <Badge className="mb-6 bg-primary text-primary-foreground border-none px-4 py-1.5 text-sm">
                                     {featuredPost.category}
                                 </Badge>
-                                <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight group-hover:text-primary/90 transition-colors">
+                                <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight group-hover:text-primary/90 transition-colors">
                                     {featuredPost.title}
                                 </h2>
                                 <p className="text-lg md:text-xl text-gray-300 mb-8 line-clamp-2 max-w-2xl leading-relaxed">

@@ -103,7 +103,7 @@ const BlogPostClient = ({ post, relatedPosts }: BlogPostClientProps) => {
                             ))}
                         </div>
 
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-8 leading-tight text-foreground text-balance">
+                        <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-8 leading-tight text-foreground text-balance">
                             {post.title}
                         </h1>
 
